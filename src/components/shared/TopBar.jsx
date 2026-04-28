@@ -1,5 +1,7 @@
-// components/shared/TopBar.jsx
-import { useState } from 'react'
+// components/shared/TopBar.jsx (optimized)
+// Optimization: use fine-grained selectors instead of subscribing to the entire store.
+// This prevents TopBar from re-rendering on every combat state mutation.
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import useRunStore from '../../stores/runStore.js'
@@ -11,22 +13,63 @@ import { RelicSlots } from './RelicSlots.jsx'
 import { VaultScreen } from '../menus/VaultScreen.jsx'
 import { MapOverlay } from '../map/MapOverlay.jsx'
 import { RELICS } from '../../data/relics.js'
+
+// Fine-grained selectors — each subscribes only to the fields it needs.
+// This prevents unnecessary re-renders when unrelated state changes.
+const selectCharacterName = s => s.character?.name || 'Traveler'
+const selectHp = s => ({ hp: s.hp, maxHp: s.maxHp })
+const selectGold = s => s.gold
+const selectFloor = s => s.floor
+const selectPotions = s => s.potions
+const selectRelics = s => s.relics
+const selectVaultRelics = s => s.vaultRelics
+const selectCampaign = s => s.campaign
+const selectActiveModifier = s => s.activeModifier
+const selectCombatDeckFields = s => ({
+  inCombat: s.inCombat,
+  deck: s.deck,
+  hand: s.hand,
+  discardPile: s.discardPile,
+  exhaustPile: s.exhaustPile,
+})
+const selectJournal = s => ({ journalWords: s.journalWords, journalGrammar: s.journalGrammar })
+
 export function TopBar({ hideMapButton = false, potionsLocked = false }) {
-  const store = useRunStore()
+  const characterName = useRunStore(selectCharacterName)
+  const { hp, maxHp } = useRunStore(selectHp)
+  const gold = useRunStore(selectGold)
+  const floor = useRunStore(selectFloor)
+  const potions = useRunStore(selectPotions)
+  const relics = useRunStore(selectRelics)
+  const vaultRelics = useRunStore(selectVaultRelics)
+  const campaign = useRunStore(selectCampaign)
+  const activeModifier = useRunStore(selectActiveModifier)
+  const combatDeckFields = useRunStore(selectCombatDeckFields)
+  const { journalWords, journalGrammar } = useRunStore(selectJournal)
+
   const navigate = useNavigate()
   const location = useLocation()
   const { playSFX } = useAudio()
 
-  const [openModal, setOpenModal] = useState(null) // 'deck' | 'relics' | 'map' | 'settings' | 'journal'
+  const [openModal, setOpenModal] = useState(null) // 'deck' | 'relics' | 'map' | 'settings' | 'journal' | 'vault'
 
   const closeModal = () => setOpenModal(null)
-  
+
   const handleOpen = (modal) => {
     playSFX('button_click')
     setOpenModal(modal)
   }
 
   const { usePotion } = usePotions({ isQuestionOpen: potionsLocked, playSFX })
+
+  // Compute master deck only when deck overlay is open
+  const masterDeck = useMemo(() => {
+    if (openModal !== 'deck') return []
+    const { inCombat, deck, hand, discardPile, exhaustPile } = combatDeckFields
+    return inCombat
+      ? [...deck, ...hand, ...discardPile, ...(exhaustPile || [])]
+      : deck
+  }, [openModal, combatDeckFields])
 
   return (
     <div className="relative w-full z-50">
@@ -43,41 +86,41 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
         {/* Left: Player Info */}
         <div className="flex items-center gap-4">
           <div className="flex flex-col justify-center mr-2">
-            <div className="font-bold text-white text-base leading-none">{store.character?.name || 'Traveler'}</div>
+            <div className="font-bold text-white text-base leading-none">{characterName}</div>
           </div>
           <div className="flex items-center gap-1">
             <span className="text-red-400">❤️</span>
-            <span className="font-bold text-red-100">{store.hp}/{store.maxHp}</span>
+            <span className="font-bold text-red-100">{hp}/{maxHp}</span>
           </div>
           <div className="flex items-center gap-1 ml-2">
             <span className="text-yellow-400">🪙</span>
-            <span className="font-bold text-yellow-100">{store.gold}</span>
+            <span className="font-bold text-yellow-100">{gold}</span>
           </div>
 
           {/* Potion Slots — always visible, empty slots show faint outlines */}
           <div className="flex items-center gap-1 ml-3 border-l border-gray-600 pl-3">
             <PotionSlots
-              potions={store.potions}
+              potions={potions}
               onUse={usePotion}
               isLocked={potionsLocked}
-              campaign={store.campaign}
+              campaign={campaign}
             />
           </div>
-          
+
           {/* Relic Slots — 5-frame row */}
           <div className="flex items-center gap-1.5 ml-3 border-l border-gray-600 pl-3">
             <RelicSlots
-              equippedRelics={store.relics}
-              campaign={store.campaign}
+              equippedRelics={relics}
+              campaign={campaign}
             />
             {/* Vault indicator */}
-            {store.vaultRelics?.length > 0 && (
+            {vaultRelics?.length > 0 && (
               <button
                 onClick={() => handleOpen('vault')}
                 className="ml-1 flex items-center gap-0.5 text-[10px] text-gray-500 hover:text-gray-300 transition-colors cursor-pointer bg-gray-800/60 px-1.5 py-0.5 rounded border border-gray-700 hover:border-gray-500"
                 title="View Vault"
               >
-                🗄 {store.vaultRelics.length}
+                🗄 {vaultRelics.length}
               </button>
             )}
           </div>
@@ -86,15 +129,13 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
         {/* Right: Actions */}
         <div className="flex items-center gap-3">
           <div className="bg-gray-800/80 px-2 py-0.5 rounded border border-gray-600 font-bold mr-2">
-            Floor {store.floor}
+            Floor {floor}
           </div>
-          
+
           <button onClick={() => handleOpen('deck')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="View Deck">
             🃏
           </button>
-          
-          {/* Always show the Map button, but when on /map screen, make it open the map overlay so they can view the full read-only map, or hide it if you prefer. 
-              Actually, on /map we can hide it or just keep it since MapOverlay works. */}
+
           {(!hideMapButton || location.pathname !== '/map') && (
             <button onClick={() => handleOpen('map')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="View Map">
               🗺️
@@ -112,39 +153,35 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
       </div>
 
       {/* Floating Modifier Display (Top Left, Below TopBar) */}
-      {store.activeModifier && (
+      {activeModifier && (
         <div className="absolute top-full left-4 mt-2 flex items-center gap-2 pointer-events-auto">
-          <div 
+          <div
             className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a24]/90 border shadow-xl backdrop-blur-md cursor-help transition-transform hover:scale-110"
-            style={{ borderColor: store.activeModifier.blessing.color }}
-            title={`Blessing: ${store.activeModifier.blessing.name}\n${store.activeModifier.blessing.description}`}
+            style={{ borderColor: activeModifier.blessing.color }}
+            title={`Blessing: ${activeModifier.blessing.name}\n${activeModifier.blessing.description}`}
           >
-            <span className="text-lg drop-shadow-md leading-none">{store.activeModifier.blessing.icon}</span>
+            <span className="text-lg drop-shadow-md leading-none">{activeModifier.blessing.icon}</span>
           </div>
-          <div 
+          <div
             className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a24]/90 border shadow-xl backdrop-blur-md cursor-help transition-transform hover:scale-110"
-            style={{ borderColor: store.activeModifier.curse.color }}
-            title={`Curse: ${store.activeModifier.curse.name}\n${store.activeModifier.curse.description}`}
+            style={{ borderColor: activeModifier.curse.color }}
+            title={`Curse: ${activeModifier.curse.name}\n${activeModifier.curse.description}`}
           >
-            <span className="text-lg drop-shadow-md leading-none">{store.activeModifier.curse.icon}</span>
+            <span className="text-lg drop-shadow-md leading-none">{activeModifier.curse.icon}</span>
           </div>
         </div>
       )}
-
 
       {/* OVERLAYS */}
       <AnimatePresence>
         {openModal === 'settings' && (
           <SettingsOverlay onClose={closeModal} />
         )}
-        {openModal === 'deck' && (() => {
-          const masterDeck = store.inCombat
-            ? [...store.deck, ...store.hand, ...store.discardPile, ...(store.exhaustPile || [])]
-            : store.deck
-          return <DeckOverlay onClose={closeModal} deck={masterDeck} />
-        })()}
+        {openModal === 'deck' && (
+          <DeckOverlay onClose={closeModal} deck={masterDeck} />
+        )}
         {openModal === 'relics' && (
-          <RelicsOverlay onClose={closeModal} relics={store.relics} vaultRelics={store.vaultRelics} />
+          <RelicsOverlay onClose={closeModal} relics={relics} vaultRelics={vaultRelics} />
         )}
         {openModal === 'vault' && (
           <VaultScreen onClose={closeModal} />
@@ -153,7 +190,7 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
           <MapOverlay onClose={closeModal} />
         )}
         {openModal === 'journal' && (
-          <JournalOverlay onClose={closeModal} words={store.journalWords} grammar={store.journalGrammar} />
+          <JournalOverlay onClose={closeModal} words={journalWords} grammar={journalGrammar} />
         )}
       </AnimatePresence>
     </div>
@@ -163,18 +200,18 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
 function SettingsOverlay({ onClose }) {
   const navigate = useNavigate()
   const { playSFX } = useAudio()
-  
+
   const handleQuit = () => {
     playSFX('button_click')
     navigate('/')
   }
-  
+
   const handleAbandon = () => {
     playSFX('button_click')
     useRunStore.getState().endRun()
     navigate('/')
   }
-  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -192,26 +229,26 @@ function SettingsOverlay({ onClose }) {
         style={{ background: 'linear-gradient(160deg, #1a1208, #0d0d0d)', boxShadow: '0 0 60px rgba(0,0,0,0.8)' }}
       >
         <h2 className="text-2xl font-bold text-amber-300 text-center mb-4" style={{ fontFamily: "'Cinzel', serif" }}>Settings</h2>
-        
+
         <button className="w-full py-3 rounded-lg border border-gray-600 text-gray-200 hover:bg-gray-800 transition-colors cursor-pointer">
           Options
         </button>
-        
-        <button 
+
+        <button
           onClick={handleAbandon}
           className="w-full py-3 rounded-lg border border-gray-600 text-gray-200 hover:bg-gray-800 transition-colors cursor-pointer"
         >
           Abandon Run
         </button>
-        
-        <button 
+
+        <button
           onClick={handleQuit}
           className="w-full py-3 rounded-lg border border-amber-800 bg-amber-950/30 text-amber-200 hover:bg-amber-900/50 hover:border-amber-600 transition-all font-bold cursor-pointer"
         >
           Save & Quit to Menu
         </button>
 
-        <button 
+        <button
           onClick={onClose}
           className="w-full py-3 mt-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-400 hover:text-white transition-colors cursor-pointer"
         >
@@ -232,13 +269,16 @@ export function DeckOverlay({ onClose, deck, title = "Master Deck" }) {
         <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>{title} ({deck.length} Cards)</h2>
         <button onClick={onClose} className="text-gray-400 hover:text-white text-4xl cursor-pointer">×</button>
       </div>
-      
+
       <div className="flex-1 overflow-y-auto custom-scrollbar pr-4 pb-20">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
           {deck.map((cardId, i) => (
-             <div key={i} className="w-32 h-44 bg-gray-800 rounded-lg border-2 border-gray-600 flex items-center justify-center text-center p-2 text-xs">
-                {cardId}
-             </div>
+            <div
+              key={`${cardId}-${i}`}
+              className="w-32 h-44 bg-gray-800 rounded-lg border-2 border-gray-600 flex flex-col items-center justify-center text-center p-2 gap-1"
+            >
+              <span className="text-xs font-bold text-gray-200 break-words w-full text-center leading-tight">{cardId}</span>
+            </div>
           ))}
         </div>
       </div>

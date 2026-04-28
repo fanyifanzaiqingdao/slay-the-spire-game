@@ -334,10 +334,13 @@ export function useCombat() {
       setTimeout(() => setAnimState(null), 600)
       playSFX('wrong')
       playSFX('cardLock')
-    }
 
-    setActiveQuestion(null)
-    setActiveCardId(null)
+      // FIX: clear active question/card in wrong branch (correct branch already clears at line 268)
+      setActiveQuestion(null)
+      setActiveCardId(null)
+    }
+    // NOTE: correct branch clears activeQuestion earlier (before telegraph animation)
+    // so we only clear here for the wrong branch to avoid double-setState
   }, [activeQuestion, graveyard, playSFX])
 
   // ============================================================

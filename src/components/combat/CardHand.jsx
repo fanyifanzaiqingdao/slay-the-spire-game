@@ -1,7 +1,8 @@
-// components/combat/CardHand.jsx — v2
+// components/combat/CardHand.jsx — v2 (optimized)
 // Renders up to 5 cards in a fanned arc layout.
 // v2: passes isLocked and isSilenced to each card.
 // Locked card clicks trigger shake animation instead of selection.
+// Optimized: stable card keys (card.id only), improved empty-hand UX.
 
 import React, { useState, useCallback } from 'react'
 import { AnimatePresence } from 'framer-motion'
@@ -63,8 +64,17 @@ const CardHand = React.memo(function CardHand({
 
   const cards = handIds.map(id => cardMap[id]).filter(Boolean)
 
+  // Empty hand state
+  if (cards.length === 0) {
+    return (
+      <div className="flex items-end justify-center px-4 pb-2 h-40">
+        <p className="text-gray-600 text-sm italic pb-4">No cards in hand</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex items-end justify-center gap-1 px-4 pb-2">
+    <div className={`flex items-end justify-center px-4 pb-2 ${cards.length <= 2 ? 'gap-6' : 'gap-1'}`}>
       <AnimatePresence mode="popLayout">
         {cards.map((card, i) => {
           const canAfford = currentEnergy >= card.energy_cost
@@ -81,7 +91,9 @@ const CardHand = React.memo(function CardHand({
 
           return (
             <CardComponent
-              key={card.id + i}
+              // FIX: use card.id as stable key — appending index caused unnecessary remounts
+              // when cards were reordered (e.g. after drawing/discarding)
+              key={card.id}
               card={card}
               isPlayable={canAfford && !disabled}
               isLocked={isLocked}

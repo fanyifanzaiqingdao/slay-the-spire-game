@@ -1,8 +1,40 @@
-// utils/enemyTurn.js — v2
+// utils/enemyTurn.js — v2 (optimized)
 // All enemy action resolution logic. Called by useEnemyTurn.js.
 // Pure functions that read and write to the store via actions — never mutate directly.
 
-const delay = (ms) => new Promise(r => setTimeout(r, ms))
+// ── Shared helper: apply strike damage with block, fury, last_stand ──
+function applyStrikeDamage(rawDamage, store) {
+  let damage = rawDamage
+
+  // Apply accumulated wrong-answer buffs (confusion → bonus attack)
+  const confusionBuff = store.activeEnemyBuffs.find(b => b.type === 'confusion')
+  if (confusionBuff) damage += (confusionBuff.attack_bonus || 2)
+
+  // Fury stacks: at 3 stacks, damage doubles, fury resets
+  if (store.enemyFuryStacks >= 3) {
+    damage *= 2
+    store.clearEnemyFury()
+  }
+
+  // Apply player block
+  const currentBlock = store.block
+  const blocked = Math.min(currentBlock, damage)
+  const remaining = damage - blocked
+  if (blocked > 0) store.spendBlock(blocked)
+  if (remaining > 0) {
+    const newHp = store.hp - remaining
+    // Blessing: last_stand — survive one killing blow at 1 HP (once per run)
+    const lastStandBlessing = store.activeModifier?.blessing?.effect?.type === 'last_stand'
+    if (lastStandBlessing && !store.lastStandUsed && newHp <= 0) {
+      store.setHp(1)
+      store.useLastStand()
+    } else {
+      store.setHp(newHp)
+    }
+  }
+
+  return { blocked, remaining, damage }
+}
 
 /**
  * Execute one enemy action. The store is read via getState() inside for freshness.
@@ -15,37 +47,7 @@ const delay = (ms) => new Promise(r => setTimeout(r, ms))
 export async function resolveEnemyAction(action, enemy, store, playSFX) {
   switch (action) {
     case 'strike': {
-      // Read live state
-      const s = () => store // store is reactive — re-read via getState if needed
-      let damage = enemy.base_attack
-
-      // Apply accumulated wrong-answer buffs (confusion → bonus attack)
-      const confusionBuff = store.activeEnemyBuffs.find(b => b.type === 'confusion')
-      if (confusionBuff) damage += (confusionBuff.attack_bonus || 2)
-
-      // Fury stacks: at 3 stacks, damage doubles, fury resets
-      if (store.enemyFuryStacks >= 3) {
-        damage *= 2
-        store.clearEnemyFury()
-      }
-
-      // Apply player block
-      const currentBlock = store.block
-      const blocked = Math.min(currentBlock, damage)
-      const remaining = damage - blocked
-      if (blocked > 0) store.spendBlock(blocked)
-      if (remaining > 0) {
-        const newHp = store.hp - remaining
-        // Blessing: last_stand — survive one killing blow at 1 HP (once per run)
-        const lastStandBlessing = store.activeModifier?.blessing?.effect?.type === 'last_stand'
-        if (lastStandBlessing && !store.lastStandUsed && newHp <= 0) {
-          store.setHp(1)
-          store.useLastStand()
-        } else {
-          store.setHp(newHp)
-        }
-      }
-
+      const { blocked, remaining, damage } = applyStrikeDamage(enemy.base_attack, store)
       playSFX?.('enemy_strike')
       return {
         icon: '⚔️',
@@ -110,9 +112,11 @@ export async function resolveEnemyAction(action, enemy, store, playSFX) {
     }
 
     case 'self_buff_power_up': {
+      // FIX: read fury BEFORE adding, then add — avoids stale read after mutation
+      const furyBefore = store.enemyFuryStacks
       store.addEnemyFury()
+      const newFury = furyBefore + 1
       playSFX?.('enemy_buff')
-      const newFury = store.enemyFuryStacks + 1
       return {
         icon: '🔥',
         message: `Power Up! Fury ${newFury}/3${newFury >= 3 ? ' — NEXT STRIKE DOUBLES' : ''}`,
@@ -122,10 +126,12 @@ export async function resolveEnemyAction(action, enemy, store, playSFX) {
 
     case 'self_buff_enrage': {
       // Gains 2 fury at once — aggressive escalation
+      // FIX: read fury BEFORE adding both stacks
+      const furyBefore = store.enemyFuryStacks
       store.addEnemyFury()
       store.addEnemyFury()
+      const furyAfter = furyBefore + 2
       playSFX?.('enemy_buff')
-      const furyAfter = store.enemyFuryStacks + 2
       return {
         icon: '😤',
         message: `Enrage! Fury +2 (${furyAfter}/3)`,
@@ -143,40 +149,33 @@ export async function resolveEnemyAction(action, enemy, store, playSFX) {
       return { icon: '👁️', message: 'Focus (observing...)', type: 'selfbuff' }
     }
 
-    // ── NEW ACTION TYPES ──
+    // ── EXTENDED ACTION TYPES ──
 
     case 'strike_heavy': {
       // Slow but deals 1.8× base damage
-      let damage = Math.floor(enemy.base_attack * 1.8)
-      const confusionBuff = store.activeEnemyBuffs.find(b => b.type === 'confusion')
-      if (confusionBuff) damage += (confusionBuff.attack_bonus || 2)
-      if (store.enemyFuryStacks >= 3) { damage *= 2; store.clearEnemyFury() }
-      const blocked = Math.min(store.block, damage)
-      const remaining = damage - blocked
-      if (blocked > 0) store.spendBlock(blocked)
-      if (remaining > 0) {
-        const newHp = store.hp - remaining
-        const lastStandBlessing = store.activeModifier?.blessing?.effect?.type === 'last_stand'
-        if (lastStandBlessing && !store.lastStandUsed && newHp <= 0) { store.setHp(1); store.useLastStand() }
-        else store.setHp(newHp)
-      }
+      const { blocked, remaining, damage } = applyStrikeDamage(Math.floor(enemy.base_attack * 1.8), store)
       playSFX?.('enemy_strike')
       return {
-        icon: '💥', message: blocked > 0 ? `Heavy Strike! ${remaining > 0 ? `-${remaining} HP` : 'Blocked!'}` : `-${damage} HP`,
-        type: 'damage', value: remaining,
+        icon: '💥',
+        message: blocked > 0 ? `Heavy Strike! ${remaining > 0 ? `-${remaining} HP` : 'Blocked!'}` : `-${damage} HP`,
+        type: 'damage',
+        value: remaining,
       }
     }
 
     case 'strike_swift': {
       // Hits twice at 0.6× — split damage pierces small blocks
-      let dmg1 = Math.floor(enemy.base_attack * 0.6)
-      let dmg2 = Math.floor(enemy.base_attack * 0.6)
+      const dmg1 = Math.floor(enemy.base_attack * 0.6)
+      const dmg2 = Math.floor(enemy.base_attack * 0.6)
       let totalRemaining = 0
       for (const dmg of [dmg1, dmg2]) {
         const b = Math.min(store.block, dmg)
         const r = dmg - b
         if (b > 0) store.spendBlock(b)
-        if (r > 0) { store.setHp(Math.max(0, store.hp - r)); totalRemaining += r }
+        if (r > 0) {
+          store.setHp(Math.max(0, store.hp - r))
+          totalRemaining += r
+        }
       }
       playSFX?.('enemy_strike')
       return { icon: '⚡', message: `Swift Strike ×2! −${totalRemaining} HP`, type: 'damage', value: totalRemaining }

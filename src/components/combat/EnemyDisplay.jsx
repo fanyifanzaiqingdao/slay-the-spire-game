@@ -1,7 +1,8 @@
-// components/combat/EnemyDisplay.jsx — v3
+// components/combat/EnemyDisplay.jsx — v3 (optimized)
 // STS-style: minimal floating intent above head, full detail panel on hover.
+// Optimized: useMemo for derived values, fixed phase undefined filter bug.
 
-import { useState } from 'react'
+import { useState, useMemo, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MOVE_ICONS, MOVE_COLORS, MOVE_CATEGORY } from '../../constants/enemyMoves.js'
 
@@ -13,7 +14,6 @@ const BUFF_ICONS = {
 
 /** Builds a natural-language Strategic description of the current intent */
 function buildStrategicText(actions, enemy) {
-  const parts = []
   let totalDmg = 0
   let hasDebuff = false
   let hasBuff = false
@@ -37,7 +37,26 @@ function buildStrategicText(actions, enemy) {
   return `This enemy is planning something...`
 }
 
-export function EnemyDisplay({
+/** Renders the strategic text with highlighted keywords */
+function StrategicTextRenderer({ text }) {
+  return (
+    <p className="text-gray-200 text-xs leading-relaxed">
+      {text.split(/(\d+)/).map((part, i) =>
+        /^\d+$/.test(part)
+          ? <span key={i} className="text-amber-400 font-bold">{part}</span>
+          : part.includes('Negative Effect')
+            ? <span key={i}><span className="text-amber-400">Negative Effect</span></span>
+            : part.includes('Attack')
+              ? <span key={i}>{part.replace('Attack', '')}<span className="text-amber-400">Attack</span></span>
+              : part.includes('Strengthen')
+                ? <span key={i}><span className="text-blue-400">Strengthen</span>{part.replace('Strengthen', '')}</span>
+                : <span key={i}>{part}</span>
+      )}
+    </p>
+  )
+}
+
+export const EnemyDisplay = memo(function EnemyDisplay({
   enemy,
   hp = 0,
   maxHp = 1,
@@ -52,30 +71,81 @@ export function EnemyDisplay({
   const [isHovered, setIsHovered] = useState(false)
   if (!enemy) return null
 
-  const hpPercent = Math.max(0, (hp / maxHp) * 100)
-  const hpColor = hpPercent > 50 ? 'bg-red-500' : hpPercent > 25 ? 'bg-orange-500' : 'bg-red-700'
+  // FIX: normalize phase to a number (undefined → 1) to avoid NaN in filter expressions
+  const safePhase = typeof phase === 'number' ? phase : 1
 
-  const pattern = enemy.intent_pattern || []
-  const safeIndex = intentIndex % (pattern.length || 1)
-  const currentActions = pattern[safeIndex] || ['strike']
+  // Memoize expensive derived values so they don't recalculate on every render
+  const { hpPercent, hpColor, currentActions, primaryAction, primaryIcon, primaryColor, primaryCat, floatDmg, strategicText } = useMemo(() => {
+    const hpPct = Math.max(0, (hp / maxHp) * 100)
+    const hpClr = hpPct > 50 ? 'bg-red-500' : hpPct > 25 ? 'bg-orange-500' : 'bg-red-700'
 
-  // Pick primary icon for the floating head indicator
-  const primaryAction = currentActions[0] || 'strike'
-  const primaryIcon = MOVE_ICONS[primaryAction] || '❓'
-  const primaryColor = MOVE_COLORS[primaryAction] || 'text-gray-300'
-  const primaryCat = MOVE_CATEGORY[primaryAction] || 'special'
+    const pattern = enemy.intent_pattern || []
+    const safeIndex = intentIndex % (pattern.length || 1)
+    const actions = pattern[safeIndex] || ['strike']
 
-  // Total damage for the floating number
-  let floatDmg = 0
-  for (const a of currentActions) {
-    if (MOVE_CATEGORY[a] === 'damage') {
-      if (a === 'strike_heavy') floatDmg += Math.floor(enemy.base_attack * 1.8)
-      else if (a === 'strike_swift') floatDmg += Math.floor(enemy.base_attack * 0.6) * 2
-      else floatDmg += enemy.base_attack
+    const primary = actions[0] || 'strike'
+    const icon = MOVE_ICONS[primary] || '❓'
+    const color = MOVE_COLORS[primary] || 'text-gray-300'
+    const cat = MOVE_CATEGORY[primary] || 'special'
+
+    let dmg = 0
+    for (const a of actions) {
+      if (MOVE_CATEGORY[a] === 'damage') {
+        if (a === 'strike_heavy') dmg += Math.floor(enemy.base_attack * 1.8)
+        else if (a === 'strike_swift') dmg += Math.floor(enemy.base_attack * 0.6) * 2
+        else dmg += enemy.base_attack
+      }
     }
-  }
 
-  const strategicText = buildStrategicText(currentActions, enemy)
+    const stratText = buildStrategicText(actions, enemy)
+
+    return {
+      hpPercent: hpPct,
+      hpColor: hpClr,
+      currentActions: actions,
+      primaryAction: primary,
+      primaryIcon: icon,
+      primaryColor: color,
+      primaryCat: cat,
+      floatDmg: dmg,
+      strategicText: stratText,
+    }
+  }, [hp, maxHp, enemy, intentIndex])
+
+  // Memoize portrait animation object to avoid creating new objects every render
+  const portraitAnimate = useMemo(() => {
+    if (isShaking) {
+      return {
+        x: [-12, 12, -10, 10, -6, 6, 0],
+        filter: ['brightness(2) sepia(1) hue-rotate(-50deg) saturate(5)', 'brightness(1)', 'brightness(1)'],
+        transition: { duration: 0.45, ease: 'easeInOut' }
+      }
+    }
+    if (enemyAction?.type === 'telegraph') {
+      return enemyAction.actionType === 'strike' ? {
+        x: [0, 15, 15], y: [0, -10, -10],
+        transition: { duration: 0.35, ease: 'easeOut' }
+      } : {
+        scale: [1, 1.1, 1.1],
+        filter: ['brightness(1)', 'brightness(1.5)', 'brightness(1.5)'],
+        transition: { duration: 0.35, ease: 'easeOut' }
+      }
+    }
+    if (enemyAction?.type === 'damage') {
+      return {
+        x: [15, -40, 0], y: [-10, 20, 0],
+        transition: { duration: 0.4, ease: 'backOut' }
+      }
+    }
+    if (enemyAction?.type === 'buff' || enemyAction?.type === 'debuff') {
+      return {
+        scale: [1.1, 1, 1],
+        filter: ['brightness(1.5)', 'brightness(1)', 'brightness(1)'],
+        transition: { duration: 0.4, ease: 'easeOut' }
+      }
+    }
+    return { x: 0, y: 0, scale: 1, filter: 'brightness(1)' }
+  }, [isShaking, enemyAction])
 
   return (
     <div
@@ -99,19 +169,7 @@ export function EnemyDisplay({
                 <span className="text-amber-400 font-bold text-sm">Strategic</span>
                 <span className="text-base">{primaryIcon}</span>
               </div>
-              <p className="text-gray-200 text-xs leading-relaxed">
-                {strategicText.split(/(\d+)/).map((part, i) =>
-                  /^\d+$/.test(part)
-                    ? <span key={i} className="text-amber-400 font-bold">{part}</span>
-                    : part.includes('Negative Effect')
-                      ? <span key={i}><span className="text-amber-400">Negative Effect</span></span>
-                      : part.includes('Attack')
-                        ? <span key={i}>{part.replace('Attack', '')}<span className="text-amber-400">Attack</span></span>
-                        : part.includes('Strengthen')
-                          ? <span key={i}><span className="text-blue-400">Strengthen</span>{part.replace('Strengthen', '')}</span>
-                          : <span key={i}>{part}</span>
-                )}
-              </p>
+              <StrategicTextRenderer text={strategicText} />
             </div>
 
             {/* Special ability block */}
@@ -130,9 +188,9 @@ export function EnemyDisplay({
             )}
 
             {/* Phase info */}
-            {phase && phase > 1 && (
+            {safePhase > 1 && (
               <div className="bg-red-950/90 border border-red-700 rounded-xl px-4 py-2 shadow-2xl">
-                <span className="text-red-300 font-bold text-xs">PHASE {phase}</span>
+                <span className="text-red-300 font-bold text-xs">PHASE {safePhase}</span>
               </div>
             )}
 
@@ -185,29 +243,7 @@ export function EnemyDisplay({
 
       {/* ── Enemy Portrait ── */}
       <motion.div
-        animate={
-          isShaking ? {
-            x: [-12, 12, -10, 10, -6, 6, 0],
-            filter: ['brightness(2) sepia(1) hue-rotate(-50deg) saturate(5)', 'brightness(1)', 'brightness(1)'],
-            transition: { duration: 0.45, ease: 'easeInOut' }
-          } : enemyAction?.type === 'telegraph' ? (
-            enemyAction.actionType === 'strike' ? {
-              x: [0, 15, 15], y: [0, -10, -10],
-              transition: { duration: 0.35, ease: 'easeOut' }
-            } : {
-              scale: [1, 1.1, 1.1],
-              filter: ['brightness(1)', 'brightness(1.5)', 'brightness(1.5)'],
-              transition: { duration: 0.35, ease: 'easeOut' }
-            }
-          ) : enemyAction?.type === 'damage' ? {
-            x: [15, -40, 0], y: [-10, 20, 0],
-            transition: { duration: 0.4, ease: 'backOut' }
-          } : enemyAction?.type === 'buff' || enemyAction?.type === 'debuff' ? {
-            scale: [1.1, 1, 1],
-            filter: ['brightness(1.5)', 'brightness(1)', 'brightness(1)'],
-            transition: { duration: 0.4, ease: 'easeOut' }
-          } : { x: 0, y: 0, scale: 1, filter: 'brightness(1)' }
-        }
+        animate={portraitAnimate}
         className="relative"
       >
         <div className="flex items-end justify-center relative" style={{ height: '200px', width: '200px' }}>
@@ -224,7 +260,7 @@ export function EnemyDisplay({
             />
           )}
           {/* Phase 3+ aura */}
-          {phase && phase >= 3 && (
+          {safePhase >= 3 && (
             <motion.div
               className="absolute inset-0 rounded-2xl pointer-events-none z-0"
               animate={{ boxShadow: ['0 0 30px #a855f766', '0 0 60px #a855f7bb', '0 0 30px #a855f766'] }}
@@ -239,7 +275,12 @@ export function EnemyDisplay({
               className="max-h-full max-w-full object-contain object-bottom relative z-10"
               style={{
                 imageRendering: 'pixelated',
-                filter: `drop-shadow(0 8px 10px rgba(0,0,0,0.8))${furyStacks >= 3 ? ' sepia(0.5) hue-rotate(-20deg) saturate(2)' : ''}${phase >= 2 ? ' brightness(1.2)' : ''}`
+                // FIX: guard against undefined phase in filter string
+                filter: [
+                  'drop-shadow(0 8px 10px rgba(0,0,0,0.8))',
+                  furyStacks >= 3 ? 'sepia(0.5) hue-rotate(-20deg) saturate(2)' : '',
+                  safePhase >= 2 ? 'brightness(1.2)' : '',
+                ].filter(Boolean).join(' ')
               }}
               onError={(e) => { e.target.style.display = 'none' }}
             />
@@ -248,24 +289,24 @@ export function EnemyDisplay({
               className="w-36 h-44 rounded-2xl overflow-hidden border-2 flex items-center justify-center text-6xl relative z-10 shadow-xl"
               animate={{
                 borderColor: furyStacks >= 3 ? ['#ef4444', '#f97316', '#ef4444'] :
-                  phase >= 2 ? ['#a855f7', '#8b5cf6', '#a855f7'] :
+                  safePhase >= 2 ? ['#a855f7', '#8b5cf6', '#a855f7'] :
                   [enemy.portrait_placeholder_color || '#374151', enemy.portrait_placeholder_color || '#374151']
               }}
-              transition={{ repeat: furyStacks >= 3 || phase >= 2 ? Infinity : 0, duration: 1.0 }}
+              transition={{ repeat: furyStacks >= 3 || safePhase >= 2 ? Infinity : 0, duration: 1.0 }}
               style={{
                 background: `linear-gradient(135deg, ${enemy.portrait_placeholder_color || '#1a1a3a'}88, ${enemy.portrait_placeholder_color || '#1a1a3a'}cc)`,
-                filter: furyStacks >= 3 ? 'brightness(1.3) saturate(1.5)' : phase >= 2 ? 'brightness(1.15)' : 'none'
+                filter: furyStacks >= 3 ? 'brightness(1.3) saturate(1.5)' : safePhase >= 2 ? 'brightness(1.15)' : 'none'
               }}
             >
-              {furyStacks >= 3 ? '💢' : phase >= 3 ? '👾' : phase >= 2 ? '😤' : '👹'}
+              {furyStacks >= 3 ? '💢' : safePhase >= 3 ? '👾' : safePhase >= 2 ? '😤' : '👹'}
             </motion.div>
           )}
         </div>
 
         {/* Fury counter badge */}
         {furyStacks > 0 && (
-          <div className="absolute -top-2 -left-2 bg-orange-900/90 border border-orange-600 rounded-full px-2 py-0.5 text-[9px] font-bold text-orange-300">
-            🔥×{furyStacks}
+          <div className="absolute -top-2 -left-2 bg-orange-900/90 border border-orange-600 rounded-full w-7 h-7 flex items-center justify-center z-20">
+            <span className="text-orange-300 font-black text-xs">{furyStacks}</span>
           </div>
         )}
 
@@ -312,4 +353,4 @@ export function EnemyDisplay({
       </div>
     </div>
   )
-}
+})

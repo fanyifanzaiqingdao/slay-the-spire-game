@@ -24,6 +24,8 @@ import { getRandomPotionDrop, getPotionDropRate, getPotionData } from '../../dat
 import { LootScreen } from './LootScreen.jsx'
 
 // Turn phases — explicit state machine per AGENT.md v2
+// NOTE: CombatScreen subscribes to the full store because it reads many fields.
+// TopBar has been optimized with fine-grained selectors to avoid cascading re-renders.
 const PHASE = {
   PLAYER_DRAW: 'PLAYER_DRAW',
   PLAYER_TURN: 'PLAYER_TURN',
@@ -581,8 +583,8 @@ export function CombatScreen() {
             <ChainIndicator chainActive={store.chainActive} chainType={store.chainType} />
           </div>
 
-          {/* Turn phase badge (Top Center below chain) */}
-          <div className="absolute top-20 left-1/2 -translate-x-1/2">
+          {/* Turn phase badge + Turn counter (Top Center below chain) */}
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={turnPhase}
@@ -596,6 +598,12 @@ export function CombatScreen() {
                 {isEnemyPhase ? 'Enemy Turn' : isPlayerTurn ? 'Player Turn' : ''}
               </motion.div>
             </AnimatePresence>
+            {/* Turn number indicator */}
+            {store.turnNumber > 0 && (
+              <div className="text-[10px] text-gray-500 font-mono tracking-widest">
+                Turn {store.turnNumber}
+              </div>
+            )}
           </div>
         </div>
 
