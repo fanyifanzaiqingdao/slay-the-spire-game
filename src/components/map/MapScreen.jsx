@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import useRunStore from '../../stores/runStore.js'
 import { generateFloorMap, unlockNextNodes, visitNode } from '../../utils/map.js'
 import { NODE_TYPES } from '../../constants/nodeTypes.js'
@@ -43,6 +44,7 @@ const NODE_META = {
   [NODE_TYPES.EVENT]:    { icon: '?',  label: 'Unknown',  size: 36 },
   [NODE_TYPES.START]:    { icon: '⛺', label: 'Start',    size: 36 },
 }
+const EMPTY_LIST = []
 
 // Map Node Component
 function MapNodeSTS({ node, x, y, isUnlocked, isVisited, isCurrent, onClick, onHover }) {
@@ -113,35 +115,45 @@ function MapNodeSTS({ node, x, y, isUnlocked, isVisited, isCurrent, onClick, onH
 }
 
 export function MapScreen() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const store = useRunStore()
   const { playSFX, playMusic } = useAudio()
   const [showLegend, setShowLegend] = useState(true)
   const scrollContainerRef = useRef(null)
+  const mapNodes = Array.isArray(store.mapNodes) ? store.mapNodes : EMPTY_LIST
+  const mapPaths = Array.isArray(store.mapPaths) ? store.mapPaths : EMPTY_LIST
 
   useEffect(() => {
     // Prevent skipping rooms via browser 'Back' button
     const activeEncounter = sessionStorage.getItem('active_encounter')
     if (activeEncounter) {
-      const { path } = JSON.parse(activeEncounter)
-      navigate(path, { replace: true })
-      return
+      try {
+        const parsed = JSON.parse(activeEncounter)
+        if (parsed?.path && typeof parsed.path === 'string') {
+          navigate(parsed.path, { replace: true })
+          return
+        }
+      } catch {
+        // Corrupted legacy/session data should not crash map rendering.
+        sessionStorage.removeItem('active_encounter')
+      }
     }
 
     // Detect old map format (which had a single START node) and force regeneration
-    const isOldFormat = store.mapNodes?.some(n => n.type === NODE_TYPES.START)
-    if (!store.mapNodes || store.mapNodes.length === 0 || isOldFormat) {
+    const isOldFormat = mapNodes.some(n => n?.type === NODE_TYPES.START)
+    if (mapNodes.length === 0 || isOldFormat) {
       const { nodes, paths } = generateFloorMap(store.floor, store.masteryLevel)
       store.setMap(nodes, paths)
     }
 
     playMusic(store.campaign || 'japanese', store.floor)
-  }, [store.floor, store.campaign, store.mapNodes, store.masteryLevel, navigate, playMusic])
+  }, [store.floor, store.campaign, mapNodes, store.masteryLevel, navigate, playMusic])
 
   const handleNodeClick = (node) => {
     playSFX('map_click')
-    const updatedNodes = visitNode(store.mapNodes, node.id)
-    const unlockedNodes = unlockNextNodes(updatedNodes, store.mapPaths, node.id)
+    const updatedNodes = visitNode(mapNodes, node.id)
+    const unlockedNodes = unlockNextNodes(updatedNodes, mapPaths, node.id)
     store.setMapNodes(unlockedNodes)
     store.setCurrentNode(node.id)
 
@@ -204,11 +216,11 @@ export function MapScreen() {
   const MAX_COLS = 7 // Matches map.js generation
 
   const { positionedNodes, pathLines, maxRow } = useMemo(() => {
-    if (!store.mapNodes) return { positionedNodes: [], pathLines: [], maxRow: 0 }
+    if (mapNodes.length === 0) return { positionedNodes: [], pathLines: [], maxRow: 0 }
 
     const byRow = {}
     let maxR = 0
-    store.mapNodes.forEach(node => {
+    mapNodes.forEach(node => {
       if (!byRow[node.row]) byRow[node.row] = []
       byRow[node.row].push(node)
       if (node.row > maxR) maxR = node.row
@@ -238,12 +250,12 @@ export function MapScreen() {
     }
 
     const pLines = []
-    store.mapPaths?.forEach(([fromId, toId]) => {
+    mapPaths.forEach(([fromId, toId]) => {
       const p1 = nodeCoords[fromId]
       const p2 = nodeCoords[toId]
       if (p1 && p2) {
         // Line is dark solid if route is active/available
-        const fromNode = store.mapNodes.find(n => n.id === fromId)
+        const fromNode = mapNodes.find(n => n.id === fromId)
         const isPathActive = fromNode?.visited || fromNode?.type === NODE_TYPES.START
         
         pLines.push({
@@ -255,7 +267,7 @@ export function MapScreen() {
     })
 
     return { positionedNodes: posNodes, pathLines: pLines, maxRow: maxR }
-  }, [store.mapNodes, store.mapPaths])
+  }, [mapNodes, mapPaths])
 
   const mapHeightTotal = maxRow * ROW_HEIGHT + START_Y_PADDING * 2
 
@@ -387,7 +399,7 @@ export function MapScreen() {
                   <div className="absolute -bottom-3 left-2 right-0 h-4 bg-[#A29478] rounded-b-lg shadow-md" />
 
                   <h3 className="text-[#222] font-bold text-center mb-4 uppercase tracking-widest text-sm" style={{ fontFamily: "'Cinzel', serif" }}>
-                    Legend
+                    {t('map.legend')}
                   </h3>
                   
                   <div className="flex flex-col gap-3">
@@ -418,7 +430,7 @@ export function MapScreen() {
             boxShadow: '0 -2px 10px rgba(0,0,0,0.8)'
           }}
         >
-          Select a Starting Room
+          {t('map.selectRoom')}
         </div>
       </div>
 

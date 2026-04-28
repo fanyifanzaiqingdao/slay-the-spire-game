@@ -8,8 +8,6 @@ import { POTIONS } from '../data/potions.js'
 import { drawCards } from '../utils/deck.js'
 
 export function usePotions({ isQuestionOpen = false, playSFX } = {}) {
-  const store = useRunStore()
-
   const usePotion = useCallback((index) => {
     // Block use during active question prompt
     if (isQuestionOpen) return false

@@ -4,8 +4,10 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { useAudio } from '../../hooks/useAudio.js'
 import useRunStore from '../../stores/runStore.js'
+import useSettingsStore from '../../stores/settingsStore.js'
 import { CAMPAIGN_THEMES } from '../../constants/campaigns.js'
 
 // Floating ember particle (like STS burning embers)
@@ -36,17 +38,14 @@ function Ember({ delay }) {
   )
 }
 
-const MENU_ITEMS = [
-  { id: 'play',     label: 'Play' },
-  { id: 'pantheon', label: 'The Pantheon' },
-  { id: 'graveyard',label: 'Mistake Graveyard' },
-  { id: 'settings', label: 'Settings' },
-  { id: 'about',    label: 'About' },
-]
+const MENU_ITEMS = ['play', 'pantheon', 'graveyard', 'settings', 'about']
 
 export function MainMenu() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const store = useRunStore()
+  const uiLanguage = useSettingsStore(s => s.uiLanguage)
+  const setUiLanguage = useSettingsStore(s => s.setUiLanguage)
   const { playMusic, playSFX } = useAudio()
   
   const [hoveredItem, setHoveredItem] = useState(null)
@@ -116,8 +115,8 @@ export function MainMenu() {
           <span className="text-[10px] text-gray-300">◆</span>
         </div>
         <div>
-          <div className="text-xs font-bold text-white leading-none">Player</div>
-          <div className="text-[9px] text-amber-400/70 leading-none mt-0.5">click to edit</div>
+          <div className="text-xs font-bold text-white leading-none">{t('menu.player')}</div>
+          <div className="text-[9px] text-amber-400/70 leading-none mt-0.5">{t('menu.clickToEdit')}</div>
         </div>
       </div>
 
@@ -148,7 +147,7 @@ export function MainMenu() {
             className="text-gray-300 mt-2 tracking-widest"
             style={{ fontSize: 'clamp(0.6rem, 1.2vw, 0.9rem)', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}
           >
-            言語で戦え — Fight with Language
+            {t('menu.subtitle')}
           </div>
         </div>
       </motion.div>
@@ -186,7 +185,7 @@ export function MainMenu() {
                   color: hoveredItem === 'continue' ? '#F5C842' : '#d4a843',
                 }}
               >
-                Continue
+                {t('menu.continue')}
               </motion.span>
             </button>
           </motion.div>
@@ -194,35 +193,35 @@ export function MainMenu() {
 
         {MENU_ITEMS.map((item, i) => (
           <motion.div
-            key={item.id}
+            key={item}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 + i * 0.08 }}
           >
             <button
-              onClick={() => handleMenuClick(item.id)}
+              onClick={() => handleMenuClick(item)}
               onMouseEnter={() => {
-                setHoveredItem(item.id)
+                setHoveredItem(item)
                 playSFX('button_hover')
               }}
               onMouseLeave={() => setHoveredItem(null)}
               className="flex items-center gap-2 group"
             >
               <motion.span
-                animate={{ x: hoveredItem === item.id ? 8 : 0 }}
+                animate={{ x: hoveredItem === item ? 8 : 0 }}
                 style={{
                   fontSize: 'clamp(1.1rem, 2.8vw, 1.8rem)',
                   fontFamily: "'Cinzel', Georgia, serif",
                   fontWeight: 600,
                   letterSpacing: '0.02em',
-                  textShadow: hoveredItem === item.id
+                  textShadow: hoveredItem === item
                     ? '0 0 30px #F5C842, 0 2px 6px rgba(0,0,0,0.9)'
                     : '0 2px 6px rgba(0,0,0,0.9)',
-                  color: hoveredItem === item.id ? '#F5C842' : '#e8e8e8',
+                  color: hoveredItem === item ? '#F5C842' : '#e8e8e8',
                   transition: 'color 0.15s, text-shadow 0.15s',
                 }}
               >
-                {item.label}
+                {t(`menu.${item}`)}
               </motion.span>
             </button>
           </motion.div>
@@ -252,12 +251,12 @@ export function MainMenu() {
                 className="text-gray-400 hover:text-white text-xl font-bold tracking-widest uppercase transition-colors"
                 style={{ fontFamily: "'Cinzel', serif" }}
               >
-                ← Back
+                ← {t('common.back')}
               </button>
             </div>
             
             <h2 className="text-4xl text-amber-300 font-bold mb-12" style={{ fontFamily: "'Cinzel', serif", textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
-              Select Campaign
+              {t('menu.selectCampaign')}
             </h2>
             
             <div className="flex gap-6 items-stretch justify-center max-w-6xl px-12 w-full">
@@ -304,7 +303,7 @@ export function MainMenu() {
                     
                     {campaign.locked && (
                       <div className="mt-8 bg-gray-900/80 text-gray-500 font-bold uppercase tracking-widest px-4 py-2 rounded-lg border border-gray-700">
-                        Locked
+                        {t('menu.locked')}
                       </div>
                     )}
                   </div>
@@ -333,7 +332,7 @@ export function MainMenu() {
               className="rounded-2xl border border-gray-600 p-8 w-96"
               style={{ background: 'linear-gradient(160deg, #1a1208, #0d0d0d)', boxShadow: '0 0 60px rgba(0,0,0,0.8)' }}
             >
-              <h2 className="text-2xl font-bold text-amber-300 mb-6" style={{ fontFamily: "'Cinzel', serif" }}>Settings</h2>
+              <h2 className="text-2xl font-bold text-amber-300 mb-6" style={{ fontFamily: "'Cinzel', serif" }}>{t('common.settings')}</h2>
               <div className="flex flex-col gap-4 mb-6 text-sm text-gray-300">
                 <div className="flex justify-between">
                   <span>Answer Timer</span>
@@ -344,13 +343,24 @@ export function MainMenu() {
                   <span className="text-amber-400">Progressive Fade</span>
                 </div>
                 <p className="text-xs text-gray-500 border-t border-gray-700 pt-3">Full settings available in Phase 2.</p>
+                <div className="flex justify-between items-center">
+                  <span>{t('language.label')}</span>
+                  <select
+                    value={uiLanguage}
+                    onChange={(e) => setUiLanguage(e.target.value)}
+                    className="bg-black/40 border border-gray-600 rounded px-2 py-1 text-amber-300"
+                  >
+                    <option value="en">{t('language.en')}</option>
+                    <option value="zh">{t('language.zh')}</option>
+                  </select>
+                </div>
               </div>
               <button
                 onClick={() => setSettingsOpen(false)}
                 className="w-full py-2.5 rounded-lg border border-gray-600 text-gray-200 text-sm hover:border-amber-600 hover:text-amber-200 transition-all"
                 style={{ background: '#1a1a1a' }}
               >
-                Close
+                {t('common.close')}
               </button>
             </motion.div>
           </motion.div>

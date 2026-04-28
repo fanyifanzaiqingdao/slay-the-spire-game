@@ -5,6 +5,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import useRunStore from '../../stores/runStore.js'
 import { useCombat } from '../../hooks/useCombat.js'
 import { useEnemyTurn } from '../../hooks/useEnemyTurn.js'
@@ -65,12 +66,12 @@ function EnergyOrb({ energy, maxEnergy }) {
 }
 
 // Deck/Discard Pile (STS style bottom corners)
-function CardPile({ count, type, side, onClick }) {
+function CardPile({ count, type, side, onClick, t }) {
   return (
     <button
       onClick={onClick}
       className="relative flex flex-col items-center justify-end h-20 w-16 cursor-pointer hover:scale-105 transition-transform"
-      title={type === 'draw' ? 'Draw Pile' : 'Discard Pile'}
+      title={type === 'draw' ? t('combat.drawPile') : t('combat.discardPile')}
     >
       {/* Stack of cards visuals */}
       <div className="relative w-12 h-16 bg-gray-300 rounded border-2 border-gray-600"
@@ -92,6 +93,7 @@ function CardPile({ count, type, side, onClick }) {
 }
 
 export function CombatScreen() {
+  const { t } = useTranslation()
   const campaignId = sessionStorage.getItem('selected_campaign')
   const navigate = useNavigate()
   const store = useRunStore()
@@ -547,7 +549,7 @@ export function CombatScreen() {
                         enemyAction.type === 'selfbuff' ? 'text-blue-400 text-2xl left-[70%]' : 'text-gray-200 text-2xl left-[30%]'}`}
                   style={{ textShadow: '2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' }}
                 >
-                  {enemyAction.type === 'damage' ? (enemyAction.value > 0 ? `-${enemyAction.value}` : 'Blocked!') : enemyAction.message}
+                  {enemyAction.type === 'damage' ? (enemyAction.value > 0 ? `-${enemyAction.value}` : t('combat.blocked')) : enemyAction.message}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -565,12 +567,12 @@ export function CombatScreen() {
                   {potionDropped.shattered ? (
                     <>
                       <div className="text-3xl">💢</div>
-                      <div className="text-xs font-bold text-red-400 bg-black/80 px-2 py-1 rounded">Bag Full!</div>
+                      <div className="text-xs font-bold text-red-400 bg-black/80 px-2 py-1 rounded">{t('combat.bagFull')}</div>
                     </>
                   ) : (
                     <>
                       <div className="text-3xl animate-bounce">🧪</div>
-                      <div className="text-xs font-bold text-green-400 bg-black/80 px-2 py-1 rounded">Potion Found!</div>
+                      <div className="text-xs font-bold text-green-400 bg-black/80 px-2 py-1 rounded">{t('combat.potionFound')}</div>
                     </>
                   )}
                 </motion.div>
@@ -595,13 +597,13 @@ export function CombatScreen() {
                 className={`text-sm font-bold uppercase tracking-widest px-4 py-1 rounded
                   ${isEnemyPhase ? 'text-red-400 bg-red-950/80 border border-red-800' : 'text-amber-400 bg-amber-950/80 border border-amber-800'}`}
               >
-                {isEnemyPhase ? 'Enemy Turn' : isPlayerTurn ? 'Player Turn' : ''}
+                {isEnemyPhase ? t('combat.enemyTurn') : isPlayerTurn ? t('combat.playerTurn') : ''}
               </motion.div>
             </AnimatePresence>
             {/* Turn number indicator */}
             {store.turnNumber > 0 && (
               <div className="text-[10px] text-gray-500 font-mono tracking-widest">
-                Turn {store.turnNumber}
+                {t('combat.turnCount', { count: store.turnNumber })}
               </div>
             )}
           </div>
@@ -612,7 +614,7 @@ export function CombatScreen() {
 
           {/* Bottom-Left: Draw Pile & Energy */}
           <div className="flex items-end gap-6 pb-2">
-            <CardPile count={store.deck.length} type="draw" side="left" onClick={() => { playSFX('button_click'); setOpenPile('draw') }} />
+            <CardPile count={store.deck.length} type="draw" side="left" t={t} onClick={() => { playSFX('button_click'); setOpenPile('draw') }} />
             <EnergyOrb energy={store.energy} maxEnergy={store.maxEnergy} />
           </div>
 
@@ -660,10 +662,10 @@ export function CombatScreen() {
               `}
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              {isEnemyPhase ? 'Enemy Turn' : 'End Turn'}
+              {isEnemyPhase ? t('combat.enemyTurn') : t('combat.endTurn')}
             </motion.button>
 
-            <CardPile count={store.discardPile.length} type="discard" side="right" onClick={() => { playSFX('button_click'); setOpenPile('discard') }} />
+            <CardPile count={store.discardPile.length} type="discard" side="right" t={t} onClick={() => { playSFX('button_click'); setOpenPile('discard') }} />
           </div>
         </div>
 
@@ -692,10 +694,10 @@ export function CombatScreen() {
             />
           )}
           {openPile === 'draw' && (
-            <DeckOverlay onClose={() => setOpenPile(null)} deck={store.deck} title="Draw Pile" />
+            <DeckOverlay onClose={() => setOpenPile(null)} deck={store.deck} title={t('combat.drawPile')} />
           )}
           {openPile === 'discard' && (
-            <DeckOverlay onClose={() => setOpenPile(null)} deck={store.discardPile} title="Discard Pile" />
+            <DeckOverlay onClose={() => setOpenPile(null)} deck={store.discardPile} title={t('combat.discardPile')} />
           )}
         </AnimatePresence>
         {/* ── LOOT SCREEN ── */}

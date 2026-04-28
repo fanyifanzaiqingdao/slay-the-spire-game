@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import useRunStore from '../../stores/runStore.js'
 import { NODE_TYPES } from '../../constants/nodeTypes.js'
 
@@ -59,6 +60,7 @@ function MapNodeReadOnly({ node, x, y, isCurrent, isVisited }) {
 }
 
 export function MapOverlay({ onClose }) {
+  const { t } = useTranslation()
   const store = useRunStore()
 
   const MAP_WIDTH = 500
@@ -154,7 +156,7 @@ export function MapOverlay({ onClose }) {
       className="fixed inset-0 z-[100] bg-black/90 flex flex-col p-4 md:p-8 backdrop-blur-sm"
     >
       <div className="flex justify-between items-center mb-4 max-w-[800px] w-full mx-auto">
-        <h2 className="text-3xl font-bold text-amber-200" style={{ fontFamily: "'Cinzel', serif" }}>World Map</h2>
+        <h2 className="text-3xl font-bold text-amber-200" style={{ fontFamily: "'Cinzel', serif" }}>{t('topbar.viewMap')}</h2>
         <button onClick={onClose} className="text-gray-400 hover:text-white text-4xl cursor-pointer">×</button>
       </div>
 

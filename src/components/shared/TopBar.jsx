@@ -4,7 +4,9 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import useRunStore from '../../stores/runStore.js'
+import useSettingsStore from '../../stores/settingsStore.js'
 import { useAudio } from '../../hooks/useAudio.js'
 import { JournalOverlay } from '../journal/JournalOverlay.jsx'
 import { PotionSlots } from '../combat/PotionSlots.jsx'
@@ -17,7 +19,8 @@ import { RELICS } from '../../data/relics.js'
 // Fine-grained selectors — each subscribes only to the fields it needs.
 // This prevents unnecessary re-renders when unrelated state changes.
 const selectCharacterName = s => s.character?.name || 'Traveler'
-const selectHp = s => ({ hp: s.hp, maxHp: s.maxHp })
+const selectHp = s => s.hp
+const selectMaxHp = s => s.maxHp
 const selectGold = s => s.gold
 const selectFloor = s => s.floor
 const selectPotions = s => s.potions
@@ -25,18 +28,19 @@ const selectRelics = s => s.relics
 const selectVaultRelics = s => s.vaultRelics
 const selectCampaign = s => s.campaign
 const selectActiveModifier = s => s.activeModifier
-const selectCombatDeckFields = s => ({
-  inCombat: s.inCombat,
-  deck: s.deck,
-  hand: s.hand,
-  discardPile: s.discardPile,
-  exhaustPile: s.exhaustPile,
-})
-const selectJournal = s => ({ journalWords: s.journalWords, journalGrammar: s.journalGrammar })
+const selectInCombat = s => s.inCombat
+const selectDeck = s => s.deck
+const selectHand = s => s.hand
+const selectDiscardPile = s => s.discardPile
+const selectExhaustPile = s => s.exhaustPile
+const selectJournalWords = s => s.journalWords
+const selectJournalGrammar = s => s.journalGrammar
 
 export function TopBar({ hideMapButton = false, potionsLocked = false }) {
+  const { t } = useTranslation()
   const characterName = useRunStore(selectCharacterName)
-  const { hp, maxHp } = useRunStore(selectHp)
+  const hp = useRunStore(selectHp)
+  const maxHp = useRunStore(selectMaxHp)
   const gold = useRunStore(selectGold)
   const floor = useRunStore(selectFloor)
   const potions = useRunStore(selectPotions)
@@ -44,8 +48,13 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
   const vaultRelics = useRunStore(selectVaultRelics)
   const campaign = useRunStore(selectCampaign)
   const activeModifier = useRunStore(selectActiveModifier)
-  const combatDeckFields = useRunStore(selectCombatDeckFields)
-  const { journalWords, journalGrammar } = useRunStore(selectJournal)
+  const inCombat = useRunStore(selectInCombat)
+  const deck = useRunStore(selectDeck)
+  const hand = useRunStore(selectHand)
+  const discardPile = useRunStore(selectDiscardPile)
+  const exhaustPile = useRunStore(selectExhaustPile)
+  const journalWords = useRunStore(selectJournalWords)
+  const journalGrammar = useRunStore(selectJournalGrammar)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -65,11 +74,10 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
   // Compute master deck only when deck overlay is open
   const masterDeck = useMemo(() => {
     if (openModal !== 'deck') return []
-    const { inCombat, deck, hand, discardPile, exhaustPile } = combatDeckFields
     return inCombat
       ? [...deck, ...hand, ...discardPile, ...(exhaustPile || [])]
       : deck
-  }, [openModal, combatDeckFields])
+  }, [openModal, inCombat, deck, hand, discardPile, exhaustPile])
 
   return (
     <div className="relative w-full z-50">
@@ -118,7 +126,7 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
               <button
                 onClick={() => handleOpen('vault')}
                 className="ml-1 flex items-center gap-0.5 text-[10px] text-gray-500 hover:text-gray-300 transition-colors cursor-pointer bg-gray-800/60 px-1.5 py-0.5 rounded border border-gray-700 hover:border-gray-500"
-                title="View Vault"
+                title={t('topbar.viewVault')}
               >
                 🗄 {vaultRelics.length}
               </button>
@@ -129,24 +137,24 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
         {/* Right: Actions */}
         <div className="flex items-center gap-3">
           <div className="bg-gray-800/80 px-2 py-0.5 rounded border border-gray-600 font-bold mr-2">
-            Floor {floor}
+            {t('topbar.floor', { floor })}
           </div>
 
-          <button onClick={() => handleOpen('deck')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="View Deck">
+          <button onClick={() => handleOpen('deck')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title={t('topbar.viewDeck')}>
             🃏
           </button>
 
           {(!hideMapButton || location.pathname !== '/map') && (
-            <button onClick={() => handleOpen('map')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="View Map">
+            <button onClick={() => handleOpen('map')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title={t('topbar.viewMap')}>
               🗺️
             </button>
           )}
 
-          <button onClick={() => handleOpen('journal')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="Open Journal">
+          <button onClick={() => handleOpen('journal')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title={t('topbar.openJournal')}>
             📖
           </button>
 
-          <button onClick={() => handleOpen('settings')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title="Settings">
+          <button onClick={() => handleOpen('settings')} className="text-xl hover:scale-110 transition-transform cursor-pointer" title={t('topbar.openSettings')}>
             ⚙️
           </button>
         </div>
@@ -178,7 +186,7 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
           <SettingsOverlay onClose={closeModal} />
         )}
         {openModal === 'deck' && (
-          <DeckOverlay onClose={closeModal} deck={masterDeck} />
+          <DeckOverlay onClose={closeModal} deck={masterDeck} title={t('overlays.masterDeck')} />
         )}
         {openModal === 'relics' && (
           <RelicsOverlay onClose={closeModal} relics={relics} vaultRelics={vaultRelics} />
@@ -199,6 +207,9 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
 
 function SettingsOverlay({ onClose }) {
   const navigate = useNavigate()
+  const { t } = useTranslation()
+  const uiLanguage = useSettingsStore(s => s.uiLanguage)
+  const setUiLanguage = useSettingsStore(s => s.setUiLanguage)
   const { playSFX } = useAudio()
 
   const handleQuit = () => {
@@ -228,31 +239,43 @@ function SettingsOverlay({ onClose }) {
         className="rounded-2xl border border-gray-600 p-8 w-96 flex flex-col gap-4"
         style={{ background: 'linear-gradient(160deg, #1a1208, #0d0d0d)', boxShadow: '0 0 60px rgba(0,0,0,0.8)' }}
       >
-        <h2 className="text-2xl font-bold text-amber-300 text-center mb-4" style={{ fontFamily: "'Cinzel', serif" }}>Settings</h2>
+        <h2 className="text-2xl font-bold text-amber-300 text-center mb-4" style={{ fontFamily: "'Cinzel', serif" }}>{t('common.settings')}</h2>
 
         <button className="w-full py-3 rounded-lg border border-gray-600 text-gray-200 hover:bg-gray-800 transition-colors cursor-pointer">
-          Options
+          {t('overlays.options')}
         </button>
+
+        <div className="w-full flex items-center justify-between rounded-lg border border-gray-700 px-3 py-2 text-sm text-gray-200">
+          <span>{t('language.label')}</span>
+          <select
+            value={uiLanguage}
+            onChange={(e) => setUiLanguage(e.target.value)}
+            className="bg-black/40 border border-gray-600 rounded px-2 py-1 text-amber-300"
+          >
+            <option value="en">{t('language.en')}</option>
+            <option value="zh">{t('language.zh')}</option>
+          </select>
+        </div>
 
         <button
           onClick={handleAbandon}
           className="w-full py-3 rounded-lg border border-gray-600 text-gray-200 hover:bg-gray-800 transition-colors cursor-pointer"
         >
-          Abandon Run
+          {t('overlays.abandonRun')}
         </button>
 
         <button
           onClick={handleQuit}
           className="w-full py-3 rounded-lg border border-amber-800 bg-amber-950/30 text-amber-200 hover:bg-amber-900/50 hover:border-amber-600 transition-all font-bold cursor-pointer"
         >
-          Save & Quit to Menu
+          {t('overlays.saveQuit')}
         </button>
 
         <button
           onClick={onClose}
           className="w-full py-3 mt-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-400 hover:text-white transition-colors cursor-pointer"
         >
-          Return to Game
+          {t('overlays.returnGame')}
         </button>
       </motion.div>
     </motion.div>
@@ -260,13 +283,14 @@ function SettingsOverlay({ onClose }) {
 }
 
 export function DeckOverlay({ onClose, deck, title = "Master Deck" }) {
+  const { t } = useTranslation()
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-black/90 flex flex-col p-8 overflow-hidden backdrop-blur-md"
     >
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>{title} ({deck.length} Cards)</h2>
+        <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>{title} ({t('overlays.cardsCount', { count: deck.length })})</h2>
         <button onClick={onClose} className="text-gray-400 hover:text-white text-4xl cursor-pointer">×</button>
       </div>
 
@@ -287,6 +311,7 @@ export function DeckOverlay({ onClose, deck, title = "Master Deck" }) {
 }
 
 function RelicsOverlay({ onClose, relics, vaultRelics = [] }) {
+  const { t } = useTranslation()
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -300,15 +325,15 @@ function RelicsOverlay({ onClose, relics, vaultRelics = [] }) {
         style={{ background: '#111', boxShadow: '0 0 60px rgba(0,0,0,0.8)' }}
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-amber-300" style={{ fontFamily: "'Cinzel', serif" }}>Relics</h2>
+          <h2 className="text-2xl font-bold text-amber-300" style={{ fontFamily: "'Cinzel', serif" }}>{t('overlays.relics')}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-white text-3xl cursor-pointer">×</button>
         </div>
 
         {/* Equipped */}
         <div className="mb-6">
-          <div className="text-xs uppercase tracking-widest text-gray-500 mb-3">Equipped ({relics.length}/5)</div>
+          <div className="text-xs uppercase tracking-widest text-gray-500 mb-3">{t('overlays.equipped', { count: relics.length })}</div>
           {relics.length === 0 ? (
-            <p className="text-gray-600 italic text-center py-4">No relics equipped.</p>
+            <p className="text-gray-600 italic text-center py-4">{t('overlays.noRelics')}</p>
           ) : (
             <div className="flex flex-wrap gap-3">
               {relics.map((relicId) => {
@@ -330,7 +355,7 @@ function RelicsOverlay({ onClose, relics, vaultRelics = [] }) {
         {/* Vault */}
         {vaultRelics.length > 0 && (
           <div>
-            <div className="text-xs uppercase tracking-widest text-gray-500 mb-3">Vault ({vaultRelics.length} stored)</div>
+            <div className="text-xs uppercase tracking-widest text-gray-500 mb-3">{t('overlays.vault', { count: vaultRelics.length })}</div>
             <div className="flex flex-wrap gap-3">
               {vaultRelics.map((relicId) => {
                 const r = RELICS[relicId]

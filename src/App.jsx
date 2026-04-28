@@ -2,6 +2,7 @@
 import { Suspense, lazy } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useSyncLanguage } from './i18n/useSyncLanguage.js'
 
 const MainMenu = lazy(() => import('./components/menus/MainMenu.jsx').then(m => ({ default: m.MainMenu })))
 const CharacterSelect = lazy(() => import('./components/menus/CharacterSelect.jsx').then(m => ({ default: m.CharacterSelect })))
@@ -25,6 +26,7 @@ function LoadingFallback() {
 
 export default function App() {
   const location = useLocation()
+  useSyncLanguage()
 
   return (
     <div className="w-full h-screen overflow-hidden bg-[#0d0d0d]">

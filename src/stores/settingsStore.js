@@ -29,7 +29,7 @@ const useSettingsStore = create(
       colorblindMode: false,
 
       // UI language
-      uiLanguage: 'english', // 'english' | 'target' (advanced)
+      uiLanguage: 'en', // 'en' | 'zh'
 
       // Subtitles
       subtitles: 'auto', // 'always' | 'auto' | 'off'
@@ -44,6 +44,7 @@ const useSettingsStore = create(
       setFontSizeMultiplier: (mult) => set({ fontSizeMultiplier: mult }),
       setHighContrast: (val) => set({ highContrast: val }),
       setColorblindMode: (val) => set({ colorblindMode: val }),
+      setUiLanguage: (lang) => set({ uiLanguage: lang === 'zh' ? 'zh' : 'en' }),
 
       // Get timer duration in seconds based on speed setting
       getTimerSeconds: () => {
