@@ -3,7 +3,7 @@
 // Tracks: total runs, victories, Pantheon XP, unlocked cards, unlocked relics, unlocked characters.
 
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 const PANTHEON_STORAGE_KEY = 'ascendant_pantheon_v1'
 
@@ -25,13 +25,13 @@ function getXpForNextLevel(currentLevel) {
 
 // Pantheon unlocks — ordered by XP requirement
 export const PANTHEON_UNLOCKS = [
-  { id: 'card_jp_vocab_thunderstrike',  type: 'card',      campaign: 'japanese', xpRequired: 100,  label: '⚡ Thunder Strike',   description: 'A powerful vocab card that deals 16 damage on a correct first-try answer.' },
-  { id: 'card_kr_gram_neon_shield',     type: 'card',      campaign: 'korean',   xpRequired: 150,  label: '💠 Neon Shield',       description: 'A Korean grammar card that blocks 14 and draws 1 card.' },
-  { id: 'relic_scholars_badge',         type: 'relic',     campaign: 'any',      xpRequired: 250,  label: '🎓 Scholar\'s Badge',  description: 'Relic: Gain 1 extra energy on your first correct answer each combat.' },
-  { id: 'card_es_read_ancient_verse',   type: 'card',      campaign: 'spanish',  xpRequired: 350,  label: '📜 Ancient Verse',     description: 'A Spanish reading card that heals 6 HP and draws 2 cards.' },
-  { id: 'relic_pantheon_sigil',         type: 'relic',     campaign: 'any',      xpRequired: 500,  label: '✦ Pantheon Sigil',     description: 'Pantheon Relic: Start each run with 1 random Blessing applied for free.' },
-  { id: 'relic_dual_tongue',            type: 'relic',     campaign: 'any',      xpRequired: 750,  label: '🗣️ Dual Tongue',      description: 'Pantheon Relic: Correct answers on Grammar cards also trigger Vocabulary card effects.' },
-  { id: 'card_jp_rare_spirit_of_fuji',  type: 'card',      campaign: 'japanese', xpRequired: 1000, label: '🗻 Spirit of Fuji',    description: 'Rare Japanese card: Deal damage equal to your current block, then gain 8 block.' },
+  { id: 'card_jp_vocab_thunderstrike',  type: 'card',      campaign: 'japanese', xpRequired: 100,  label: '⚡ Thunder Strike',   description: 'Engineer-path Ship card: big damage when you nail the first check.' },
+  { id: 'card_kr_gram_neon_shield',     type: 'card',      campaign: 'korean',   xpRequired: 150,  label: '💠 Neon Shield',       description: 'UI-path Process card: chunky block with a draw attached.' },
+  { id: 'relic_scholars_badge',         type: 'relic',     campaign: 'any',      xpRequired: 250,  label: '🎓 Scholar\'s Badge',  description: 'Relic: +1 Energy on your first clean play each fight.' },
+  { id: 'card_es_read_ancient_verse',   type: 'card',      campaign: 'spanish',  xpRequired: 350,  label: '📜 Ancient Verse',     description: 'PM-path Insight card: heals and refills your hand a little.' },
+  { id: 'relic_pantheon_sigil',         type: 'relic',     campaign: 'any',      xpRequired: 500,  label: '✦ Pantheon Sigil',     description: 'Meta relic: start runs with a free random Blessing.' },
+  { id: 'relic_dual_tongue',            type: 'relic',     campaign: 'any',      xpRequired: 750,  label: '🗣️ Dual Track',      description: 'Meta relic: clean Process plays also echo your Ship bonuses.' },
+  { id: 'card_jp_rare_spirit_of_fuji',  type: 'card',      campaign: 'japanese', xpRequired: 1000, label: '🗻 Spirit of Fuji',    description: 'Rare engineer card: damage scales with current Block, then fortify.' },
 ]
 
 const usePantheonStore = create(
@@ -97,7 +97,10 @@ const usePantheonStore = create(
         }))
       },
     }),
-    { name: PANTHEON_STORAGE_KEY }
+    {
+      name: PANTHEON_STORAGE_KEY,
+      storage: createJSONStorage(() => localStorage),
+    }
   )
 )
 

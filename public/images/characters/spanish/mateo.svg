@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none">
+  <defs>
+    <linearGradient id="bgmateo" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917"/>
+      <stop offset="100%" stop-color="#0c0a09"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="480" fill="url(#bgmateo)"/>
+  <ellipse cx="160" cy="420" rx="122" ry="16" fill="#fb923c" fill-opacity="0.08"/>
+  <!-- blazer -->
+  <path d="M68 282 Q58 395 54 448 L266 448 Q262 395 252 282 Q160 245 68 282Z" fill="#44403c" stroke="#78716c" stroke-width="2"/>
+  <ellipse cx="160" cy="200" rx="54" ry="60" fill="#c68642"/>
+  <!-- hair -->
+  <path d="M110 155 Q160 108 210 155 Q222 188 205 218 Q160 195 115 218 Q98 188 110 155Z" fill="#292524"/>
+  <ellipse cx="138" cy="195" rx="7" ry="8" fill="#1c1917"/>
+  <ellipse cx="182" cy="195" rx="7" ry="8" fill="#1c1917"/>
+  <!-- clipboard -->
+  <rect x="195" y="300" width="85" height="115" rx="4" fill="#fafaf9" stroke="#a8a29e" stroke-width="2"/>
+  <rect x="220" y="290" width="35" height="18" rx="2" fill="#78716c"/>
+  <line x1="205" y1="320" x2="268" y2="320" stroke="#d6d3d1"/>
+  <line x1="205" y1="335" x2="255" y2="335" stroke="#e7e5e4"/>
+  <line x1="205" y1="350" x2="265" y2="350" stroke="#e7e5e4"/>
+  <rect x="205" y="365" width="40" height="8" rx="2" fill="#fdba74"/>
+  <!-- sticky notes -->
+  <rect x="70" y="330" width="55" height="50" rx="2" fill="#fef08a" stroke="#eab308" stroke-opacity="0.5"/>
+  <rect x="85" y="345" width="30" height="4" fill="#ca8a04" fill-opacity="0.4"/>
+  <rect x="85" y="355" width="25" height="4" fill="#ca8a04" fill-opacity="0.4"/>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none">
+  <defs>
+    <linearGradient id="bgj" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0f0518"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="480" fill="url(#bgj)"/>
+  <ellipse cx="160" cy="420" rx="118" ry="15" fill="#a78bfa" fill-opacity="0.1"/>
+  <!-- outfit -->
+  <path d="M70 280 Q60 392 54 448 L266 448 Q260 392 250 280 Q160 242 70 280Z" fill="#312e81" stroke="#6366f1" stroke-width="2"/>
+  <ellipse cx="160" cy="198" rx="55" ry="62" fill="#f0c8a8"/>
+  <!-- neat hair -->
+  <path d="M108 160 Q160 115 212 160 Q218 195 200 222 Q160 200 120 222 Q102 195 108 160Z" fill="#27272a"/>
+  <ellipse cx="138" cy="195" rx="6" ry="8" fill="#1e293b"/>
+  <ellipse cx="182" cy="195" rx="6" ry="8" fill="#1e293b"/>
+  <!-- component grid board -->
+  <rect x="60" y="305" width="200" height="130" rx="6" fill="#0f172a" stroke="#c084fc" stroke-width="2"/>
+  <g stroke="#a78bfa" stroke-opacity="0.6" stroke-width="1.5">
+    <rect x="75" y="320" width="55" height="45" rx="3" fill="#1e1b4b"/>
+    <rect x="138" y="320" width="55" height="45" rx="3" fill="#1e1b4b"/>
+    <rect x="201" y="320" width="50" height="45" rx="3" fill="#1e1b4b"/>
+    <rect x="75" y="375" width="85" height="45" rx="3" fill="#1e1b4b"/>
+    <rect x="170" y="375" width="81" height="45" rx="3" fill="#1e1b4b"/>
+  </g>
+  <text x="102" y="348" text-anchor="middle" fill="#c084fc" font-family="ui-monospace, monospace" font-size="8">Button</text>
+  <text x="165" y="348" text-anchor="middle" fill="#c084fc" font-family="ui-monospace, monospace" font-size="8">Input</text>
+  <!-- ruler -->
+  <rect x="230" y="250" width="12" height="90" fill="#fbbf24" fill-opacity="0.85" rx="1"/>
+  <g stroke="#78350f" stroke-width="1">
+    <line x1="230" y1="260" x2="238" y2="260"/>
+    <line x1="230" y1="275" x2="238" y2="275"/>
+    <line x1="230" y1="290" x2="238" y2="290"/>
+  </g>
+</svg>

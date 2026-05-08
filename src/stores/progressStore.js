@@ -1,7 +1,7 @@
 // stores/progressStore.js
 // Campaign clears, mastery levels, unlocks — persisted across sessions
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../utils/localStorage.js'
 
 const useProgressStore = create(
@@ -13,6 +13,7 @@ const useProgressStore = create(
           hana: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
           kenji: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
           yuki: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
+          ren: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
         },
         korean: {
           minjun: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
@@ -74,7 +75,10 @@ const useProgressStore = create(
         return Object.values(chars).some(c => c.cleared)
       },
     }),
-    { name: STORAGE_KEYS.PROGRESS }
+    {
+      name: STORAGE_KEYS.PROGRESS,
+      storage: createJSONStorage(() => localStorage),
+    }
   )
 )
 

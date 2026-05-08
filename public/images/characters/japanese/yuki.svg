@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none">
+  <defs>
+    <linearGradient id="bgy" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="480" fill="url(#bgy)"/>
+  <ellipse cx="160" cy="420" rx="125" ry="16" fill="#ef4444" fill-opacity="0.06"/>
+  <!-- vest / ops jacket -->
+  <path d="M68 285 Q58 395 52 448 L268 448 Q262 395 252 285 Q160 245 68 285Z" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  <rect x="115" y="300" width="90" height="110" rx="4" fill="#334155"/>
+  <!-- pager / badge -->
+  <rect x="195" y="320" width="28" height="40" rx="3" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="209" cy="338" r="6" fill="#ef4444"/>
+  <!-- face -->
+  <ellipse cx="160" cy="195" rx="54" ry="62" fill="#f5d0c5"/>
+  <path d="M106 150 Q160 105 214 150 Q220 175 210 200 Q160 175 110 200 Q100 175 106 150Z" fill="#2d1f18"/>
+  <!-- headset -->
+  <path d="M95 175 Q90 220 100 250" stroke="#64748b" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M225 175 Q230 220 220 250" stroke="#64748b" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <rect x="125" y="130" width="70" height="24" rx="10" fill="#475569"/>
+  <!-- eyes tired -->
+  <line x1="128" y1="198" x2="148" y2="198" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="172" y1="198" x2="192" y2="198" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+  <!-- coffee -->
+  <rect x="210" y="360" width="36" height="48" rx="4" fill="#1e293b" stroke="#64748b"/>
+  <ellipse cx="228" cy="365" rx="20" ry="6" fill="#78350f"/>
+  <!-- status LEDs -->
+  <circle cx="135" cy="315" r="4" fill="#22c55e"/>
+  <circle cx="185" cy="315" r="4" fill="#eab308"/>
+  <circle cx="160" cy="315" r="4" fill="#ef4444"/>
+</svg>

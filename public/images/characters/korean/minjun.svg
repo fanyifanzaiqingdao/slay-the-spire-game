@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none">
+  <defs>
+    <linearGradient id="bgm" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0f0518"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="480" fill="url(#bgm)"/>
+  <ellipse cx="160" cy="420" rx="120" ry="16" fill="#c084fc" fill-opacity="0.1"/>
+  <!-- shirt -->
+  <path d="M72 278 Q62 390 58 445 L262 445 Q258 390 248 278 Q160 238 72 278Z" fill="#4c1d95" stroke="#7c3aed" stroke-width="2"/>
+  <ellipse cx="160" cy="200" rx="56" ry="64" fill="#d4a574"/>
+  <!-- hair -->
+  <path d="M104 155 Q160 95 216 155 Q228 190 210 225 Q160 195 110 225 Q92 190 104 155Z" fill="#1f2937"/>
+  <!-- eyes -->
+  <ellipse cx="138" cy="198" rx="7" ry="9" fill="#1e293b"/>
+  <ellipse cx="182" cy="198" rx="7" ry="9" fill="#1e293b"/>
+  <!-- tablet + stylus -->
+  <rect x="75" y="320" width="170" height="115" rx="8" fill="#1e1030" stroke="#c084fc" stroke-width="2"/>
+  <rect x="88" y="335" width="144" height="85" rx="4" fill="#faf5ff"/>
+  <circle cx="130" cy="365" r="22" fill="#f472b6" fill-opacity="0.35"/>
+  <circle cx="200" cy="375" r="18" fill="#a78bfa" fill-opacity="0.4"/>
+  <rect x="100" y="400" width="80" height="6" rx="2" fill="#e9d5ff"/>
+  <line x1="245" y1="310" x2="275" y2="380" stroke="#f472b6" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="275,380 285,395 268,392" fill="#f472b6"/>
+</svg>

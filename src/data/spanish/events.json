@@ -1,10 +1,12 @@
 [
   {
     "id": "es_event_1",
+    "campaign": "spanish",
     "floor_tier": 1,
     "title": "A Strange Merchant",
     "title_target": "Un Mercader Extraño",
     "setup_text": "You meet a strange merchant on the road.",
+    "setup_text_target": "Te cruzas con un mercader extraño en el camino.",
     "npc_dialogue": "¿Quieres comprar?",
     "npc_dialogue_translation": "Do you want to buy?",
     "options": [
@@ -13,13 +15,72 @@
         "translation": "Buy",
         "outcome": "reward",
         "outcome_text": "You bought a potion.",
-        "reward": { "type": "heal", "amount": 10, "description": "Heal 10 HP" }
+        "outcome_text_target": "Compraste una poción y recuperaste energías.",
+        "reward": {
+          "type": "heal",
+          "amount": 10,
+          "description": "Heal 10 HP",
+          "description_target": "Recupera 10 de vida"
+        }
       },
       {
         "text": "Ignorar",
         "translation": "Ignore",
         "outcome": "neutral",
-        "outcome_text": "You ignored the merchant."
+        "outcome_text": "You ignored the merchant.",
+        "outcome_text_target": "Ignoraste al mercader y seguiste tu camino."
+      }
+    ]
+  },
+  {
+    "id": "es_event_sin_tokens",
+    "campaign": "spanish",
+    "floor_tier": 1,
+    "title": "The Empty Ledger",
+    "title_target": "El libro mayor vacío",
+    "setup_text": "A clerk taps an abacus that shows only the word WAITING. \"No tokens left,\" they sigh. \"Now I code like it's 1998 — one keystroke, one prayer.\"",
+    "setup_text_target": "Un escribano golpea un ábaco que solo muestra ESPERANDO. \"Sin tokens\", suspira. \"Ahora programo como en 1998: una tecla, una oración.\"",
+    "npc_dialogue": "La velocidad cayó… no es pereza, es cuota.",
+    "npc_dialogue_translation": "My pace dropped… it's not laziness, it's quota.",
+    "options": [
+      {
+        "text": "Share your snack stash",
+        "translation": "Compartir tus snacks",
+        "outcome": "reward",
+        "outcome_text": "Sugar doesn't mint new tokens, but shared suffering builds buffs. You both feel lighter.",
+        "outcome_text_target": "El azúcar no acuña tokens nuevos, pero el sufrimiento compartido da buffs. Ambos os sentís más ligeros.",
+        "reward": {
+          "type": "heal",
+          "amount": 12,
+          "description": "Heal 12 HP",
+          "description_target": "Recupera 12 de vida"
+        }
+      },
+      {
+        "text": "Offer to split the bill for credits",
+        "translation": "Proponer pagar a medias los créditos",
+        "outcome": "neutral",
+        "outcome_text": "They decline politely — corporate policy — but slip you a coin 'for when your own well runs dry.'",
+        "outcome_text_target": "Declinan con cortesía — política corporativa — pero te cuelan una moneda \"por si tu pozo también se seca\".",
+        "reward": {
+          "type": "gold",
+          "amount": 10,
+          "description": "Gain 10 gold",
+          "description_target": "Ganas 10 de oro"
+        }
+      },
+      {
+        "text": "Brag about your unlimited team plan",
+        "translation": "Presumir de tu plan ilimitado del equipo",
+        "outcome": "penalty",
+        "outcome_text": "The air chills. 'Unlimited for you,' the clerk mutters, 'latency for the rest of us.'",
+        "outcome_text_target": "El aire se enfría. \"Ilimitado para ti\", murmura el escribano, \"latencia para el resto\".",
+        "reward": {
+          "type": "hp_loss",
+          "amount": 6,
+          "description": "Lose 6 HP",
+          "description_target": "Pierdes 6 de vida"
+        }
       }
     ]
   }

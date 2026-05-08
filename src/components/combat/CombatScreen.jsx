@@ -2,7 +2,7 @@
 // Turn state machine: PLAYER_DRAW → PLAYER_TURN → ENEMY_TURN → FIGHT_END
 // Assembles all combat components. Owns phase transitions.
 
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useCallback, useRef, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -13,16 +13,31 @@ import { useDraft } from '../../hooks/useDraft.js'
 import { useAudio } from '../../hooks/useAudio.js'
 import { generateFloorMap } from '../../utils/map.js'
 import { EnemyDisplay } from './EnemyDisplay.jsx'
-import { ChainIndicator } from './ChainIndicator.jsx'
 import CardHand from './CardHand.jsx'
-import { QuestionPrompt } from './QuestionPrompt.jsx'
 import { JournalOverlay } from '../journal/JournalOverlay.jsx'
 import DraftScreen from '../menus/DraftScreen.jsx'
 import { BossDefeatScreen } from './BossDefeatScreen.jsx'
 import { ScreenTransition } from '../shared/ScreenTransition.jsx'
-import { TopBar, DeckOverlay } from '../shared/TopBar.jsx'
+import { TopBar, DeckOverlay, HandExhaustEnergyPickOverlay } from '../shared/TopBar.jsx'
+import { EnergyOrb, CardPile } from './CombatHudPieces.jsx'
 import { getRandomPotionDrop, getPotionDropRate, getPotionData } from '../../data/potions.js'
+import { ACT1_MAX_FLOOR, isAct1ProgrammerRun } from '../../constants/act1Pool.js'
 import { LootScreen } from './LootScreen.jsx'
+import { RELICS, pickRandomRelicForLoot } from '../../data/relics.js'
+import { relicLocalizedName } from '../../utils/relicI18n.js'
+import { BLITZ_CLIPBOARD_MAX_TURNS } from '../../constants/relicCombat.js'
+
+/** Fallback when portrait PNG/SVG both fail — mirrors CharacterSelect tiles */
+const ROLE_PORTRAIT_EMOJI = {
+  hana: '👩‍💻',
+  kenji: '🖥️',
+  yuki: '🧯',
+  ren: '🧪',
+  minjun: '🎨',
+  jiwoo: '✨',
+  mateo: '📋',
+  elena: '📈',
+}
 
 // Turn phases — explicit state machine per AGENT.md v2
 // NOTE: CombatScreen subscribes to the full store because it reads many fields.
@@ -35,63 +50,6 @@ const PHASE = {
   FIGHT_END: 'FIGHT_END',
 }
 
-// Energy Orb (STS style bottom-left)
-function EnergyOrb({ energy, maxEnergy }) {
-  return (
-    <div className="relative w-24 h-24 flex items-center justify-center">
-      {/* Outer ring */}
-      <div className="absolute inset-0 rounded-full border-[6px] border-[#8a4a1c]"
-        style={{
-          boxShadow: '0 0 15px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,0,0,0.8)',
-          background: '#3a1804'
-        }}
-      />
-      {/* Inner glowing core */}
-      <motion.div
-        className="absolute inset-2 rounded-full"
-        animate={{
-          background: energy > 0
-            ? ['radial-gradient(circle, #ffaa00, #ff4400, #3a1804)', 'radial-gradient(circle, #ffcc33, #ff5500, #3a1804)']
-            : 'radial-gradient(circle, #553311, #221100)',
-          scale: energy > 0 ? [1, 1.05, 1] : 1,
-        }}
-        transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
-      />
-      {/* Numbers */}
-      <div className="relative z-10 text-white font-black text-3xl" style={{ textShadow: '2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' }}>
-        {energy}/{maxEnergy}
-      </div>
-    </div>
-  )
-}
-
-// Deck/Discard Pile (STS style bottom corners)
-function CardPile({ count, type, side, onClick, t }) {
-  return (
-    <button
-      onClick={onClick}
-      className="relative flex flex-col items-center justify-end h-20 w-16 cursor-pointer hover:scale-105 transition-transform"
-      title={type === 'draw' ? t('combat.drawPile') : t('combat.discardPile')}
-    >
-      {/* Stack of cards visuals */}
-      <div className="relative w-12 h-16 bg-gray-300 rounded border-2 border-gray-600"
-        style={{
-          boxShadow: '0 4px 6px rgba(0,0,0,0.6)',
-          transform: `rotate(${side === 'left' ? '-5deg' : '5deg'})`
-        }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center opacity-30 text-2xl">
-          {type === 'draw' ? '📚' : '🗑️'}
-        </div>
-      </div>
-      {/* Count badge */}
-      <div className="absolute -bottom-2 -right-2 bg-black border-2 border-gray-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">
-        {count}
-      </div>
-    </button>
-  )
-}
-
 export function CombatScreen() {
   const { t } = useTranslation()
   const campaignId = sessionStorage.getItem('selected_campaign')
@@ -99,17 +57,66 @@ export function CombatScreen() {
   const store = useRunStore()
 
   const {
-    cardMap, activeQuestion, activeCardId, animState, damageNumbers,
+    cardMap, activeCardId, animState, damageNumbers,
     isEnemyDefeated, isPlayerDefeated,
-    drawHand, selectCard, resolveAnswer, revealHint,
+    drawHand, selectCard, completeDiscardPickByIndex, completeHandExhaustEnergyPickByIndex,
   } = useCombat()
+
+  const silencedTypes = useMemo(() => {
+    const out = new Set()
+    for (const d of store.activePlayerDebuffs) {
+      if (d.type === 'silence' && d.target) out.add(d.target)
+    }
+    return [...out]
+  }, [store.activePlayerDebuffs])
 
   const { draftCards, isDrafting, openDraft, pickCard, skipDraft } = useDraft()
   const { playMusic, playSFX, stopMusic } = useAudio()
 
   const [turnPhase, setTurnPhase] = useState(null)
+
+  const hasPlayableCard = useMemo(() => {
+    if (turnPhase !== PHASE.PLAYER_TURN) return false
+    const silenced = new Set(silencedTypes)
+    return store.hand.some((id) => {
+      const c = cardMap[id]
+      if (!c) return false
+      if (store.lockedCards.includes(id)) return false
+      if (silenced.has(c.type)) return false
+      return store.energy >= c.energy_cost
+    })
+  }, [turnPhase, store.hand, store.lockedCards, store.energy, cardMap, silencedTypes])
+
   const [bossPhase, setBossPhase] = useState(1)
   const [isShakingEnemy, setIsShakingEnemy] = useState(false)
+
+  const enemySlots = useMemo(() => {
+    const slots = store.combatEnemySlots
+    if (slots?.length) return slots
+    if (store.currentEnemy) {
+      return [{
+        instanceId: 'legacy-0',
+        def: store.currentEnemy,
+        hp: store.enemyHp,
+        maxHp: store.enemyMaxHp,
+        intentIndex: store.intentIndex ?? 0,
+        armor: store.enemyArmor ?? 0,
+        furyStacks: store.enemyFuryStacks ?? 0,
+        vulnerableTurns: store.combatEnemySlots?.[0]?.vulnerableTurns ?? 0,
+        weakTurns: store.combatEnemySlots?.[0]?.weakTurns ?? 0,
+        poisonStacks: store.combatEnemySlots?.[0]?.poisonStacks ?? 0,
+      }]
+    }
+    return []
+  }, [
+    store.combatEnemySlots,
+    store.currentEnemy,
+    store.enemyHp,
+    store.enemyMaxHp,
+    store.intentIndex,
+    store.enemyArmor,
+    store.enemyFuryStacks,
+  ])
   const [isHitPlayer, setIsHitPlayer] = useState(false)
   const [wrongFlash, setWrongFlash] = useState(false)
   const [journalOpen, setJournalOpen] = useState(false)
@@ -118,23 +125,66 @@ export function CombatScreen() {
   const [loot, setLoot] = useState(null) // Array of loot items when fight ends
 
   const fightStarted = useRef(false)
+  const enemyDropZoneRef = useRef(null)
+  /** Which loot row opened the current DraftScreen (e.g. `card` vs `card-swift-bonus`). */
+  const activeDraftLootIdRef = useRef('card')
+  const [enemyDropHighlight, setEnemyDropHighlight] = useState(false)
+  /** PNG/SVG missing or blocked → show emoji slate instead of empty box */
+  const [playerPortraitBroken, setPlayerPortraitBroken] = useState(false)
 
-  const silencedTypes = store.activePlayerDebuffs
-    .filter(d => d.type === 'silence')
-    .map(d => d.target)
+  // Read session each render so portrait path updates after startRun / backfill (useMemo would miss session writes)
+  const portraitCampaign =
+    store.campaign
+    || campaignId
+    || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('lq_run_campaign_id') : '')
+    || 'japanese'
+  const portraitCharId =
+    store.character?.id
+    || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('lq_run_character_id') : '')
+    || 'kenji'
+  const portraitBase = `/images/characters/${portraitCampaign}/${portraitCharId}`
 
-  // type_lock curse: visually silence the last played card type so player knows it's unplayable
-  if (store.activeModifier?.curse?.effect?.type === 'type_lock' && store.lastCardTypePlayed) {
-    if (!silencedTypes.includes(store.lastCardTypePlayed)) {
-      silencedTypes.push(store.lastCardTypePlayed)
-    }
-  }
+  useEffect(() => {
+    setPlayerPortraitBroken(false)
+  }, [portraitBase])
+
+  // Backfill session portrait keys for runs started before lq_run_* was added (rehydrate-safe)
+  useEffect(() => {
+    try {
+      if (typeof sessionStorage === 'undefined') return
+      if (!store.runId || !store.character?.id) return
+      if (!sessionStorage.getItem('lq_run_character_id')) {
+        sessionStorage.setItem('lq_run_character_id', store.character.id)
+        sessionStorage.setItem('lq_run_campaign_id', store.campaign || campaignId || 'japanese')
+      }
+    } catch {}
+  }, [store.runId, store.character?.id, store.campaign, campaignId])
+
+  const onEnemyDragHover = useCallback((over) => {
+    setEnemyDropHighlight(Boolean(over))
+  }, [])
 
   const { executeEnemyTurn, isExecuting: isEnemyTurnRunning, currentAction: enemyAction } = useEnemyTurn({
     onTurnComplete: () => {
+      useRunStore.getState().tickEnemyWeakDecayAfterEnemyTurn()
       setTurnPhase(PHASE.PLAYER_DRAW)
     },
   })
+
+  useEffect(() => {
+    if (turnPhase !== PHASE.PLAYER_TURN) setEnemyDropHighlight(false)
+  }, [turnPhase])
+
+  /** Auto-clear impossible pending picks so End Turn / overlays recover without refresh. */
+  useEffect(() => {
+    const s = useRunStore.getState()
+    if (s.pendingHandExhaustEnergyPick && s.hand.length === 0) {
+      useRunStore.setState({ pendingHandExhaustEnergyPick: false })
+    }
+    if (s.pendingDiscardPick && s.discardPile.length === 0) {
+      useRunStore.setState({ pendingDiscardPick: null })
+    }
+  }, [store.hand, store.discardPile, store.pendingHandExhaustEnergyPick, store.pendingDiscardPick])
 
   useEffect(() => {
     playMusic(store.campaign || 'japanese', store.currentEnemy?.tier === 'boss' ? 'boss' : 'combat')
@@ -247,31 +297,33 @@ export function CombatScreen() {
 
   const handleEndTurn = useCallback(() => {
     if (turnPhase !== PHASE.PLAYER_TURN) return
-    if (activeQuestion) return
+    const s0 = useRunStore.getState()
+    /** Unblock soft-locks: pick-from-hand / pick-from-discard with no valid targets. */
+    if (s0.pendingHandExhaustEnergyPick && s0.hand.length === 0) {
+      useRunStore.setState({ pendingHandExhaustEnergyPick: false })
+    }
+    if (s0.pendingDiscardPick && s0.discardPile.length === 0) {
+      useRunStore.setState({ pendingDiscardPick: null })
+    }
+    const s1 = useRunStore.getState()
+    if (s1.pendingDiscardPick || s1.pendingHandExhaustEnergyPick) return
     playSFX('button_click')
     setTurnPhase(PHASE.ENEMY_TURN)
     executeEnemyTurn()
-  }, [turnPhase, activeQuestion, executeEnemyTurn, playSFX])
+  }, [turnPhase, executeEnemyTurn, playSFX])
 
+  const handleSelectEnemySlot = useCallback((slotIndex) => {
+    if (turnPhase !== PHASE.PLAYER_TURN) return
+    playSFX('button_click')
+    useRunStore.getState().syncActiveEnemySlot(slotIndex)
+  }, [turnPhase, playSFX])
 
   const handleVictory = useCallback(async (choice = null) => {
     const s = useRunStore.getState()
-    const isBoss = s.currentEnemy?.tier === 'boss'
+    const enemyTier = s.currentEnemy?.tier
+    const isBoss = enemyTier === 'boss'
     const accuracy = s.fightTotal > 0 ? s.fightCorrect / s.fightTotal : 1
-
-    s.resetPotionEffects()
-    s.endFight()
-
-    if (isBoss) {
-      const newFloor = s.floor + 1
-      s.setFloor(newFloor)
-      const { nodes, paths } = generateFloorMap(newFloor, s.masteryLevel)
-      s.setMap(nodes, paths)
-      s.setCurrentNode(null)
-    } else {
-      stopMusic()
-      playSFX('victory')
-    }
+    const currentFloor = s.floor
 
     const generatedLoot = []
 
@@ -282,21 +334,74 @@ export function CombatScreen() {
     generatedLoot.push({ id: 'gold', type: 'gold', amount: baseGold + relicGold, icon: '🪙', label: `${baseGold + relicGold} Gold` })
 
     // 2. Potion
-    const dropRate = getPotionDropRate(s.currentEnemy?.tier, isBoss)
+    const dropRate = getPotionDropRate(enemyTier, isBoss)
     if (Math.random() < dropRate) {
-      const potionId = getRandomPotionDrop(s.floor)
+      const potionId = getRandomPotionDrop(currentFloor)
       const potionData = getPotionData(potionId)
       generatedLoot.push({ id: 'potion', type: 'potion', potionId, icon: potionData?.icon || '🧪', label: potionData?.name || 'Unknown Potion' })
+    }
+
+    // 2b. Elite: chance for a random non-owned common/uncommon/rare relic (e.g. Sprint Icebox)
+    if (enemyTier === 'elite' && Math.random() < 0.45) {
+      const relicId = pickRandomRelicForLoot(s)
+      if (relicId) {
+        const r = RELICS[relicId]
+        generatedLoot.push({
+          id: `loot-relic-${relicId}`,
+          type: 'relic',
+          relicId,
+          icon: r?.icon || '💎',
+          label: relicLocalizedName(relicId, r?.name || relicId),
+        })
+      }
     }
 
     // 3. Card Draft
     let draftRarity = null
     if (choice?.reward?.type === 'card') draftRarity = choice.reward.rarity
+    const turnsAtVictory = s.turnNumber
     generatedLoot.push({ id: 'card', type: 'card', rarity: draftRarity, icon: '🃏', label: 'Add a card to your deck' })
+    if (s.relics.includes('blitz_clipboard') && turnsAtVictory <= BLITZ_CLIPBOARD_MAX_TURNS) {
+      generatedLoot.push({
+        id: 'card-swift-bonus',
+        type: 'card',
+        rarity: draftRarity,
+        icon: '🃏',
+        label: 'Bonus card (won in ≤5 turns)',
+      })
+    }
+
+    s.resetPotionEffects()
+    s.endFight()
+
+    if (isBoss) {
+      const newFloor = currentFloor + 1
+      s.setFloor(newFloor)
+      const { nodes, paths } = generateFloorMap(newFloor, s.masteryLevel)
+      s.setMap(nodes, paths)
+      s.setCurrentNode(null)
+    } else {
+      stopMusic()
+      playSFX('victory')
+      if (isAct1ProgrammerRun(s)) {
+        const next = Math.min(currentFloor + 1, ACT1_MAX_FLOOR)
+        if (next !== currentFloor) s.setFloor(next)
+      }
+    }
 
     setLoot(generatedLoot)
     playSFX('loot_appear')
-  }, [playSFX])
+  }, [playSFX, stopMusic])
+
+  // Fallback: if fight has ended but loot modal failed to open, return to map.
+  useEffect(() => {
+    if (turnPhase !== PHASE.FIGHT_END || loot !== null) return
+    const timer = setTimeout(() => {
+      sessionStorage.removeItem('active_encounter')
+      navigate('/map', { replace: true })
+    }, 1200)
+    return () => clearTimeout(timer)
+  }, [turnPhase, loot, navigate])
 
   const handleClaimLoot = useCallback((lootId) => {
     const s = useRunStore.getState()
@@ -315,6 +420,9 @@ export function CombatScreen() {
         playSFX('relic_obtain') // placeholder for potion gain
         s.addPotion(item.potionId)
       }
+    } else if (item.type === 'relic' && item.relicId) {
+      playSFX('relic_obtain')
+      s.addRelic(item.relicId)
     }
     setLoot(prev => prev.filter(l => l.id !== lootId))
   }, [loot])
@@ -328,12 +436,14 @@ export function CombatScreen() {
   const handleOpenDraftLoot = useCallback((item) => {
     playSFX('draft_open')
     const accuracy = store.fightTotal > 0 ? store.fightCorrect / store.fightTotal : 1
+    activeDraftLootIdRef.current = item.id
     openDraft(accuracy, item.rarity)
   }, [openDraft, store.fightTotal, store.fightCorrect, playSFX])
 
   const handleDraftDone = useCallback((card) => {
     pickCard(card)
-    setLoot(prev => prev.filter(l => l.id !== 'card'))
+    const lid = activeDraftLootIdRef.current
+    setLoot(prev => prev.filter(l => l.id !== lid))
   }, [pickCard])
 
   if (isDrafting) {
@@ -363,6 +473,7 @@ export function CombatScreen() {
 
   const isPlayerTurn = turnPhase === PHASE.PLAYER_TURN
   const isEnemyPhase = turnPhase === PHASE.ENEMY_TURN
+  const awaitingCombatPick = Boolean(store.pendingDiscardPick || store.pendingHandExhaustEnergyPick)
 
   return (
     <ScreenTransition>
@@ -370,19 +481,19 @@ export function CombatScreen() {
         className="relative w-full h-screen flex flex-col overflow-hidden"
         style={{ fontFamily: "'Crimson Text', Georgia, serif" }}
       >
-        {/* ── Background: Dungeon Art ── */}
+        {/* ── Background: art + base color (PNG always ships; SVG optional later) ── */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
           style={{
+            backgroundColor: '#0f172a',
             backgroundImage: 'url(/images/ui/dungeon_combat_bg.png)',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: '100%',
-            backgroundPosition: 'center bottom',
-
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
           }}
         />
 
-        <TopBar hideMapButton={true} potionsLocked={!!activeQuestion || !isPlayerTurn} />
+        <TopBar hideMapButton={true} potionsLocked={!isPlayerTurn} />
 
         {/* Wrong answer flash */}
         <AnimatePresence>
@@ -428,17 +539,31 @@ export function CombatScreen() {
               className="relative flex items-end justify-center"
               style={{ height: '200px' }}
             >
-              {store.character?.id ? (
-                <img
-                  src={`/images/characters/${store.campaign || campaignId || 'japanese'}/${store.character.id}.png`}
-                  alt={store.character.name || "Player"}
-                  className="max-h-full max-w-full object-contain object-bottom"
-                  style={{ imageRendering: 'pixelated', filter: 'drop-shadow(0 8px 10px rgba(0,0,0,0.8))' }}
-                />
-              ) : (
-                <div className="w-36 h-44 bg-gray-800/80 border-2 border-gray-600 rounded flex items-center justify-center text-4xl">
-                  👤
+              {playerPortraitBroken ? (
+                <div
+                  className="flex h-[200px] min-w-[140px] max-w-[220px] items-end justify-center rounded-lg bg-gray-900/80 px-4 text-8xl opacity-95"
+                  aria-hidden
+                >
+                  {ROLE_PORTRAIT_EMOJI[portraitCharId] || '👤'}
                 </div>
+              ) : (
+                <img
+                  src={`${portraitBase}.png`}
+                  alt={store.character?.name || 'Player'}
+                  className="h-[200px] w-auto max-w-[220px] min-w-[120px] object-contain object-bottom"
+                  style={{
+                    imageRendering: portraitCampaign === 'japanese' ? 'pixelated' : 'auto',
+                    filter: 'drop-shadow(0 8px 10px rgba(0,0,0,0.8))',
+                  }}
+                  onError={(e) => {
+                    const el = e.currentTarget
+                    if (el.src.endsWith('.png')) {
+                      el.src = `${portraitBase}.svg`
+                      return
+                    }
+                    setPlayerPortraitBroken(true)
+                  }}
+                />
               )}
 
             </motion.div>
@@ -498,21 +623,34 @@ export function CombatScreen() {
             </div>
           </div>
 
-          {/* Enemy Display (Right) */}
-          <div className="absolute right-[18%] bottom-[0%] scale-110 flex flex-col items-center">
-            <EnemyDisplay
-              enemy={store.currentEnemy}
-              hp={store.enemyHp}
-              maxHp={store.enemyMaxHp}
-              block={store.enemyArmor}
-              armor={store.enemyArmor}
-              furyStacks={store.enemyFuryStacks}
-              intentIndex={store.intentIndex}
-              activeBuffs={store.activeEnemyBuffs}
-              isShaking={isShakingEnemy}
-              enemyAction={enemyAction}
-              phase={bossPhase > 1 ? bossPhase : undefined}
-            />
+          {/* Enemy Display (Right) — ref used for drag-card-to-play hit testing */}
+          <div
+            ref={enemyDropZoneRef}
+            className={`absolute right-[6%] bottom-[0%] scale-110 flex flex-row flex-wrap justify-end items-end gap-3 max-w-[48%] rounded-2xl transition-shadow duration-150 ${
+              enemyDropHighlight ? 'ring-4 ring-amber-400/80 ring-offset-4 ring-offset-transparent shadow-[0_0_28px_rgba(251,191,36,0.45)]' : ''
+            }`}
+          >
+            {enemySlots.map((slot, i) => (
+              <EnemyDisplay
+                key={slot.instanceId || `enemy-${i}`}
+                enemy={slot.def}
+                hp={slot.hp}
+                maxHp={slot.maxHp}
+                armor={slot.armor ?? 0}
+                furyStacks={slot.furyStacks ?? 0}
+                intentIndex={slot.intentIndex ?? 0}
+                activeBuffs={store.activeEnemyBuffs}
+                isShaking={isShakingEnemy}
+                enemyAction={isEnemyPhase && (store.activeEnemySlotIndex ?? 0) === i ? enemyAction : null}
+                phase={bossPhase > 1 ? bossPhase : undefined}
+                vulnerableTurns={slot.vulnerableTurns ?? 0}
+                weakTurns={slot.weakTurns ?? 0}
+                poisonStacks={slot.poisonStacks ?? 0}
+                selectable={isPlayerTurn && enemySlots.length > 1 && !awaitingCombatPick}
+                selected={(store.activeEnemySlotIndex ?? 0) === i}
+                onSelect={() => handleSelectEnemySlot(i)}
+              />
+            ))}
           </div>
 
           {/* Floating damage numbers */}
@@ -582,7 +720,6 @@ export function CombatScreen() {
 
           {/* Chain indicator (Top Center) */}
           <div className="absolute top-10 left-1/2 -translate-x-1/2">
-            <ChainIndicator chainActive={store.chainActive} chainType={store.chainType} />
           </div>
 
           {/* Turn phase badge + Turn counter (Top Center below chain) */}
@@ -632,8 +769,11 @@ export function CombatScreen() {
                 selectedCardId={activeCardId}
                 chainActive={store.chainActive}
                 chainType={store.chainType}
-                disabled={!isPlayerTurn || !!activeQuestion}
+                hasChainBracelet={store.relics?.includes('chain_bracelet') ?? false}
+                disabled={!isPlayerTurn || awaitingCombatPick}
                 onCardSelect={selectCard}
+                enemyDropZoneRef={enemyDropZoneRef}
+                onDragHoverEnemy={onEnemyDragHover}
               />
             </div>
           </div>
@@ -641,22 +781,22 @@ export function CombatScreen() {
           {/* Bottom-Right: End Turn & Discard */}
           <div className="flex items-end gap-6 pb-2 relative z-40">
             <motion.button
-              animate={(isPlayerTurn && !activeQuestion && !store.hand.some(id => cardMap[id] && !store.lockedCards.includes(id) && store.energy >= cardMap[id].energy_cost)) ? {
+              animate={(isPlayerTurn && !hasPlayableCard && !awaitingCombatPick) ? {
                 boxShadow: ['0px 4px 10px rgba(0,0,0,0.6)', '0px 0px 25px rgba(74, 158, 192, 1)', '0px 4px 10px rgba(0,0,0,0.6)'],
                 borderColor: ['#4a9ec0', '#8be9fd', '#4a9ec0']
               } : {
                 boxShadow: '0px 4px 10px rgba(0,0,0,0.6)',
-                borderColor: (!isPlayerTurn || activeQuestion) ? '#111' : '#4a9ec0'
+                borderColor: (!isPlayerTurn) ? '#111' : '#4a9ec0'
               }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              whileHover={isPlayerTurn && !activeQuestion ? { scale: 1.05 } : {}}
-              whileTap={isPlayerTurn && !activeQuestion ? { scale: 0.95 } : {}}
+              whileHover={isPlayerTurn && !awaitingCombatPick ? { scale: 1.05 } : {}}
+              whileTap={isPlayerTurn && !awaitingCombatPick ? { scale: 0.95 } : {}}
               onClick={handleEndTurn}
-              disabled={!isPlayerTurn || !!activeQuestion}
+              disabled={!isPlayerTurn || awaitingCombatPick}
               className={`
                 px-6 py-4 rounded font-bold text-lg border-2
                 transition-colors
-                ${(!isPlayerTurn || activeQuestion)
+                ${(!isPlayerTurn || awaitingCombatPick)
                   ? 'bg-[#1a2228] text-gray-600 cursor-default'
                   : 'bg-gradient-to-b from-[#2a627a] to-[#163e52] text-white hover:brightness-110 cursor-pointer'}
               `}
@@ -665,23 +805,13 @@ export function CombatScreen() {
               {isEnemyPhase ? t('combat.enemyTurn') : t('combat.endTurn')}
             </motion.button>
 
-            <CardPile count={store.discardPile.length} type="discard" side="right" t={t} onClick={() => { playSFX('button_click'); setOpenPile('discard') }} />
+            <CardPile count={store.discardPile.length} type="discard" side="right" t={t} onClick={() => {
+              if (store.pendingDiscardPick || store.pendingHandExhaustEnergyPick) return
+              playSFX('button_click')
+              setOpenPile('discard')
+            }} />
           </div>
         </div>
-
-        {/* ── OVERLAYS ── */}
-        <AnimatePresence>
-          {activeQuestion && (
-            <QuestionPrompt
-              questionData={activeQuestion}
-              masteryLevel={store.masteryLevel}
-              canHint={store.energy >= 1 && !store.hintUsedThisFight}
-              onAnswer={resolveAnswer}
-              onHint={revealHint}
-              bossPhase={bossPhase}
-            />
-          )}
-        </AnimatePresence>
 
         {/* Removed EnemyTurnResolver to stop cutscene feeling */}
 
@@ -698,6 +828,24 @@ export function CombatScreen() {
           )}
           {openPile === 'discard' && (
             <DeckOverlay onClose={() => setOpenPile(null)} deck={store.discardPile} title={t('combat.discardPile')} />
+          )}
+          {store.pendingDiscardPick && (
+            <DeckOverlay
+              pickMode
+              onPickCardIndex={completeDiscardPickByIndex}
+              deck={store.discardPile}
+              title={t('combat.pickFromDiscardTitle')}
+              pickSubtitle={t('combat.pickFromDiscardHint')}
+            />
+          )}
+          {store.pendingHandExhaustEnergyPick && (
+            <HandExhaustEnergyPickOverlay
+              handIds={store.hand}
+              cardMap={cardMap}
+              onPickIndex={completeHandExhaustEnergyPickByIndex}
+              title={t('combat.pickHandExhaustTitle')}
+              pickSubtitle={t('combat.pickHandExhaustHint')}
+            />
           )}
         </AnimatePresence>
         {/* ── LOOT SCREEN ── */}

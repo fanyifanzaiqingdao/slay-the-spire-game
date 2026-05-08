@@ -1,5 +1,5 @@
 // data/relics.js — Full Relic Registry
-// equippedRelics = active 5-slot relics  |  vaultRelics = stored but inactive
+// equippedRelics = active relics (cap MAX_EQUIPPED_RELICS) | vaultRelics = stored but inactive
 
 export const RELIC_TIER = { STARTER: 'starter', COMMON: 'common', UNCOMMON: 'uncommon', RARE: 'rare', PANTHEON: 'pantheon' }
 
@@ -11,17 +11,17 @@ export const RELICS = {
     tier: RELIC_TIER.STARTER,
     icon: '⏳',
     color: '#a78bfa',
-    description: 'On wrong answer, add 1 extra lock token. Gain 1 Energy on turn start.',
-    flavor: 'Time stopped working. You kept going.',
+    description: 'When a play locks you out, add 1 extra lock counter. Gain 1 Energy at turn start.',
+    flavor: 'No timer in the IDE — only the meter running somewhere you cannot see.',
   },
   fox_mask: {
     id: 'fox_mask',
-    name: 'Fox Mask',
+    name: 'Noise-Cancelling Shell',
     tier: RELIC_TIER.STARTER,
-    icon: '🦊',
+    icon: '🎧',
     color: '#f97316',
     description: 'Start each fight with 10 Block.',
-    flavor: 'A traveler\'s first shield.',
+    flavor: 'First line of defense against open offices.',
   },
   lucky_coin: {
     id: 'lucky_coin',
@@ -30,127 +30,217 @@ export const RELICS = {
     icon: '🪙',
     color: '#facc15',
     description: 'Gain +15 Gold after every fight.',
-    flavor: 'Someone lost it. You found it.',
+    flavor: 'Someone spent their last token on coffee. You found the change.',
   },
   travelers_compass: {
     id: 'travelers_compass',
-    name: "Traveler's Compass",
+    name: 'Standup Compass',
     tier: RELIC_TIER.STARTER,
     icon: '🧭',
     color: '#34d399',
-    description: 'Every 3rd correct answer in a fight grants +1 Energy next turn.',
-    flavor: 'Points toward understanding.',
+    description: 'Every 3rd clean play in a row during a fight grants +1 Energy next turn.',
+    flavor: 'Points toward the next milestone.',
+  },
+  pager_rattle: {
+    id: 'pager_rattle',
+    name: 'Pager Rattle',
+    tier: RELIC_TIER.STARTER,
+    icon: '📟',
+    color: '#94a3b8',
+    description: 'Start each fight with +2 Block.',
+    flavor: 'Vibration before the message — you already braced.',
+  },
+  brief_rain: {
+    id: 'brief_rain',
+    name: 'Brief Rain',
+    tier: RELIC_TIER.STARTER,
+    icon: '🌦️',
+    color: '#38bdf8',
+    description: 'At the start of each fight, gain 3 Gold.',
+    flavor: 'Scope drizzle that still wets the roadmap.',
+  },
+  grid_snap_ruler: {
+    id: 'grid_snap_ruler',
+    name: 'Grid Snap Ruler',
+    tier: RELIC_TIER.STARTER,
+    icon: '📐',
+    color: '#c084fc',
+    description: 'On your first hand of each fight, draw 1 extra card.',
+    flavor: 'Everything aligns to the baseline — once.',
+  },
+  syntax_stapler: {
+    id: 'syntax_stapler',
+    name: 'Syntax Stapler',
+    tier: RELIC_TIER.STARTER,
+    icon: '📎',
+    color: '#fbbf24',
+    description: 'On your first turn of each fight, gain +1 Energy.',
+    flavor: 'Clips the loose line so the block compiles.',
+  },
+  handoff_marker: {
+    id: 'handoff_marker',
+    name: 'Handoff Marker',
+    tier: RELIC_TIER.STARTER,
+    icon: '🖍️',
+    color: '#fb923c',
+    description: 'At the start of each fight, heal 2 HP.',
+    flavor: 'Someone circled the acceptance criteria in green.',
   },
 
   // ── COMMON ──────────────────────────────────────────────────────────
   chain_bracelet: {
     id: 'chain_bracelet',
-    name: 'Chain Bracelet',
+    name: 'Workflow Bracelet',
     tier: RELIC_TIER.COMMON,
-    icon: '📿',
+    icon: '🔗',
     color: '#60a5fa',
     description: 'Chain combos can continue even when switching card types.',
-    flavor: 'Every word links to the next.',
+    flavor: 'Handoffs are part of the combo.',
+  },
+  pingback_pins: {
+    id: 'pingback_pins',
+    name: 'Pingback Pins',
+    tier: RELIC_TIER.COMMON,
+    icon: '📌',
+    color: '#fb7185',
+    description: 'Start each fight with 1 Reflect stack and 3 damage per stack. When an enemy attack deals HP loss, deal (stacks × damage per stack) back (each Swift Strike segment rolls separately). Cards can add stacks or damage per stack.',
+    flavor: 'Every strike gets a read receipt.',
   },
   merchants_scale: {
     id: 'merchants_scale',
-    name: "Merchant's Scale",
+    name: 'Vendor Scorecard',
     tier: RELIC_TIER.COMMON,
     icon: '⚖️',
     color: '#fbbf24',
-    description: 'Merchant shows 1 extra card offer per visit.',
+    description: 'Merchant card prices are 20% lower.',
     flavor: 'Better selection for the discerning buyer.',
+  },
+  sample_tray: {
+    id: 'sample_tray',
+    name: 'Sample Tray',
+    tier: RELIC_TIER.COMMON,
+    icon: '🧺',
+    color: '#f472b6',
+    description: 'Each shop visit: your first 3 card-offer refreshes cost 0 gold.',
+    flavor: 'Try before you buy the sprint.',
   },
   newcomers_phrasebook: {
     id: 'newcomers_phrasebook',
-    name: "Newcomer's Phrasebook",
+    name: 'Onboarding Cheat Sheet',
     tier: RELIC_TIER.COMMON,
     icon: '📖',
     color: '#6ee7b7',
-    description: 'First wrong answer each fight triggers a free hint instead of locking the card.',
-    flavor: 'Everyone starts somewhere.',
+    description: 'First misplay each fight gives a free brief instead of locking the card.',
+    flavor: 'Everyone ships a broken first build.',
   },
   returnees_old_notes: {
     id: 'returnees_old_notes',
-    name: "Returnee's Old Notes",
+    name: 'Runbook Margins',
     tier: RELIC_TIER.COMMON,
     icon: '📝',
     color: '#a3e635',
-    description: 'Grammar cards auto-show their hint when played.',
-    flavor: 'You wrote this down years ago.',
+    description: 'Process cards auto-show their play hint when selected.',
+    flavor: 'You scribbled this during the last outage.',
   },
   worn_dictionary: {
     id: 'worn_dictionary',
-    name: 'Worn Dictionary',
+    name: 'Internal Wiki Tab',
     tier: RELIC_TIER.COMMON,
     icon: '📚',
     color: '#94a3b8',
-    description: 'Once per fight, reveal the correct answer for a vocabulary question.',
-    flavor: 'Dog-eared but dependable.',
+    description: 'Once per fight, reveal the optimal line for a Ship-card check.',
+    flavor: 'Dog-eared but still searchable.',
+  },
+  incident_buffer: {
+    id: 'incident_buffer',
+    name: 'Incident Buffer',
+    tier: RELIC_TIER.COMMON,
+    icon: '🦺',
+    color: '#38bdf8',
+    description: 'At the start of each turn, gain 3 Block.',
+    flavor: 'Padding for when the pager goes off before standup ends.',
   },
 
   // ── UNCOMMON ────────────────────────────────────────────────────────
   ink_stone: {
     id: 'ink_stone',
-    name: 'Ink Stone',
+    name: 'Rubber-Duck Stone',
     tier: RELIC_TIER.UNCOMMON,
     icon: '🪨',
     color: '#818cf8',
     description: 'After playing 3 cards of the same type in one turn, draw 1 card.',
-    flavor: 'Repetition builds the groove.',
+    flavor: 'Repetition fills the context window — then your hands remember how to type.',
   },
   bamboo_fan: {
     id: 'bamboo_fan',
-    name: 'Bamboo Fan',
+    name: 'Focus Timer Fan',
     tier: RELIC_TIER.UNCOMMON,
     icon: '🪭',
     color: '#4ade80',
     description: 'Block does not expire at the start of your turn (persists until hit).',
-    flavor: 'Patience. The strike will come.',
+    flavor: 'Deep work blocks incoming pings.',
   },
   red_envelope: {
     id: 'red_envelope',
-    name: 'Red Envelope',
+    name: 'Spot-Bonus Envelope',
     tier: RELIC_TIER.UNCOMMON,
     icon: '🧧',
     color: '#f87171',
     description: 'At the start of each fight, gain 5 Gold.',
     flavor: 'A small blessing before the battle.',
   },
+  sprint_icebox: {
+    id: 'sprint_icebox',
+    name: 'Sprint Icebox',
+    tier: RELIC_TIER.UNCOMMON,
+    icon: '🧊',
+    color: '#7dd3fc',
+    description: 'While not in combat, open your deck and park up to 2 cards in the Icebox. Parked cards are removed from your draw pool until you tap them to return.',
+    flavor: '冲刺冰柜：本迭代先不上桌的两张票，解冻时再捞。',
+  },
+  blitz_clipboard: {
+    id: 'blitz_clipboard',
+    name: 'Blitz Clipboard',
+    tier: RELIC_TIER.UNCOMMON,
+    icon: '📋',
+    color: '#f472b6',
+    description: 'If you win within 5 player turns, gain an extra card reward (same draft rules as the first pick).',
+    flavor: 'Merged before standup — scope for one more ticket.',
+  },
 
   // ── RARE ────────────────────────────────────────────────────────────
   pantheon_sigil: {
     id: 'pantheon_sigil',
-    name: 'Pantheon Sigil',
+    name: 'Exec Sponsor Sigil',
     tier: RELIC_TIER.RARE,
     icon: '🔱',
     color: '#fbbf24',
     description: 'Start the run with a free Blessing (no paired Curse required).',
-    flavor: 'The gods owe you a favor.',
+    flavor: 'Leadership owes you air cover.',
   },
   scribes_seal: {
     id: 'scribes_seal',
-    name: "Scribe's Seal",
+    name: 'Zero-Incident Seal',
     tier: RELIC_TIER.RARE,
     icon: '🪬',
     color: '#c084fc',
     description: 'After winning a fight without taking damage, draw 2 extra cards next fight\'s first turn.',
-    flavor: 'Perfection leaves its mark.',
+    flavor: 'Clean postmortems deserve rewards.',
   },
 
   // ── NEW SLOT-SYSTEM RELICS ───────────────────────────────────────────
   resonance_stone: {
     id: 'resonance_stone',
-    name: 'Resonance Stone',
+    name: 'Cross-Functional Gem',
     tier: RELIC_TIER.RARE,
     icon: '💎',
     color: '#38bdf8',
-    description: 'If your 5 equipped slots contain at least one relic of each card type (vocabulary, grammar, reading, culture), all relic effects amplified 20%.',
+    description: 'If your equipped relics cover Ship, Process, and Insight (across your loadout), all relic effects are amplified 20%.',
     flavor: 'Harmony between disciplines.',
   },
   the_empty_throne: {
     id: 'the_empty_throne',
-    name: 'The Empty Throne',
+    name: 'Headcount Freeze',
     tier: RELIC_TIER.RARE,
     icon: '🪑',
     color: '#6b7280',
@@ -159,49 +249,65 @@ export const RELICS = {
   },
   scholars_left_hand: {
     id: 'scholars_left_hand',
-    name: "Scholar's Left Hand",
+    name: 'Process Owner (Left)',
     tier: RELIC_TIER.UNCOMMON,
     icon: '🫲',
     color: '#818cf8',
-    description: 'Grammar cards cost 1 less Energy. (Pair with Scholar\'s Right Hand for full effect.)',
-    flavor: 'The left hand writes.',
+    description: 'Process cards cost 1 less Energy. (Pair with Process Owner (Right) for full effect.)',
+    flavor: 'The left hand owns the checklist.',
     pair: 'scholars_right_hand',
   },
   scholars_right_hand: {
     id: 'scholars_right_hand',
-    name: "Scholar's Right Hand",
+    name: 'Process Owner (Right)',
     tier: RELIC_TIER.UNCOMMON,
     icon: '🫱',
     color: '#818cf8',
-    description: 'Grammar cards deal bonus damage equal to their block value. (Pair with Scholar\'s Left Hand for full effect.)',
-    flavor: 'The right hand strikes.',
+    description: 'Process cards deal bonus damage equal to their block value. (Pair with Process Owner (Left) for full effect.)',
+    flavor: 'The right hand enforces SLAs.',
     pair: 'scholars_left_hand',
   },
 
   // ── PANTHEON ────────────────────────────────────────────────────────
   ancient_lexicon: {
     id: 'ancient_lexicon',
-    name: 'Ancient Lexicon',
+    name: 'Monolith Glossary',
     tier: RELIC_TIER.PANTHEON,
     icon: '📜',
     color: '#fde68a',
-    description: 'All vocabulary cards deal +3 bonus damage.',
-    flavor: 'The words of the old masters cut deeper.',
+    description: 'All Ship-type cards deal +3 bonus damage.',
+    flavor: 'Old service names still cut deep.',
   },
   memory_palace: {
     id: 'memory_palace',
-    name: 'Memory Palace',
+    name: 'Postmortem Palace',
     tier: RELIC_TIER.PANTHEON,
     icon: '🏛️',
     color: '#fde68a',
-    description: 'Correct answers on first try heal 1 HP.',
-    flavor: 'Your mind becomes your sanctuary.',
+    description: 'First-try successful plays heal 1 HP.',
+    flavor: 'Your mind becomes the runbook.',
   },
+}
+
+/** Common / uncommon / rare relic not already in equipped or vault (for elite loot & merchant). */
+export function pickRandomRelicForLoot(runState) {
+  const owned = new Set([...(runState.relics || []), ...(runState.vaultRelics || [])])
+  const candidates = Object.keys(RELICS).filter((id) => {
+    if (owned.has(id)) return false
+    const t = RELICS[id]?.tier
+    return t === RELIC_TIER.COMMON || t === RELIC_TIER.UNCOMMON || t === RELIC_TIER.RARE
+  })
+  if (!candidates.length) return null
+  return candidates[Math.floor(Math.random() * candidates.length)]
 }
 
 export const RELIC_IDS = Object.keys(RELICS)
 
-export const MAX_EQUIPPED_RELICS = 5
+export const MAX_EQUIPPED_RELICS = 4
+
+/** Free merchant refreshes per visit when this relic is owned. */
+export const SAMPLE_TRAY_RELIC_ID = 'sample_tray'
+export const SAMPLE_TRAY_FREE_REROLLS = 3
 
 // Tier display colors
 export const RELIC_TIER_COLORS = {

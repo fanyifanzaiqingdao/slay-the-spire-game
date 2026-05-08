@@ -1,14 +1,17 @@
 // components/menus/VaultScreen.jsx
 // Rest site vault — freely swap equipped relics with vault relics.
-// No cost, no limit. Leave with exactly 5 equipped (or fewer if fewer acquired).
+// No cost, no limit. Swap freely between equipped row and vault.
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { RELICS, RELIC_TIER_COLORS, RELIC_TIER_GLOW } from '../../data/relics.js'
+import { relicLocalizedName } from '../../utils/relicI18n.js'
 import useRunStore from '../../stores/runStore.js'
 import { useAudio } from '../../hooks/useAudio.js'
 
 function SmallRelicCard({ relicId, isSelected, isEquipped, onClick }) {
+  const { t } = useTranslation()
   const relic = RELICS[relicId]
   if (!relic) return null
   const tierColor = RELIC_TIER_COLORS[relic.tier] || '#6b7280'
@@ -30,8 +33,8 @@ function SmallRelicCard({ relicId, isSelected, isEquipped, onClick }) {
       <div className="flex items-center gap-2">
         <span className="text-lg">{relic.icon}</span>
         <div className="min-w-0">
-          <div className="text-xs font-bold truncate" style={{ color: relic.color }}>{relic.name}</div>
-          <div className="text-[9px] text-gray-600 uppercase">{relic.tier}</div>
+          <div className="text-xs font-bold truncate" style={{ color: relic.color }}>{relicLocalizedName(relicId, relic.name)}</div>
+          <div className="text-[9px] text-gray-600 uppercase">{t(`relic.tier.${relic.tier}`, { defaultValue: relic.tier })}</div>
         </div>
         {isSelected && (
           <span className="ml-auto text-amber-400 text-xs">✓</span>
@@ -170,7 +173,7 @@ export function VaultScreen({ onClose }) {
             style={{ fontFamily: "'Cinzel', serif" }}
           >
             {canSwap
-              ? `⚡ Swap ${RELICS[store.relics[selectedEquipped]]?.name ?? ''} → ${RELICS[selectedVault]?.name ?? ''}`
+              ? `⚡ Swap ${relicLocalizedName(store.relics[selectedEquipped], RELICS[store.relics[selectedEquipped]]?.name ?? '')} → ${relicLocalizedName(selectedVault, RELICS[selectedVault]?.name ?? '')}`
               : 'Select one from each column to swap'}
           </motion.button>
         </div>

@@ -1,10 +1,14 @@
 // stores/runStore.js — v2
 // Active run state — all combat, navigation, and deck data for the current run
-// Per SKILL.md v2: includes lockedCards, activePlayerDebuffs, fightQuestionPoolUsed
+// Per SKILL.md v2: includes lockedCards and combat debuffs
 
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../utils/localStorage.js'
+import { MAX_EQUIPPED_RELICS } from '../data/relics.js'
+import { PINGBACK_PINS_RELIC_ID, PINGBACK_PINS_DAMAGE_PER_STACK } from '../constants/relicCombat.js'
+import { slotsFromEnemyDefs, legacyFromSlots, resetSlotsForNewFight } from '../utils/combatEnemies.js'
+import { VULNERABLE_DAMAGE_MULT } from '../constants/enemyStatus.js'
 
 const useRunStore = create(
   persist(
@@ -14,9 +18,7 @@ const useRunStore = create(
       campaign: null,
       character: null,
       masteryLevel: 0,
-      activeModifier: null,
-      lastCardTypePlayed: null,  // for type_lock curse
-      lastStandUsed: false,       // for last_stand blessing (once per run)
+      lastCardTypePlayed: null,  // e.g. potion "activate_chain" uses last type played
 
       // Potions (max 3 slots — array of potion IDs or null)
       potions: [],
@@ -48,6 +50,17 @@ const useRunStore = create(
       hand: [],
       discardPile: [],
       exhaustPile: [],
+      /** sprint_icebox: up to 2 cards held out of deck between fights (order = slots). */
+      iceboxCardIds: [],
+
+      /**
+       * Combat: playing a "return from discard" skill — hand already updated, choose one
+       * instance from discard by index, then add that card to hand and route the skill to exhaust/discard.
+       */
+      pendingDiscardPick: null, // { skillCardId: string, exhaustSelf: boolean } | null
+
+      /** Combat: played "exhaust hand for energy" skill — pick one remaining hand card by index. */
+      pendingHandExhaustEnergyPick: false,
 
       // v2: Locked cards (wrong answer → locked for this turn)
       lockedCards: [],
@@ -57,8 +70,8 @@ const useRunStore = create(
       // v3: Growth stacks per retained card ID (how many turns it has been retained)
       retainGrowthStacks: {},
 
-      // Relics — max 5 equipped, unlimited vault storage
-      relics: [],        // equipped (active, max 5)
+      // Relics — max MAX_EQUIPPED_RELICS equipped, unlimited vault storage
+      relics: [],        // equipped (active)
       vaultRelics: [],   // stored but inactive
       pendingRelicSwap: null, // { relicId } — set when a new relic is found with full slots
 
@@ -70,6 +83,10 @@ const useRunStore = create(
 
       // Combat
       inCombat: false,
+      /** Multi-enemy combat — when empty/legacy, fall back to currentEnemy + enemyHp. */
+      combatEnemySlots: [],
+      /** Which enemy slot is acting during enemy turn / resolving self-buffs (aligns with resolveEnemyAction). */
+      activeEnemySlotIndex: 0,
       currentEnemy: null,
       enemyHp: 0,
       enemyMaxHp: 0,
@@ -80,11 +97,16 @@ const useRunStore = create(
       turnNumber: 0,
       chainActive: false,
       chainType: null,
-      hintUsedThisFight: false,
-
-      // v2: Per-fight question pool — reset on fight start, prevents repeats
-      fightQuestionPoolUsed: [],
+      /** Resets each player draw; first card of the turn gets "first try" bonuses. */
+      playsThisPlayerTurn: 0,
+      /** Flat damage added to the next card that deals effect.damage; then cleared. */
+      pendingNextDamageBonus: 0,
       blindCardId: null,
+      /** Thorns: total reflect on HP hit = reflectStacks × reflectDamagePer (fight-scoped). */
+      reflectStacks: 0,
+      reflectDamagePer: 0,
+      /** Fight-scoped — flat bonus per hit on attack cards (UI 「力量」). */
+      playerStrength: 0,
 
       // Card type tracking for self_buff_focus
       cardTypesPlayedThisFight: {},
@@ -103,6 +125,12 @@ const useRunStore = create(
       journalWords: [],
       journalGrammar: [],
 
+      /**
+       * Merchant shop snapshot for the current map node — survives page refresh.
+       * Regenerated when nodeKey (runId|floor|currentNodeId) changes.
+       */
+      merchantOffer: null,
+
       // ============================================================
       // ACTIONS
       // ============================================================
@@ -113,6 +141,13 @@ const useRunStore = create(
       addBlock: (amount) => set(s => ({ block: s.block + amount })),
       spendBlock: (amount) => set(s => ({ block: Math.max(0, s.block - amount) })),
       clearBlock: () => set({ block: 0 }),
+
+      addReflectStacks: (n) => set(s => ({
+        reflectStacks: Math.max(0, (s.reflectStacks || 0) + Math.max(0, Math.floor(Number(n) || 0))),
+      })),
+      addReflectDamagePer: (n) => set(s => ({
+        reflectDamagePer: Math.max(0, (s.reflectDamagePer || 0) + Math.max(0, Math.floor(Number(n) || 0))),
+      })),
 
       // Energy
       spendEnergy: (amount) => set(s => ({ energy: Math.max(0, s.energy - amount) })),
@@ -171,12 +206,6 @@ const useRunStore = create(
       })),
       clearEnemyBuffs: () => set({ activeEnemyBuffs: [] }),
 
-      // v2: Question pool tracking
-      markQuestionUsed: (questionId) => set(s => ({
-        fightQuestionPoolUsed: [...s.fightQuestionPoolUsed, questionId]
-      })),
-      resetFightQuestionPool: () => set({ fightQuestionPoolUsed: [] }),
-
       // v2: Card type tracking for focus move
       trackCardTypePlayed: (cardType) => set(s => ({
         cardTypesPlayedThisFight: {
@@ -185,42 +214,386 @@ const useRunStore = create(
         }
       })),
 
-      // Chain
+      // Chain + per-turn play index (for first-try damage, chain resets each draw)
       activateChain: (type) => set({ chainActive: true, chainType: type }),
       breakChain: () => set({ chainActive: false, chainType: null }),
-
-      // Enemy state
-      setEnemy: (enemy) => set({
-        currentEnemy: enemy,
-        enemyHp: enemy.hp,
-        enemyMaxHp: enemy.hp,
-        enemyArmor: 0,
-        enemyFuryStacks: 0,
-        enemyFocusType: null,
-        activeEnemyBuffs: [],
-        intentIndex: 0,
+      beginPlayerCardPhase: () => set({
+        playsThisPlayerTurn: 0,
+        chainActive: false,
+        chainType: null,
       }),
-      damageEnemy: (amount) => set(s => {
-        const absorbed = Math.min(s.enemyArmor > 0 ? s.enemyArmor : 0, amount)
-        const remaining = amount - absorbed
+      incrementPlaysThisPlayerTurn: () => set(s => ({
+        playsThisPlayerTurn: (s.playsThisPlayerTurn || 0) + 1,
+      })),
+      queueNextHitDamageBonus: (amount) => set(s => ({
+        pendingNextDamageBonus: (s.pendingNextDamageBonus || 0) + Math.max(0, Math.floor(Number(amount) || 0)),
+      })),
+      addPlayerStrength: (amount) => set(s => ({
+        playerStrength: (s.playerStrength || 0) + Math.max(0, Math.floor(Number(amount) || 0)),
+      })),
+
+      // Enemy state (supports combatEnemySlots[] + legacy fields synced from slot 0)
+      setEnemy: (enemy) => set(() => {
+        const slots = slotsFromEnemyDefs([enemy])
         return {
-          enemyHp: Math.max(0, s.enemyHp - remaining),
-          enemyArmor: Math.max(0, s.enemyArmor - absorbed),
+          combatEnemySlots: slots,
+          activeEnemySlotIndex: 0,
+          ...legacyFromSlots(slots),
+          enemyFocusType: null,
+          activeEnemyBuffs: [],
         }
       }),
-      healEnemy: (amount) => set(s => ({ enemyHp: Math.min(s.enemyMaxHp, s.enemyHp + amount) })),
+      setEnemyPack: (enemyDefs) => set(() => {
+        const slots = slotsFromEnemyDefs(enemyDefs)
+        return {
+          combatEnemySlots: slots,
+          activeEnemySlotIndex: 0,
+          ...legacyFromSlots(slots),
+          enemyFocusType: null,
+          activeEnemyBuffs: [],
+        }
+      }),
+      syncActiveEnemySlot: (slotIndex) => set(s => {
+        const slot = s.combatEnemySlots?.[slotIndex]
+        if (!slot) return {}
+        return {
+          activeEnemySlotIndex: slotIndex,
+          currentEnemy: slot.def,
+          enemyHp: slot.hp,
+          enemyMaxHp: slot.maxHp,
+          enemyArmor: slot.armor ?? 0,
+          enemyFuryStacks: slot.furyStacks ?? 0,
+          intentIndex: slot.intentIndex ?? 0,
+        }
+      }),
+      damageEnemy: (amount, targetIndex = null, opts = {}) => set(s => {
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl, i) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        let idx = targetIndex != null ? targetIndex : slots.findIndex(sl => sl.hp > 0)
+        if (idx === -1) idx = 0
+        const slot = slots[idx]
+        if (!slot || slot.hp <= 0) return {}
+        let dmg = Math.max(0, Math.floor(Number(amount) || 0))
+        if (!opts.skipVulnerable && (slot.vulnerableTurns ?? 0) > 0) {
+          dmg = Math.floor(dmg * VULNERABLE_DAMAGE_MULT)
+        }
+        const absorbed = Math.min(slot.armor || 0, dmg)
+        const remaining = dmg - absorbed
+        const newHp = Math.max(0, slot.hp - remaining)
+        const newArmor = Math.max(0, (slot.armor || 0) - absorbed)
+        slots[idx] = { ...slot, hp: newHp, armor: newArmor }
+        const alive = slots.filter(sl => sl.hp > 0)
+        return {
+          combatEnemySlots: alive,
+          ...legacyFromSlots(alive),
+        }
+      }),
+      damageAllEnemies: (amount, opts = {}) => set(s => {
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        const next = slots.map((slot) => {
+          if (slot.hp <= 0) return slot
+          let dmg = Math.max(0, Math.floor(Number(amount) || 0))
+          if (!opts.skipVulnerable && (slot.vulnerableTurns ?? 0) > 0) {
+            dmg = Math.floor(dmg * VULNERABLE_DAMAGE_MULT)
+          }
+          const absorbed = Math.min(slot.armor || 0, dmg)
+          const remaining = dmg - absorbed
+          const newHp = Math.max(0, slot.hp - remaining)
+          const newArmor = Math.max(0, (slot.armor || 0) - absorbed)
+          return { ...slot, hp: newHp, armor: newArmor }
+        })
+        const alive = next.filter(sl => sl.hp > 0)
+        return {
+          combatEnemySlots: alive,
+          ...legacyFromSlots(alive),
+        }
+      }),
+
+      /** Poison damage & −1 stack each player turn start (after turn 0). */
+      tickEnemyPoisonAtPlayerTurnStart: () => set(s => {
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        const mapped = slots.map((slot) => {
+          if (slot.hp <= 0) return slot
+          let hp = slot.hp
+          let armor = slot.armor || 0
+          let poisonStacks = slot.poisonStacks || 0
+          let vulnerableTurns = slot.vulnerableTurns || 0
+          if (poisonStacks > 0) {
+            const raw = poisonStacks
+            const absorbed = Math.min(armor, raw)
+            const remaining = raw - absorbed
+            hp = Math.max(0, hp - remaining)
+            armor = Math.max(0, armor - absorbed)
+            poisonStacks = Math.max(0, poisonStacks - 1)
+          }
+          if (vulnerableTurns > 0) vulnerableTurns -= 1
+          return { ...slot, hp, armor, poisonStacks, vulnerableTurns }
+        })
+        const alive = mapped.filter(sl => sl.hp > 0)
+        return {
+          combatEnemySlots: alive,
+          ...legacyFromSlots(alive),
+        }
+      }),
+
+      /** Decrement 易伤/虚弱 after player ends turn (so full player phase keeps bonuses). */
+      /** Weak — one enemy attack cycle consumed per enemy phase end */
+      tickEnemyWeakDecayAfterEnemyTurn: () => set(s => {
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        slots = slots.map((slot) => {
+          if (slot.hp <= 0) return slot
+          let weakTurns = slot.weakTurns || 0
+          if (weakTurns > 0) weakTurns -= 1
+          return { ...slot, weakTurns }
+        })
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+
+      addEnemyVulnerable: (slotIndex, turns) => set(s => {
+        const add = Math.max(0, Math.floor(Number(turns) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots[slotIndex] || slots[slotIndex].hp <= 0) return {}
+        slots[slotIndex] = {
+          ...slots[slotIndex],
+          vulnerableTurns: (slots[slotIndex].vulnerableTurns || 0) + add,
+        }
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      addEnemyWeak: (slotIndex, turns) => set(s => {
+        const add = Math.max(0, Math.floor(Number(turns) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots[slotIndex] || slots[slotIndex].hp <= 0) return {}
+        slots[slotIndex] = {
+          ...slots[slotIndex],
+          weakTurns: (slots[slotIndex].weakTurns || 0) + add,
+        }
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      addEnemyPoison: (slotIndex, stacks) => set(s => {
+        const add = Math.max(0, Math.floor(Number(stacks) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots[slotIndex] || slots[slotIndex].hp <= 0) return {}
+        slots[slotIndex] = {
+          ...slots[slotIndex],
+          poisonStacks: (slots[slotIndex].poisonStacks || 0) + add,
+        }
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      addEnemyVulnerableAll: (turns) => set(s => {
+        const add = Math.max(0, Math.floor(Number(turns) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        slots = slots.map(sl =>
+          sl.hp > 0
+            ? { ...sl, vulnerableTurns: (sl.vulnerableTurns || 0) + add }
+            : sl,
+        )
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      addEnemyWeakAll: (turns) => set(s => {
+        const add = Math.max(0, Math.floor(Number(turns) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        slots = slots.map(sl =>
+          sl.hp > 0 ? { ...sl, weakTurns: (sl.weakTurns || 0) + add } : sl,
+        )
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      addEnemyPoisonAll: (stacks) => set(s => {
+        const add = Math.max(0, Math.floor(Number(stacks) || 0))
+        if (!add) return {}
+        let slots = [...(s.combatEnemySlots?.length ? s.combatEnemySlots : [])]
+        if (!slots.length && s.currentEnemy) {
+          slots = slotsFromEnemyDefs([s.currentEnemy]).map((sl) => ({
+            ...sl,
+            hp: s.enemyHp,
+            maxHp: s.enemyMaxHp,
+            armor: s.enemyArmor || 0,
+            furyStacks: s.enemyFuryStacks || 0,
+            intentIndex: s.intentIndex || 0,
+          }))
+        }
+        if (!slots.length) return {}
+        slots = slots.map(sl =>
+          sl.hp > 0 ? { ...sl, poisonStacks: (sl.poisonStacks || 0) + add } : sl,
+        )
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
+      }),
+      healEnemy: (amount) => set(s => {
+        const idx = s.activeEnemySlotIndex ?? 0
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[idx]) {
+          return { enemyHp: Math.min(s.enemyMaxHp, s.enemyHp + amount) }
+        }
+        const slot = slots[idx]
+        const nh = Math.min(slot.maxHp, slot.hp + amount)
+        slots[idx] = { ...slot, hp: nh }
+        return {
+          combatEnemySlots: slots,
+          ...legacyFromSlots(slots),
+        }
+      }),
       setEnemyHp: (hp) => set({ enemyHp: Math.max(0, hp) }),
       setEnemyArmor: (armor) => set({ enemyArmor: Math.max(0, armor) }),
-      addEnemyArmor: (amount) => set(s => ({ enemyArmor: s.enemyArmor + amount })),
-      addEnemyFury: () => set(s => ({ enemyFuryStacks: s.enemyFuryStacks + 1 })),
-      clearEnemyFury: () => set({ enemyFuryStacks: 0 }),
+      addEnemyArmor: (amount) => set(s => {
+        const idx = s.activeEnemySlotIndex ?? 0
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[idx]) {
+          return { enemyArmor: Math.max(0, (s.enemyArmor || 0) + amount) }
+        }
+        slots[idx] = { ...slots[idx], armor: (slots[idx].armor || 0) + amount }
+        return {
+          combatEnemySlots: slots,
+          ...legacyFromSlots(slots),
+        }
+      }),
+      addEnemyFury: () => set(s => {
+        const idx = s.activeEnemySlotIndex ?? 0
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[idx]) {
+          return { enemyFuryStacks: (s.enemyFuryStacks || 0) + 1 }
+        }
+        const nf = (slots[idx].furyStacks || 0) + 1
+        slots[idx] = { ...slots[idx], furyStacks: nf }
+        return {
+          combatEnemySlots: slots,
+          ...legacyFromSlots(slots),
+          enemyFuryStacks: nf,
+        }
+      }),
+      clearEnemyFury: () => set(s => {
+        const idx = s.activeEnemySlotIndex ?? 0
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[idx]) return { enemyFuryStacks: 0 }
+        slots[idx] = { ...slots[idx], furyStacks: 0 }
+        return {
+          combatEnemySlots: slots,
+          ...legacyFromSlots(slots),
+          enemyFuryStacks: 0,
+        }
+      }),
       setEnemyFocusType: (type) => set({ enemyFocusType: type }),
       setEnemyBuffs: (buffs) => set({ activeEnemyBuffs: buffs }),
 
-      // Intent
-      advanceIntent: () => set(s => {
-        if (!s.currentEnemy) return {}
-        return { intentIndex: (s.intentIndex + 1) % s.currentEnemy.intent_pattern.length }
+      advanceIntentForSlot: (slotIndex) => set(s => {
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[slotIndex]?.def?.intent_pattern?.length) return {}
+        const pat = slots[slotIndex].def.intent_pattern
+        const ni = ((slots[slotIndex].intentIndex ?? 0) + 1) % pat.length
+        slots[slotIndex] = { ...slots[slotIndex], intentIndex: ni }
+        return {
+          combatEnemySlots: slots,
+          ...legacyFromSlots(slots),
+        }
+      }),
+      advanceIntent: () => set((s) => {
+        const slots = [...(s.combatEnemySlots || [])]
+        if (!slots[0]?.def?.intent_pattern?.length) {
+          if (!s.currentEnemy?.intent_pattern?.length) return {}
+          return { intentIndex: (s.intentIndex + 1) % s.currentEnemy.intent_pattern.length }
+        }
+        const pat = slots[0].def.intent_pattern
+        const ni = ((slots[0].intentIndex ?? 0) + 1) % pat.length
+        slots[0] = { ...slots[0], intentIndex: ni }
+        return { combatEnemySlots: slots, ...legacyFromSlots(slots) }
       }),
 
       // Hand & Deck
@@ -238,11 +611,11 @@ const useRunStore = create(
       // Relics
       addRelic: (relicId) => set(s => {
         if (s.relics.includes(relicId) || s.vaultRelics.includes(relicId)) return {} // already have it
-        if (s.relics.length < 5) {
+        if (s.relics.length < MAX_EQUIPPED_RELICS) {
           // Slot available — equip directly
           return { relics: [...s.relics, relicId] }
         }
-        // All 5 slots full — trigger swap screen
+        // All equipped slots full — trigger swap screen
         return { pendingRelicSwap: relicId }
       }),
       clearPendingRelicSwap: () => set({ pendingRelicSwap: null }),
@@ -251,11 +624,17 @@ const useRunStore = create(
       swapRelic: (slotIndex, newRelicId) => set(s => {
         const outgoing = s.relics[slotIndex]
         if (!outgoing) return {}
+        let deck = s.deck
+        let iceboxCardIds = [...(s.iceboxCardIds || [])]
+        if (outgoing === 'sprint_icebox' && iceboxCardIds.length > 0) {
+          deck = [...deck, ...iceboxCardIds]
+          iceboxCardIds = []
+        }
         const newEquipped = [...s.relics]
         newEquipped[slotIndex] = newRelicId
         const newVault = s.vaultRelics.filter(id => id !== newRelicId)
         if (outgoing) newVault.push(outgoing)
-        return { relics: newEquipped, vaultRelics: newVault, pendingRelicSwap: null }
+        return { relics: newEquipped, vaultRelics: newVault, pendingRelicSwap: null, deck, iceboxCardIds }
       }),
 
       // Decline the new relic — put it in vault (or discard)
@@ -268,11 +647,17 @@ const useRunStore = create(
       vaultSwap: (equippedIndex, vaultRelicId) => set(s => {
         const outgoing = s.relics[equippedIndex]
         if (!outgoing || !s.vaultRelics.includes(vaultRelicId)) return {}
+        let deck = s.deck
+        let iceboxCardIds = [...(s.iceboxCardIds || [])]
+        if (outgoing === 'sprint_icebox' && iceboxCardIds.length > 0) {
+          deck = [...deck, ...iceboxCardIds]
+          iceboxCardIds = []
+        }
         const newEquipped = [...s.relics]
         newEquipped[equippedIndex] = vaultRelicId
         const newVault = s.vaultRelics.filter(id => id !== vaultRelicId)
         if (outgoing) newVault.push(outgoing)
-        return { relics: newEquipped, vaultRelics: newVault }
+        return { relics: newEquipped, vaultRelics: newVault, deck, iceboxCardIds }
       }),
 
       // Add relic directly to vault (e.g. from events)
@@ -280,9 +665,7 @@ const useRunStore = create(
         vaultRelics: s.vaultRelics.includes(relicId) ? s.vaultRelics : [...s.vaultRelics, relicId]
       })),
 
-      // Modifier tracking
       setLastCardTypePlayed: (type) => set({ lastCardTypePlayed: type }),
-      useLastStand: () => set({ lastStandUsed: true }),
 
       // Potions
       addPotion: (potionId) => set(s => {
@@ -329,7 +712,6 @@ const useRunStore = create(
         fightCorrectStreak: s.fightCorrectStreak + 1,
       })),
       resetFightAccuracy: () => set({ fightCorrect: 0, fightTotal: 0, fightCorrectStreak: 0 }),
-      setHintUsed: () => set({ hintUsedThisFight: true }),
       setWornDictionaryUsed: () => set({ wornDictionaryUsedThisFight: true }),
       incrementTurn: () => set(s => ({ turnNumber: s.turnNumber + 1 })),
 
@@ -353,10 +735,56 @@ const useRunStore = create(
 
       // Deck management
       addCardToDeck: (cardId) => set(s => ({ deck: [...s.deck, cardId] })),
+      /** Remove one copy of cardId from the first pile that contains it (deck → hand → discard → exhaust → icebox). */
       removeCardFromDeck: (cardId) => set(s => {
-        const idx = s.deck.indexOf(cardId)
-        if (idx === -1) return {}
-        return { deck: [...s.deck.slice(0, idx), ...s.deck.slice(idx + 1)] }
+        const cut = (arr) => {
+          const i = arr.indexOf(cardId)
+          if (i === -1) return null
+          return [...arr.slice(0, i), ...arr.slice(i + 1)]
+        }
+        const d = cut(s.deck)
+        if (d) return { deck: d }
+        const h = cut(s.hand)
+        if (h) return { hand: h }
+        const di = cut(s.discardPile)
+        if (di) return { discardPile: di }
+        const ex = cut(s.exhaustPile || [])
+        if (ex) return { exhaustPile: ex }
+        const ice = cut(s.iceboxCardIds || [])
+        if (ice) return { iceboxCardIds: ice }
+        return {}
+      }),
+      /**
+       * Remove exactly one card at a known pile index (merchant / precise UI).
+       * pile: 'deck' | 'hand' | 'discardPile' | 'exhaustPile' | 'icebox'
+       */
+      removeCardInstance: ({ pile, index }) => set(s => {
+        const key = pile === 'icebox' ? 'iceboxCardIds' : pile
+        if (!['deck', 'hand', 'discardPile', 'exhaustPile', 'iceboxCardIds'].includes(key)) return {}
+        const arr = [...(s[key] || [])]
+        if (index < 0 || index >= arr.length) return {}
+        arr.splice(index, 1)
+        return { [key]: arr }
+      }),
+
+      /** Park one deck copy by index (non-combat + sprint_icebox only). Preserves duplicates. */
+      parkDeckSlotAtIndex: (deckIndex) => set(s => {
+        if (s.inCombat || !s.relics.includes('sprint_icebox')) return {}
+        const ice = [...(s.iceboxCardIds || [])]
+        if (ice.length >= 2) return {}
+        if (deckIndex < 0 || deckIndex >= s.deck.length) return {}
+        const id = s.deck[deckIndex]
+        const newDeck = s.deck.filter((_, i) => i !== deckIndex)
+        ice.push(id)
+        return { deck: newDeck, iceboxCardIds: ice }
+      }),
+      /** Return one parked card from icebox slot index back to bottom of deck. */
+      unparkIceboxSlot: (slotIndex) => set(s => {
+        if (s.inCombat || !s.relics.includes('sprint_icebox')) return {}
+        const ice = [...(s.iceboxCardIds || [])]
+        if (slotIndex < 0 || slotIndex >= ice.length) return {}
+        const [id] = ice.splice(slotIndex, 1)
+        return { deck: [...s.deck, id], iceboxCardIds: ice }
       }),
 
       // Combat toggle
@@ -368,39 +796,60 @@ const useRunStore = create(
         if (s.masteryLevel >= 3 && s.deck.length > 0) {
           newBlindCardId = s.deck[Math.floor(Math.random() * s.deck.length)]
         }
+        const rel = s.relics
+        let startBlock = rel.includes('fox_mask') ? 10 : 0
+        if (rel.includes('pager_rattle')) startBlock += 2
+        const startGoldBonus = rel.includes('brief_rain') ? 3 : 0
+        const startHeal = rel.includes('handoff_marker') ? 2 : 0
+        const slotsForFight = (s.combatEnemySlots && s.combatEnemySlots.length > 0)
+          ? resetSlotsForNewFight(s.combatEnemySlots)
+          : slotsFromEnemyDefs([enemy])
+        const legacyFight = legacyFromSlots(slotsForFight)
         return {
           inCombat: true,
-          currentEnemy: enemy,
-          enemyHp: enemy.hp,
-          enemyMaxHp: enemy.hp,
+          combatEnemySlots: slotsForFight,
+          activeEnemySlotIndex: 0,
+          currentEnemy: legacyFight.currentEnemy,
+          enemyHp: legacyFight.enemyHp,
+          enemyMaxHp: legacyFight.enemyMaxHp,
           enemyArmor: 0,
           enemyFuryStacks: 0,
           enemyFocusType: null,
-          intentIndex: 0,
+          intentIndex: legacyFight.intentIndex,
           lockedCards: [],           // RULE: unlock all cards at fight start
           retainedCards: [],         // v3: clear retained cards at fight start
           retainGrowthStacks: {},    // v3: clear growth stacks at fight start
           activeEnemyBuffs: [],
           chainActive: false,
           chainType: null,
-          fightQuestionPoolUsed: [], // RULE: reset question pool at fight start
+          playsThisPlayerTurn: 0,
+          pendingNextDamageBonus: 0,
           cardTypesPlayedThisFight: {},
-          hintUsedThisFight: false,
           wornDictionaryUsedThisFight: false,
           fightCorrect: 0,
           fightTotal: 0,
           fightCorrectStreak: 0,
-          block: s.relics.includes('fox_mask') ? 10 : 0,
+          turnNumber: 0,
+          block: startBlock,
+          hp: Math.min(s.maxHp, s.hp + startHeal),
+          gold: s.gold + startGoldBonus,
           energy: s.maxEnergy,
           bonusEnergyNextTurn: 0,
           blindCardId: newBlindCardId,
-          lastCardTypePlayed: null,  // Reset type_lock tracker
+          lastCardTypePlayed: null,
+          reflectStacks: rel.includes(PINGBACK_PINS_RELIC_ID) ? 1 : 0,
+          reflectDamagePer: rel.includes(PINGBACK_PINS_RELIC_ID) ? PINGBACK_PINS_DAMAGE_PER_STACK : 0,
+          playerStrength: 0,
+          pendingDiscardPick: null,
+          pendingHandExhaustEnergyPick: false,
         }
       }),
 
       // v2: endFight — moves remaining hand to discard to prevent deck shrinkage
       endFight: () => set(s => ({
         inCombat: false,
+        combatEnemySlots: [],
+        activeEnemySlotIndex: 0,
         currentEnemy: null,
         lockedCards: [],
         retainedCards: [],         // v3: clear on fight end
@@ -409,7 +858,7 @@ const useRunStore = create(
         activePlayerDebuffs: [],
         chainActive: false,
         chainType: null,
-        fightQuestionPoolUsed: [],
+        pendingNextDamageBonus: 0,
         cardTypesPlayedThisFight: {},
         // CRITICAL: Merge all combat cards back into the master deck
         deck: [...s.deck, ...s.discardPile, ...s.hand],
@@ -417,39 +866,35 @@ const useRunStore = create(
         hand: [],
         block: 0,
         blindCardId: null,
+        reflectStacks: 0,
+        reflectDamagePer: 0,
+        playerStrength: 0,
+        pendingDiscardPick: null,
+        pendingHandExhaustEnergyPick: false,
       })),
 
 
       // Run lifecycle
       startRun: (campaign, character, masteryLevel, startingDeck, starterRelicId) => {
-        // Read chosen modifier from sessionStorage
-        let activeModifier = null
-        try {
-          const raw = sessionStorage.getItem('chosen_modifier')
-          if (raw) activeModifier = JSON.parse(raw)
-        } catch {}
-        sessionStorage.removeItem('chosen_modifier')
+        const resolvedStarterRelic = starterRelicId || character?.starterRelic || null
 
-        // Apply curse effects that affect starting state
-        let startHp = 80
-        let startMaxEnergy = 3
-        let startGold = 0
-        if (activeModifier?.curse?.effect) {
-          const e = activeModifier.curse.effect
-          if (e.type === 'start_hp') startHp = e.value
-        }
-        if (activeModifier?.blessing?.effect) {
-          const e = activeModifier.blessing.effect
-          if (e.type === 'bonus_max_energy') startMaxEnergy = 3 + e.value
-          if (e.type === 'bonus_gold') startGold = e.value
-        }
+        const startHp = 80
+        const startMaxEnergy = 3
+        const startGold = 0
+
+        // Session backup for portrait path (some builds / rehydrate edge cases drop nested `character`)
+        try {
+          if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('lq_run_character_id', character?.id || '')
+            sessionStorage.setItem('lq_run_campaign_id', campaign || '')
+          }
+        } catch {}
 
         set({
           runId: crypto.randomUUID(),
           campaign,
           character,
           masteryLevel,
-          activeModifier,
           hp: startHp,
           maxHp: startHp,
           block: 0,
@@ -461,13 +906,15 @@ const useRunStore = create(
           hand: [],
           discardPile: [],
           exhaustPile: [],
-          relics: starterRelicId ? [starterRelicId] : [],
+          iceboxCardIds: [],
+          relics: resolvedStarterRelic ? [resolvedStarterRelic] : [],
           activeBuffs: [],
           lockedCards: [],
           activePlayerDebuffs: [],
           activeEnemyBuffs: [],
           chainActive: false,
           chainType: null,
+          pendingNextDamageBonus: 0,
           inCombat: false,
           currentEnemy: null,
           sessionMistakes: [],
@@ -475,14 +922,12 @@ const useRunStore = create(
           sessionTotal: 0,
           fightCorrect: 0,
           fightTotal: 0,
-          fightQuestionPoolUsed: [],
           cardTypesPlayedThisFight: {},
           journalWords: [],
           journalGrammar: [],
           mapNodes: [],
           mapPaths: [],
           currentNodeId: null,
-          hintUsedThisFight: false,
           wornDictionaryUsedThisFight: false,
           turnNumber: 0,
           intentIndex: 0,
@@ -490,21 +935,52 @@ const useRunStore = create(
           enemyFuryStacks: 0,
           enemyFocusType: null,
           blindCardId: null,
+          reflectStacks: 0,
+          reflectDamagePer: 0,
+          merchantOffer: null,
+          pendingDiscardPick: null,
+          pendingHandExhaustEnergyPick: false,
+          combatEnemySlots: [],
+          activeEnemySlotIndex: 0,
         })
       },
 
-      endRun: () => set({
-        runId: null,
-        inCombat: false,
-        currentEnemy: null,
-        hand: [],
-        lockedCards: [],
-        activePlayerDebuffs: [],
-        activeEnemyBuffs: [],
-      }),
+      endRun: () => {
+        try {
+          if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.removeItem('lq_run_character_id')
+            sessionStorage.removeItem('lq_run_campaign_id')
+          }
+        } catch {}
+        set({
+          runId: null,
+          inCombat: false,
+          currentEnemy: null,
+          combatEnemySlots: [],
+          activeEnemySlotIndex: 0,
+          hand: [],
+          lockedCards: [],
+          activePlayerDebuffs: [],
+          activeEnemyBuffs: [],
+          iceboxCardIds: [],
+          merchantOffer: null,
+          pendingDiscardPick: null,
+          pendingHandExhaustEnergyPick: false,
+          playerStrength: 0,
+        })
+      },
     }),
     {
       name: STORAGE_KEYS.ACTIVE_RUN,
+      storage: createJSONStorage(() => localStorage),
+      version: 1,
+      migrate: (persisted) => {
+        if (persisted && typeof persisted === 'object' && persisted.state) {
+          delete persisted.state.activeModifier
+          delete persisted.state.lastStandUsed
+        }
+        return persisted
+      },
     }
   )
 )

@@ -1160,5 +1160,401 @@
         "translation": "Magnificent..."
       }
     ]
+  },
+  {
+    "id": "dev_r_legacy_log",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "regular",
+    "name_target": "遗留日志怪",
+    "name_native": "Legacy Log Gremlin",
+    "hp": 38,
+    "base_attack": 6,
+    "actions_per_turn": 1,
+    "silence_type": "vocabulary",
+    "concept_tags": [
+      "act1"
+    ],
+    "intent_pattern": [
+      [
+        "strike"
+      ],
+      [
+        "strike"
+      ],
+      [
+        "debuff_fog"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#1a2a3a",
+    "defeat_sfx": "spirit_dispel",
+    "defeat_dialogue": "…truncated…",
+    "defeat_dialogue_translation": "Log rotated away."
+  },
+  {
+    "id": "dev_r_dependency_imp",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "regular",
+    "name_target": "依赖小鬼",
+    "name_native": "Dependency Imp",
+    "hp": 42,
+    "base_attack": 6,
+    "actions_per_turn": 1,
+    "silence_type": "grammar",
+    "concept_tags": [
+      "act1"
+    ],
+    "intent_pattern": [
+      [
+        "strike"
+      ],
+      [
+        "self_buff_armor_up"
+      ],
+      [
+        "strike"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#2a1a3a",
+    "defeat_sfx": "spirit_dispel",
+    "defeat_dialogue": "npm… out…",
+    "defeat_dialogue_translation": "npm out."
+  },
+  {
+    "id": "dev_r_flaky_test",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "regular",
+    "name_target": "flaky 测试灵",
+    "name_native": "Flaky Test Wisp",
+    "hp": 36,
+    "base_attack": 7,
+    "actions_per_turn": 1,
+    "silence_type": "reading",
+    "concept_tags": [
+      "act1"
+    ],
+    "intent_pattern": [
+      [
+        "strike_swift"
+      ],
+      [
+        "debuff_confusion"
+      ],
+      [
+        "strike_swift"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#0a2a2a",
+    "defeat_sfx": "spirit_dispel",
+    "defeat_dialogue": "passed locally…",
+    "defeat_dialogue_translation": "Passed locally."
+  },
+  {
+    "id": "dev_r_meeting_slime",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "regular",
+    "name_target": "会议史莱姆",
+    "name_native": "Meeting Slime",
+    "hp": 44,
+    "base_attack": 5,
+    "actions_per_turn": 1,
+    "silence_type": "grammar",
+    "concept_tags": [
+      "act1"
+    ],
+    "intent_pattern": [
+      [
+        "debuff_drain"
+      ],
+      [
+        "strike"
+      ],
+      [
+        "debuff_bind"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#2a2a1a",
+    "defeat_sfx": "spirit_dispel",
+    "defeat_dialogue": "another sync…",
+    "defeat_dialogue_translation": "Another sync."
+  },
+  {
+    "id": "dev_e_code_freeze",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "elite",
+    "name_target": "需求冻结骑士",
+    "name_native": "Code Freeze Knight",
+    "hp": 78,
+    "base_attack": 10,
+    "actions_per_turn": 1,
+    "silence_type": "reading",
+    "concept_tags": [
+      "act1",
+      "elite"
+    ],
+    "intent_pattern": [
+      [
+        "self_buff_harden"
+      ],
+      [
+        "strike"
+      ],
+      [
+        "strike_heavy"
+      ],
+      [
+        "debuff_silence"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#1a1a4a",
+    "defeat_sfx": "guard_dismiss",
+    "defeat_dialogue": "Scope… locked.",
+    "defeat_dialogue_translation": "Scope locked."
+  },
+  {
+    "id": "dev_e_ci_golem",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "elite",
+    "name_target": "CI 石像鬼",
+    "name_native": "CI Golem",
+    "hp": 85,
+    "base_attack": 9,
+    "actions_per_turn": 1,
+    "silence_type": "vocabulary",
+    "concept_tags": [
+      "act1",
+      "elite"
+    ],
+    "intent_pattern": [
+      [
+        "self_buff_power_up"
+      ],
+      [
+        "strike",
+        "strike"
+      ],
+      [
+        "strike_heavy"
+      ],
+      [
+        "debuff_silence"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "confusion",
+        "attack_bonus": 1,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 3,
+        "duration_turns": 2
+      }
+    },
+    "variants": [],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#3a2020",
+    "defeat_sfx": "guard_dismiss",
+    "defeat_dialogue": "build… green…",
+    "defeat_dialogue_translation": "Build green."
+  },
+  {
+    "id": "dev_b_release_train",
+    "campaign": "japanese",
+    "pool": "act1",
+    "floor": 1,
+    "tier": "boss",
+    "name_target": "发布列车长",
+    "name_native": "Release Train Conductor",
+    "hp": 145,
+    "base_attack": 11,
+    "actions_per_turn": 2,
+    "silence_type": "grammar",
+    "concept_tags": [
+      "act1",
+      "boss"
+    ],
+    "intent_pattern": [
+      [
+        "strike",
+        "self_buff_power_up"
+      ],
+      [
+        "debuff_drain",
+        "strike"
+      ],
+      [
+        "self_buff_armor_up",
+        "strike"
+      ],
+      [
+        "strike",
+        "debuff_silence"
+      ]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": {
+        "type": "confusion",
+        "attack_bonus": 3,
+        "duration_turns": 1
+      },
+      "grammar": {
+        "type": "conjugation_armor",
+        "attack_bonus": 2,
+        "duration_turns": 1
+      },
+      "reading": {
+        "type": "fortify",
+        "hp_bonus": 6,
+        "duration_turns": 2
+      }
+    },
+    "phases": [
+      {
+        "phase": 1,
+        "hp_threshold": 145,
+        "description": "On schedule"
+      },
+      {
+        "phase": 2,
+        "hp_threshold": 70,
+        "description": "Crunch window",
+        "on_enter": "add_fury_3"
+      }
+    ],
+    "special_ability": null,
+    "portrait": null,
+    "portrait_placeholder_color": "#2a1a0a",
+    "defeat_sfx": "boss_dissolve",
+    "pre_fight_dialogue": [
+      {
+        "line": "全員、乗車。",
+        "translation": "All aboard."
+      }
+    ],
+    "defeat_dialogue": [
+      {
+        "line": "次の駅で…",
+        "translation": "Next station..."
+      }
+    ]
   }
 ]

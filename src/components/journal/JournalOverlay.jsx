@@ -25,15 +25,15 @@ export function JournalOverlay({ words = [], grammar = [], onClose }) {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-800">
-          <h2 className="text-base font-bold text-amber-200">旅の手帳 — Journal</h2>
+          <h2 className="text-base font-bold text-amber-200">Run log</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-white text-2xl leading-none">×</button>
         </div>
 
         {/* Tabs */}
         <div className="flex border-b border-gray-800">
           {[
-            { id: 'words', label: `Words (${words.length})` },
-            { id: 'grammar', label: `Grammar (${grammar.length})` },
+            { id: 'words', label: `Ship log (${words.length})` },
+            { id: 'grammar', label: `Process debt (${grammar.length})` },
           ].map(t => (
             <button
               key={t.id}

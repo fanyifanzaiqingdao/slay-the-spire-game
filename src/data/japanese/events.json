@@ -6,6 +6,7 @@
     "title": "The Shrine Maiden's Riddle",
     "title_target": "巫女の謎",
     "setup_text": "A shrine maiden blocks your path. She speaks:",
+    "setup_text_target": "道を塞ぐ巫女が、静かに問いかける。",
     "npc_dialogue": "「あなたは何を求めているのですか？」",
     "npc_dialogue_translation": "What are you seeking?",
     "options": [
@@ -14,14 +15,26 @@
         "translation": "I seek knowledge.",
         "outcome": "reward",
         "outcome_text": "The maiden smiles and steps aside, placing a glowing scroll in your hands.",
-        "reward": { "type": "card_upgrade", "amount": 1, "description": "A random card in your deck is upgraded." }
+        "outcome_text_target": "巫女は微笑み、道を開ける。あなたの手には淡く光る巻物が残された。",
+        "reward": {
+          "type": "card_upgrade",
+          "amount": 1,
+          "description": "A random card in your deck is upgraded.",
+          "description_target": "牌组中的一张随机卡牌获得升级。"
+        }
       },
       {
         "text": "「力を求めています。」",
         "translation": "I seek power.",
         "outcome": "neutral",
         "outcome_text": "The maiden nods solemnly. 'Power alone will not carry you to the summit.'",
-        "reward": { "type": "gold", "amount": 10, "description": "You receive 10 gold." }
+        "outcome_text_target": "巫女郑重地点头：“仅靠力量，无法抵达山巅。”",
+        "reward": {
+          "type": "gold",
+          "amount": 10,
+          "description": "You receive 10 gold.",
+          "description_target": "获得 10 金币。"
+        }
       }
     ]
   },
@@ -32,6 +45,7 @@
     "title": "The Wandering Monk",
     "title_target": "旅の僧侶",
     "setup_text": "An old monk sits by the road, studying a worn scroll. He looks up and asks:",
+    "setup_text_target": "路边坐着一位老僧，正翻看破旧卷轴。他抬头问你：",
     "npc_dialogue": "「この言葉の意味がわかりますか？」",
     "npc_dialogue_translation": "Do you understand the meaning of these words?",
     "options": [
@@ -40,14 +54,26 @@
         "translation": "Yes, I understand.",
         "outcome": "reward",
         "outcome_text": "The monk beams. 'A rare traveler!' He shares his provisions.",
-        "reward": { "type": "heal", "amount": 15, "description": "Restore 15 HP." }
+        "outcome_text_target": "僧人露出笑容：“少见的旅人！”他分给你一些补给。",
+        "reward": {
+          "type": "heal",
+          "amount": 15,
+          "description": "Restore 15 HP.",
+          "description_target": "恢复 15 点生命值。"
+        }
       },
       {
         "text": "「いいえ、わかりません。」",
         "translation": "No, I don't understand.",
         "outcome": "penalty",
         "outcome_text": "The monk chuckles. 'Honesty is its own wisdom. But the mountain does not forgive ignorance.' A cold wind saps your strength.",
-        "reward": { "type": "hp_loss", "amount": 8, "description": "Lose 8 HP." }
+        "outcome_text_target": "僧人轻笑：“诚实也是智慧，但山不会宽恕无知。”寒风掠过，你感到虚弱。",
+        "reward": {
+          "type": "hp_loss",
+          "amount": 8,
+          "description": "Lose 8 HP.",
+          "description_target": "失去 8 点生命值。"
+        }
       }
     ]
   },
@@ -58,6 +84,7 @@
     "title": "The Spirit Fork",
     "title_target": "霊の辻",
     "setup_text": "The path splits. A small fox spirit sits at the crossroads, cleaning its paws. It looks up:",
+    "setup_text_target": "道路在前方分岔。路口坐着一只小狐灵，正舔着爪子，抬头看向你：",
     "npc_dialogue": "「右か左か、どちらに行きますか？右は「危険」、左は「安全」と書いてあります。」",
     "npc_dialogue_translation": "Right or left — which will you go? The right sign reads 'Danger', the left reads 'Safety'.",
     "options": [
@@ -66,14 +93,78 @@
         "translation": "I'll go right. (Danger)",
         "outcome": "reward",
         "outcome_text": "The dangerous path is littered with abandoned relics. You pocket a glowing item.",
-        "reward": { "type": "relic_random", "amount": 1, "description": "Gain a random relic." }
+        "outcome_text_target": "危险小路上散落着被遗弃的遗物。你捡起了一件发光的宝物。",
+        "reward": {
+          "type": "relic_random",
+          "amount": 1,
+          "description": "Gain a random relic.",
+          "description_target": "获得 1 件随机遗物。"
+        }
       },
       {
         "text": "「左に行きます。（安全）」",
         "translation": "I'll go left. (Safety)",
         "outcome": "minor_reward",
         "outcome_text": "The safe path is peaceful. You arrive rested.",
-        "reward": { "type": "heal", "amount": 10, "description": "Restore 10 HP." }
+        "outcome_text_target": "安全的小路宁静安稳。你以更好的状态继续前进。",
+        "reward": {
+          "type": "heal",
+          "amount": 10,
+          "description": "Restore 10 HP.",
+          "description_target": "恢复 10 点生命值。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jp_event_rate_limited_sage",
+    "campaign": "japanese",
+    "floor_tier": 1,
+    "title": "The Rate-Limited Sage",
+    "title_target": "限速的先知",
+    "setup_text": "A hunched scribe sits beside a stone lantern, staring at blank slips. They whisper about \"spirit-tokens\" running dry and every thought arriving one word per second.",
+    "setup_text_target": "一名驼背书吏坐在石灯笼旁，对着空白木简发呆。他小声抱怨「灵牌」用尽，念头像被节流，一个字一个字往外蹦。",
+    "npc_dialogue": "「今日の配分は尽きた…残りは手で書くしかない。」",
+    "npc_dialogue_translation": "Today's allotment is gone… from here I can only write by hand.",
+    "options": [
+      {
+        "text": "「分かる。休憩しよう。」",
+        "translation": "I get it. Let's take a break.",
+        "outcome": "reward",
+        "outcome_text": "You share rations and bad jokes about compile times. The sage breathes easier — empathy restores more than caffeine.",
+        "outcome_text_target": "你分了干粮，又吐槽了两句编译速度。书吏长舒一口气：共情比咖啡因更回血。",
+        "reward": {
+          "type": "heal",
+          "amount": 12,
+          "description": "Restore 12 HP.",
+          "description_target": "恢复 12 点生命值。"
+        }
+      },
+      {
+        "text": "「金を出す。早く続けて。」",
+        "translation": "I'll pay. Hurry up and keep going.",
+        "outcome": "neutral",
+        "outcome_text": "You toss coins. The scribe blinks. 'Gold doesn't refill the well — but thanks for the tip.' They scribble a lucky charm on your sleeve.",
+        "outcome_text_target": "你扔下金币。书吏眨眼：「钱填不满井，但谢了。」他在你袖上画了道潦草的幸运符。",
+        "reward": {
+          "type": "gold",
+          "amount": 8,
+          "description": "You receive 8 gold (found tucked in the charm).",
+          "description_target": "从符咒夹层里摸到 8 枚金币。"
+        }
+      },
+      {
+        "text": "「俺はまだ余裕がある。」",
+        "translation": "I'm still doing fine.",
+        "outcome": "penalty",
+        "outcome_text": "The sage's eye twitches. A curse of envy settles on you — suddenly every step feels like waiting on a spinner.",
+        "outcome_text_target": "书吏眼角抽搐。妒火化作轻咒：你每走一步都像在等加载转圈。",
+        "reward": {
+          "type": "hp_loss",
+          "amount": 6,
+          "description": "Lose 6 HP.",
+          "description_target": "失去 6 点生命值。"
+        }
       }
     ]
   }

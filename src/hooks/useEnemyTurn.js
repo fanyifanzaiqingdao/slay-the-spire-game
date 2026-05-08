@@ -1,56 +1,83 @@
 // hooks/useEnemyTurn.js — v2
-// Executes the enemy's full action chain sequentially after the player ends their turn.
+// Executes each enemy's action chain sequentially after the player ends their turn.
 // Returns { executeEnemyTurn, isExecuting, currentAction }
-// currentAction is passed to EnemyTurnResolver for animation display.
 
 import { useState, useCallback } from 'react'
 import useRunStore from '../stores/runStore.js'
 import { useAudio } from './useAudio.js'
 import { resolveEnemyAction } from '../utils/enemyTurn.js'
 
-const ACTION_DELAY_MS = 600 // Drastically reduced since cutscene banner is gone
+const ACTION_DELAY_MS = 600
 
 export function useEnemyTurn({ onTurnComplete } = {}) {
-  const store = useRunStore()
   const { playSFX } = useAudio()
 
   const [isExecuting, setIsExecuting] = useState(false)
-  const [currentAction, setCurrentAction] = useState(null) // { icon, message, type }
+  const [currentAction, setCurrentAction] = useState(null)
 
   const executeEnemyTurn = useCallback(async () => {
-    const s = useRunStore.getState()
-    const { currentEnemy, intentIndex } = s
-    if (!currentEnemy) return
+    const s0 = useRunStore.getState()
+    if (!s0.currentEnemy) return
+
+    const slots = s0.combatEnemySlots?.length ? s0.combatEnemySlots : null
+    const instanceOrder = slots?.length
+      ? slots.filter(sl => sl.hp > 0).map(sl => sl.instanceId)
+      : ['legacy-single']
 
     setIsExecuting(true)
-
-    // Get the action list for this intent slot (array of move strings)
-    const actionList = currentEnemy.intent_pattern[intentIndex % currentEnemy.intent_pattern.length] || ['strike']
-
     playSFX?.('enemy_turn_start')
 
-    // Execute each action in sequence with a gap between them
-    for (const action of actionList) {
-      // 1. Telegraph phase (triggers animation on EnemyDisplay)
-      setCurrentAction({ type: 'telegraph', actionType: action })
-      await new Promise(r => setTimeout(r, 400)) // Time for lunge animation
+    for (const instanceId of instanceOrder) {
+      const st = useRunStore.getState()
+      let attackerIdx = 0
+      let currentEnemy = st.currentEnemy
+      let intentIdx = st.intentIndex ?? 0
 
-      // 2. Resolve phase (applies damage, plays sound, shows damage number)
-      const freshStore = useRunStore.getState()
-      const result = await resolveEnemyAction(action, currentEnemy, freshStore, playSFX)
-      setCurrentAction({ ...result, id: Math.random().toString() })
-      await new Promise(r => setTimeout(r, ACTION_DELAY_MS))
+      if (instanceId !== 'legacy-single') {
+        attackerIdx = st.combatEnemySlots.findIndex(s => s.instanceId === instanceId)
+        if (attackerIdx === -1) continue
+        const slot = st.combatEnemySlots[attackerIdx]
+        if (!slot || slot.hp <= 0) continue
+        currentEnemy = slot.def
+        intentIdx = slot.intentIndex ?? 0
+      }
+
+      st.syncActiveEnemySlot(attackerIdx)
+
+      const pattern = currentEnemy.intent_pattern || []
+      const actionList = pattern.length
+        ? pattern[intentIdx % pattern.length] || ['strike']
+        : ['strike']
+
+      for (const action of actionList) {
+        setCurrentAction({ type: 'telegraph', actionType: action })
+        await new Promise(r => setTimeout(r, 400))
+
+        useRunStore.getState().syncActiveEnemySlot(attackerIdx)
+        const result = await resolveEnemyAction(
+          action,
+          currentEnemy,
+          useRunStore.getState(),
+          playSFX,
+          attackerIdx,
+        )
+        setCurrentAction({ ...result, id: Math.random().toString() })
+        await new Promise(r => setTimeout(r, ACTION_DELAY_MS))
+      }
+
+      if (instanceId !== 'legacy-single') {
+        useRunStore.getState().advanceIntentForSlot(attackerIdx)
+      } else {
+        useRunStore.getState().advanceIntent()
+      }
     }
 
-    // Post-turn bookkeeping — always read fresh state
     const sAfter = useRunStore.getState()
-    sAfter.advanceIntent()
-    sAfter.clearEnemyBuffs()       // wrong-answer buffs consumed
-    sAfter.tickPlayerDebuffs()     // debuff durations tick down
-    sAfter.unlockAllCards()        // locked cards unlock for next player turn
+    sAfter.clearEnemyBuffs()
+    sAfter.tickPlayerDebuffs()
+    sAfter.unlockAllCards()
 
-    // Brief pause so the last action animation is visible
-    await new Promise(r => setTimeout(r, 300)) // Reduced from 1200
+    await new Promise(r => setTimeout(r, 300))
 
     setCurrentAction(null)
     setIsExecuting(false)

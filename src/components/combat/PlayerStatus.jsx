@@ -4,6 +4,7 @@
 import { motion } from 'framer-motion'
 import { DebuffBadges } from './DebuffBadges.jsx'
 import { getRelics } from '../../utils/dataLoader.js'
+import { RELICS } from '../../data/relics.js'
 import useRunStore from '../../stores/runStore.js'
 
 /**
@@ -96,6 +97,8 @@ export function PlayerStatus({ hp, maxHp, block, energy, maxEnergy, debuffs = []
 }
 
 function getRelicIcon(relicId, campaign) {
+  const fromRegistry = RELICS[relicId]?.icon
+  if (fromRegistry) return fromRegistry
   const relicsData = getRelics(campaign)
   const relic = relicsData.find(r => r.id === relicId)
   return relic ? relic.icon : '💎'

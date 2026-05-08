@@ -1,17 +1,13 @@
 // stores/settingsStore.js
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../utils/localStorage.js'
-import { ROMANIZATION_MODES as ROM } from '../constants/campaigns.js'
 
 const useSettingsStore = create(
   persist(
     (set) => ({
       // Timer
       timerSpeed: 'normal', // 'relaxed' (30s) | 'normal' (20s) | 'fast' (12s) | 'off'
-
-      // Script display
-      romanization: ROM.FADE_PROGRESSIVE,
 
       // Learning
       spacedRepetition: true, // Graveyard haunting / spaced rep weighting
@@ -36,7 +32,6 @@ const useSettingsStore = create(
 
       // Actions
       setTimerSpeed: (speed) => set({ timerSpeed: speed }),
-      setRomanization: (mode) => set({ romanization: mode }),
       setSpacedRepetition: (val) => set({ spacedRepetition: val }),
       setSfxVolume: (vol) => set({ sfxVolume: Math.max(0, Math.min(1, vol)) }),
       setMusicVolume: (vol) => set({ musicVolume: Math.max(0, Math.min(1, vol)) }),
@@ -52,7 +47,10 @@ const useSettingsStore = create(
         return (speed) => speeds[speed] || 20
       },
     }),
-    { name: STORAGE_KEYS.SETTINGS }
+    {
+      name: STORAGE_KEYS.SETTINGS,
+      storage: createJSONStorage(() => localStorage),
+    }
   )
 )
 

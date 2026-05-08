@@ -5,6 +5,11 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MOVE_ICONS, MOVE_COLORS, MOVE_CATEGORY } from '../../constants/enemyMoves.js'
+import { CARD_TYPE_META } from '../../constants/cardTypes.js'
+
+function cardTypeLabel(type) {
+  return CARD_TYPE_META[type]?.label || type || 'Ship'
+}
 
 /**
  * @param {Object} enemy       - current enemy data (needs intent_pattern, base_attack, silence_type)
@@ -122,7 +127,7 @@ function getIntentLabel(action, enemy) {
     case 'strike':              return `${enemy.base_attack} dmg`
     case 'strike_heavy':        return `${Math.floor(enemy.base_attack * 1.8)} dmg`
     case 'strike_swift':        return `${Math.floor(enemy.base_attack * 0.6)}×2 dmg`
-    case 'debuff_silence':      return `Silence ${enemy.silence_type || 'vocab'}`
+    case 'debuff_silence':      return `Silence ${cardTypeLabel(enemy.silence_type)}`
     case 'debuff_drain':        return '−1 Energy'
     case 'debuff_fog':          return 'Fog'
     case 'debuff_bind':         return '−1 Draw'
@@ -148,15 +153,15 @@ function getIntentTooltip(action, enemy) {
     case 'strike_swift':
       return `Two rapid hits of ${Math.floor(enemy.base_attack * 0.6)} each. Split damage can pierce small blocks.`
     case 'debuff_silence':
-      return `Silences your ${enemy.silence_type || 'vocabulary'} cards for 2 turns. Silenced cards cannot be played.`
+      return `Silences your ${cardTypeLabel(enemy.silence_type)} cards for 2 turns. Silenced cards cannot be played.`
     case 'debuff_drain':
       return `Drains your energy. Next turn you start with 1 fewer Energy (min 0). Lasts 2 turns.`
     case 'debuff_fog':
-      return `Casts Fog. Hover highlights on answer options are hidden, making it harder to guess.`
+      return `Casts Fog. Priority chips are hidden until you commit — harder to read the board.`
     case 'debuff_bind':
       return `Binds your draw. Next turn you draw 1 fewer card than normal. Lasts 2 turns.`
     case 'debuff_confusion':
-      return `Confuses your options. At 3 seconds, answer choices will shuffle positions.`
+      return `Shuffles your next priorities mid-countdown — stay on your feet.`
     case 'debuff_curse':
       return `Applies both Silence AND Drain simultaneously. A brutal two-in-one debuff!`
     case 'debuff_taunt':

@@ -67,9 +67,23 @@ export const EnemyDisplay = memo(function EnemyDisplay({
   isShaking = false,
   enemyAction = null,
   phase,
+  /** Player-inflicted statuses */
+  vulnerableTurns = 0,
+  weakTurns = 0,
+  poisonStacks = 0,
+  /** Player turn: click to focus single-target attacks when multiple enemies */
+  selectable = false,
+  selected = false,
+  onSelect,
 }) {
   const [isHovered, setIsHovered] = useState(false)
-  if (!enemy) return null
+  const safeEnemy = enemy || {
+    intent_pattern: [],
+    base_attack: 0,
+    portrait_placeholder_color: '#374151',
+    name_native: '',
+    name_target: '',
+  }
 
   // FIX: normalize phase to a number (undefined → 1) to avoid NaN in filter expressions
   const safePhase = typeof phase === 'number' ? phase : 1
@@ -79,7 +93,7 @@ export const EnemyDisplay = memo(function EnemyDisplay({
     const hpPct = Math.max(0, (hp / maxHp) * 100)
     const hpClr = hpPct > 50 ? 'bg-red-500' : hpPct > 25 ? 'bg-orange-500' : 'bg-red-700'
 
-    const pattern = enemy.intent_pattern || []
+    const pattern = safeEnemy.intent_pattern || []
     const safeIndex = intentIndex % (pattern.length || 1)
     const actions = pattern[safeIndex] || ['strike']
 
@@ -91,13 +105,13 @@ export const EnemyDisplay = memo(function EnemyDisplay({
     let dmg = 0
     for (const a of actions) {
       if (MOVE_CATEGORY[a] === 'damage') {
-        if (a === 'strike_heavy') dmg += Math.floor(enemy.base_attack * 1.8)
-        else if (a === 'strike_swift') dmg += Math.floor(enemy.base_attack * 0.6) * 2
-        else dmg += enemy.base_attack
+        if (a === 'strike_heavy') dmg += Math.floor(safeEnemy.base_attack * 1.8)
+        else if (a === 'strike_swift') dmg += Math.floor(safeEnemy.base_attack * 0.6) * 2
+        else dmg += safeEnemy.base_attack
       }
     }
 
-    const stratText = buildStrategicText(actions, enemy)
+    const stratText = buildStrategicText(actions, safeEnemy)
 
     return {
       hpPercent: hpPct,
@@ -110,7 +124,7 @@ export const EnemyDisplay = memo(function EnemyDisplay({
       floatDmg: dmg,
       strategicText: stratText,
     }
-  }, [hp, maxHp, enemy, intentIndex])
+  }, [hp, maxHp, safeEnemy, intentIndex])
 
   // Memoize portrait animation object to avoid creating new objects every render
   const portraitAnimate = useMemo(() => {
@@ -147,9 +161,23 @@ export const EnemyDisplay = memo(function EnemyDisplay({
     return { x: 0, y: 0, scale: 1, filter: 'brightness(1)' }
   }, [isShaking, enemyAction])
 
+  // Keep hook order stable even after combat ends and enemy is cleared.
+  if (!enemy) return null
+
   return (
     <div
-      className="relative flex flex-col items-center"
+      role={selectable ? 'button' : undefined}
+      tabIndex={selectable ? 0 : undefined}
+      onKeyDown={selectable && onSelect ? (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onSelect()
+        }
+      } : undefined}
+      onClick={selectable && onSelect ? (e) => { e.stopPropagation(); onSelect() } : undefined}
+      className={`relative flex flex-col items-center rounded-2xl transition-[box-shadow] duration-150 ${
+        selectable ? 'cursor-pointer' : ''
+      } ${selected ? 'ring-2 ring-amber-400 ring-offset-2 ring-offset-transparent shadow-[0_0_18px_rgba(251,191,36,0.35)]' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -240,6 +268,35 @@ export const EnemyDisplay = memo(function EnemyDisplay({
           )}
         </motion.div>
       </AnimatePresence>
+
+      {(vulnerableTurns > 0 || weakTurns > 0 || poisonStacks > 0) && (
+        <div className="flex flex-wrap justify-center gap-1 mb-1 max-w-[220px]">
+          {vulnerableTurns > 0 && (
+            <span
+              title="易伤：受到的玩家伤害提高"
+              className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-pink-950/90 border border-pink-500 text-pink-200"
+            >
+              易×{vulnerableTurns}
+            </span>
+          )}
+          {weakTurns > 0 && (
+            <span
+              title="虚弱：攻击伤害降低"
+              className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-slate-800/90 border border-slate-500 text-slate-200"
+            >
+              虚×{weakTurns}
+            </span>
+          )}
+          {poisonStacks > 0 && (
+            <span
+              title="中毒：回合开始受伤并减层"
+              className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-950/90 border border-emerald-600 text-emerald-200"
+            >
+              毒×{poisonStacks}
+            </span>
+          )}
+        </div>
+      )}
 
       {/* ── Enemy Portrait ── */}
       <motion.div

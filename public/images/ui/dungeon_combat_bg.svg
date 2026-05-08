@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.12"/>
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="hex" width="56" height="48" patternUnits="userSpaceOnUse" patternTransform="scale(1)">
+      <path d="M28 0 L56 14 L56 34 L28 48 L0 34 L0 14 Z" fill="none" stroke="#38bdf8" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#floor)"/>
+  <rect width="1920" height="1080" fill="url(#hex)"/>
+  <rect width="1920" height="1080" fill="url(#haze)"/>
+  <!-- perspective floor -->
+  <path d="M0 720 L960 520 L1920 720 L1920 1080 L0 1080 Z" fill="#020617" fill-opacity="0.85"/>
+  <g stroke="#334155" stroke-opacity="0.5" stroke-width="1" fill="none">
+    <line x1="0" y1="900" x2="1920" y2="900"/>
+    <line x1="200" y1="720" x2="1720" y2="720"/>
+    <line x1="400" y1="760" x2="1520" y2="760"/>
+    <line x1="600" y1="800" x2="1320" y2="800"/>
+    <line x1="800" y1="840" x2="1120" y2="840"/>
+  </g>
+  <!-- incident / ops silhouettes -->
+  <g opacity="0.7">
+    <rect x="200" y="380" width="220" height="280" rx="6" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <rect x="230" y="410" width="160" height="100" rx="4" fill="#1e293b"/>
+    <rect x="230" y="530" width="70" height="9" fill="#22d3ee" fill-opacity="0.4"/>
+    <rect x="310" y="530" width="55" height="9" fill="#64748b"/>
+    <rect x="230" y="550" width="100" height="9" fill="#64748b"/>
+    <rect x="1480" y="400" width="200" height="260" rx="6" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.25" stroke-width="2"/>
+    <rect x="1505" y="425" width="150" height="90" rx="3" fill="#1e293b"/>
+    <circle cx="1580" cy="545" r="6" fill="#ef4444" fill-opacity="0.8"/>
+    <rect x="1520" y="565" width="120" height="8" fill="#475569"/>
+  </g>
+  <text x="960" y="120" text-anchor="middle" fill="#38bdf8" fill-opacity="0.08" font-family="ui-monospace, monospace" font-size="20">SEV-1 � merge conflict � on-call</text>
+</svg>

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import useRunStore from '../../stores/runStore.js'
 import { CARDS as CAMPAIGN_CHARS } from '../../constants/campaigns.js'
+import { getStarterIdsForCharacter } from '../../constants/startingDecks.js'
 import { buildStartingDeck } from '../../utils/deck.js'
 import { ScreenTransition } from '../shared/ScreenTransition.jsx'
 import { useAudio } from '../../hooks/useAudio.js'
@@ -75,6 +76,12 @@ function BannerButton({ children, color = 'red', onClick, side = 'left' }) {
 }
 
 // Square character icon tile (like STS)
+const CAREER_CHAR_EMOJI = {
+  hana: '👩‍💻', kenji: '🖥️', yuki: '🧯', ren: '🧪',
+  minjun: '🎨', jiwoo: '✨',
+  mateo: '📋', elena: '📈',
+}
+
 function CharTile({ char, isSelected, onClick }) {
   return (
     <motion.button
@@ -135,7 +142,7 @@ function CharTile({ char, isSelected, onClick }) {
       ) : (
         // Character icon
         <div style={{ fontSize: 36, lineHeight: 1 }}>
-          {char.id === 'kenji' ? '⚔️' : char.id === 'hana' ? '🌸' : char.id === 'yuki' ? '❄️' : '?'}
+          {CAREER_CHAR_EMOJI[char.id] || '👤'}
         </div>
       )}
     </motion.button>
@@ -165,26 +172,23 @@ export function CharacterSelect() {
     const campaign = CAMPAIGN_CHARS[campaignId]
 
     // Choose rare card based on character
-    const rareCard = selectedChar.id === 'hana' ? 'jp_read_newcomers_luck'
-      : selectedChar.id === 'yuki' ? 'jp_read_returnees_insight'
-        : 'jp_read_travelers_wisdom'
+    const rareCard = campaignId === 'japanese'
+      ? (selectedChar.id === 'hana' || selectedChar.id === 'ren' ? 'jp_read_newcomers_luck'
+        : selectedChar.id === 'yuki' ? 'jp_read_returnees_insight' : 'jp_read_travelers_wisdom')
+      : campaignId === 'korean' ? 'kr_read_spirit_scroll'
+        : 'es_read_spirit_scroll'
 
-    const deck = buildStartingDeck(
-      campaign.startingVocabCards || [],
-      campaign.startingGrammarCards || [],
-      campaign.startingReadingCards || [],
-      rareCard
-    )
-    // Store run config in sessionStorage — startRun will be called by ModifierSelect
-    // after the modifier is chosen, so starting HP/energy/gold apply correctly.
-    sessionStorage.setItem('pending_run', JSON.stringify({
+    const starterStrip = getStarterIdsForCharacter(campaignId, selectedChar.id, campaign.startingCards)
+    const deck = buildStartingDeck(starterStrip, rareCard)
+    useRunStore.getState().startRun(
       campaignId,
-      character: selectedChar,
+      selectedChar,
+      0,
       deck,
-      starterRelic: selectedChar.starterRelic,
-    }))
+      selectedChar.starterRelic ?? null,
+    )
     sessionStorage.removeItem('active_encounter')
-    navigate('/modifier-select')
+    navigate('/map')
   }
 
   return (
@@ -197,7 +201,7 @@ export function CharacterSelect() {
             backgroundImage: 'url(/images/ui/main_menu_tower_bg.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'brightness(0.35) saturate(0.6)',
+            filter: 'brightness(0.4) saturate(0.75)',
           }}
         />
         {/* Extra dark overlay */}
@@ -270,9 +274,9 @@ export function CharacterSelect() {
               <div className="text-gray-500 text-xs mb-2">Starting Deck</div>
               <div className="flex gap-2 flex-wrap mb-6">
                 {[
-                  { label: `⚔️ ×${selectedChar.startingDeckBreakdown?.vocabulary || 4}`, color: '#991b1b', border: '#b91c1c', text: '#fca5a5' },
-                  { label: `🛡️ ×${selectedChar.startingDeckBreakdown?.grammar || 3}`, color: '#1e3a5f', border: '#2563eb', text: '#93c5fd' },
-                  { label: `📖 ×${selectedChar.startingDeckBreakdown?.reading || 2}`, color: '#14532d', border: '#16a34a', text: '#86efac' },
+                  { label: `⚔️ ×${selectedChar.startingDeckBreakdown?.attack || 4}`, color: '#991b1b', border: '#b91c1c', text: '#fca5a5' },
+                  { label: `🛡️ ×${selectedChar.startingDeckBreakdown?.skill || 3}`, color: '#1e3a5f', border: '#2563eb', text: '#93c5fd' },
+                  { label: `✨ ×${selectedChar.startingDeckBreakdown?.power || 2}`, color: '#14532d', border: '#16a34a', text: '#86efac' },
                   { label: `★ ×${selectedChar.startingDeckBreakdown?.rare || 1}`, color: '#78350f', border: '#d97706', text: '#fcd34d' },
                 ].map(tag => (
                   <span
@@ -313,10 +317,19 @@ export function CharacterSelect() {
                     src={`/images/characters/${campaignId}/${selectedChar.id}.png`}
                     alt={selectedChar.name}
                     className="absolute inset-0 w-full h-full object-contain object-bottom z-10"
-                    onError={e => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'flex' }}
+                    style={{ imageRendering: campaignId === 'japanese' ? 'pixelated' : 'auto' }}
+                    onError={(e) => {
+                      const el = e.currentTarget
+                      if (el.src.includes('.png')) {
+                        el.src = el.src.replace('.png', '.svg')
+                        return
+                      }
+                      el.style.display = 'none'
+                      if (el.nextElementSibling) el.nextElementSibling.style.display = 'flex'
+                    }}
                   />
                   <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-40" style={{ display: 'none' }}>
-                    {selectedChar.id === 'hana' ? '🌸' : selectedChar.id === 'yuki' ? '❄️' : '👤'}
+                    {CAREER_CHAR_EMOJI[selectedChar.id] || '👤'}
                   </div>
                 </div>
               ) : (
@@ -326,7 +339,7 @@ export function CharacterSelect() {
               )}
               {/* Radial glow behind portrait */}
               <div className="absolute inset-0 pointer-events-none" style={{
-                background: 'radial-gradient(ellipse 60% 80% at 50% 90%, #8B1A1A33, transparent 70%)',
+                background: 'radial-gradient(ellipse 60% 80% at 50% 90%, #38bdf833, transparent 70%)',
               }} />
             </motion.div>
           )}

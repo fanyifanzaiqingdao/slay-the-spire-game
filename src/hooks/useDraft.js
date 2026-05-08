@@ -5,6 +5,7 @@ import { useState, useCallback } from 'react'
 import useRunStore from '../stores/runStore.js'
 import { shuffle } from '../utils/deck.js'
 import { isRuleActive } from '../constants/masteryRules.js'
+import { filterCardsForAct1Draft } from '../constants/act1Pool.js'
 
 const cardCache = {}
 async function loadCards(campaign) {
@@ -42,7 +43,7 @@ export function useDraft() {
 
   const openDraft = useCallback(async (fightAccuracy, guaranteedRarity = null) => {
     const pool = calculateDraftPool(fightAccuracy, store.masteryLevel)
-    const allCards = await loadCards(store.campaign)
+    const allCards = filterCardsForAct1Draft(await loadCards(store.campaign), store)
 
     // Boss rewards bypass normal pool logic
     if (guaranteedRarity) {
@@ -62,7 +63,7 @@ export function useDraft() {
     const sampled = shuffle(eligible).slice(0, pool.count)
     setDraftCards(sampled)
     setIsDrafting(true)
-  }, [store.campaign, store.masteryLevel])
+  }, [store.campaign, store.masteryLevel, store.floor])
 
   const pickCard = useCallback((card) => {
     if (!card) {

@@ -1,10 +1,12 @@
 [
   {
     "id": "kr_event_1",
+    "campaign": "korean",
     "floor_tier": 1,
     "title": "A Corporate Memo",
     "title_target": "기업 메모",
     "setup_text": "You find a glowing memo pad.",
+    "setup_text_target": "빛나는 메모 패드를 발견했다.",
     "npc_dialogue": "결재 바랍니다.",
     "npc_dialogue_translation": "Please approve.",
     "options": [
@@ -13,13 +15,72 @@
         "translation": "결재",
         "outcome": "reward",
         "outcome_text": "You approved the memo. You feel slightly healthier.",
-        "reward": { "type": "heal", "amount": 10, "description": "Heal 10 HP" }
+        "outcome_text_target": "결재를 마치자 어깨의 긴장이 풀리며 몸이 조금 가벼워졌다.",
+        "reward": {
+          "type": "heal",
+          "amount": 10,
+          "description": "Heal 10 HP",
+          "description_target": "체력 10 회복"
+        }
       },
       {
         "text": "Ignore",
         "translation": "무시",
         "outcome": "neutral",
-        "outcome_text": "You ignored the memo. Nothing happened."
+        "outcome_text": "You ignored the memo. Nothing happened.",
+        "outcome_text_target": "메모를 무시했다. 아무 일도 일어나지 않았다."
+      }
+    ]
+  },
+  {
+    "id": "kr_event_token_outage",
+    "campaign": "korean",
+    "floor_tier": 1,
+    "title": "The 429 Break Room",
+    "title_target": "429 휴게실",
+    "setup_text": "Neon flickers. A developer-shaped silhouette hugs a vending machine: \"My autocomplete is thinking in geological time.\"",
+    "setup_text_target": "네온이 깜빡인다. 자판기에 기대 선 실루엣이 중얼거린다. \"자동완성이 지질학적 시간대로 생각 중이야.\"",
+    "npc_dialogue": "토큰이 바닥났어. 지금은 손으로 타이핑하는 수밖에…",
+    "npc_dialogue_translation": "I'm out of tokens. All I can do now is type by hand…",
+    "options": [
+      {
+        "text": "Buy them a coffee run",
+        "translation": "커피 한 잔 사주기",
+        "outcome": "reward",
+        "outcome_text": "Caffeine won't refill the API wallet, but morale ticks up. They slide you a sticker: 'Ship anyway.'",
+        "outcome_text_target": "카페인이 API 지갑을 채우진 못하지만 사기는 오른다. 스티커를 건넨다: '그냥 배포해.'",
+        "reward": {
+          "type": "heal",
+          "amount": 12,
+          "description": "Heal 12 HP",
+          "description_target": "체력 12 회복"
+        }
+      },
+      {
+        "text": "Suggest \"use a smaller model\"",
+        "translation": "\"작은 모델 써\"라고 조언",
+        "outcome": "neutral",
+        "outcome_text": "They nod slowly. 'Smaller model, smaller dreams.' You find spare change in the suggestion box.",
+        "outcome_text_target": "천천히 고개를 끄덕인다. \"작은 모델, 작은 꿈.\" 제안함에서 동전 몇 닢이 나온다.",
+        "reward": {
+          "type": "gold",
+          "amount": 10,
+          "description": "Gain 10 gold",
+          "description_target": "골드 10 획득"
+        }
+      },
+      {
+        "text": "Paste a wall of code into chat",
+        "translation": "채팅에 코드 벽돌 붙여넣기",
+        "outcome": "penalty",
+        "outcome_text": "The machine beeps once — like a sigh. You feel the weight of everyone's wasted context window.",
+        "outcome_text_target": "자판기가 한 번 삑 소리를 낸다, 한숨 같다. 낭비된 컨텍스트 창의 무게가 어깨에 내려앉는다.",
+        "reward": {
+          "type": "hp_loss",
+          "amount": 7,
+          "description": "Lose 7 HP",
+          "description_target": "체력 7 감소"
+        }
       }
     ]
   }

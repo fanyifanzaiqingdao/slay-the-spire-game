@@ -38,7 +38,7 @@ function Ember({ delay }) {
   )
 }
 
-const MENU_ITEMS = ['play', 'pantheon', 'graveyard', 'settings', 'about']
+const MENU_ITEMS = ['play', 'pvp', 'pantheon', 'graveyard', 'settings', 'about']
 
 export function MainMenu() {
   const { t } = useTranslation()
@@ -78,6 +78,7 @@ export function MainMenu() {
   const handleMenuClick = (id) => {
     playSFX('button_click')
     if (id === 'play') setView('campaign')
+    if (id === 'pvp') navigate('/pvp')
     if (id === 'graveyard') navigate('/graveyard')
     if (id === 'pantheon') navigate('/pantheon')
     if (id === 'settings') setSettingsOpen(true)
@@ -294,7 +295,7 @@ export function MainMenu() {
                     </h3>
                     
                     <div className="text-sm font-bold tracking-widest mb-6 uppercase" style={{ color: campaign.accent }}>
-                      {campaign.language}
+                      {campaign.subtitle}
                     </div>
                     
                     <p className="text-gray-300 text-sm italic mb-auto">
@@ -337,10 +338,6 @@ export function MainMenu() {
                 <div className="flex justify-between">
                   <span>Answer Timer</span>
                   <span className="text-amber-400">20s</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Romanization</span>
-                  <span className="text-amber-400">Progressive Fade</span>
                 </div>
                 <p className="text-xs text-gray-500 border-t border-gray-700 pt-3">Full settings available in Phase 2.</p>
                 <div className="flex justify-between items-center">

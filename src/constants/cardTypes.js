@@ -1,5 +1,6 @@
 // constants/cardTypes.js
 // Card type enums and associated visual/mechanical metadata
+// Internal keys unchanged; labels are career-themed (Ship / Process / Insight).
 
 export const CARD_TYPES = {
   VOCABULARY: 'vocabulary',
@@ -10,40 +11,40 @@ export const CARD_TYPES = {
 
 export const CARD_TYPE_META = {
   [CARD_TYPES.VOCABULARY]: {
-    label: 'Vocabulary',
+    label: 'Ship',
     icon: '⚔️',
     colorClass: 'text-red-400',
     bgClass: 'bg-red-950/40',
     borderClass: 'border-red-800',
     glowClass: 'shadow-red-900/60',
     wrongAnswerBuff: 'confusion',
-    wrongAnswerDescription: 'Confusion: Enemy gains +2 ATK this turn',
-    primes: 'grammar', // vocabulary primes grammar combos
+    wrongAnswerDescription: 'Scope noise: enemy gains +2 ATK this turn',
+    primes: 'grammar',
   },
   [CARD_TYPES.GRAMMAR]: {
-    label: 'Grammar',
+    label: 'Process',
     icon: '🛡️',
     colorClass: 'text-blue-400',
     bgClass: 'bg-blue-950/40',
     borderClass: 'border-blue-800',
     glowClass: 'shadow-blue-900/60',
     wrongAnswerBuff: 'conjugation_armor',
-    wrongAnswerDescription: 'Conjugation Armor: Enemy blocks grammar cards next turn',
-    primes: 'reading', // grammar primes reading combos
+    wrongAnswerDescription: 'Process armor: enemy blocks Process cards next turn',
+    primes: 'reading',
   },
   [CARD_TYPES.READING]: {
-    label: 'Reading',
+    label: 'Insight',
     icon: '📖',
     colorClass: 'text-emerald-400',
     bgClass: 'bg-emerald-950/40',
     borderClass: 'border-emerald-800',
     glowClass: 'shadow-emerald-900/60',
     wrongAnswerBuff: 'fortify',
-    wrongAnswerDescription: 'Fortify: Enemy gains +5 max HP temporarily',
-    primes: null, // reading doesn't prime anything
+    wrongAnswerDescription: 'Fortify: stakeholder buffers +5 max HP temporarily',
+    primes: null,
   },
   [CARD_TYPES.CURSE]: {
-    label: 'Curse',
+    label: 'Blocker',
     icon: '💀',
     colorClass: 'text-purple-400',
     bgClass: 'bg-purple-950/40',
@@ -89,7 +90,7 @@ export const CARD_RARITY_META = {
     gemClass: 'bg-red-400',
   },
   [CARD_RARITIES.CURSE]: {
-    label: 'Curse',
+    label: 'Overtime',
     colorClass: 'text-purple-300',
     borderClass: 'border-purple-500',
     gemClass: 'bg-purple-400',

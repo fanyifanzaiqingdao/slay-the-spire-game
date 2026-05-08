@@ -1,26 +1,20 @@
-// components/journal/GrammarTab.jsx
+// Process debt — grammar / rule reminders logged during the run
 export function GrammarTab({ grammar = [] }) {
-  if (grammar.length === 0) {
+  if (!grammar.length) {
     return (
-      <div className="p-6 text-center text-gray-600 text-sm">
-        No grammar concepts encountered yet.
-        <br />Play Grammar cards to fill your journal.
+      <div className="px-5 py-8 text-center text-sm text-gray-500">
+        No process debt recorded — your pipelines are clean.
       </div>
     )
   }
+
   return (
-    <div className="divide-y divide-gray-800/50">
-      {[...grammar].reverse().map((entry) => (
-        <div key={entry.questionId} className="px-5 py-3">
-          <div className="text-sm font-bold text-blue-300 mb-0.5">{entry.concept}</div>
-          {entry.pattern && (
-            <div className="text-xs text-gray-400 font-mono mb-1">{entry.pattern}</div>
-          )}
-          {entry.example && (
-            <p className="text-xs text-gray-500 italic">{entry.example}</p>
-          )}
-        </div>
+    <ul className="divide-y divide-gray-800">
+      {grammar.map((g) => (
+        <li key={g.questionId || g.concept} className="px-5 py-3">
+          <p className="text-sm text-blue-200 leading-snug">{g.concept ?? '—'}</p>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }

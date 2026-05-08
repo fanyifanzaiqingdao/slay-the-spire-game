@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useRunStore from '../../stores/runStore.js'
 import { getPotionData } from '../../data/potions.js'
-import { RELICS } from '../../data/relics.js'
 import { useAudio } from '../../hooks/useAudio.js'
 
 export function LootScreen({ loot, onClaim, onSkip, onOpenDraft }) {

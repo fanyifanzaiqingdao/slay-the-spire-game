@@ -9,16 +9,16 @@ import { useGraveyard } from '../../hooks/useGraveyard.js'
 import { ScreenTransition } from '../shared/ScreenTransition.jsx'
 
 function generatePattern(correct, total, journalWords, journalGrammar) {
-  if (total === 0) return 'No questions answered this run.'
+  if (total === 0) return 'No graded checks logged this run — pure execution mode.'
   const acc = correct / total
-  const vocabHeavy = journalWords.length > journalGrammar.length * 1.5
-  const grammarHeavy = journalGrammar.length > journalWords.length * 1.5
+  const shipHeavy = journalWords.length > journalGrammar.length * 1.5
+  const processHeavy = journalGrammar.length > journalWords.length * 1.5
 
-  if (acc >= 0.8 && vocabHeavy) return 'Vocabulary specialist — try building a grammar combo deck next run.'
-  if (acc >= 0.8 && grammarHeavy) return 'Grammar fortress — your defense is solid. Add more vocabulary cards.'
-  if (acc >= 0.8) return 'Well-rounded accuracy. Ready to push to a harder floor.'
-  if (acc >= 0.6) return 'Good instincts, room to sharpen. Review your Graveyard before the next run.'
-  return 'Still finding your footing — that\'s normal. The mountain teaches patience.'
+  if (acc >= 0.8 && shipHeavy) return 'Ship-heavy cadence — next run weave more Process blockers.'
+  if (acc >= 0.8 && processHeavy) return 'Process fortress — defense is dialed. Add more Ship finishers.'
+  if (acc >= 0.8) return 'Balanced delivery. Ready to raise the difficulty bar.'
+  if (acc >= 0.6) return 'Solid instincts with room to tighten — skim the Graveyard before your next sprint.'
+  return 'Still calibrating — normal for a new lane. Keep shipping small slices.'
 }
 
 export function PostRunSummary() {
@@ -81,12 +81,12 @@ export function PostRunSummary() {
           animate={{ opacity: 1, scale: 1 }}
           className="text-center mb-8"
         >
-          <div className="text-5xl mb-3">{isWin ? '🏯' : '💀'}</div>
+          <div className="text-5xl mb-3">{isWin ? '🏢' : '💀'}</div>
           <h1 className={`text-3xl font-bold ${isWin ? 'text-amber-200' : 'text-gray-200'}`}>
-            {isWin ? 'Summit Reached!' : 'The Path Ends Here'}
+            {isWin ? 'Milestone Cleared!' : 'Run Closed'}
           </h1>
           <p className="text-gray-400 text-sm mt-1">
-            Floor {store.floor} · {Math.round(accuracy * 100)}% accuracy · {store.sessionTotal} questions
+            Floor {store.floor} · {Math.round(accuracy * 100)}% accuracy · {store.sessionTotal} checks logged
           </p>
           {earnedXp > 0 && (
             <motion.div
@@ -110,7 +110,7 @@ export function PostRunSummary() {
                 className="bg-gray-900/60 border border-gray-700 rounded-2xl p-5"
               >
                 <h2 className="text-sm font-bold text-amber-300 uppercase tracking-wider mb-3">
-                  📚 What You Learned
+                  📚 Shipped to memory
                 </h2>
                 {store.journalWords.length === 0 && store.journalGrammar.length === 0 ? (
                   <p className="text-sm text-gray-500">No content recorded this run.</p>

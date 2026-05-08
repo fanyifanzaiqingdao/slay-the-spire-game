@@ -1,0 +1,2764 @@
+{
+  "schema_version": "programmer_card_v1",
+  "description": "Pure programmer-themed combat cards for Act 1. Learning-language fields have been removed.",
+  "status_definitions": [
+    {
+      "id": "reflect",
+      "name": {
+        "zh": "反射",
+        "en": "Reflect"
+      },
+      "description": {
+        "zh": "受到攻击时，对攻击者造成等同层数的伤害。",
+        "en": "When attacked, deal damage to the attacker equal to stacks."
+      }
+    },
+    {
+      "id": "next_attack_bonus",
+      "name": {
+        "zh": "下一击强化",
+        "en": "Next Attack Bonus"
+      },
+      "description": {
+        "zh": "下一张攻击牌额外造成等同层数的伤害，然后移除。",
+        "en": "Your next Attack deals additional damage equal to stacks, then remove it."
+      }
+    },
+    {
+      "id": "exposed",
+      "name": {
+        "zh": "暴露",
+        "en": "Exposed"
+      },
+      "description": {
+        "zh": "受到的下一次伤害增加 50%，触发后移除。",
+        "en": "The next damage taken is increased by 50%, then removed."
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "dev_act1_hotfix",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Hotfix",
+        "zh": "热修复"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "incident"
+      ],
+      "effect_text": {
+        "zh": "造成 6 点伤害；如果这是本回合打出的第一张牌，额外造成 3 点伤害。",
+        "en": "Deal 6 damage. If this is the first card played this turn, deal 3 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 6
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 3
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 9 点伤害；如果这是本回合打出的第一张牌，额外造成 4 点伤害。",
+          "en": "Deal 9 damage. If this is the first card played this turn, deal 4 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 9
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 4
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Ship first.",
+        "zh": "先上线。"
+      }
+    },
+    {
+      "id": "dev_act1_unit_nudge",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Unit Test Nudge",
+        "zh": "单测轻推"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 7 点伤害。",
+        "en": "Deal 7 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 7
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 10 点伤害。",
+          "en": "Deal 10 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 10
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Nudge the assertion.",
+        "zh": "轻推断言。"
+      }
+    },
+    {
+      "id": "dev_act1_git_blame",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Git Blame",
+        "zh": "甩锅追踪"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "造成 5 点伤害；抽 1 张牌。",
+        "en": "Deal 5 damage. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 5
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 8 点伤害；抽 1 张牌。",
+          "en": "Deal 8 damage. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 8
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Not you, of course.",
+        "zh": "当然不是你。"
+      }
+    },
+    {
+      "id": "dev_act1_printf_debug",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Printf Debug",
+        "zh": "打印调试"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 0,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 4 点伤害。",
+        "en": "Deal 4 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 4
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 0,
+        "effect_text": {
+          "zh": "造成 6 点伤害。",
+          "en": "Deal 6 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 6
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Works until it ships.",
+        "zh": "上线前都管用。"
+      }
+    },
+    {
+      "id": "dev_act1_stack_overflow",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Stack Overflow",
+        "zh": "栈溢出打击"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "reflect"
+      ],
+      "effect_text": {
+        "zh": "造成 12 点伤害；获得 2 层反射。",
+        "en": "Deal 12 damage. Gain 2 Reflect."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 12
+        },
+        {
+          "type": "apply_player_status",
+          "target": "self",
+          "status": "reflect",
+          "stacks": 2,
+          "duration": "combat"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 16 点伤害；获得 2 层反射。",
+          "en": "Deal 16 damage. Gain 2 Reflect."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 16
+          },
+          {
+            "type": "apply_player_status",
+            "target": "self",
+            "status": "reflect",
+            "stacks": 2,
+            "duration": "combat"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Deep call stack.",
+        "zh": "调用栈过深。"
+      }
+    },
+    {
+      "id": "dev_act1_cherry_pick",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Cherry-Pick",
+        "zh": "挑拣提交"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "combo",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 8 点伤害；如果本回合此前打出过牌，额外造成 4 点伤害。",
+        "en": "Deal 8 damage. If you have already played a card this turn, deal 4 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 8
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_at_least",
+            "amount": 1
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 11 点伤害；如果本回合此前打出过牌，额外造成 6 点伤害。",
+          "en": "Deal 11 damage. If you have already played a card this turn, deal 6 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 11
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_at_least",
+              "amount": 1
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 6
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Just this commit.",
+        "zh": "只要这一笔。"
+      }
+    },
+    {
+      "id": "dev_act1_merge_conflict",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Merge Conflict",
+        "zh": "合并冲突"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "multi_hit"
+      ],
+      "effect_text": {
+        "zh": "造成 8 点伤害 2 次。",
+        "en": "Deal 8 damage 2 times."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 8,
+          "hits": 2
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 12 点伤害 2 次。",
+          "en": "Deal 12 damage 2 times."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 12,
+            "hits": 2
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Two truths.",
+        "zh": "两边都有理。"
+      }
+    },
+    {
+      "id": "dev_act1_race_condition",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Race Condition",
+        "zh": "竞态一击"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 9 点伤害；如果这是本回合打出的第一张牌，额外造成 2 点伤害。",
+        "en": "Deal 9 damage. If this is the first card played this turn, deal 2 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 9
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 2
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 12 点伤害；如果这是本回合打出的第一张牌，额外造成 3 点伤害。",
+          "en": "Deal 12 damage. If this is the first card played this turn, deal 3 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 12
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 3
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Who runs first?",
+        "zh": "谁先谁后？"
+      }
+    },
+    {
+      "id": "dev_act1_memory_leak",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Memory Leak",
+        "zh": "内存泄漏"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "reflect"
+      ],
+      "effect_text": {
+        "zh": "造成 14 点伤害；获得 1 层反射。",
+        "en": "Deal 14 damage. Gain 1 Reflect."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 14
+        },
+        {
+          "type": "apply_player_status",
+          "target": "self",
+          "status": "reflect",
+          "stacks": 1,
+          "duration": "combat"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 18 点伤害；获得 1 层反射。",
+          "en": "Deal 18 damage. Gain 1 Reflect."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 18
+          },
+          {
+            "type": "apply_player_status",
+            "target": "self",
+            "status": "reflect",
+            "stacks": 1,
+            "duration": "combat"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Forgot to free.",
+        "zh": "忘了释放。"
+      }
+    },
+    {
+      "id": "dev_act1_deadlock",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Deadlock",
+        "zh": "死锁终结"
+      },
+      "card_type": "attack",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block_synergy",
+        "damage",
+        "reflect"
+      ],
+      "effect_text": {
+        "zh": "造成 18 点伤害；如果你已有防御，额外造成 6 点伤害；获得 1 层反射。",
+        "en": "Deal 18 damage. If you have Block, deal 6 additional damage. Gain 1 Reflect."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 18
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "player_has_block",
+            "amount": 1
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "type": "apply_player_status",
+          "target": "self",
+          "status": "reflect",
+          "stacks": 1,
+          "duration": "combat"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 24 点伤害；如果你已有防御，额外造成 8 点伤害；获得 1 层反射。",
+          "en": "Deal 24 damage. If you have Block, deal 8 additional damage. Gain 1 Reflect."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 24
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "player_has_block",
+              "amount": 1
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 8
+              }
+            ]
+          },
+          {
+            "type": "apply_player_status",
+            "target": "self",
+            "status": "reflect",
+            "stacks": 1,
+            "duration": "combat"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Everyone waits.",
+        "zh": "全员等待。"
+      }
+    },
+    {
+      "id": "dev_act1_breaker_shell",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Circuit Breaker Shell",
+        "zh": "熔断护壳"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "reflect"
+      ],
+      "effect_text": {
+        "zh": "获得 10 点防御；获得 2 层反射。",
+        "en": "Gain 10 Block. Gain 2 Reflect."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 10
+        },
+        {
+          "type": "apply_player_status",
+          "target": "self",
+          "status": "reflect",
+          "stacks": 2,
+          "duration": "combat"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 14 点防御；获得 2 层反射。",
+          "en": "Gain 14 Block. Gain 2 Reflect."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 14
+          },
+          {
+            "type": "apply_player_status",
+            "target": "self",
+            "status": "reflect",
+            "stacks": 2,
+            "duration": "combat"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Trip first, ask later.",
+        "zh": "先跳闸，后问因。"
+      }
+    },
+    {
+      "id": "dev_act1_refactor_spree",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Refactor Spree",
+        "zh": "重构狂欢"
+      },
+      "card_type": "attack",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "combo",
+        "damage",
+        "quality"
+      ],
+      "effect_text": {
+        "zh": "造成 11 点伤害；如果本回合此前打出过牌，额外造成 8 点伤害。",
+        "en": "Deal 11 damage. If you have already played a card this turn, deal 8 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 11
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_at_least",
+            "amount": 1
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 8
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 15 点伤害；如果本回合此前打出过牌，额外造成 10 点伤害。",
+          "en": "Deal 15 damage. If you have already played a card this turn, deal 10 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 15
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_at_least",
+              "amount": 1
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 10
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "While tests pass.",
+        "zh": "测试还绿时。"
+      }
+    },
+    {
+      "id": "dev_act1_zero_day",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Zero-Day Punch",
+        "zh": "零日直拳"
+      },
+      "card_type": "attack",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "targeting": "single_enemy",
+      "keywords": [
+        "exhaust"
+      ],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 22 点伤害。",
+        "en": "Deal 22 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 22
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 3,
+        "effect_text": {
+          "zh": "造成 28 点伤害。",
+          "en": "Deal 28 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 28
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Urgent patch.",
+        "zh": "紧急补丁。"
+      }
+    },
+    {
+      "id": "dev_act1_sticky_feature",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Sticky Feature",
+        "zh": "粘性需求"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [
+        "retain"
+      ],
+      "tags": [
+        "act1",
+        "damage",
+        "retain"
+      ],
+      "effect_text": {
+        "zh": "造成 6 点伤害；保留。",
+        "en": "Deal 6 damage. Retain."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 6
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 9 点伤害；保留。",
+          "en": "Deal 9 damage. Retain."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 9
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Cannot peel off.",
+        "zh": "撕不下来。"
+      }
+    },
+    {
+      "id": "dev_act1_api_spam",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "API Spam",
+        "zh": "接口狂刷"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 8 点伤害。",
+        "en": "Deal 8 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 8
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 11 点伤害。",
+          "en": "Deal 11 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 11
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Rate limit later.",
+        "zh": "限流以后再说。"
+      }
+    },
+    {
+      "id": "dev_act1_lambda_jab",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Lambda Jab",
+        "zh": "匿名刺拳"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 7 点伤害。",
+        "en": "Deal 7 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 7
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 10 点伤害。",
+          "en": "Deal 10 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 10
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Concise pain.",
+        "zh": "简洁的痛。"
+      }
+    },
+    {
+      "id": "dev_act1_type_safety",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Type Safety",
+        "zh": "类型安全"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "quality"
+      ],
+      "effect_text": {
+        "zh": "造成 13 点伤害；如果这是本回合打出的第一张牌，额外造成 5 点伤害。",
+        "en": "Deal 13 damage. If this is the first card played this turn, deal 5 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 13
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 17 点伤害；如果这是本回合打出的第一张牌，额外造成 6 点伤害。",
+          "en": "Deal 17 damage. If this is the first card played this turn, deal 6 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 17
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 6
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Compile-time shield.",
+        "zh": "编译期护盾。"
+      }
+    },
+    {
+      "id": "dev_act1_benchmark",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Benchmark Strike",
+        "zh": "基准一击"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 15 点伤害。",
+        "en": "Deal 15 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 15
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 19 点伤害。",
+          "en": "Deal 19 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 19
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Numbers talk.",
+        "zh": "数据说话。"
+      }
+    },
+    {
+      "id": "dev_act1_ship_it",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Ship It",
+        "zh": "上线按钮"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "造成 6 点伤害；抽 1 张牌。",
+        "en": "Deal 6 damage. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 6
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 9 点伤害；抽 1 张牌。",
+          "en": "Deal 9 damage. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 9
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Green enough.",
+        "zh": "够绿就发。"
+      }
+    },
+    {
+      "id": "dev_act1_patch_tuesday",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Patch Tuesday",
+        "zh": "补丁星期二"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "incident"
+      ],
+      "effect_text": {
+        "zh": "造成 12 点伤害；如果这是本回合打出的第一张牌，额外造成 3 点伤害。",
+        "en": "Deal 12 damage. If this is the first card played this turn, deal 3 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 12
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 3
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 16 点伤害；如果这是本回合打出的第一张牌，额外造成 4 点伤害。",
+          "en": "Deal 16 damage. If this is the first card played this turn, deal 4 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 16
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 4
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Microsoft hours.",
+        "zh": "微软时间。"
+      }
+    },
+    {
+      "id": "dev_act1_container_escape",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Container Escape",
+        "zh": "容器逃逸"
+      },
+      "card_type": "attack",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 17 点伤害。",
+        "en": "Deal 17 damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 17
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 3,
+        "effect_text": {
+          "zh": "造成 23 点伤害。",
+          "en": "Deal 23 damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 23
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Break the cage.",
+        "zh": "打破笼子。"
+      }
+    },
+    {
+      "id": "dev_act1_code_review",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Code Review",
+        "zh": "代码评审"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "quality"
+      ],
+      "effect_text": {
+        "zh": "获得 8 点防御。",
+        "en": "Gain 8 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 8
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 11 点防御。",
+          "en": "Gain 11 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 11
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "LGTM pending.",
+        "zh": "待 LGTM。"
+      }
+    },
+    {
+      "id": "dev_act1_guard_clause",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Guard Clause",
+        "zh": "卫语句"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "quality"
+      ],
+      "effect_text": {
+        "zh": "获得 6 点防御；如果这是本回合打出的第一张牌，额外造成 2 点伤害。",
+        "en": "Gain 6 Block. If this is the first card played this turn, deal 2 additional damage."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 6
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 2
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 9 点防御；如果这是本回合打出的第一张牌，额外造成 3 点伤害。",
+          "en": "Gain 9 Block. If this is the first card played this turn, deal 3 additional damage."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 9
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 3
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Return early.",
+        "zh": "早返回。"
+      }
+    },
+    {
+      "id": "dev_act1_slack_dnd",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Slack DnD",
+        "zh": "免打扰盾"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block"
+      ],
+      "effect_text": {
+        "zh": "获得 7 点防御。",
+        "en": "Gain 7 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 7
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 10 点防御。",
+          "en": "Gain 10 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 10
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Focus mode.",
+        "zh": "专注模式。"
+      }
+    },
+    {
+      "id": "dev_act1_runbook",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Runbook",
+        "zh": "手册格挡"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block"
+      ],
+      "effect_text": {
+        "zh": "获得 12 点防御。",
+        "en": "Gain 12 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 12
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 16 点防御。",
+          "en": "Gain 16 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 16
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Step-by-step.",
+        "zh": "一步步来。"
+      }
+    },
+    {
+      "id": "dev_act1_feature_flag",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Feature Flag",
+        "zh": "特性开关"
+      },
+      "card_type": "skill",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [
+        "retain"
+      ],
+      "tags": [
+        "act1",
+        "block",
+        "retain"
+      ],
+      "effect_text": {
+        "zh": "获得 9 点防御；保留。",
+        "en": "Gain 9 Block. Retain."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 9
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 12 点防御；保留。",
+          "en": "Gain 12 Block. Retain."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 12
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Flip safely.",
+        "zh": "安全翻转。"
+      }
+    },
+    {
+      "id": "dev_act1_rollback",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Rollback",
+        "zh": "回滚"
+      },
+      "card_type": "skill",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "incident"
+      ],
+      "effect_text": {
+        "zh": "获得 14 点防御。",
+        "en": "Gain 14 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 14
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 18 点防御。",
+          "en": "Gain 18 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 18
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Undo reality.",
+        "zh": "撤销现实。"
+      }
+    },
+    {
+      "id": "dev_act1_slo_barrier",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "SLO Barrier",
+        "zh": "SLO 屏障"
+      },
+      "card_type": "skill",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "获得 11 点防御；抽 1 张牌。",
+        "en": "Gain 11 Block. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 11
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 15 点防御；抽 1 张牌。",
+          "en": "Gain 15 Block. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 15
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Error budget.",
+        "zh": "错误预算。"
+      }
+    },
+    {
+      "id": "dev_act1_incident_triage",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Incident Triage",
+        "zh": "事故分流"
+      },
+      "card_type": "skill",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "incident"
+      ],
+      "effect_text": {
+        "zh": "获得 16 点防御。",
+        "en": "Gain 16 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 16
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 20 点防御。",
+          "en": "Gain 20 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 20
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Sev-1 desk.",
+        "zh": "一级事故台。"
+      }
+    },
+    {
+      "id": "dev_act1_zero_trust",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Zero Trust Shell",
+        "zh": "零信任壳"
+      },
+      "card_type": "skill",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block"
+      ],
+      "effect_text": {
+        "zh": "获得 20 点防御。",
+        "en": "Gain 20 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 20
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 25 点防御。",
+          "en": "Gain 25 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 25
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Verify always.",
+        "zh": "持续校验。"
+      }
+    },
+    {
+      "id": "dev_act1_pair_session",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Pair Session",
+        "zh": "结对缓冲"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "获得 5 点防御；抽 1 张牌。",
+        "en": "Gain 5 Block. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 5
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 8 点防御；抽 1 张牌。",
+          "en": "Gain 8 Block. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 8
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Two keyboards.",
+        "zh": "两把键盘。"
+      }
+    },
+    {
+      "id": "dev_act1_standup_block",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Standup Block",
+        "zh": "站会格挡"
+      },
+      "card_type": "skill",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "communication"
+      ],
+      "effect_text": {
+        "zh": "获得 6 点防御。",
+        "en": "Gain 6 Block."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 6
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "获得 9 点防御。",
+          "en": "Gain 9 Block."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 9
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Yesterday today.",
+        "zh": "昨天今天。"
+      }
+    },
+    {
+      "id": "dev_act1_postmortem",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Postmortem",
+        "zh": "复盘治疗"
+      },
+      "card_type": "skill",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "heal"
+      ],
+      "effect_text": {
+        "zh": "获得 10 点防御；回复 3 点生命。",
+        "en": "Gain 10 Block. Heal 3 HP."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 10
+        },
+        {
+          "type": "heal_hp",
+          "target": "self",
+          "amount": 3
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 14 点防御；回复 5 点生命。",
+          "en": "Gain 14 Block. Heal 5 HP."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 14
+          },
+          {
+            "type": "heal_hp",
+            "target": "self",
+            "amount": 5
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Blameless.",
+        "zh": "无责。"
+      }
+    },
+    {
+      "id": "dev_act1_readme",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "README",
+        "zh": "读我"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 4 点伤害；获得 4 点防御。",
+        "en": "Deal 4 damage. Gain 4 Block."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 4
+        },
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 4
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 7 点伤害；获得 7 点防御。",
+          "en": "Deal 7 damage. Gain 7 Block."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 7
+          },
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 7
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "RTFM.",
+        "zh": "先读文档。"
+      }
+    },
+    {
+      "id": "dev_act1_rfc_skim",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "RFC Skim",
+        "zh": "扫规范"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "造成 6 点伤害；抽 1 张牌。",
+        "en": "Deal 6 damage. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 6
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 9 点伤害；抽 1 张牌。",
+          "en": "Deal 9 damage. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 9
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Skim fast.",
+        "zh": "快速扫过。"
+      }
+    },
+    {
+      "id": "dev_act1_arch_diagram",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Architecture Diagram",
+        "zh": "架构图"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "damage",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "造成 7 点伤害；获得 6 点防御；抽 1 张牌。",
+        "en": "Deal 7 damage. Gain 6 Block. Draw 1 card(s)."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 7
+        },
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 6
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 1
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 11 点伤害；获得 10 点防御；抽 1 张牌。",
+          "en": "Deal 11 damage. Gain 10 Block. Draw 1 card(s)."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 11
+          },
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 10
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Boxes and arrows.",
+        "zh": "方框箭头。"
+      }
+    },
+    {
+      "id": "dev_act1_metrics_dashboard",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Metrics Dashboard",
+        "zh": "指标盘"
+      },
+      "card_type": "skill",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "抽 2 张牌。",
+        "en": "Draw 2 card(s)."
+      },
+      "effects": [
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 2
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "抽 3 张牌。",
+          "en": "Draw 3 card(s)."
+        },
+        "effects": [
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 3
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Red line green line.",
+        "zh": "红线绿线。"
+      }
+    },
+    {
+      "id": "dev_act1_oncall_wisdom",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Oncall Wisdom",
+        "zh": "值班智慧"
+      },
+      "card_type": "skill",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "targeting": "self",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "heal",
+        "incident"
+      ],
+      "effect_text": {
+        "zh": "获得 4 点防御；回复 8 点生命。",
+        "en": "Gain 4 Block. Heal 8 HP."
+      },
+      "effects": [
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 4
+        },
+        {
+          "type": "heal_hp",
+          "target": "self",
+          "amount": 8
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "获得 8 点防御；回复 10 点生命。",
+          "en": "Gain 8 Block. Heal 10 HP."
+        },
+        "effects": [
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 8
+          },
+          {
+            "type": "heal_hp",
+            "target": "self",
+            "amount": 10
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Pager teaches.",
+        "zh": "寻呼机育人。"
+      }
+    },
+    {
+      "id": "dev_act1_diff_expectations",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Diff Expectations",
+        "zh": "对齐差异"
+      },
+      "card_type": "attack",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage",
+        "draw"
+      ],
+      "effect_text": {
+        "zh": "造成 10 点伤害；抽 2 张牌。",
+        "en": "Deal 10 damage. Draw 2 card(s)."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 10
+        },
+        {
+          "type": "draw_cards",
+          "target": "self",
+          "amount": 2
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 16 点伤害；抽 2 张牌。",
+          "en": "Deal 16 damage. Draw 2 card(s)."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 16
+          },
+          {
+            "type": "draw_cards",
+            "target": "self",
+            "amount": 2
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Scope drift.",
+        "zh": "范围漂移。"
+      }
+    },
+    {
+      "id": "dev_act1_stakeholder_ping",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Stakeholder Ping",
+        "zh": "干系人点名"
+      },
+      "card_type": "attack",
+      "rarity": "common",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "communication",
+        "damage",
+        "expose"
+      ],
+      "effect_text": {
+        "zh": "造成 4 点伤害，获得 4 点防御。给予敌人 1 层暴露。",
+        "en": "Deal 4 damage. Gain 4 Block. Apply 1 Exposed."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 4
+        },
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 4
+        },
+        {
+          "type": "apply_enemy_status",
+          "target": "selected_enemy",
+          "status": "exposed",
+          "stacks": 1,
+          "duration": "turn"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 7 点伤害；获得 7 点防御。",
+          "en": "Deal 7 damage. Gain 7 Block."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 7
+          },
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 7
+          },
+          {
+            "type": "apply_enemy_status",
+            "target": "selected_enemy",
+            "status": "exposed",
+            "stacks": 1,
+            "duration": "turn"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "@here",
+        "zh": "全体注意。"
+      }
+    },
+    {
+      "id": "dev_act1_tech_spec",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Tech Spec",
+        "zh": "技术规格"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "damage"
+      ],
+      "effect_text": {
+        "zh": "造成 8 点伤害；如果这是本回合打出的第一张牌，额外造成 4 点伤害。",
+        "en": "Deal 8 damage. If this is the first card played this turn, deal 4 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 8
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 2,
+        "effect_text": {
+          "zh": "造成 12 点伤害；如果这是本回合打出的第一张牌，额外造成 5 点伤害。",
+          "en": "Deal 12 damage. If this is the first card played this turn, deal 5 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 12
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 5
+              }
+            ]
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Signed off.",
+        "zh": "已签字。"
+      }
+    },
+    {
+      "id": "dev_act1_backlog_triage",
+      "character_id": "programmer",
+      "campaign": "programmer",
+      "act": 1,
+      "pool": "act1",
+      "name": {
+        "en": "Backlog Triage",
+        "zh": "Backlog 梳理"
+      },
+      "card_type": "attack",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "targeting": "single_enemy",
+      "keywords": [],
+      "tags": [
+        "act1",
+        "block",
+        "communication",
+        "damage",
+        "setup"
+      ],
+      "effect_text": {
+        "zh": "造成 6 点伤害；获得 6 点防御；如果这是本回合打出的第一张牌，额外造成 2 点伤害；下一张攻击牌额外造成 4 点伤害。",
+        "en": "Deal 6 damage. Gain 6 Block. If this is the first card played this turn, deal 2 additional damage. Your next Attack deals 4 additional damage."
+      },
+      "effects": [
+        {
+          "type": "deal_damage",
+          "target": "selected_enemy",
+          "amount": 6
+        },
+        {
+          "type": "gain_block",
+          "target": "self",
+          "amount": 6
+        },
+        {
+          "type": "conditional",
+          "condition": {
+            "type": "played_cards_this_turn_equals",
+            "amount": 0
+          },
+          "then": [
+            {
+              "type": "deal_damage",
+              "target": "selected_enemy",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "type": "apply_player_status",
+          "target": "self",
+          "status": "next_attack_bonus",
+          "stacks": 4,
+          "duration": "next_trigger"
+        }
+      ],
+      "upgrade": {
+        "energy_cost": 1,
+        "effect_text": {
+          "zh": "造成 8 点伤害；获得 8 点防御；如果这是本回合打出的第一张牌，额外造成 3 点伤害；下一张攻击牌额外造成 6 点伤害。",
+          "en": "Deal 8 damage. Gain 8 Block. If this is the first card played this turn, deal 3 additional damage. Your next Attack deals 6 additional damage."
+        },
+        "effects": [
+          {
+            "type": "deal_damage",
+            "target": "selected_enemy",
+            "amount": 8
+          },
+          {
+            "type": "gain_block",
+            "target": "self",
+            "amount": 8
+          },
+          {
+            "type": "conditional",
+            "condition": {
+              "type": "played_cards_this_turn_equals",
+              "amount": 0
+            },
+            "then": [
+              {
+                "type": "deal_damage",
+                "target": "selected_enemy",
+                "amount": 3
+              }
+            ]
+          },
+          {
+            "type": "apply_player_status",
+            "target": "self",
+            "status": "next_attack_bonus",
+            "stacks": 6,
+            "duration": "next_trigger"
+          }
+        ]
+      },
+      "reward_pool": true,
+      "generated": false,
+      "illustration": "/images/skill_placeholder.png",
+      "flavor": {
+        "en": "Ship a slice, buy time with scope.",
+        "zh": "先推进一截，再用范围换缓冲。"
+      }
+    }
+  ]
+}

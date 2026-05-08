@@ -2,47 +2,87 @@
 // Core combat logic: card play, question resolution, locked cards, chain, debuff checks
 // Enemy turn is now handled by useEnemyTurn.js — this hook is PLAYER_TURN only.
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react'
 import useRunStore from '../stores/runStore.js'
-import useSettingsStore from '../stores/settingsStore.js'
-import { useGraveyard } from './useGraveyard.js'
 import { useAudio } from './useAudio.js'
 import { drawCards } from '../utils/deck.js'
 import {
-  resolveChain,
   calculateDamage,
   calculateBlock,
+  resolveChain,
 } from '../utils/combat.js'
-import { sampleQuestionsForCard, shuffleOptions } from '../utils/questions.js'
 import {
   getEffectiveDrawCount,
   getEffectiveMaxEnergy,
   isCardTypeSilenced,
 } from '../utils/enemyTurn.js'
-import { CARD_TYPES } from '../constants/cardTypes.js'
+import { INCIDENT_BUFFER_BLOCK } from '../constants/relicCombat.js'
+import { CARD_KEYWORD_IDS } from '../constants/cardKeywords.js'
+import {
+  pickRandomAliveEnemySlotIndex,
+  resolveSingleTargetDamageSlotIndex,
+} from '../utils/combatEnemies.js'
 
-// Lazy question + card cache per campaign
-const questionCache = {}
 const cardCache = {}
 
-async function loadQuestions(campaign) {
-  if (questionCache[campaign]) return questionCache[campaign]
-  try {
-    const mod = await import(`../data/${campaign}/questions.json`)
-    questionCache[campaign] = mod.default
-    return questionCache[campaign]
-  } catch (e) {
-    console.error(`[useCombat] Failed to load questions for ${campaign}:`, e)
-    return []
+/** Minimal card row when JSON is still loading or id missing — keeps CardHand from filtering everything out. */
+function stubCard(id) {
+  return {
+    id,
+    name_target: id,
+    name_native: '',
+    type: 'vocabulary',
+    rarity: 'common',
+    energy_cost: 1,
+    effect: {},
+    illustration: '/images/skill_placeholder.png',
   }
+}
+
+function mergeCardMapForIds(base, ids) {
+  const m = { ...base }
+  for (const id of ids) {
+    if (typeof id === 'string' && id && !m[id]) m[id] = stubCard(id)
+  }
+  return m
+}
+
+function collectCardIdsForMerge(s) {
+  const ids = [
+    ...(s.hand || []),
+    ...(s.deck || []),
+    ...(s.discardPile || []),
+    ...(s.exhaustPile || []),
+  ]
+  const p = s.pendingDiscardPick
+  if (p?.skillCardId) ids.push(p.skillCardId)
+  return ids
+}
+
+/** Guard nested “discard as play” (奇巧) triggers. */
+let ingeniousCallDepth = 0
+
+function expandDiscardWithCurseDupes(discardPile, ids, cardMap) {
+  const out = [...discardPile]
+  for (const id of ids) {
+    out.push(id)
+    if (cardMap[id]?.effect?.duplicate_self_when_discarded) out.push(id)
+  }
+  return out
 }
 
 async function loadCards(campaign) {
   if (cardCache[campaign]) return cardCache[campaign]
   try {
     const mod = await import(`../data/${campaign}/cards.json`)
+    const raw = mod?.default ?? mod
+    const list = Array.isArray(raw) ? raw : raw?.default
+    if (!Array.isArray(list)) {
+      console.error(`[useCombat] cards.json for ${campaign} is not an array`)
+      return {}
+    }
     const map = {}
-    for (const card of mod.default) map[card.id] = card
+    for (const card of list) map[card.id] = card
     cardCache[campaign] = map
     return cardCache[campaign]
   } catch (e) {
@@ -53,37 +93,40 @@ async function loadCards(campaign) {
 
 export function useCombat() {
   const store = useRunStore()
-  const settings = useSettingsStore()
-  const graveyard = useGraveyard()
   const { playSFX } = useAudio()
 
-  const [cardMap, setCardMap] = useState({})
-  const [allQuestions, setAllQuestions] = useState([])
-
-  // Question prompt state
-  const [activeQuestion, setActiveQuestion] = useState(null)
-  const [activeCardId, setActiveCardId] = useState(null)
+  const [loadedCardMap, setLoadedCardMap] = useState({})
+  const [activeCardId, setActiveCardId] = useState(null) // kept for card highlight animation
 
   // Animation state
   const [animState, setAnimState] = useState(null) // 'correct' | 'wrong' | null
   const [damageNumbers, setDamageNumbers] = useState([])
 
-  // v2: shake animation for locked card clicks
-  const [shakingCardId, setShakingCardId] = useState(null)
-
   // Load campaign data on mount
   useEffect(() => {
     if (!store.campaign) return
-    Promise.all([
-      loadCards(store.campaign),
-      loadQuestions(store.campaign),
-    ]).then(([cards, questions]) => {
-      setCardMap(cards)
-      setAllQuestions(questions)
-    })
+    loadCards(store.campaign).then(setLoadedCardMap)
   }, [store.campaign])
 
+  const cardMap = useMemo(
+    () => mergeCardMapForIds(loadedCardMap, collectCardIdsForMerge(store)),
+    [
+      loadedCardMap,
+      store.hand,
+      store.deck,
+      store.discardPile,
+      store.exhaustPile,
+      store.pendingDiscardPick,
+    ],
+  )
+
   const getCard = useCallback((cardId) => cardMap[cardId] || null, [cardMap])
+
+  const showDamageNumber = useCallback((value, type) => {
+    const id = Date.now() + Math.random()
+    setDamageNumbers(prev => [...prev, { id, value, type }])
+    setTimeout(() => setDamageNumbers(prev => prev.filter(d => d.id !== id)), 900)
+  }, [])
 
   // ============================================================
   // DRAW HAND
@@ -93,8 +136,24 @@ export function useCombat() {
   const drawHand = useCallback(() => {
     const s = useRunStore.getState()
 
+    // Poison tick + decay 易伤/虚弱 — not on the opening hand of the fight
+    if (s.turnNumber >= 1) {
+      s.tickEnemyPoisonAtPlayerTurnStart()
+    }
+
     // v2: unlock all locked cards first
     s.unlockAllCards()
+    s.beginPlayerCardPhase()
+
+    // StS-style: lose Block at the start of each player turn (not first draw of fight).
+    // bamboo_fan: block does not expire at turn start.
+    if (s.turnNumber > 0 && !s.relics.includes('bamboo_fan')) {
+      s.clearBlock()
+    }
+
+    if (s.relics.includes('incident_buffer')) {
+      s.addBlock(INCIDENT_BUFFER_BLOCK)
+    }
 
     // v3: Passively retain cards that have the retain effect
     const currentHand = s.hand
@@ -110,247 +169,219 @@ export function useCombat() {
     const drawCount = getEffectiveDrawCount(s, 5)
     const effectiveEnergy = getEffectiveMaxEnergy(s)
 
-    // Blessing: bonus_draw adds to draw count
-    const modBlessing = s.activeModifier?.blessing?.effect
-    const modCurse = s.activeModifier?.curse?.effect
-    const bonusDraw = modBlessing?.type === 'bonus_draw' ? (modBlessing.value ?? 1) : 0
-    const effectiveDrawCount = drawCount + bonusDraw
+    const gridSnapBonus = s.turnNumber === 0 && s.relics.includes('grid_snap_ruler') ? 1 : 0
+    const effectiveDrawCount = drawCount + gridSnapBonus
 
     // v3: Retained cards stay in the hand — only draw enough to fill up to drawCount
     const slotsToFill = Math.max(0, effectiveDrawCount - retained.length)
     // Cards currently in hand that are NOT retained go to discard
     const nonRetainedInHand = currentHand.filter(id => !retained.includes(id))
-    const currentDeck = [...s.deck]
 
-    // Curse: chaos_hand — every other turn, shuffle non-retained hand cards back to deck
-    let currentDiscard = [...s.discardPile, ...nonRetainedInHand]
-    if (modCurse?.type === 'chaos_hand' && s.turnNumber % 2 === 0 && s.turnNumber > 0) {
-      currentDiscard = [...s.discardPile, ...nonRetainedInHand, ...retained]
-      // retained cards also get reshuffled this turn (chaos!)
-    }
+    let mergedDiscard = expandDiscardWithCurseDupes(s.discardPile, nonRetainedInHand, cardMap)
+    useRunStore.setState({ discardPile: mergedDiscard })
 
-    const { drawn, deck: newDeck, discard: newDiscard } = drawCards(currentDeck, currentDiscard, slotsToFill)
+    nonRetainedInHand.forEach((id) => {
+      const c = cardMap[id]
+      if (!c?.keywords?.includes(CARD_KEYWORD_IDS.INGENIOUS)) return
+      if (ingeniousCallDepth >= 12) return
+      ingeniousCallDepth++
+      try {
+        const st = useRunStore.getState()
+        const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
+        const { bonusMultiplier } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
+        applyCardEffect(c, bonusMultiplier, false, st, { fromDiscardIngenious: true })
+      } finally {
+        ingeniousCallDepth--
+      }
+    })
+
+    const stAfter = useRunStore.getState()
+    const { drawn, deck: newDeck, discard: newDiscard } = drawCards(stAfter.deck, stAfter.discardPile, slotsToFill)
 
     // New hand = retained cards (still in hand) + newly drawn cards
     s.setHand([...retained, ...drawn])
     s.setDeck(newDeck)
     s.setDiscard(newDiscard)
 
-    // Reset energy respecting Drain debuff
-    useRunStore.setState({ energy: effectiveEnergy })
+    // Reset energy respecting Drain debuff (+ Syntax Stapler: +1 on first player turn of fight)
+    let startEnergy = effectiveEnergy
+    if (s.turnNumber === 0 && s.relics.includes('syntax_stapler')) {
+      startEnergy += 1
+    }
+    useRunStore.setState({ energy: startEnergy })
 
     s.incrementTurn()
 
     drawn.forEach((_, i) => setTimeout(() => playSFX('card_draw_vocab'), i * 80))
-  }, [playSFX])
+  }, [playSFX, cardMap])
 
   // ============================================================
   // SELECT CARD
-  // v2: check locked, check silenced, check energy, then open question
+  // Energy, silence, lock; chain multiplier; first card this turn = first try.
   // ============================================================
-  const selectCard = useCallback((cardId) => {
-    if (activeQuestion) return
-
+  const selectCard = useCallback(async (cardId) => {
     const s = useRunStore.getState()
+    if (s.pendingDiscardPick || s.pendingHandExhaustEnergyPick) return
     const card = cardMap[cardId]
     if (!card) return
 
-    // RULE: locked cards cannot be played — shake and return
-    if (s.lockedCards.includes(cardId)) {
-      setShakingCardId(cardId)
-      setTimeout(() => setShakingCardId(null), 500)
-      return
-    }
-
-    // v2: Silence debuff — silenced card type cannot be played
-    if (isCardTypeSilenced(card.type, s)) {
-      setShakingCardId(cardId)
-      setTimeout(() => setShakingCardId(null), 500)
-      return
-    }
-
-    // Curse: type_lock — cannot play the same card type consecutively
-    const typeLockCurse = s.activeModifier?.curse?.effect?.type === 'type_lock'
-    if (typeLockCurse && s.lastCardTypePlayed && s.lastCardTypePlayed === card.type) {
-      setShakingCardId(cardId)
-      setTimeout(() => setShakingCardId(null), 500)
-      return
-    }
-
-    // Energy check
     if (s.energy < card.energy_cost) return
+    if (s.lockedCards.includes(cardId)) return
+    if (isCardTypeSilenced(card.type, s)) return
 
-    playSFX('card_play')
+    const isFirstTry = s.playsThisPlayerTurn === 0
+    const hasChainBracelet = Array.isArray(s.relics) && s.relics.includes('chain_bracelet')
+    const chainState = { chainActive: s.chainActive, chainType: s.chainType }
+    const { bonusMultiplier } = resolveChain(card.type, chainState, s, hasChainBracelet)
+    if (bonusMultiplier > 1) playSFX('chain_activate')
 
-    // Sample question — v2: passes store so used IDs are tracked
-    const question = sampleQuestionsForCard(
-      card,
-      allQuestions,
-      graveyard.entries,
-      settings,
-      s.floor,
-      s  // v2: pass store for no-repeat tracking
-    )
-
-    if (!question) {
-      console.warn(`[useCombat] No question found for card ${cardId}`)
-      return
-    }
-
-    const { shuffledOptions, newCorrectIndex } = shuffleOptions(
-      question.options,
-      question.correct_index,
-      s.masteryLevel
-    )
-
-    setActiveQuestion({ question, shuffledOptions, newCorrectIndex, card })
-    setActiveCardId(cardId)
-  }, [activeQuestion, cardMap, allQuestions, graveyard.entries, settings])
-
-  // ============================================================
-  // RESOLVE ANSWER — called by QuestionPrompt after delay
-  // v2: wrong = lockCard + addEnemyBuff + breakChain
-  // ============================================================
-  const resolveAnswer = useCallback(async ({ result, isFirstTry, halfDamage }) => {
-    if (!activeQuestion) return
-    const { question, card } = activeQuestion
-    const isCorrect = result === 'correct'
-    const s = useRunStore.getState()
-
-    if (isCorrect) {
-      graveyard.logCorrect(question)
-      s.logCorrect()
-
-      const freshS = useRunStore.getState()
-      if (freshS.relics.includes('travelers_compass') && freshS.fightCorrectStreak > 0 && freshS.fightCorrectStreak % 3 === 0) {
-        freshS.queueBonusEnergyNextTurn(1)
+    // Exhaust one hand card → gain Energy equal to its cost (pick after skill leaves hand).
+    if (card.effect?.exhaust_one_hand_gain_its_energy) {
+      const others = s.hand.filter(id => id !== cardId)
+      if (others.length === 0) {
+        playSFX('wrong')
+        return
       }
-
-      // Potion: scholar's_blood — +3 HP per correct answer this fight
-      if (freshS.potionEffects?.scholarsBloodActive) {
-        freshS.healHp(3)
-      }
-
-      // Track card type for enemy focus move
+      setActiveCardId(cardId)
+      playSFX('card_play')
       s.trackCardTypePlayed(card.type)
+      setAnimState('player_telegraph_buff')
+      await new Promise(r => setTimeout(r, 350))
 
-      // Journal
-      if (card.type === CARD_TYPES.VOCABULARY) {
-        s.addJournalWord({
-          questionId: question.id,
-          word: question.graveyard_label,
-          reading: question.graveyard_reading,
-          translation: question.options[question.correct_index],
-          example: question.hint,
-        })
-      } else if (card.type === CARD_TYPES.GRAMMAR) {
-        s.addJournalGrammar({
-          questionId: question.id,
-          concept: question.graveyard_label,
-          pattern: question.graveyard_reading,
-          example: question.hint,
-        })
-      }
-
-      // Chain resolution
-      const chainResult = resolveChain(card.type, { chainActive: s.chainActive, chainType: s.chainType }, s, s.relics.includes('chain_bracelet'))
-      if (chainResult.bonusMultiplier > 1) {
-        playSFX('chain_activate')
-      }
-
-      // Blessing: chain_starter — first correct answer each turn auto-activates chain
-      const chainStarterBlessing = s.activeModifier?.blessing?.effect?.type === 'chain_starter'
-      if (chainStarterBlessing && s.fightCorrectStreak === 0 && !s.chainActive) {
-        s.activateChain(card.type)
-      }
-
-      // ── NEW: Telegraph Animation Phase ──
-      setActiveQuestion(null)
-      
-      const isAttack = card.effect?.type === 'damage' || card.effect?.type === 'damage_all' || card.effect?.type === 'discard_damage' || card.effect?.type === 'exhaust_damage'
-      setAnimState(isAttack ? 'player_telegraph_damage' : 'player_telegraph_buff')
-      
-      await new Promise(r => setTimeout(r, 350)) // Time for player to wind up
-
-      // ── Resolve Phase ──
-      // Card effect (apply once normally)
-      let mult = chainResult.bonusMultiplier
-      if (halfDamage) mult *= 0.5
-      applyCardEffect(card, mult, isFirstTry, s)
-
-      // Potion: echo_tonic — apply card effect a second time
-      const afterS = useRunStore.getState()
-      if (afterS.potionEffects?.echoTonicActive) {
-        afterS.setPotionEffect('echoTonicActive', false)
-        applyCardEffect(card, mult, false, useRunStore.getState()) // second hit, no first-try bonus
-      }
-
-      // Spend energy + move to discard
       s.spendEnergy(card.energy_cost)
       s.removeFromHand(card.id)
-      s.addToDiscard(card.id)
       s.clearRetainGrowth(card.id)
-      // Track for type_lock curse
+      const stAfterPlay = useRunStore.getState()
+      const newDiscard = expandDiscardWithCurseDupes(stAfterPlay.discardPile, [card.id], cardMap)
+      useRunStore.setState({
+        discardPile: newDiscard,
+        pendingHandExhaustEnergyPick: true,
+      })
       s.setLastCardTypePlayed(card.type)
+      s.incrementPlaysThisPlayerTurn()
 
-      setAnimState(isAttack ? 'player_attack' : 'player_buff')
-      setTimeout(() => setAnimState(null), 600)
-      playSFX('correct')
-
-    } else {
-      // WRONG / TIMEOUT — v2: lock the card
-      graveyard.logWrong(question)
-      s.logMistake(question.id, question.graveyard_label, question.graveyard_reading)
-
-      // RULE: lock the card for the rest of this turn
-      s.lockCard(card.id)
-
-      // RULE: break chain on any wrong answer
-      s.breakChain()
-
-      // Enemy buff from wrong answer
-      const enemy = s.currentEnemy
-      const buffTemplate = enemy?.wrong_answer_buffs?.[card.type]
-      
-      const freshS = useRunStore.getState()
-      const firstMistake = (freshS.fightTotal - freshS.fightCorrect === 1)
-
-      if (buffTemplate) {
-        if (s.relics.includes('newcomers_phrasebook') && firstMistake) {
-          // Negated by relic
-        } else {
-          // Apply buff normally
-          s.addEnemyBuff({ ...buffTemplate })
-          
-          // Apply extra times for relic / mastery rule
-          const extraBuffs = (s.relics.includes('cracked_hourglass') ? 1 : 0) + (s.masteryLevel >= 5 ? 1 : 0)
-          for (let i = 0; i < extraBuffs; i++) {
-            s.addEnemyBuff({ ...buffTemplate })
-          }
-        }
+      const prepEx = card.effect?.next_hit_damage_bonus
+      if (prepEx != null && Number(prepEx) > 0) {
+        useRunStore.getState().queueNextHitDamageBonus(Number(prepEx))
       }
 
-      setAnimState('wrong')
+      setAnimState('player_buff')
       setTimeout(() => setAnimState(null), 600)
-      playSFX('wrong')
-      playSFX('cardLock')
-
-      // FIX: clear active question/card in wrong branch (correct branch already clears at line 268)
-      setActiveQuestion(null)
-      setActiveCardId(null)
+      setTimeout(() => setActiveCardId(null), 150)
+      playSFX('correct')
+      return
     }
-    // NOTE: correct branch clears activeQuestion earlier (before telegraph animation)
-    // so we only clear here for the wrong branch to avoid double-setState
-  }, [activeQuestion, graveyard, playSFX])
+
+    // Return one card from discard — resolve placement after player picks (DeckOverlay).
+    if (card.effect?.pick_from_discard_to_hand) {
+      if (s.discardPile.length === 0) {
+        playSFX('wrong')
+        return
+      }
+      setActiveCardId(cardId)
+      playSFX('card_play')
+      s.trackCardTypePlayed(card.type)
+      setAnimState('player_telegraph_buff')
+      await new Promise(r => setTimeout(r, 350))
+
+      applyCardEffect(card, bonusMultiplier, isFirstTry, s)
+
+      const afterPick = useRunStore.getState()
+      if (afterPick.potionEffects?.echoTonicActive) {
+        afterPick.setPotionEffect('echoTonicActive', false)
+        applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState())
+      }
+
+      s.spendEnergy(card.energy_cost)
+      s.removeFromHand(card.id)
+      s.clearRetainGrowth(card.id)
+      useRunStore.setState({
+        pendingDiscardPick: {
+          skillCardId: card.id,
+          exhaustSelf: Boolean(card.effect.exhaust_self),
+        },
+      })
+      s.setLastCardTypePlayed(card.type)
+      s.incrementPlaysThisPlayerTurn()
+
+      const prepNextPick = card.effect?.next_hit_damage_bonus
+      if (prepNextPick != null && Number(prepNextPick) > 0) {
+        useRunStore.getState().queueNextHitDamageBonus(Number(prepNextPick))
+      }
+
+      setAnimState('player_buff')
+      setTimeout(() => setAnimState(null), 600)
+      setTimeout(() => setActiveCardId(null), 150)
+      playSFX('correct')
+      return
+    }
+
+    setActiveCardId(cardId)
+    playSFX('card_play')
+
+    // Track category usage for enemy focus / modifier interactions.
+    s.trackCardTypePlayed(card.type)
+
+    const efx = card.effect || {}
+    const isAttack = Boolean(efx.damage) || Boolean(efx.damage_all) || efx.type === 'damage' || efx.type === 'damage_all' || efx.type === 'discard_damage' || efx.type === 'exhaust_damage'
+    setAnimState(isAttack ? 'player_telegraph_damage' : 'player_telegraph_buff')
+    await new Promise(r => setTimeout(r, 350))
+
+    applyCardEffect(card, bonusMultiplier, isFirstTry, s)
+
+    const afterS = useRunStore.getState()
+    if (afterS.potionEffects?.echoTonicActive) {
+      afterS.setPotionEffect('echoTonicActive', false)
+      applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState())
+    }
+
+    s.spendEnergy(card.energy_cost)
+    s.removeFromHand(card.id)
+    s.clearRetainGrowth(card.id)
+    if (card.effect?.exhaust_self_gain_energy) {
+      useRunStore.setState(st => ({ exhaustPile: [...st.exhaustPile, card.id] }))
+    } else if (card.effect?.exhaust_self) {
+      useRunStore.setState(st => ({ exhaustPile: [...st.exhaustPile, card.id] }))
+      playSFX('card_exhaust')
+    } else {
+      const st = useRunStore.getState()
+      const d = expandDiscardWithCurseDupes(st.discardPile, [card.id], cardMap)
+      useRunStore.setState({ discardPile: d })
+    }
+    s.setLastCardTypePlayed(card.type)
+    s.incrementPlaysThisPlayerTurn()
+
+    const prepNext = card.effect?.next_hit_damage_bonus
+    if (prepNext != null && Number(prepNext) > 0) {
+      useRunStore.getState().queueNextHitDamageBonus(Number(prepNext))
+    }
+
+    setAnimState(isAttack ? 'player_attack' : 'player_buff')
+    setTimeout(() => setAnimState(null), 600)
+    setTimeout(() => setActiveCardId(null), 150)
+    playSFX('correct')
+  }, [cardMap, playSFX])
 
   // ============================================================
   // CARD EFFECT APPLICATION
+  // opts.fromDiscardIngenious — 奇巧: resolve as if played, but do not move the card
   // ============================================================
-  const applyCardEffect = useCallback((card, chainMultiplier, isFirstTry, s) => {
+  function applyCardEffect(card, chainMultiplier, isFirstTry, s, opts = {}) {
+    const { fromDiscardIngenious = false } = opts
     const { effect } = card
     if (!effect) return
 
-    if (effect.damage) {
+    if (fromDiscardIngenious) {
+      s.trackCardTypePlayed(card.type)
+    }
+
+    // Single-target (default) or random one enemy — not used together with damage_all
+    if (effect.damage != null && effect.damage_all == null) {
+      const prepCarry = useRunStore.getState().pendingNextDamageBonus || 0
+      if (prepCarry > 0) {
+        useRunStore.setState({ pendingNextDamageBonus: 0 })
+      }
+
       let baseDmg = calculateDamage({
         base: effect.damage,
         bonusCorrectFirstTry: effect.bonus_correct_first_try || effect.bonus_correct_no_hint || 0,
@@ -360,35 +391,65 @@ export function useCombat() {
         hits: effect.hits || 1,
       })
 
-      // Apply bonus_damage from active modifier blessing (e.g. Critical Knowledge)
-      const modBlessing = s.activeModifier?.blessing?.effect
-      if (modBlessing?.type === 'bonus_damage') {
-        baseDmg += modBlessing.value
-      }
-
-      // Chain armor: only breaks if chain combo (chainMultiplier > 1)
       const bypassesChainArmor = chainMultiplier > 1
 
-      const finalDmg = bypassesChainArmor
-        ? baseDmg  // chain combos bypass armor
+      const coreDmg = bypassesChainArmor
+        ? baseDmg
         : (effect.bonus_if_block_active && s.block > 0 ? baseDmg + effect.bonus_if_block_active : baseDmg)
 
-      s.damageEnemy(finalDmg)
+      let finalDmg = coreDmg + prepCarry
+      const strPts = useRunStore.getState().playerStrength || 0
+      finalDmg += strPts * (effect.hits || 1)
+
+      const stDmg = useRunStore.getState()
+      const randomTgt = effect.damage_target === 'random'
+      const slotIdx = randomTgt
+        ? pickRandomAliveEnemySlotIndex(stDmg)
+        : resolveSingleTargetDamageSlotIndex(stDmg)
+      if (slotIdx != null) {
+        s.damageEnemy(finalDmg, slotIdx)
+        showDamageNumber(finalDmg, 'damage')
+        playSFX('attack_enemy')
+      }
+    }
+
+    if (effect.damage_all) {
+      const prepCarry = useRunStore.getState().pendingNextDamageBonus || 0
+      if (prepCarry > 0) {
+        useRunStore.setState({ pendingNextDamageBonus: 0 })
+      }
+
+      let baseDmg = calculateDamage({
+        base: effect.damage_all,
+        bonusCorrectFirstTry: effect.bonus_correct_first_try || effect.bonus_correct_no_hint || 0,
+        chainMultiplier,
+        cardType: card.type,
+        isFirstTry,
+        hits: effect.hits || 1,
+      })
+
+      const bypassesChainArmor = chainMultiplier > 1
+
+      const coreDmg = bypassesChainArmor
+        ? baseDmg
+        : (effect.bonus_if_block_active && s.block > 0 ? baseDmg + effect.bonus_if_block_active : baseDmg)
+
+      let finalDmg = coreDmg + prepCarry
+      const strPtsAo = useRunStore.getState().playerStrength || 0
+      finalDmg += strPtsAo * (effect.hits || 1)
+
+      s.damageAllEnemies(finalDmg)
       showDamageNumber(finalDmg, 'damage')
       playSFX('attack_enemy')
     }
 
     if (effect.block) {
-      // Curse: no_block — block cards deal 0 block
-      const noBlockCurse = s.activeModifier?.curse?.effect?.type === 'no_block'
-      if (!noBlockCurse) {
-        // v3: retain growth — each retained turn adds +4 bonus block
-        const stacks = s.retainGrowthStacks?.[card.id] || 0
-        const growthBonus = stacks * 4
-        const blockGained = calculateBlock({ base: effect.block + growthBonus, chainMultiplier })
-        s.addBlock(blockGained)
-        playSFX('block_gain')
-      }
+      // v3: retain growth — each retained turn adds +4 bonus block
+      const stacks = s.retainGrowthStacks?.[card.id] || 0
+      const growthBonus = stacks * 4
+      const blockGained = calculateBlock({ base: effect.block + growthBonus, chainMultiplier })
+      s.addBlock(blockGained)
+      playSFX('block_gain')
     }
 
     if (effect.heal) {
@@ -406,83 +467,189 @@ export function useCombat() {
     }
 
     if (effect.chain_bonus && chainMultiplier > 1) {
-      s.damageEnemy(effect.chain_bonus)
+      const st2 = useRunStore.getState()
+      const slotIdx = effect.damage_target === 'random'
+        ? pickRandomAliveEnemySlotIndex(st2)
+        : resolveSingleTargetDamageSlotIndex(st2)
+      const extraStr = st2.playerStrength || 0
+      if (slotIdx != null) s.damageEnemy(effect.chain_bonus + extraStr, slotIdx)
     }
 
-    // Blessing: mono_mastery — if 3+ cards of same type played this turn, queue +1 energy
-    const monoMasteryBlessing = s.activeModifier?.blessing?.effect?.type === 'mono_mastery'
-    if (monoMasteryBlessing) {
-      const typeCounts = s.cardTypesPlayedThisFight || {}
-      const thisTypeCount = (typeCounts[card.type] || 0) + 1 // +1 because trackCardTypePlayed runs after
-      if (thisTypeCount === 3) {
-        s.queueBonusEnergyNextTurn(1)
-      }
+    if (effect.reflect_stacks) {
+      s.addReflectStacks(effect.reflect_stacks)
     }
+    if (effect.reflect_damage) {
+      s.addReflectDamagePer(effect.reflect_damage)
+    }
+
+    if (effect.player_strength) {
+      s.addPlayerStrength(effect.player_strength)
+      playSFX('block_gain')
+    }
+
+    // ── Enemy statuses (易伤 vulnerable / 虚弱 weak / 毒 poison) ──
+    const stStatus = useRunStore.getState()
+    const statusRandom = effect.enemy_status_target === 'random'
+    const statusIdx = statusRandom
+      ? pickRandomAliveEnemySlotIndex(stStatus)
+      : resolveSingleTargetDamageSlotIndex(stStatus)
+
+    let appliedEnemyStatus = false
+    if (effect.enemy_vulnerable_all != null) {
+      s.addEnemyVulnerableAll(effect.enemy_vulnerable_all)
+      appliedEnemyStatus = true
+    } else if (effect.enemy_vulnerable != null && statusIdx != null) {
+      s.addEnemyVulnerable(statusIdx, effect.enemy_vulnerable)
+      appliedEnemyStatus = true
+    }
+    if (effect.enemy_weak_all != null) {
+      s.addEnemyWeakAll(effect.enemy_weak_all)
+      appliedEnemyStatus = true
+    } else if (effect.enemy_weak != null && statusIdx != null) {
+      s.addEnemyWeak(statusIdx, effect.enemy_weak)
+      appliedEnemyStatus = true
+    }
+    if (effect.enemy_poison_all != null) {
+      s.addEnemyPoisonAll(effect.enemy_poison_all)
+      appliedEnemyStatus = true
+    } else if (effect.enemy_poison != null && statusIdx != null) {
+      s.addEnemyPoison(statusIdx, effect.enemy_poison)
+      appliedEnemyStatus = true
+    }
+    if (appliedEnemyStatus) playSFX('debuff_apply')
 
     // v3: Discard/Draw — discard N cards from hand, draw N+1
     if (effect.discard_draw) {
       const count = effect.discard_draw
       const freshS = useRunStore.getState()
-      // Discard random non-retained cards from hand (excluding the card just played, already removed)
       const eligibleToDiscard = freshS.hand.filter(id => !freshS.retainedCards.includes(id))
       const toDiscard = eligibleToDiscard.slice(0, count)
       const newHand = freshS.hand.filter(id => !toDiscard.includes(id))
-      const newDiscard = [...freshS.discardPile, ...toDiscard]
-      const { drawn, deck: newDeck, discard: finalDiscard } = drawCards(freshS.deck, newDiscard, count + 1)
-      s.setHand([...newHand, ...drawn])
+      let expanded = expandDiscardWithCurseDupes(freshS.discardPile, toDiscard, cardMap)
+      useRunStore.setState({ hand: newHand, discardPile: expanded })
+      toDiscard.forEach((id) => {
+        const c = cardMap[id]
+        if (!c?.keywords?.includes(CARD_KEYWORD_IDS.INGENIOUS)) return
+        if (ingeniousCallDepth >= 12) return
+        ingeniousCallDepth++
+        try {
+          const st = useRunStore.getState()
+          const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
+          const { bonusMultiplier: bm } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
+          applyCardEffect(c, bm, false, st, { fromDiscardIngenious: true })
+        } finally {
+          ingeniousCallDepth--
+        }
+      })
+      const st2 = useRunStore.getState()
+      const { drawn, deck: newDeck, discard: finalDiscard } = drawCards(st2.deck, st2.discardPile, count + 1)
+      s.setHand([...st2.hand, ...drawn])
       s.setDeck(newDeck)
       s.setDiscard(finalDiscard)
     }
 
-    // v3: Exhaust for energy — card is played, then immediately exhausted (removed from discard)
-    if (effect.exhaust_self_gain_energy) {
-      const freshS = useRunStore.getState()
-      // Remove from discard (it was just added there by resolveAnswer), put in exhaustPile
-      const newDiscard = freshS.discardPile.filter(id => id !== card.id)
-      s.setDiscard(newDiscard)
-      useRunStore.setState(st => ({ exhaustPile: [...st.exhaustPile, card.id] }))
+    // Draw N then discard M from hand (played card still in hand during effect — exclude it)
+    if (effect.draw_then_discard_hand) {
+      const { draw: nDraw, discard: nDisc } = effect.draw_then_discard_hand
+      const st0 = useRunStore.getState()
+      const handSansPlayed = st0.hand.filter(id => id !== card.id)
+      const { drawn, deck: d2, discard: dis2 } = drawCards(st0.deck, st0.discardPile, nDraw)
+      let hand = [...handSansPlayed, ...drawn]
+      const eligible = hand.filter(id => !st0.retainedCards.includes(id))
+      const toDiscard = eligible.slice(0, nDisc)
+      hand = hand.filter(id => !toDiscard.includes(id))
+      let expanded = expandDiscardWithCurseDupes(dis2, toDiscard, cardMap)
+      useRunStore.setState({ hand, deck: d2, discardPile: expanded })
+      toDiscard.forEach((id) => {
+        const c = cardMap[id]
+        if (!c?.keywords?.includes(CARD_KEYWORD_IDS.INGENIOUS)) return
+        if (ingeniousCallDepth >= 12) return
+        ingeniousCallDepth++
+        try {
+          const st = useRunStore.getState()
+          const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
+          const { bonusMultiplier: bm } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
+          applyCardEffect(c, bm, false, st, { fromDiscardIngenious: true })
+        } finally {
+          ingeniousCallDepth--
+        }
+      })
+    }
+
+    // v3: Exhaust for energy — movement handled in selectCard; here only bonus energy + SFX
+    if (effect.exhaust_self_gain_energy && !fromDiscardIngenious) {
       s.gainBonusEnergy(effect.exhaust_self_gain_energy)
       playSFX('card_exhaust')
     }
 
-  }, [playSFX])
+  }
 
-  // ============================================================
-  // HINT
-  // ============================================================
-  const revealHint = useCallback(() => {
+  const completeDiscardPickByIndex = useCallback((index) => {
     const s = useRunStore.getState()
-    if (s.energy < 1) return false
-    s.spendEnergy(1)
-    s.setHintUsed()
-    playSFX('hint')
-    return true
-  }, [playSFX])
+    const pending = s.pendingDiscardPick
+    if (!pending) return
+    const pile = [...s.discardPile]
+    if (index < 0 || index >= pile.length) return
+    const picked = pile[index]
+    pile.splice(index, 1)
+    const { skillCardId, exhaustSelf } = pending
+    const newHand = [...s.hand, picked]
+    let exhaustPile = [...s.exhaustPile]
+    let discardPile = pile
+    if (exhaustSelf) {
+      exhaustPile.push(skillCardId)
+    } else {
+      discardPile = expandDiscardWithCurseDupes(discardPile, [skillCardId], cardMap)
+    }
+    useRunStore.setState({
+      hand: newHand,
+      discardPile,
+      exhaustPile,
+      pendingDiscardPick: null,
+    })
+    if (exhaustSelf) playSFX('card_exhaust')
+    playSFX('correct')
+  }, [cardMap, playSFX])
 
-  // ============================================================
-  // DAMAGE NUMBERS
-  // ============================================================
-  const showDamageNumber = useCallback((value, type) => {
-    const id = Date.now() + Math.random()
-    setDamageNumbers(prev => [...prev, { id, value, type }])
-    setTimeout(() => setDamageNumbers(prev => prev.filter(d => d.id !== id)), 900)
-  }, [])
+  const completeHandExhaustEnergyPickByIndex = useCallback((index) => {
+    const s = useRunStore.getState()
+    if (!s.pendingHandExhaustEnergyPick) return
+    const hand = [...s.hand]
+    if (index < 0 || index >= hand.length) return
+    const pickedId = hand[index]
+    hand.splice(index, 1)
+    const picked = cardMap[pickedId]
+    const gain = picked?.energy_cost ?? 0
+    const retained = (s.retainedCards || []).filter(id => id !== pickedId)
+    useRunStore.getState().clearRetainGrowth(pickedId)
+    useRunStore.setState({
+      hand,
+      exhaustPile: [...s.exhaustPile, pickedId],
+      energy: s.energy + gain,
+      retainedCards: retained,
+      pendingHandExhaustEnergyPick: false,
+    })
+    playSFX('card_exhaust')
+    playSFX('correct')
+  }, [cardMap, playSFX])
 
   // ============================================================
   // WIN / LOSE
   // ============================================================
-  const isEnemyDefeated = store.enemyHp <= 0 && store.inCombat
+  const slotList = store.combatEnemySlots
+  const isEnemyDefeated = store.inCombat && (
+    slotList?.length > 0
+      ? slotList.every(sl => sl.hp <= 0)
+      : store.enemyHp <= 0
+  )
   const isPlayerDefeated = store.hp <= 0
 
   return {
     // Data
     cardMap,
-    allQuestions,
-    activeQuestion,
     activeCardId,
     animState,
     damageNumbers,
-    shakingCardId,
 
     // Computed
     isEnemyDefeated,
@@ -491,8 +658,8 @@ export function useCombat() {
     // Actions
     drawHand,
     selectCard,
-    resolveAnswer,
-    revealHint,
     getCard,
+    completeDiscardPickByIndex,
+    completeHandExhaustEnergyPickByIndex,
   }
 }

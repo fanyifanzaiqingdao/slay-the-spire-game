@@ -2,9 +2,33 @@
 // All enemy action resolution logic. Called by useEnemyTurn.js.
 // Pure functions that read and write to the store via actions — never mutate directly.
 
+import { WEAK_OUTGOING_MULT } from '../constants/enemyStatus.js'
+
+/** Call after enemy strike SFX — only when that strike dealt HP loss (not fully blocked). */
+function maybeApplyReflectDamage(store, playSFX, hpLostThisStrike, reflectSlotIndex = 0) {
+  if (!hpLostThisStrike || hpLostThisStrike <= 0) return
+  const slots = store.combatEnemySlots || []
+  const idx = reflectSlotIndex ?? store.activeEnemySlotIndex ?? 0
+  const slotHp = slots[idx]?.hp ?? store.enemyHp
+  if (!store.inCombat || slotHp <= 0) return
+  const stacks = Math.max(0, Math.floor(Number(store.reflectStacks) || 0))
+  const per = Math.max(0, Math.floor(Number(store.reflectDamagePer) || 0))
+  const total = stacks * per
+  if (total <= 0) return
+  store.damageEnemy(total, idx)
+  playSFX?.('attack_enemy')
+}
+
 // ── Shared helper: apply strike damage with block, fury, last_stand ──
 function applyStrikeDamage(rawDamage, store) {
   let damage = rawDamage
+
+  const slots = store.combatEnemySlots || []
+  const idx = store.activeEnemySlotIndex ?? 0
+  const atkSlot = slots[idx]
+  if (atkSlot && (atkSlot.weakTurns ?? 0) > 0) {
+    damage = Math.floor(damage * WEAK_OUTGOING_MULT)
+  }
 
   // Apply accumulated wrong-answer buffs (confusion → bonus attack)
   const confusionBuff = store.activeEnemyBuffs.find(b => b.type === 'confusion')
@@ -23,14 +47,7 @@ function applyStrikeDamage(rawDamage, store) {
   if (blocked > 0) store.spendBlock(blocked)
   if (remaining > 0) {
     const newHp = store.hp - remaining
-    // Blessing: last_stand — survive one killing blow at 1 HP (once per run)
-    const lastStandBlessing = store.activeModifier?.blessing?.effect?.type === 'last_stand'
-    if (lastStandBlessing && !store.lastStandUsed && newHp <= 0) {
-      store.setHp(1)
-      store.useLastStand()
-    } else {
-      store.setHp(newHp)
-    }
+    store.setHp(newHp)
   }
 
   return { blocked, remaining, damage }
@@ -44,11 +61,12 @@ function applyStrikeDamage(rawDamage, store) {
  * @param {function} playSFX
  * @returns {Promise<{ message: string, icon: string }>} - what to display during animation
  */
-export async function resolveEnemyAction(action, enemy, store, playSFX) {
+export async function resolveEnemyAction(action, enemy, store, playSFX, attackerSlotIndex = 0) {
   switch (action) {
     case 'strike': {
       const { blocked, remaining, damage } = applyStrikeDamage(enemy.base_attack, store)
       playSFX?.('enemy_strike')
+      maybeApplyReflectDamage(store, playSFX, remaining, attackerSlotIndex)
       return {
         icon: '⚔️',
         message: blocked > 0
@@ -155,6 +173,7 @@ export async function resolveEnemyAction(action, enemy, store, playSFX) {
       // Slow but deals 1.8× base damage
       const { blocked, remaining, damage } = applyStrikeDamage(Math.floor(enemy.base_attack * 1.8), store)
       playSFX?.('enemy_strike')
+      maybeApplyReflectDamage(store, playSFX, remaining, attackerSlotIndex)
       return {
         icon: '💥',
         message: blocked > 0 ? `Heavy Strike! ${remaining > 0 ? `-${remaining} HP` : 'Blocked!'}` : `-${damage} HP`,
@@ -176,8 +195,9 @@ export async function resolveEnemyAction(action, enemy, store, playSFX) {
           store.setHp(Math.max(0, store.hp - r))
           totalRemaining += r
         }
+        playSFX?.('enemy_strike')
+        maybeApplyReflectDamage(store, playSFX, r, attackerSlotIndex)
       }
-      playSFX?.('enemy_strike')
       return { icon: '⚡', message: `Swift Strike ×2! −${totalRemaining} HP`, type: 'damage', value: totalRemaining }
     }
 

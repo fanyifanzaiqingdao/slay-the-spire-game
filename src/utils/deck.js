@@ -52,14 +52,12 @@ export function discardCard(card, discard) {
 
 /**
  * Build a starting deck for a character
- * @param {string[]} vocabIds
- * @param {string[]} grammarIds
- * @param {string[]} readingIds
+ * @param {string[]} starterIds
  * @param {string} rareId
  * @returns {string[]} shuffled deck
  */
-export function buildStartingDeck(vocabIds, grammarIds, readingIds, rareId) {
-  const full = [...vocabIds, ...grammarIds, ...readingIds, rareId].filter(Boolean)
+export function buildStartingDeck(starterIds, rareId) {
+  const full = [...starterIds, rareId].filter(Boolean)
   return shuffle(full)
 }
 

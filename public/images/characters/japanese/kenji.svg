@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none">
+  <defs>
+    <linearGradient id="bgk" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="mon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="480" fill="url(#bgk)"/>
+  <ellipse cx="160" cy="420" rx="130" ry="18" fill="#38bdf8" fill-opacity="0.07"/>
+  <!-- jacket -->
+  <path d="M65 275 Q55 390 50 445 L270 445 Q265 390 255 275 Q160 230 65 275Z" fill="#334155" stroke="#64748b" stroke-width="2"/>
+  <!-- face -->
+  <ellipse cx="160" cy="200" rx="58" ry="65" fill="#e8c4a8"/>
+  <!-- gray hair -->
+  <path d="M102 165 Q160 110 218 165 Q228 185 220 215 Q160 185 100 215 Q92 185 102 165Z" fill="#9ca3af"/>
+  <!-- glasses -->
+  <rect x="105" y="188" width="48" height="36" rx="6" stroke="#1e293b" stroke-width="3" fill="none"/>
+  <rect x="167" y="188" width="48" height="36" rx="6" stroke="#1e293b" stroke-width="3" fill="none"/>
+  <line x1="153" y1="206" x2="167" y2="206" stroke="#1e293b" stroke-width="3"/>
+  <!-- monitors -->
+  <rect x="40" y="310" width="110" height="85" rx="4" fill="url(#mon)" stroke="#38bdf8" stroke-opacity="0.5"/>
+  <rect x="50" y="320" width="90" height="55" rx="2" fill="#0c4a6e"/>
+  <rect x="55" y="328" width="35" height="4" fill="#38bdf8" fill-opacity="0.7"/>
+  <rect x="55" y="338" width="70" height="3" fill="#38bdf8" fill-opacity="0.35"/>
+  <rect x="55" y="346" width="50" height="3" fill="#38bdf8" fill-opacity="0.35"/>
+  <rect x="170" y="300" width="120" height="95" rx="4" fill="url(#mon)" stroke="#38bdf8" stroke-opacity="0.6"/>
+  <rect x="182" y="312" width="96" height="62" rx="2" fill="#082f49"/>
+  <text x="230" y="348" text-anchor="middle" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="9">git rebase</text>
+  <rect x="130" y="395" width="60" height="8" rx="2" fill="#475569"/>
+</svg>

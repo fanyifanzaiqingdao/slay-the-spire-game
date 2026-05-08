@@ -2,13 +2,13 @@
   {
     "id": "jp_vocab_strike",
     "campaign": "japanese",
-    "name_target": "斬撃",
-    "name_native": "Strike",
+    "name_target": "热修复",
+    "name_native": "Hotfix",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "damage": 8,
+      "damage": 6,
       "bonus_correct_first_try": 4,
       "chain_bonus": null
     },
@@ -16,8 +16,8 @@
       "verb",
       "basic"
     ],
-    "flavor_target": "切る。",
-    "flavor_native": "Cut.",
+    "flavor_target": "先上线，再解释。",
+    "flavor_native": "Ship first, explain later.",
     "upgradeable": true,
     "upgraded_id": "jp_vocab_strike_plus",
     "illustration": "/images/skill_placeholder.png"
@@ -25,13 +25,13 @@
   {
     "id": "jp_vocab_strike_plus",
     "campaign": "japanese",
-    "name_target": "斬撃＋",
-    "name_native": "Strike+",
+    "name_target": "热修复+",
+    "name_native": "Hotfix+",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "damage": 11,
+      "damage": 9,
       "bonus_correct_first_try": 5,
       "chain_bonus": null
     },
@@ -39,8 +39,8 @@
       "verb",
       "basic"
     ],
-    "flavor_target": "より深く。",
-    "flavor_native": "Cut deeper.",
+    "flavor_target": "补丁叠补丁。",
+    "flavor_native": "Patches all the way down.",
     "upgradeable": false,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -48,13 +48,13 @@
   {
     "id": "jp_vocab_wild_slash",
     "campaign": "japanese",
-    "name_target": "乱撃",
-    "name_native": "Wild Slash",
+    "name_target": "重构乱斩",
+    "name_native": "Refactor Rush",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "damage": 7,
+      "damage": 9,
       "bonus_correct_first_try": 3,
       "chain_bonus": 4
     },
@@ -62,8 +62,8 @@
       "noun",
       "basic"
     ],
-    "flavor_target": "荒ぶる力。",
-    "flavor_native": "Untamed force.",
+    "flavor_target": "大改特改，生死有命。",
+    "flavor_native": "Big bang refactor energy.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -71,8 +71,8 @@
   {
     "id": "jp_vocab_spirit_surge",
     "campaign": "japanese",
-    "name_target": "霊撃",
-    "name_native": "Spirit Surge",
+    "name_target": "内存尖峰",
+    "name_native": "Memory Spike",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -86,8 +86,8 @@
       "group1",
       "movement"
     ],
-    "flavor_target": "霊の力で打つ。",
-    "flavor_native": "Strike with spirit force.",
+    "flavor_target": "GC 之前先输出。",
+    "flavor_native": "Peak RAM before the GC gods notice.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -95,13 +95,13 @@
   {
     "id": "jp_vocab_swift_strike",
     "campaign": "japanese",
-    "name_target": "迅撃",
-    "name_native": "Swift Strike",
+    "name_target": "CI 连击",
+    "name_native": "CI Strike",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "damage": 6,
+      "damage": 7,
       "bonus_correct_first_try": 2,
       "chain_bonus": null,
       "draw": 1
@@ -110,8 +110,8 @@
       "adjective",
       "basic"
     ],
-    "flavor_target": "速さは力。",
-    "flavor_native": "Speed is power.",
+    "flavor_target": "绿了就等于赢了。",
+    "flavor_native": "Green pipeline, green soul.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -119,13 +119,13 @@
   {
     "id": "jp_vocab_twin_fang",
     "campaign": "japanese",
-    "name_target": "双牙",
-    "name_native": "Twin Fang",
+    "name_target": "双机热备",
+    "name_native": "Dual Dispatch",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 8,
+      "damage": 5,
       "hits": 2,
       "bonus_correct_first_try": 2,
       "chain_bonus": null
@@ -134,8 +134,8 @@
       "noun",
       "animal"
     ],
-    "flavor_target": "二度の痛み。",
-    "flavor_native": "Two bites of pain.",
+    "flavor_target": "主从各一刀。",
+    "flavor_native": "Primary and replica both swing.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -143,14 +143,14 @@
   {
     "id": "jp_vocab_kanji_blade",
     "campaign": "japanese",
-    "name_target": "漢字刃",
-    "name_native": "Kanji Blade",
+    "name_target": "严格模式",
+    "name_native": "Strict Mode",
     "type": "vocabulary",
     "rarity": "rare",
     "energy_cost": 2,
     "effect": {
-      "damage": 18,
-      "bonus_if_block_active": 8,
+      "damage": 16,
+      "bonus_if_block_active": 6,
       "bonus_correct_first_try": 0,
       "chain_bonus": null
     },
@@ -158,8 +158,8 @@
       "verb",
       "group2"
     ],
-    "flavor_target": "字は刃となる。",
-    "flavor_native": "Characters become blades.",
+    "flavor_target": "类型即武器。",
+    "flavor_native": "Types are the blade.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -167,22 +167,22 @@
   {
     "id": "jp_vocab_mountain_echo",
     "campaign": "japanese",
-    "name_target": "山彦",
-    "name_native": "Mountain Echo",
+    "name_target": "日志回声",
+    "name_native": "Log Echo",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 10,
-      "chain_bonus": 8,
+      "damage": 12,
+      "chain_bonus": 6,
       "bonus_correct_first_try": 0
     },
     "question_tags": [
       "noun",
       "nature"
     ],
-    "flavor_target": "山は答える。",
-    "flavor_native": "The mountain answers.",
+    "flavor_target": "println 也是输出。",
+    "flavor_native": "println is still observability.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -190,8 +190,30 @@
   {
     "id": "jp_gram_ward",
     "campaign": "japanese",
-    "name_target": "護符",
-    "name_native": "Ward",
+    "name_target": "Code Review",
+    "name_native": "Code Review",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 5,
+      "chain_bonus": null
+    },
+    "question_tags": [
+      "particle",
+      "basic"
+    ],
+    "flavor_target": "有人看过就不算裸奔。",
+    "flavor_native": "Two pairs of eyes beat zero.",
+    "upgradeable": true,
+    "upgraded_id": "jp_gram_ward_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_gram_ward_plus",
+    "campaign": "japanese",
+    "name_target": "Code Review+",
+    "name_native": "Code Review+",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 1,
@@ -203,30 +225,8 @@
       "particle",
       "basic"
     ],
-    "flavor_target": "護る言葉。",
-    "flavor_native": "Words that protect.",
-    "upgradeable": true,
-    "upgraded_id": "jp_gram_ward_plus",
-    "illustration": "/images/skill_placeholder.png"
-  },
-  {
-    "id": "jp_gram_ward_plus",
-    "campaign": "japanese",
-    "name_target": "護符＋",
-    "name_native": "Ward+",
-    "type": "grammar",
-    "rarity": "common",
-    "energy_cost": 1,
-    "effect": {
-      "block": 11,
-      "chain_bonus": null
-    },
-    "question_tags": [
-      "particle",
-      "basic"
-    ],
-    "flavor_target": "より堅固な護り。",
-    "flavor_native": "Stronger protection.",
+    "flavor_target": "LGTM 盖章加强版。",
+    "flavor_native": "Rubber stamp, reinforced.",
     "upgradeable": false,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -234,21 +234,21 @@
   {
     "id": "jp_gram_iron_vow",
     "campaign": "japanese",
-    "name_target": "鉄誓",
-    "name_native": "Iron Vow",
+    "name_target": "SLA 护符",
+    "name_native": "SLA Ward",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "block": 16,
+      "block": 12,
       "chain_bonus": null
     },
     "question_tags": [
       "verb-form",
       "polite"
     ],
-    "flavor_target": "誓いは揺るがない。",
-    "flavor_native": "The vow does not waver.",
+    "flavor_target": "到期前绝不倒下。",
+    "flavor_native": "Uptime is a promise.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -256,22 +256,22 @@
   {
     "id": "jp_gram_particle_shield",
     "campaign": "japanese",
-    "name_target": "助詞盾",
-    "name_native": "Particle Shield",
+    "name_target": "卫语句",
+    "name_native": "Guard Clause",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "block": 6,
-      "chain_bonus": 4
+      "block": 7,
+      "chain_bonus": 2
     },
     "question_tags": [
       "particle",
       "wa",
       "ni"
     ],
-    "flavor_target": "語順は力なり。",
-    "flavor_native": "Word order is power.",
+    "flavor_target": "早 return，早轻松。",
+    "flavor_native": "Return early, sleep better.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -279,13 +279,13 @@
   {
     "id": "jp_gram_stone_skin",
     "campaign": "japanese",
-    "name_target": "石皮",
-    "name_native": "Stone Skin",
+    "name_target": "不可变壳",
+    "name_native": "Immutable Shell",
     "type": "grammar",
     "rarity": "rare",
     "energy_cost": 2,
     "effect": {
-      "block": 20,
+      "block": 16,
       "bonus_correct_first_try": 5,
       "chain_bonus": null
     },
@@ -293,8 +293,8 @@
       "grammar",
       "sentence-structure"
     ],
-    "flavor_target": "言葉は石となる。",
-    "flavor_native": "Words become stone.",
+    "flavor_target": "状态机写进 DNA。",
+    "flavor_native": "State machine coded into the bones.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -302,14 +302,14 @@
   {
     "id": "jp_read_spirit_scroll",
     "campaign": "japanese",
-    "name_target": "霊視",
-    "name_native": "Spirit Sight",
+    "name_target": "读 README",
+    "name_native": "README Scroll",
     "type": "reading",
     "rarity": "common",
     "energy_cost": 2,
     "effect": {
-      "heal": 8,
-      "draw": 0,
+      "heal": 6,
+      "draw": 1,
       "stun": 0,
       "chain_bonus": null
     },
@@ -317,8 +317,8 @@
       "reading",
       "basic"
     ],
-    "flavor_target": "見えないものを見る。",
-    "flavor_native": "See the unseen.",
+    "flavor_target": "文档读完算我输…开玩笑的。",
+    "flavor_native": "RTFM — respectfully.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -326,8 +326,8 @@
   {
     "id": "jp_read_travelers_wisdom",
     "campaign": "japanese",
-    "name_target": "旅の知恵",
-    "name_native": "Traveler's Wisdom",
+    "name_target": "架构白皮书",
+    "name_native": "Architecture Doc",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -341,8 +341,8 @@
       "reading",
       "narrative"
     ],
-    "flavor_target": "道は続く。",
-    "flavor_native": "The road continues.",
+    "flavor_target": "图很丑但管用。",
+    "flavor_native": "Ugly diagram, clear truth.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png",
@@ -351,8 +351,8 @@
   {
     "id": "jp_vocab_tactical_retreat",
     "campaign": "japanese",
-    "name_target": "捨て身",
-    "name_native": "Tactical Retreat",
+    "name_target": "git stash",
+    "name_native": "Git Stash",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -363,8 +363,8 @@
       "verb",
       "movement"
     ],
-    "flavor_target": "引いて、また攻める。",
-    "flavor_native": "Retreat, then attack again.",
+    "flavor_target": "不是逃，是战略暂存。",
+    "flavor_native": "Tactical WIP, not cowardice.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -372,8 +372,8 @@
   {
     "id": "jp_gram_meditate",
     "campaign": "japanese",
-    "name_target": "瞑想",
-    "name_native": "Meditate",
+    "name_target": "技术债冥想",
+    "name_native": "Tech Debt Meditate",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -385,8 +385,8 @@
       "verb-form",
       "te-form"
     ],
-    "flavor_target": "心を落ち着ける。",
-    "flavor_native": "Calm the mind.",
+    "flavor_target": "闭眼全是 TODO。",
+    "flavor_native": "Close eyes, see only TODOs.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -394,21 +394,21 @@
   {
     "id": "jp_read_void_surge",
     "campaign": "japanese",
-    "name_target": "虚空の奔流",
-    "name_native": "Void Surge",
+    "name_target": "RFC 深潜",
+    "name_native": "RFC Deep Dive",
     "type": "reading",
     "rarity": "rare",
     "energy_cost": 2,
     "effect": {
-      "heal": 4,
+      "heal": 3,
       "exhaust_self_gain_energy": 2
     },
     "question_tags": [
       "reading",
       "narrative"
     ],
-    "flavor_target": "消えて、力となる。",
-    "flavor_native": "Vanish, and become power.",
+    "flavor_target": "空白处全是假设。",
+    "flavor_native": "The void is full of assumptions.",
     "upgradeable": false,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -416,21 +416,21 @@
   {
     "id": "jp_gram_steady_stance",
     "campaign": "japanese",
-    "name_target": "不動の構え",
-    "name_native": "Steady Stance",
+    "name_target": "零停机站姿",
+    "name_native": "Zero-Downtime Stance",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 0,
     "effect": {
-      "block": 3,
+      "block": 4,
       "retain": true
     },
     "question_tags": [
       "particle",
       "basic"
     ],
-    "flavor_target": "揺るぎなき防御。",
-    "flavor_native": "Unyielding defense.",
+    "flavor_target": "发布窗口里别抖。",
+    "flavor_native": "Steady hands on deploy day.",
     "upgradeable": true,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -438,22 +438,22 @@
   {
     "id": "jp_read_newcomers_luck",
     "campaign": "japanese",
-    "name_target": "初心者の運",
-    "name_native": "Newcomer's Luck",
+    "name_target": "新人手册",
+    "name_native": "Onboarding Doc",
     "type": "reading",
     "rarity": "rare",
     "energy_cost": 0,
     "effect": {
       "damage": 0,
-      "block": 15,
-      "draw": 2
+      "block": 12,
+      "draw": 1
     },
     "question_tags": [
       "reading",
       "generated"
     ],
-    "flavor_target": "運も実力のうち。",
-    "flavor_native": "Luck is also a skill.",
+    "flavor_target": "第一天总能蒙对。",
+    "flavor_native": "Day-one luck is real.",
     "upgradeable": true,
     "upgraded_id": "jp_read_newcomers_luck_plus",
     "illustration": "/images/skill_placeholder.png"
@@ -461,21 +461,21 @@
   {
     "id": "jp_read_returnees_insight",
     "campaign": "japanese",
-    "name_target": "帰国者の洞察",
-    "name_native": "Returnee's Insight",
+    "name_target": "回流指南",
+    "name_native": "Re-onboarding",
     "type": "reading",
     "rarity": "rare",
     "energy_cost": 1,
     "effect": {
-      "damage": 12,
-      "exhaust_self_gain_energy": 2
+      "damage": 10,
+      "exhaust_self_gain_energy": 1
     },
     "question_tags": [
       "reading",
       "generated"
     ],
-    "flavor_target": "思い出した。",
-    "flavor_native": "I remember now.",
+    "flavor_target": "老员工也要重新读。",
+    "flavor_native": "Even veterans RTFM again.",
     "upgradeable": true,
     "upgraded_id": "jp_read_returnees_insight_plus",
     "illustration": "/images/skill_placeholder.png"
@@ -483,8 +483,8 @@
   {
     "id": "jp_vocabulary_gen_100",
     "campaign": "japanese",
-    "name_target": "幻の技 101",
-    "name_native": "Phantom Tech 101",
+    "name_target": "交付·5",
+    "name_native": "Dead Code Cut",
     "type": "vocabulary",
     "rarity": "rare",
     "energy_cost": 1,
@@ -495,16 +495,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_101",
     "campaign": "japanese",
-    "name_target": "幻の技 102",
-    "name_native": "Phantom Tech 102",
+    "name_target": "交付·6",
+    "name_native": "Merge Rebase",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -515,16 +515,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_102",
     "campaign": "japanese",
-    "name_target": "幻の技 103",
-    "name_native": "Phantom Tech 103",
+    "name_target": "交付·1",
+    "name_native": "Lint Strike",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 2,
@@ -535,16 +535,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_103",
     "campaign": "japanese",
-    "name_target": "幻の技 104",
-    "name_native": "Phantom Tech 104",
+    "name_target": "洞察·2",
+    "name_native": "RFC Skim",
     "type": "reading",
     "rarity": "common",
     "energy_cost": 0,
@@ -555,16 +555,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_104",
     "campaign": "japanese",
-    "name_target": "幻の技 105",
-    "name_native": "Phantom Tech 105",
+    "name_target": "交付·3",
+    "name_native": "Hotfix Hammer",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -575,16 +575,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_105",
     "campaign": "japanese",
-    "name_target": "幻の技 106",
-    "name_native": "Phantom Tech 106",
+    "name_target": "规范·4",
+    "name_native": "Incident Shell",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -595,16 +595,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_106",
     "campaign": "japanese",
-    "name_target": "幻の技 107",
-    "name_native": "Phantom Tech 107",
+    "name_target": "交付·5",
+    "name_native": "Dead Code Cut",
     "type": "vocabulary",
     "rarity": "rare",
     "energy_cost": 2,
@@ -615,16 +615,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_107",
     "campaign": "japanese",
-    "name_target": "幻の技 108",
-    "name_native": "Phantom Tech 108",
+    "name_target": "规范·6",
+    "name_native": "SLO Barrier",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 0,
@@ -635,16 +635,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_108",
     "campaign": "japanese",
-    "name_target": "幻の技 109",
-    "name_native": "Phantom Tech 109",
+    "name_target": "规范·1",
+    "name_native": "Scope Guard",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 2,
@@ -655,16 +655,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_109",
     "campaign": "japanese",
-    "name_target": "幻の技 110",
-    "name_native": "Phantom Tech 110",
+    "name_target": "洞察·2",
+    "name_native": "RFC Skim",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -675,16 +675,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_110",
     "campaign": "japanese",
-    "name_target": "幻の技 111",
-    "name_native": "Phantom Tech 111",
+    "name_target": "洞察·3",
+    "name_native": "Diff Expectations",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -695,16 +695,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_111",
     "campaign": "japanese",
-    "name_target": "幻の技 112",
-    "name_native": "Phantom Tech 112",
+    "name_target": "洞察·4",
+    "name_native": "Retro Insight",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -715,16 +715,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_112",
     "campaign": "japanese",
-    "name_target": "幻の技 113",
-    "name_native": "Phantom Tech 113",
+    "name_target": "规范·5",
+    "name_native": "Runbook Shield",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -735,16 +735,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_113",
     "campaign": "japanese",
-    "name_target": "幻の技 114",
-    "name_native": "Phantom Tech 114",
+    "name_target": "洞察·6",
+    "name_native": "Sprint Notes",
     "type": "reading",
     "rarity": "common",
     "energy_cost": 1,
@@ -755,16 +755,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_114",
     "campaign": "japanese",
-    "name_target": "幻の技 115",
-    "name_native": "Phantom Tech 115",
+    "name_target": "交付·1",
+    "name_native": "Lint Strike",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -775,16 +775,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_115",
     "campaign": "japanese",
-    "name_target": "幻の技 116",
-    "name_native": "Phantom Tech 116",
+    "name_target": "交付·2",
+    "name_native": "Ticket Slash",
     "type": "vocabulary",
     "rarity": "rare",
     "energy_cost": 0,
@@ -795,16 +795,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_116",
     "campaign": "japanese",
-    "name_target": "幻の技 117",
-    "name_native": "Phantom Tech 117",
+    "name_target": "交付·3",
+    "name_native": "Hotfix Hammer",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -815,16 +815,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_117",
     "campaign": "japanese",
-    "name_target": "幻の技 118",
-    "name_native": "Phantom Tech 118",
+    "name_target": "交付·4",
+    "name_native": "Blame Redirect",
     "type": "vocabulary",
     "rarity": "rare",
     "energy_cost": 1,
@@ -835,16 +835,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_118",
     "campaign": "japanese",
-    "name_target": "幻の技 119",
-    "name_native": "Phantom Tech 119",
+    "name_target": "规范·5",
+    "name_native": "Runbook Shield",
     "type": "grammar",
     "rarity": "rare",
     "energy_cost": 1,
@@ -855,16 +855,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_119",
     "campaign": "japanese",
-    "name_target": "幻の技 120",
-    "name_native": "Phantom Tech 120",
+    "name_target": "洞察·6",
+    "name_native": "Sprint Notes",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -875,16 +875,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_120",
     "campaign": "japanese",
-    "name_target": "幻の技 121",
-    "name_native": "Phantom Tech 121",
+    "name_target": "交付·1",
+    "name_native": "Lint Strike",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 1,
@@ -895,16 +895,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_121",
     "campaign": "japanese",
-    "name_target": "幻の技 122",
-    "name_native": "Phantom Tech 122",
+    "name_target": "交付·2",
+    "name_native": "Ticket Slash",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -915,16 +915,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_122",
     "campaign": "japanese",
-    "name_target": "幻の技 123",
-    "name_native": "Phantom Tech 123",
+    "name_target": "交付·3",
+    "name_native": "Hotfix Hammer",
     "type": "vocabulary",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -935,16 +935,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_vocabulary_gen_123",
     "campaign": "japanese",
-    "name_target": "幻の技 124",
-    "name_native": "Phantom Tech 124",
+    "name_target": "交付·4",
+    "name_native": "Blame Redirect",
     "type": "vocabulary",
     "rarity": "common",
     "energy_cost": 2,
@@ -955,16 +955,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "先交付再争论。",
+    "flavor_native": "Ship the slice. Worry about naming in v2.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_124",
     "campaign": "japanese",
-    "name_target": "幻の技 125",
-    "name_native": "Phantom Tech 125",
+    "name_target": "洞察·5",
+    "name_native": "Stakeholder Memo",
     "type": "reading",
     "rarity": "rare",
     "energy_cost": 2,
@@ -975,16 +975,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_125",
     "campaign": "japanese",
-    "name_target": "幻の技 126",
-    "name_native": "Phantom Tech 126",
+    "name_target": "洞察·6",
+    "name_native": "Sprint Notes",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -995,16 +995,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_126",
     "campaign": "japanese",
-    "name_target": "幻の技 127",
-    "name_native": "Phantom Tech 127",
+    "name_target": "规范·1",
+    "name_native": "Scope Guard",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 1,
@@ -1015,16 +1015,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_127",
     "campaign": "japanese",
-    "name_target": "幻の技 128",
-    "name_native": "Phantom Tech 128",
+    "name_target": "洞察·2",
+    "name_native": "RFC Skim",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -1035,16 +1035,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_128",
     "campaign": "japanese",
-    "name_target": "幻の技 129",
-    "name_native": "Phantom Tech 129",
+    "name_target": "洞察·3",
+    "name_native": "Diff Expectations",
     "type": "reading",
     "rarity": "uncommon",
     "energy_cost": 2,
@@ -1055,16 +1055,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_129",
     "campaign": "japanese",
-    "name_target": "幻の技 130",
-    "name_native": "Phantom Tech 130",
+    "name_target": "规范·4",
+    "name_native": "Incident Shell",
     "type": "grammar",
     "rarity": "uncommon",
     "energy_cost": 0,
@@ -1075,16 +1075,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_grammar_gen_130",
     "campaign": "japanese",
-    "name_target": "幻の技 131",
-    "name_native": "Phantom Tech 131",
+    "name_target": "规范·5",
+    "name_native": "Runbook Shield",
     "type": "grammar",
     "rarity": "common",
     "energy_cost": 0,
@@ -1095,16 +1095,16 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "流程兜底。",
+    "flavor_native": "Process absorbs chaos.",
     "upgradeable": false,
     "illustration": "/images/skill_placeholder.png"
   },
   {
     "id": "jp_reading_gen_131",
     "campaign": "japanese",
-    "name_target": "幻の技 132",
-    "name_native": "Phantom Tech 132",
+    "name_target": "洞察·6",
+    "name_native": "Sprint Notes",
     "type": "reading",
     "rarity": "common",
     "energy_cost": 1,
@@ -1115,9 +1115,1445 @@
     "question_tags": [
       "generated"
     ],
-    "flavor_target": "未知の力。",
-    "flavor_native": "Unknown power.",
+    "flavor_target": "读懂再拍板。",
+    "flavor_native": "Read between the milestones.",
     "upgradeable": false,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_hotfix",
+    "campaign": "japanese",
+    "name_native": "Hotfix",
+    "name_target": "热修复",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 6,
+      "bonus_correct_first_try": 3
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Ship first.",
+    "flavor_target": "先上线。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_unit_nudge",
+    "campaign": "japanese",
+    "name_native": "Unit Test Nudge",
+    "name_target": "单测轻推",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 7
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Nudge the assertion.",
+    "flavor_target": "轻推断言。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_git_blame",
+    "campaign": "japanese",
+    "name_native": "Git Blame",
+    "name_target": "甩锅追踪",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 5,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Not you, of course.",
+    "flavor_target": "当然不是你。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_printf_debug",
+    "campaign": "japanese",
+    "name_native": "Printf Debug",
+    "name_target": "打印调试",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 0,
+    "effect": {
+      "damage": 4
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Works until it ships.",
+    "flavor_target": "上线前都管用。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_stack_overflow",
+    "campaign": "japanese",
+    "name_native": "Stack Overflow",
+    "name_target": "栈溢出打击",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 12,
+      "reflect_stacks": 2
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Deep call stack.",
+    "flavor_target": "调用栈过深。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_cherry_pick",
+    "campaign": "japanese",
+    "name_native": "Cherry-Pick",
+    "name_target": "挑拣提交",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 8,
+      "chain_bonus": 4
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Just this commit.",
+    "flavor_target": "只要这一笔。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_merge_conflict",
+    "campaign": "japanese",
+    "name_native": "Merge Conflict",
+    "name_target": "合并冲突",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 10,
+      "hits": 2
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Two truths.",
+    "flavor_target": "两边都有理。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_race_condition",
+    "campaign": "japanese",
+    "name_native": "Race Condition",
+    "name_target": "竞态一击",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 9,
+      "bonus_correct_first_try": 2
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Who runs first?",
+    "flavor_target": "谁先谁后？",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_memory_leak",
+    "campaign": "japanese",
+    "name_native": "Memory Leak",
+    "name_target": "内存泄漏",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 14,
+      "reflect_damage": 1
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Forgot to free.",
+    "flavor_target": "忘了释放。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_deadlock",
+    "campaign": "japanese",
+    "name_native": "Deadlock",
+    "name_target": "死锁终结",
+    "type": "vocabulary",
+    "rarity": "rare",
+    "energy_cost": 3,
+    "effect": {
+      "damage": 18,
+      "bonus_if_block_active": 6,
+      "reflect_stacks": 1
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Everyone waits.",
+    "flavor_target": "全员等待。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_breaker_shell",
+    "campaign": "japanese",
+    "name_native": "Circuit Breaker Shell",
+    "name_target": "熔断护壳",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 2,
+    "effect": {
+      "block": 10,
+      "reflect_stacks": 2
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Trip first, ask later.",
+    "flavor_target": "先跳闸，后问因。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_refactor_spree",
+    "campaign": "japanese",
+    "name_native": "Refactor Spree",
+    "name_target": "重构狂欢",
+    "type": "vocabulary",
+    "rarity": "rare",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 11,
+      "chain_bonus": 8
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "While tests pass.",
+    "flavor_target": "测试还绿时。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_zero_day",
+    "campaign": "japanese",
+    "name_native": "Zero-Day Punch",
+    "name_target": "零日直拳",
+    "type": "vocabulary",
+    "rarity": "rare",
+    "energy_cost": 4,
+    "effect": {
+      "damage": 22
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Urgent patch.",
+    "flavor_target": "紧急补丁。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_sticky_feature",
+    "campaign": "japanese",
+    "name_native": "Sticky Feature",
+    "name_target": "粘性需求",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 6,
+      "retain": true
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Cannot peel off.",
+    "flavor_target": "撕不下来。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_api_spam",
+    "campaign": "japanese",
+    "name_native": "API Spam",
+    "name_target": "接口狂刷",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 8
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Rate limit later.",
+    "flavor_target": "限流以后再说。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_lambda_jab",
+    "campaign": "japanese",
+    "name_native": "Lambda Jab",
+    "name_target": "匿名刺拳",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 7
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Concise pain.",
+    "flavor_target": "简洁的痛。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_type_safety",
+    "campaign": "japanese",
+    "name_native": "Type Safety",
+    "name_target": "类型安全",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 13,
+      "bonus_correct_first_try": 5
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Compile-time shield.",
+    "flavor_target": "编译期护盾。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_benchmark",
+    "campaign": "japanese",
+    "name_native": "Benchmark Strike",
+    "name_target": "基准一击",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 15
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Numbers talk.",
+    "flavor_target": "数据说话。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_ship_it",
+    "campaign": "japanese",
+    "name_native": "Ship It",
+    "name_target": "上线按钮",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 6,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Green enough.",
+    "flavor_target": "够绿就发。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_patch_tuesday",
+    "campaign": "japanese",
+    "name_native": "Patch Tuesday",
+    "name_target": "补丁星期二",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 12,
+      "bonus_correct_first_try": 3
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Microsoft hours.",
+    "flavor_target": "微软时间。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_container_escape",
+    "campaign": "japanese",
+    "name_native": "Container Escape",
+    "name_target": "容器逃逸",
+    "type": "vocabulary",
+    "rarity": "rare",
+    "energy_cost": 3,
+    "effect": {
+      "damage": 17
+    },
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "Break the cage.",
+    "flavor_target": "打破笼子。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_code_review",
+    "campaign": "japanese",
+    "name_native": "Code Review",
+    "name_target": "代码评审",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 8
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "LGTM pending.",
+    "flavor_target": "待 LGTM。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_guard_clause",
+    "campaign": "japanese",
+    "name_native": "Guard Clause",
+    "name_target": "卫语句",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 6,
+      "bonus_correct_first_try": 2
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Return early.",
+    "flavor_target": "早返回。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_slack_dnd",
+    "campaign": "japanese",
+    "name_native": "Slack DnD",
+    "name_target": "免打扰盾",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 7
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Focus mode.",
+    "flavor_target": "专注模式。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_runbook",
+    "campaign": "japanese",
+    "name_native": "Runbook",
+    "name_target": "手册格挡",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 2,
+    "effect": {
+      "block": 12
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Step-by-step.",
+    "flavor_target": "一步步来。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_feature_flag",
+    "campaign": "japanese",
+    "name_native": "Feature Flag",
+    "name_target": "特性开关",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "block": 9,
+      "retain": true
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Flip safely.",
+    "flavor_target": "安全翻转。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_rollback",
+    "campaign": "japanese",
+    "name_native": "Rollback",
+    "name_target": "回滚",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "block": 14
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Undo reality.",
+    "flavor_target": "撤销现实。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_slo_barrier",
+    "campaign": "japanese",
+    "name_native": "SLO Barrier",
+    "name_target": "SLO 屏障",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "block": 11,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Error budget.",
+    "flavor_target": "错误预算。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_incident_triage",
+    "campaign": "japanese",
+    "name_native": "Incident Triage",
+    "name_target": "事故分流",
+    "type": "grammar",
+    "rarity": "rare",
+    "energy_cost": 2,
+    "effect": {
+      "block": 16
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Sev-1 desk.",
+    "flavor_target": "一级事故台。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_zero_trust",
+    "campaign": "japanese",
+    "name_native": "Zero Trust Shell",
+    "name_target": "零信任壳",
+    "type": "grammar",
+    "rarity": "rare",
+    "energy_cost": 3,
+    "effect": {
+      "block": 20
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Verify always.",
+    "flavor_target": "持续校验。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_pair_session",
+    "campaign": "japanese",
+    "name_native": "Pair Session",
+    "name_target": "结对缓冲",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 5,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Two keyboards.",
+    "flavor_target": "两把键盘。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_standup_block",
+    "campaign": "japanese",
+    "name_native": "Standup Block",
+    "name_target": "站会格挡",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "block": 6
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Yesterday today.",
+    "flavor_target": "昨天今天。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_postmortem",
+    "campaign": "japanese",
+    "name_native": "Postmortem",
+    "name_target": "复盘治疗",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "block": 10,
+      "heal": 3
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Blameless.",
+    "flavor_target": "无责。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_readme",
+    "campaign": "japanese",
+    "name_native": "README",
+    "name_target": "读我",
+    "type": "reading",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 4,
+      "block": 4
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "RTFM.",
+    "flavor_target": "先读文档。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_rfc_skim",
+    "campaign": "japanese",
+    "name_native": "RFC Skim",
+    "name_target": "扫规范",
+    "type": "reading",
+    "rarity": "common",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 6,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Skim fast.",
+    "flavor_target": "快速扫过。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_arch_diagram",
+    "campaign": "japanese",
+    "name_native": "Architecture Diagram",
+    "name_target": "架构图",
+    "type": "reading",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 7,
+      "block": 6,
+      "draw": 1
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Boxes and arrows.",
+    "flavor_target": "方框箭头。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_metrics_dashboard",
+    "campaign": "japanese",
+    "name_native": "Metrics Dashboard",
+    "name_target": "指标盘",
+    "type": "reading",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "draw": 2
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Red line green line.",
+    "flavor_target": "红线绿线。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_oncall_wisdom",
+    "campaign": "japanese",
+    "name_native": "Oncall Wisdom",
+    "name_target": "值班智慧",
+    "type": "reading",
+    "rarity": "rare",
+    "energy_cost": 2,
+    "effect": {
+      "heal": 8,
+      "block": 4
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Pager teaches.",
+    "flavor_target": "寻呼机育人。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_diff_expectations",
+    "campaign": "japanese",
+    "name_native": "Diff Expectations",
+    "name_target": "对齐差异",
+    "type": "reading",
+    "rarity": "rare",
+    "energy_cost": 3,
+    "effect": {
+      "damage": 10,
+      "draw": 2
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Scope drift.",
+    "flavor_target": "范围漂移。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_stakeholder_ping",
+    "campaign": "japanese",
+    "name_native": "Stakeholder Ping",
+    "name_target": "干系人点名",
+    "type": "reading",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 5,
+      "block": 3
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "@here",
+    "flavor_target": "全体注意。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_tech_spec",
+    "campaign": "japanese",
+    "name_native": "Tech Spec",
+    "name_target": "技术规格",
+    "type": "reading",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage": 8,
+      "bonus_correct_first_try": 4
+    },
+    "question_tags": [
+      "act1",
+      "reading"
+    ],
+    "flavor_native": "Signed off.",
+    "flavor_target": "已签字。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_backlog_triage",
+    "campaign": "japanese",
+    "name_native": "Backlog Triage",
+    "name_target": "Backlog 梳理",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 6,
+      "block": 6,
+      "bonus_correct_first_try": 2,
+      "next_hit_damage_bonus": 4
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Ship a slice, buy time with scope.",
+    "flavor_target": "先推进一截，再用范围换缓冲。",
+    "pool": "act1",
+    "upgradeable": true,
+    "upgraded_id": "dev_act1_backlog_triage_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_backlog_triage_plus",
+    "campaign": "japanese",
+    "name_native": "Backlog Triage+",
+    "name_target": "Backlog 梳理+",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 8,
+      "block": 8,
+      "bonus_correct_first_try": 3,
+      "next_hit_damage_bonus": 6
+    },
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Sorted. The next punch has receipts.",
+    "flavor_target": "理清了，下一拳带依据。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_curse_echo_invoice",
+    "campaign": "japanese",
+    "name_native": "Echo Invoice",
+    "name_target": "回声工单",
+    "type": "curse",
+    "rarity": "curse",
+    "energy_cost": 0,
+    "effect": {
+      "duplicate_self_when_discarded": true
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "curse"
+    ],
+    "flavor_native": "Closed but never cleared.",
+    "flavor_target": "结案了，但没清空。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_skill_scope_trim",
+    "campaign": "japanese",
+    "name_native": "Scope Trim",
+    "name_target": "范围修剪",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "draw_then_discard_hand": {
+        "draw": 3,
+        "discard": 1
+      }
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Draw wide, cut one branch.",
+    "flavor_target": "先铺开，再剪掉一根枝。",
+    "pool": "act1",
+    "upgradeable": true,
+    "upgraded_id": "dev_act1_skill_scope_trim_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_skill_scope_trim_plus",
+    "campaign": "japanese",
+    "name_native": "Scope Trim+",
+    "name_target": "范围修剪+",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "draw_then_discard_hand": {
+        "draw": 4,
+        "discard": 1
+      }
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Wider net, same cut.",
+    "flavor_target": "网更大，剪法照旧。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_vocab_ingenious_ping",
+    "campaign": "japanese",
+    "name_native": "Ping Snap",
+    "name_target": "奇巧回显",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 5,
+      "bonus_correct_first_try": 2
+    },
+    "keywords": [
+      "ingenious"
+    ],
+    "question_tags": [
+      "act1",
+      "vocabulary"
+    ],
+    "flavor_native": "It answers when dropped.",
+    "flavor_target": "丢掉时也会回响。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_skill_return_lane",
+    "campaign": "japanese",
+    "name_native": "Return Lane",
+    "name_target": "回路收回",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "block": 3,
+      "pick_from_discard_to_hand": 1,
+      "exhaust_self": true
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Like STS Recreation — pull work back from the bin.",
+    "flavor_target": "从回收站把活儿捞回手里（类杀戮「重现」）。",
+    "pool": "act1",
+    "upgradeable": true,
+    "upgraded_id": "dev_act1_skill_return_lane_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_skill_return_lane_plus",
+    "campaign": "japanese",
+    "name_native": "Return Lane+",
+    "name_target": "回路收回+",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "block": 5,
+      "pick_from_discard_to_hand": 1,
+      "exhaust_self": false
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Same lane, no burnout.",
+    "flavor_target": "照样捞牌，不再烧掉这张技能。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "dev_act1_skill_energy_scavenge",
+    "campaign": "japanese",
+    "name_native": "Energy Scavenge",
+    "name_target": "能量回收",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "effect": {
+      "exhaust_one_hand_gain_its_energy": true
+    },
+    "keywords": [],
+    "question_tags": [
+      "act1",
+      "grammar"
+    ],
+    "flavor_native": "Burn a ticket to steal its voltage.",
+    "flavor_target": "撕一张票，换它的电量。",
+    "pool": "act1",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_vocab_lucky_fork",
+    "campaign": "japanese",
+    "name_target": "幸运分叉",
+    "name_native": "Lucky Fork",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "effect": {
+      "damage": 7,
+      "damage_target": "random",
+      "bonus_correct_first_try": 3,
+      "chain_bonus": null
+    },
+    "question_tags": [
+      "verb",
+      "basic"
+    ],
+    "flavor_target": "调度器掷骰子，谁中招谁接锅。",
+    "flavor_native": "The scheduler rolls dice; someone pays the IO tax.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_vocab_branch_prune",
+    "campaign": "japanese",
+    "name_target": "分支修剪",
+    "name_native": "Branch Prune",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage_all": 5,
+      "bonus_correct_first_try": 3,
+      "chain_bonus": null
+    },
+    "question_tags": [
+      "verb",
+      "basic"
+    ],
+    "flavor_target": "一次提交，清掉所有 feature 旗标。",
+    "flavor_native": "One merge to rule every open branch.",
+    "upgradeable": true,
+    "upgraded_id": "jp_vocab_branch_prune_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_vocab_branch_prune_plus",
+    "campaign": "japanese",
+    "name_target": "分支修剪+",
+    "name_native": "Branch Prune+",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "effect": {
+      "damage_all": 8,
+      "bonus_correct_first_try": 4,
+      "chain_bonus": null
+    },
+    "question_tags": [
+      "verb",
+      "basic"
+    ],
+    "flavor_target": "连 staging 一起剃干净。",
+    "flavor_native": "Even the staging lane gets a haircut.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_job_dev_stack_push",
+    "campaign": "japanese",
+    "name_target": "进栈重击",
+    "name_native": "Stack Push",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 7,
+      "bonus_correct_first_try": 2,
+      "chain_bonus": 3
+    },
+    "question_tags": ["verb", "job_dev"],
+    "flavor_target": "把复杂度压进调用栈。",
+    "flavor_native": "Shove the complexity down the call stack.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_job_dev_rubber_duck",
+    "campaign": "japanese",
+    "name_target": "小黄鸭调试",
+    "name_native": "Rubber Duck",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": { "block": 8 },
+    "question_tags": ["job_dev"],
+    "flavor_target": "讲给鸭子听，格挡会自己长出来。",
+    "flavor_native": "Explain it to the duck — block appears from clarity.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_job_qa_flaky_run",
+    "campaign": "japanese",
+    "name_target": "偶发复现",
+    "name_native": "Flaky Repro",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "qa",
+    "pool": "act1",
+    "effect": {
+      "damage": 5,
+      "damage_target": "random",
+      "enemy_weak": 2,
+      "exhaust_self": true
+    },
+    "question_tags": ["job_qa"],
+    "flavor_target": "非必现，但一复现就写进用例。",
+    "flavor_native": "Non-deterministic, but the case is written in blood.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_job_qa_triage_barrier",
+    "campaign": "japanese",
+    "name_target": "定级屏障",
+    "name_native": "Triage Barrier",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "qa",
+    "pool": "act1",
+    "effect": {
+      "block": 9,
+      "enemy_weak": 2,
+      "exhaust_self": true
+    },
+    "question_tags": ["job_qa"],
+    "flavor_target": "这张工单写完就从牌库里删掉。",
+    "flavor_native": "This ticket leaves the deck after filing.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_code_review",
+    "campaign": "japanese",
+    "name_target": "代码评审曝光",
+    "name_native": "Code Review Exposure",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "enemy_poison": 2,
+      "enemy_vulnerable": 2
+    },
+    "question_tags": ["job_dev", "status"],
+    "flavor_target": "PR 公开处刑，弱点挂毒一起晒。",
+    "flavor_native": "Public diff review — every flaw gets sunlight.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_memory_leak",
+    "campaign": "japanese",
+    "name_target": "内存泄漏",
+    "name_native": "Memory Leak",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "enemy_poison": 3,
+      "enemy_vulnerable": 1
+    },
+    "question_tags": ["job_dev", "status"],
+    "flavor_target": "一点一点漏，弱点也跟着放大。",
+    "flavor_native": "Drip by drip until OOM.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_deprecation_notice",
+    "campaign": "japanese",
+    "name_target": "废弃接口通告",
+    "name_native": "Deprecation Notice",
+    "type": "reading",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "enemy_poison": 2,
+      "enemy_vulnerable": 1
+    },
+    "question_tags": ["job_dev", "status"],
+    "flavor_target": "Sunset 日期一到，漏洞旧债一起结算。",
+    "flavor_native": "Sunset date — legacy gaps show skin and bleed.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_incident_all_hands",
+    "campaign": "japanese",
+    "name_target": "全员事故复盘",
+    "name_native": "All-Hands Incident",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "enemy_poison_all": 2,
+      "enemy_vulnerable_all": 1
+    },
+    "question_tags": ["job_dev", "status"],
+    "flavor_target": "复盘邮件一发，全线挂毒易伤。",
+    "flavor_native": "Postmortem blast — vuln and poison hit every lane.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_minimal_repro",
+    "campaign": "japanese",
+    "name_target": "最小复现包",
+    "name_native": "Minimal Repro Zip",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "qa",
+    "pool": "act1",
+    "effect": {
+      "enemy_weak": 2,
+      "block": 5,
+      "exhaust_self": true
+    },
+    "question_tags": ["job_qa", "status"],
+    "flavor_target": "三步复现打包带走，这张牌也能丢进 exhaust。",
+    "flavor_native": "Zip your repro — this card exhausts like the ticket.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_status_regression_mold",
+    "campaign": "japanese",
+    "name_target": "回归发霉",
+    "name_native": "Regression Mold",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "qa",
+    "pool": "act1",
+    "effect": {
+      "enemy_weak": 3,
+      "exhaust_self_gain_energy": 2
+    },
+    "question_tags": ["job_qa", "status"],
+    "flavor_target": "旧 Bug 回来了——烧一张换两点能量接着测。",
+    "flavor_native": "Regression returns — burn this card for juice to keep testing.",
+    "upgradeable": false,
+    "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
   }
 ]

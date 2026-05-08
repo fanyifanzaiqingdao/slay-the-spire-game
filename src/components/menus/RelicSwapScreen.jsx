@@ -1,14 +1,17 @@
 // components/menus/RelicSwapScreen.jsx
-// Shown when a new relic is found but all 5 slots are full.
+// Shown when a new relic is found but equipped relics are at MAX_EQUIPPED_RELICS.
 // Player taps one equipped relic to swap out, or clicks Skip to decline.
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { RELICS, RELIC_TIER_COLORS, RELIC_TIER_GLOW } from '../../data/relics.js'
+import { relicLocalizedName, relicLocalizedDescription, relicLocalizedFlavor } from '../../utils/relicI18n.js'
 import useRunStore from '../../stores/runStore.js'
 import { useAudio } from '../../hooks/useAudio.js'
 
 function RelicCard({ relicId, isSelected, onClick, label }) {
+  const { t } = useTranslation()
   const relic = RELICS[relicId]
   if (!relic) return null
   const tierColor = RELIC_TIER_COLORS[relic.tier] || '#6b7280'
@@ -33,13 +36,13 @@ function RelicCard({ relicId, isSelected, onClick, label }) {
       <div className="flex items-center gap-2 mb-1">
         <span className="text-xl">{relic.icon}</span>
         <span className="font-bold text-sm" style={{ color: relic.color, fontFamily: "'Cinzel', serif" }}>
-          {relic.name}
+          {relicLocalizedName(relicId, relic.name)}
         </span>
         <span className="text-[9px] uppercase ml-auto" style={{ color: tierColor, opacity: 0.7 }}>
-          {relic.tier}
+          {t(`relic.tier.${relic.tier}`, { defaultValue: relic.tier })}
         </span>
       </div>
-      <p className="text-xs text-gray-400 leading-relaxed">{relic.description}</p>
+      <p className="text-xs text-gray-400 leading-relaxed">{relicLocalizedDescription(relicId, relic.description)}</p>
       {isSelected && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -54,6 +57,7 @@ function RelicCard({ relicId, isSelected, onClick, label }) {
 }
 
 export function RelicSwapScreen({ newRelicId, onDone }) {
+  const { t } = useTranslation()
   const store = useRunStore()
   const { playSFX } = useAudio()
   const [selectedSlot, setSelectedSlot] = useState(null)
@@ -99,7 +103,7 @@ export function RelicSwapScreen({ newRelicId, onDone }) {
           <h1 className="text-2xl font-bold text-amber-200" style={{ fontFamily: "'Cinzel', serif" }}>
             New Relic Found
           </h1>
-          <p className="text-sm text-gray-500 mt-1">All 5 relic slots are full. Swap one out or skip.</p>
+          <p className="text-sm text-gray-500 mt-1">All relic slots are full. Swap one out or skip.</p>
         </div>
 
         {/* New relic */}
@@ -113,15 +117,15 @@ export function RelicSwapScreen({ newRelicId, onDone }) {
             <span className="text-3xl">{newRelic.icon}</span>
             <div>
               <div className="font-bold text-lg" style={{ color: newRelic.color, fontFamily: "'Cinzel', serif" }}>
-                {newRelic.name}
+                {relicLocalizedName(newRelicId, newRelic.name)}
               </div>
               <div className="text-[10px] uppercase" style={{ color: RELIC_TIER_COLORS[newRelic.tier], opacity: 0.7 }}>
-                {newRelic.tier}
+                {t(`relic.tier.${newRelic.tier}`, { defaultValue: newRelic.tier })}
               </div>
             </div>
           </div>
-          <p className="text-sm text-gray-300">{newRelic.description}</p>
-          <p className="text-xs text-gray-600 italic mt-2">{newRelic.flavor}</p>
+          <p className="text-sm text-gray-300">{relicLocalizedDescription(newRelicId, newRelic.description)}</p>
+          <p className="text-xs text-gray-600 italic mt-2">{relicLocalizedFlavor(newRelicId, newRelic.flavor)}</p>
         </div>
 
         {/* Divider */}

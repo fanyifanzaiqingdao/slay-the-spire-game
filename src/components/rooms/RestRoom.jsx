@@ -24,9 +24,6 @@ export function RestRoom() {
   const restReviewOnly = isRuleActive('rest_review_only', store.masteryLevel)
   const healAmount = Math.floor(store.maxHp * 0.25)
   const canHeal = store.hp < store.maxHp
-  // Curse: no_rest_heal—rest sites cannot heal
-  const noRestHeal = store.activeModifier?.curse?.effect?.type === 'no_rest_heal'
-
   const handleHeal = () => {
     setChosen('heal')
     playSFX('correct')
@@ -84,14 +81,13 @@ export function RestRoom() {
             {/* Heal */}
             {!restReviewOnly && (
               <motion.button
-                whileHover={!chosen && !noRestHeal ? { scale: 1.02 } : {}}
-                whileTap={!chosen && !noRestHeal ? { scale: 0.98 } : {}}
-                onClick={!chosen && !noRestHeal ? handleHeal : undefined}
-                disabled={!!chosen || !canHeal || noRestHeal}
+                whileHover={!chosen ? { scale: 1.02 } : {}}
+                whileTap={!chosen ? { scale: 0.98 } : {}}
+                onClick={!chosen ? handleHeal : undefined}
+                disabled={!!chosen || !canHeal}
                 className={`
                   p-5 rounded-2xl border-2 text-left transition-all
                   ${chosen === 'heal' ? 'border-emerald-500 bg-emerald-900/30' :
-                    noRestHeal ? 'border-red-900/50 bg-red-950/20 opacity-50' :
                     !canHeal ? 'border-gray-700 bg-gray-900/30 opacity-50' :
                     'border-amber-700/60 bg-amber-950/20 hover:border-amber-500 hover:bg-amber-950/40 cursor-pointer'}
                 `}
@@ -107,7 +103,6 @@ export function RestRoom() {
                 <div className="text-xs text-gray-500">
                   Current HP: {store.hp} / {store.maxHp}
                   {!canHeal && ' (already at max)'}
-                  {noRestHeal && <span className="text-red-400"> (Cursed — healing forbidden)</span>}
                 </div>
               </motion.button>
             )}

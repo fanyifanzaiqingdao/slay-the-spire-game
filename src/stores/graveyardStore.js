@@ -1,7 +1,7 @@
 // stores/graveyardStore.js
 // Persistent mistake tracking — persists across ALL runs and sessions
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../utils/localStorage.js'
 
 const useGraveyardStore = create(
@@ -62,7 +62,10 @@ const useGraveyardStore = create(
 
       clearAll: () => set({ entries: {} }),
     }),
-    { name: STORAGE_KEYS.GRAVEYARD }
+    {
+      name: STORAGE_KEYS.GRAVEYARD,
+      storage: createJSONStorage(() => localStorage),
+    }
   )
 )
 

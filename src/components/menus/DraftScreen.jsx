@@ -1,10 +1,11 @@
 // components/menus/DraftScreen.jsx
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { CARD_TYPE_META, CARD_RARITY_META } from '../../constants/cardTypes.js'
 import { HoverTranslate } from '../shared/HoverTranslate.jsx'
 import { useAudio } from '../../hooks/useAudio.js'
-import useRunStore from '../../stores/runStore.js'
+import { formatCardEffectLines } from '../../utils/cardEffectI18n.js'
 
 /**
  * @param {Object[]} cards - sampled draft card data objects
@@ -14,10 +15,8 @@ import useRunStore from '../../stores/runStore.js'
  * @param {number} accuracy - fight accuracy 0-1
  */
 export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, accuracy = 1 }) {
+  const { t } = useTranslation()
   const { playSFX } = useAudio()
-  const activeModifier = useRunStore(s => s.activeModifier)
-  // Curse: blind_drafts — card names/effects are hidden during draft
-  const isBlindDraft = activeModifier?.curse?.effect?.type === 'blind_drafts'
 
   return (
     <div
@@ -41,7 +40,7 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
           </svg>
           <div className="absolute inset-0 flex items-center justify-center pt-2">
             <h2 className="text-3xl font-bold text-[#333] tracking-widest" style={{ fontFamily: "'Cinzel', serif" }}>
-              Choose a Card
+              {t('draft.chooseCard')}
             </h2>
           </div>
         </div>
@@ -78,27 +77,23 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
 
                   {/* Name */}
                   <div className={`font-bold text-base mb-1 ${typeMeta.colorClass}`}>
-                    {isBlindDraft ? (
-                      <span className="text-gray-600 italic">???</span>
-                    ) : (
-                      <HoverTranslate translation={card.name_native}>{card.name_target}</HoverTranslate>
-                    )}
+                    <HoverTranslate translation={card.name_native}>{card.name_target}</HoverTranslate>
                   </div>
                   <div className="text-xs text-gray-500 mb-2">
-                    {isBlindDraft ? '???' : card.name_native}
+                    {card.name_native}
                   </div>
 
                   {/* Cost */}
-                  <div className="text-xs text-gray-400 mb-2">⚡ {card.energy_cost} Energy</div>
+                  <div className="text-xs text-gray-400 mb-2">⚡ {card.energy_cost} {t('draft.energy')}</div>
 
                   {/* Effect */}
                   <div className="text-xs text-gray-300 leading-tight">
-                    {isBlindDraft ? <span className="text-gray-700 italic">Effect hidden</span> : getEffectDesc(card)}
+                    {getEffectDesc(card, t)}
                   </div>
 
                   {/* Flavor */}
                   <div className="mt-3 text-[10px] text-gray-600 italic border-t border-gray-700/50 pt-2">
-                    {isBlindDraft ? '...' : <HoverTranslate translation={card.flavor_native}>{card.flavor_target}</HoverTranslate>}
+                    <HoverTranslate translation={card.flavor_native}>{card.flavor_target}</HoverTranslate>
                   </div>
                 </motion.div>
               )
@@ -115,7 +110,7 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
             className="px-16 py-3 rounded-full font-bold text-2xl border-4 border-[#F5C842] bg-[#4FA0A0] text-[#111] hover:bg-[#5FB0B0] hover:text-white transition-all cursor-pointer shadow-[0_4px_10px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Skip
+            {t('draft.skip')}
           </motion.button>
         </div>
       </motion.div>
@@ -123,13 +118,6 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
   )
 }
 
-function getEffectDesc(card) {
-  const e = card.effect || {}
-  const parts = []
-  if (e.damage) parts.push(`Deal ${e.damage}${e.bonus_correct_first_try ? ` (+${e.bonus_correct_first_try})` : ''} damage`)
-  if (e.block) parts.push(`Gain ${e.block} Block`)
-  if (e.heal) parts.push(`Heal ${e.heal} HP`)
-  if (e.draw) parts.push(`Draw ${e.draw} card${e.draw > 1 ? 's' : ''}`)
-  if (e.chain_bonus) parts.push(`Chain: +${e.chain_bonus}`)
-  return parts.join('. ') || 'Special effect.'
+function getEffectDesc(card, t) {
+  return formatCardEffectLines(card, 0, t)
 }

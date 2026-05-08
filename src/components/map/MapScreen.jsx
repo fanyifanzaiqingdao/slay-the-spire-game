@@ -9,6 +9,7 @@ import { generateFloorMap, unlockNextNodes, visitNode } from '../../utils/map.js
 import { NODE_TYPES } from '../../constants/nodeTypes.js'
 import { ScreenTransition } from '../shared/ScreenTransition.jsx'
 import { getEnemies, getEvents } from '../../utils/dataLoader.js'
+import { filterEnemiesForAct1Combat, pickAct1Boss } from '../../constants/act1Pool.js'
 import { useAudio } from '../../hooks/useAudio.js'
 import { TopBar } from '../shared/TopBar.jsx'
 import { RelicSwapScreen } from '../menus/RelicSwapScreen.jsx'
@@ -124,6 +125,15 @@ export function MapScreen() {
   const mapNodes = Array.isArray(store.mapNodes) ? store.mapNodes : EMPTY_LIST
   const mapPaths = Array.isArray(store.mapPaths) ? store.mapPaths : EMPTY_LIST
 
+  // Repair: older saves / edge cases left `relics` empty while character still has starterRelic
+  useEffect(() => {
+    const s = useRunStore.getState()
+    const starter = s.character?.starterRelic
+    if (s.runId && starter && (!Array.isArray(s.relics) || s.relics.length === 0)) {
+      useRunStore.setState({ relics: [starter] })
+    }
+  }, [])
+
   useEffect(() => {
     // Prevent skipping rooms via browser 'Back' button
     const activeEncounter = sessionStorage.getItem('active_encounter')
@@ -165,23 +175,39 @@ export function MapScreen() {
       case NODE_TYPES.COMBAT:
       case NODE_TYPES.ELITE: {
         const enemiesData = getEnemies(store.campaign)
-        const floorEnemies = enemiesData.filter(e =>
-          e.floor === store.floor &&
-          (node.type === NODE_TYPES.ELITE ? e.tier === 'elite' : e.tier === 'regular') &&
-          e.tier !== 'boss'
-        )
-        const fallback = enemiesData.filter(e => e.floor === store.floor && e.tier !== 'boss')
-        const pool = floorEnemies.length > 0 ? floorEnemies : fallback
+        const tier = node.type === NODE_TYPES.ELITE ? 'elite' : 'regular'
+        let pool = filterEnemiesForAct1Combat(enemiesData, store, { tier })
+        if (pool.length === 0 && node.type === NODE_TYPES.ELITE) {
+          pool = filterEnemiesForAct1Combat(enemiesData, store, { tier: 'regular' })
+        }
+        if (pool.length === 0) {
+          pool = enemiesData.filter(
+            e => e.floor === store.floor && e.tier === tier && e.tier !== 'boss'
+          )
+        }
+        if (pool.length === 0) {
+          pool = enemiesData.filter(e => e.floor === store.floor && e.tier !== 'boss')
+        }
         const baseEnemy = pool[Math.floor(Math.random() * pool.length)]
-        const enemy = baseEnemy ? applyRandomVariant(baseEnemy) : baseEnemy
-        if (enemy) store.setEnemy(enemy)
+        const first = baseEnemy ? applyRandomVariant(baseEnemy) : null
+        if (first) {
+          if (node.type === NODE_TYPES.COMBAT && Math.random() < 0.45) {
+            const poolOther = pool.filter((e) => e.id !== baseEnemy.id)
+            const secondBase = poolOther.length
+              ? poolOther[Math.floor(Math.random() * poolOther.length)]
+              : baseEnemy
+            const second = applyRandomVariant(secondBase)
+            store.setEnemyPack([first, second])
+          } else {
+            store.setEnemy(first)
+          }
+        }
         nextPath = '/combat'
         break
       }
       case NODE_TYPES.BOSS: {
         const enemiesData = getEnemies(store.campaign)
-        const boss = enemiesData.find(e => e.floor === store.floor && e.tier === 'boss')
-          || enemiesData.find(e => e.tier === 'boss')
+        const boss = pickAct1Boss(enemiesData, store)
         if (boss) store.setEnemy(boss)
         nextPath = '/combat'
         break

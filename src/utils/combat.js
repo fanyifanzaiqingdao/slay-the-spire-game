@@ -160,7 +160,6 @@ export function getResetCombatState() {
     chainActive: false,
     chainType: null,
     turnNumber: 0,
-    hintUsedThisFight: false,
     intentIndex: 0,
   }
 }

@@ -2,12 +2,20 @@
 // Renders up to 5 cards in a fanned arc layout.
 // v2: passes isLocked and isSilenced to each card.
 // Locked card clicks trigger shake animation instead of selection.
-// Optimized: stable card keys (card.id only), improved empty-hand UX.
+// Optimized: supports duplicate card IDs in hand, improved empty-hand UX.
 
 import React, { useState, useCallback } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import CardComponent from './CardComponent.jsx'
 import { CARD_TYPES } from '../../constants/cardTypes.js'
+import CardComponent from './CardComponent.jsx'
+
+function isCardPrimedForChain(card, chainActive, chainType, hasChainBracelet) {
+  if (!chainActive || !chainType || !card) return false
+  if (chainType === CARD_TYPES.VOCABULARY && card.type === CARD_TYPES.GRAMMAR) return true
+  if (chainType === CARD_TYPES.GRAMMAR && card.type === CARD_TYPES.READING) return true
+  if (hasChainBracelet && chainType === CARD_TYPES.GRAMMAR && card.type === CARD_TYPES.VOCABULARY) return true
+  return false
+}
 
 /**
  * @param {string[]} handIds        - card IDs in current hand
@@ -20,8 +28,11 @@ import { CARD_TYPES } from '../../constants/cardTypes.js'
  * @param {string|null} selectedCardId
  * @param {boolean} chainActive
  * @param {string|null} chainType   - type of chain active
+ * @param {boolean} hasChainBracelet - relic: grammar → vocab completes chain
  * @param {boolean} disabled        - during enemy turn animation
- * @param {function} onCardSelect(cardId)
+ * @param {function} onCardSelect(cardId, indexInHand)
+ * @param {React.RefObject<HTMLElement|null>} enemyDropZoneRef - drag card here to play
+ * @param {function(boolean)=} onDragHoverEnemy - highlight enemy drop zone while dragging
  */
 const CardHand = React.memo(function CardHand({
   handIds = [],
@@ -34,13 +45,16 @@ const CardHand = React.memo(function CardHand({
   selectedCardId = null,
   chainActive = false,
   chainType = null,
+  hasChainBracelet = false,
   disabled = false,
   onCardSelect,
+  enemyDropZoneRef = null,
+  onDragHoverEnemy,
 }) {
   // Track which card is currently shaking (locked or silenced click)
   const [shakingCardId, setShakingCardId] = useState(null)
 
-  const handleCardClick = useCallback((cardId) => {
+  const handleCardClick = useCallback((cardId, indexInHand) => {
     if (disabled) return
     const card = cardMap[cardId]
     if (!card) return
@@ -59,7 +73,7 @@ const CardHand = React.memo(function CardHand({
       return
     }
 
-    onCardSelect?.(cardId)
+    onCardSelect?.(cardId, indexInHand)
   }, [disabled, lockedCards, silencedTypes, cardMap, onCardSelect])
 
   const cards = handIds.map(id => cardMap[id]).filter(Boolean)
@@ -82,18 +96,12 @@ const CardHand = React.memo(function CardHand({
           const isSilenced = silencedTypes.includes(card.type)
           const isRetained = retainedCards.includes(card.id)
           const growthStacks = retainGrowthStacks[card.id] || 0
-
-          const isPrimed =
-            !isLocked &&
-            chainActive && chainType &&
-            ((chainType === CARD_TYPES.VOCABULARY && card.type === CARD_TYPES.GRAMMAR) ||
-             (chainType === CARD_TYPES.GRAMMAR   && card.type === CARD_TYPES.READING))
+          const isPrimed = isCardPrimedForChain(card, chainActive, chainType, hasChainBracelet)
 
           return (
             <CardComponent
-              // FIX: use card.id as stable key — appending index caused unnecessary remounts
-              // when cards were reordered (e.g. after drawing/discarding)
-              key={card.id}
+              // Deck can contain duplicate card IDs; key must be unique per slot.
+              key={`${card.id}-${i}`}
               card={card}
               isPlayable={canAfford && !disabled}
               isLocked={isLocked}
@@ -103,7 +111,9 @@ const CardHand = React.memo(function CardHand({
               growthStacks={growthStacks}
               isSelected={selectedCardId === card.id}
               isShaking={shakingCardId === card.id}
-              onSelect={handleCardClick}
+              onSelect={(cid, idx) => handleCardClick(cid, idx)}
+              enemyDropZoneRef={enemyDropZoneRef}
+              onDragHoverEnemy={onDragHoverEnemy}
               indexInHand={i}
               totalInHand={cards.length}
             />
