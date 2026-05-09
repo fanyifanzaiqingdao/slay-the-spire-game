@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Sacrifice",
+        "category": "Necrobinder",
+        "name_chs": "牺牲",
+        "name_eng": "Sacrifice",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "如果[gold]奥斯提[\/gold]存活，则他死去，然后你获得等量于其双倍最大生命值的[gold]格挡[\/gold]。",
+        "text_default_chs": "保留,如果奥斯提存活，则他死去，然后你获得等量于其双倍最大生命值的格挡。",
+        "text_upgraded_chs": "保留,如果奥斯提存活，则他死去，然后你获得等量于其双倍最大生命值的格挡。",
+        "text_raw_eng": "If [gold]Osty[\/gold] is alive, he dies and you gain [gold]Block[\/gold] equal to double his Max HP.",
+        "variables": {
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

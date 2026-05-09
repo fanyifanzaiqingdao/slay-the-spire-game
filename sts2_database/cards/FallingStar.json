@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FallingStar",
+        "category": "Regent",
+        "name_chs": "陨星",
+        "name_eng": "Falling Star",
+        "cost": 0,
+        "rarity": "Basic",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{WeakPower:diff()}层[gold]虚弱[\/gold]。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "造成7点伤害。\n给予1层虚弱。\n给予1层易伤。",
+        "text_upgraded_chs": "造成15点伤害。\n给予1层虚弱。\n给予1层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[\/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 1,
+            "WeakPower": 1,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

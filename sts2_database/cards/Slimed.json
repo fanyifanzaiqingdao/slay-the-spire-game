@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Slimed",
+        "category": "Status",
+        "name_chs": "黏液",
+        "name_eng": "Slimed",
+        "cost": 1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "抽1张牌。",
+        "text_default_chs": "消耗,抽1张牌。",
+        "text_upgraded_chs": "消耗,抽1张牌。",
+        "text_raw_eng": "Draw 1 card.",
+        "variables": {
+            "Cards": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

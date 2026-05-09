@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Defragment",
+        "category": "Defect",
+        "name_chs": "碎片整理",
+        "name_eng": "Defragment",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{FocusPower:diff()}点[gold]集中[\/gold]。",
+        "text_default_chs": "获得1点集中。",
+        "text_upgraded_chs": "获得2点集中。",
+        "text_raw_eng": "Gain {FocusPower:diff()} [gold]Focus[\/gold].",
+        "variables": {
+            "FocusPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "FocusPower": 1
+            }
+        }
+    }
+}

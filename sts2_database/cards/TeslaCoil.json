@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TeslaCoil",
+        "category": "Defect",
+        "name_chs": "特斯拉线圈",
+        "name_eng": "Tesla Coil",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n对该敌人触发你的所有[gold]闪电[\/gold]充能球的被动。",
+        "text_default_chs": "造成3点伤害。\n对该敌人触发你的所有闪电充能球的被动。",
+        "text_upgraded_chs": "造成9点伤害。\n对该敌人触发你的所有闪电充能球的被动。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nTrigger all [gold]Lightning[\/gold] against the enemy.",
+        "variables": {
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

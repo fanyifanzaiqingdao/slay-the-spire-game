@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Mangle",
+        "category": "Ironclad",
+        "name_chs": "凌虐",
+        "name_eng": "Mangle",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n敌人在本回合失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "造成15点伤害。\n敌人在本回合失去10点力量。",
+        "text_upgraded_chs": "造成25点伤害。\n敌人在本回合失去20点力量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nEnemy loses {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 10,
+            "Damage": "15m"
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthLoss": 5,
+                "Damage": 5
+            }
+        }
+    }
+}

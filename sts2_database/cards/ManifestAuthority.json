@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ManifestAuthority",
+        "category": "Regent",
+        "name_chs": "君权自授",
+        "name_eng": "Manifest Authority",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将一张随机{IfUpgraded:show:[gold]升级过的[\/gold]}无色牌加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "获得7点格挡。\n将一张随机无色牌加入你的手牌。",
+        "text_upgraded_chs": "获得9点格挡。\n将一张随机升级过的无色牌加入你的手牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd 1 random{IfUpgraded:show: [gold]Upgraded[\/gold]} Colorless card into your [gold]Hand[\/gold].",
+        "variables": {
+            "Block": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1
+            }
+        }
+    }
+}

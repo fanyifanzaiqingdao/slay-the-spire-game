@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MasterPlanner",
+        "category": "Silent",
+        "name_chs": "谋划专家",
+        "name_eng": "Master Planner",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "当你打出技能牌时，该牌获得[gold]奇巧[\/gold]。",
+        "text_default_chs": "当你打出技能牌时，该牌获得奇巧。",
+        "text_upgraded_chs": "当你打出技能牌时，该牌获得奇巧。",
+        "text_raw_eng": "When you play a Skill, it gains [gold]Sly[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

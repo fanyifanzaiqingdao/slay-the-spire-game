@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CelestialMight",
+        "category": "Regent",
+        "name_chs": "天穹之力",
+        "name_eng": "Celestial Might",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "造成6点伤害3次。",
+        "text_upgraded_chs": "造成10点伤害3次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.",
+        "variables": {
+            "Damage": "6m",
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

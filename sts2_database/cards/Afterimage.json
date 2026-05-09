@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Afterimage",
+        "category": "Silent",
+        "name_chs": "余像",
+        "name_eng": "Afterimage",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每打出一张牌，都获得{AfterimagePower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "你每打出一张牌，都获得1点格挡。",
+        "text_upgraded_chs": "固有,你每打出一张牌，都获得1点格挡。",
+        "text_raw_eng": "Whenever you play a card, gain {AfterimagePower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "AfterimagePower": 1
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

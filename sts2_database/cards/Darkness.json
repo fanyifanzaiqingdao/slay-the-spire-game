@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Darkness",
+        "category": "Defect",
+        "name_chs": "漆黑",
+        "name_eng": "Darkness",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]1[gold]黑暗[\/gold]充能球。\n触发所有[gold]黑暗[\/gold]充能球的被动{IfUpgraded:show:两次|}。",
+        "text_default_chs": "生成1黑暗充能球。\n触发所有黑暗充能球的被动。",
+        "text_upgraded_chs": "生成1黑暗充能球。\n触发所有黑暗充能球的被动两次。",
+        "text_raw_eng": "[gold]Channel[\/gold] 1 [gold]Dark[\/gold].\nTrigger the passive ability of all [gold]Dark[\/gold] Orbs{IfUpgraded:show: twice|}.",
+        "variables": [],
+        "upgrades": []
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rainbow",
+        "category": "Defect",
+        "name_chs": "彩虹",
+        "name_eng": "Rainbow",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]1个[gold]闪电[\/gold]充能球。\n[gold]生成[\/gold]1个[gold]冰霜[\/gold]充能球。\n[gold]生成[\/gold]1个[gold]黑暗[\/gold]充能球。",
+        "text_default_chs": "消耗,生成1个闪电充能球。\n生成1个冰霜充能球。\n生成1个黑暗充能球。",
+        "text_upgraded_chs": "生成1个闪电充能球。\n生成1个冰霜充能球。\n生成1个黑暗充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] 1 [gold]Lightning[\/gold].\n[gold]Channel[\/gold] 1 [gold]Frost[\/gold].\n[gold]Channel[\/gold] 1 [gold]Dark[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

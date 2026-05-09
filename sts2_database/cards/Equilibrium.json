@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Equilibrium",
+        "category": "Colorless",
+        "name_chs": "均衡",
+        "name_eng": "Equilibrium",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在本回合[gold]保留[\/gold]你的[gold]手牌[\/gold]。",
+        "text_default_chs": "获得13点格挡。\n在本回合保留你的手牌。",
+        "text_upgraded_chs": "获得19点格挡。\n在本回合保留你的手牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Retain[\/gold] your [gold]Hand[\/gold] this turn.",
+        "variables": {
+            "Equilibrium": 1,
+            "Block": 13
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

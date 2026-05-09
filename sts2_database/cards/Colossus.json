@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Colossus",
+        "category": "Ironclad",
+        "name_chs": "巨像",
+        "name_eng": "Colossus",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在本回合中，有[gold]易伤[\/gold]状态的敌人对你造成的伤害降低50%。",
+        "text_default_chs": "获得5点格挡。\n在本回合中，有易伤状态的敌人对你造成的伤害降低50%。",
+        "text_upgraded_chs": "获得11点格挡。\n在本回合中，有易伤状态的敌人对你造成的伤害降低50%。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nYou receive 50% less damage from [gold]Vulnerable[\/gold] enemies this turn.",
+        "variables": {
+            "Colossus": 1,
+            "Block": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

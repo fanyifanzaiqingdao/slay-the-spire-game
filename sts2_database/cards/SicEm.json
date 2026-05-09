@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SicEm",
+        "category": "Necrobinder",
+        "name_chs": "紧追不放",
+        "name_eng": "Sic 'Em",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n在本回合内，每当[gold]奥斯提[\/gold]攻击这名敌人时，[gold]召唤[\/gold]{SicEmPower:diff()}。",
+        "text_default_chs": "奥斯提造成5点伤害。\n在本回合内，每当奥斯提攻击这名敌人时，召唤2。",
+        "text_upgraded_chs": "奥斯提造成7点伤害。\n在本回合内，每当奥斯提攻击这名敌人时，召唤3。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nWhenever [gold]Osty[\/gold] hits this enemy this turn, [gold]Summon[\/gold] {SicEmPower:diff()}.",
+        "variables": {
+            "SicEmPower": 2,
+            "OstyDamage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "SicEmPower": 1,
+                "OstyDamage": 1
+            }
+        }
+    }
+}

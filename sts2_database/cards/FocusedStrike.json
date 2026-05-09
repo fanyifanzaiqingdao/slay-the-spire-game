@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FocusedStrike",
+        "category": "Defect",
+        "name_chs": "集中打击",
+        "name_eng": "Focused Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在本回合获得{FocusPower:diff()}点[gold]集中[\/gold]。",
+        "text_default_chs": "造成9点伤害。\n在本回合获得1点集中。",
+        "text_upgraded_chs": "造成13点伤害。\n在本回合获得2点集中。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nGain {FocusPower:diff()} [gold]Focus[\/gold] this turn.",
+        "variables": {
+            "FocusPower": 1,
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "FocusPower": 1,
+                "Damage": 2
+            }
+        }
+    }
+}

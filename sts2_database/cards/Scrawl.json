@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Scrawl",
+        "category": "Colorless",
+        "name_chs": "潦草急就",
+        "name_eng": "Scrawl",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽牌直到抽满[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,抽牌直到抽满手牌。",
+        "text_upgraded_chs": "消耗,保留,抽牌直到抽满手牌。",
+        "text_raw_eng": "Draw cards until your [gold]Hand[\/gold] is full.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

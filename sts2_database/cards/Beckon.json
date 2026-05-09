@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Beckon",
+        "category": "Status",
+        "name_chs": "呼唤",
+        "name_eng": "Beckon",
+        "cost": 1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的[gold]手牌[\/gold]中，\n则失去{HpLoss}点生命。",
+        "text_default_chs": "在你的回合结束时，如果这张牌在你的手牌中，\n则失去6点生命。",
+        "text_upgraded_chs": "在你的回合结束时，如果这张牌在你的手牌中，\n则失去6点生命。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold],\n lose {HpLoss} HP.",
+        "variables": {
+            "HpLoss": "6m"
+        },
+        "upgrades": []
+    }
+}

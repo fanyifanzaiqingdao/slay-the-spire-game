@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DyingStar",
+        "category": "Regent",
+        "name_chs": "星灭",
+        "name_eng": "Dying Star",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。所有敌人在本回合中失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "虚无,对所有敌人造成9点伤害。所有敌人在本回合中失去9点力量。",
+        "text_upgraded_chs": "虚无,对所有敌人造成13点伤害。所有敌人在本回合中失去13点力量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies. ALL enemies lose {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 9,
+            "Damage": "9m",
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthLoss": 2,
+                "Damage": 2
+            }
+        }
+    }
+}

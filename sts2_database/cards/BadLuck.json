@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BadLuck",
+        "category": "Curse",
+        "name_chs": "霉运",
+        "name_eng": "Bad Luck",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的手牌中，则失去{HpLoss:diff()}点生命。",
+        "text_default_chs": "永恒,不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则失去13点生命。",
+        "text_upgraded_chs": "永恒,不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则失去13点生命。",
+        "text_raw_eng": "At the end of your turn, if this is in your Hand, lose {HpLoss:diff()} HP.",
+        "variables": {
+            "HpLoss": "13m",
+            "keywords": [
+                "Eternal",
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Debris",
+        "category": "Status",
+        "name_chs": "碎屑",
+        "name_eng": "Debris",
+        "cost": 1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "",
+        "text_default_chs": "消耗",
+        "text_upgraded_chs": "消耗",
+        "text_raw_eng": "",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

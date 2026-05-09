@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PullAggro",
+        "category": "Necrobinder",
+        "name_chs": "吸引仇恨",
+        "name_eng": "Pull Aggro",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。\n获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "召唤4。\n获得7点格挡。",
+        "text_upgraded_chs": "召唤6。\n获得11点格挡。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.\nGain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 7,
+            "Summon": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 1,
+                "Block": 2
+            }
+        }
+    }
+}

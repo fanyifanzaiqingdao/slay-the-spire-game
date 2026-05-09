@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Dredge",
+        "category": "Necrobinder",
+        "name_chs": "清淤",
+        "name_eng": "Dredge",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将{Cards:diff()}张牌从[gold]弃牌堆[\/gold]加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,将3张牌从弃牌堆加入你的手牌。",
+        "text_upgraded_chs": "消耗,保留,将3张牌从弃牌堆加入你的手牌。",
+        "text_raw_eng": "Put {Cards:diff()} {Cards:plural:card|cards} from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

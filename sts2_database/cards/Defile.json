@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Defile",
+        "category": "Necrobinder",
+        "name_chs": "玷污",
+        "name_eng": "Defile",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "虚无,造成13点伤害。",
+        "text_upgraded_chs": "虚无,造成21点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "13m",
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

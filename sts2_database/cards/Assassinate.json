@@ -1,0 +1,32 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Assassinate",
+        "category": "Silent",
+        "name_chs": "刺杀",
+        "name_eng": "Assassinate",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "固有,消耗,造成10点伤害。\n给予1层易伤。",
+        "text_upgraded_chs": "固有,消耗,造成16点伤害。\n给予2层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 1,
+            "Damage": "10m",
+            "keywords": [
+                "Innate",
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

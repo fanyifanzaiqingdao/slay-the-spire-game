@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TimesUp",
+        "category": "Necrobinder",
+        "name_chs": "大限已至",
+        "name_eng": "Time's Up",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成等量于该敌人身上的[gold]灾厄[\/gold]层数的伤害。{IsTargeting:\n（造成{CalculatedDamage:diff()}点伤害）|}",
+        "text_default_chs": "消耗,造成等量于该敌人身上的灾厄层数的伤害。",
+        "text_upgraded_chs": "消耗,保留,造成等量于该敌人身上的灾厄层数的伤害。",
+        "text_raw_eng": "Deal damage equal to the enemy's [gold]Doom[\/gold].{IsTargeting:\n(Deals {CalculatedDamage:diff()} damage)|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "ExtraDamage": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

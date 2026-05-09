@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tyranny",
+        "category": "Regent",
+        "name_chs": "暴政",
+        "name_eng": "Tyranny",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，抽一张牌，并从你的[gold]手牌[\/gold]中[gold]消耗[\/gold]1张牌。",
+        "text_default_chs": "在你的回合开始时，抽一张牌，并从你的手牌中消耗1张牌。",
+        "text_upgraded_chs": "固有,在你的回合开始时，抽一张牌，并从你的手牌中消耗1张牌。",
+        "text_raw_eng": "At the start of your turn, draw 1 card and [gold]Exhaust[\/gold] 1 card from your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

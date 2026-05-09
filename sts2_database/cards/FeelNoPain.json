@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FeelNoPain",
+        "category": "Ironclad",
+        "name_chs": "无惧疼痛",
+        "name_eng": "Feel No Pain",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当有一张牌被[gold]消耗[\/gold]时，获得{Power:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当有一张牌被消耗时，获得3点格挡。",
+        "text_upgraded_chs": "每当有一张牌被消耗时，获得4点格挡。",
+        "text_raw_eng": "Whenever a card is [gold]Exhausted[\/gold], gain {Power:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Power": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Power": 1
+            }
+        }
+    }
+}

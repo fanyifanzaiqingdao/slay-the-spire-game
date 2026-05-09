@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BallLightning",
+        "category": "Defect",
+        "name_chs": "球状闪电",
+        "name_eng": "Ball Lightning",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]生成[\/gold]1个[gold]闪电[\/gold]充能球。",
+        "text_default_chs": "造成7点伤害。\n生成1个闪电充能球。",
+        "text_upgraded_chs": "造成13点伤害。\n生成1个闪电充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Channel[\/gold] 1 [gold]Lightning[\/gold].",
+        "variables": {
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

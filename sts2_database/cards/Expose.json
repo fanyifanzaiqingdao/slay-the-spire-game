@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Expose",
+        "category": "Silent",
+        "name_chs": "暴露",
+        "name_eng": "Expose",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "去除敌人身上的所有[gold]格挡[\/gold]值和[gold]人工制品[\/gold]。\n并给予{Power:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "消耗,去除敌人身上的所有格挡值和人工制品。\n并给予2层易伤。",
+        "text_upgraded_chs": "消耗,去除敌人身上的所有格挡值和人工制品。\n并给予3层易伤。",
+        "text_raw_eng": "Remove all [gold]Artifact[\/gold] and [gold]Block[\/gold] from the enemy.\nApply {Power:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "Power": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Power": 1
+            }
+        }
+    }
+}

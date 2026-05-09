@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Monologue",
+        "category": "Regent",
+        "name_chs": "独白",
+        "name_eng": "Monologue",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "每当你在本回合打出卡牌时，在本回合获得{Power:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "每当你在本回合打出卡牌时，在本回合获得1点力量。",
+        "text_upgraded_chs": "保留,每当你在本回合打出卡牌时，在本回合获得1点力量。",
+        "text_raw_eng": "Whenever you play a card this turn, gain {Power:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "Power": 1
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

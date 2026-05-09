@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BorrowedTime",
+        "category": "Necrobinder",
+        "name_chs": "预借时间",
+        "name_eng": "Borrowed Time",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "给予自身{DoomPower:diff()}层[gold]灾厄[\/gold]。\n获得{Energy:energyIcons()}。",
+        "text_default_chs": "给予自身3层灾厄。\n获得1能量。",
+        "text_upgraded_chs": "给予自身3层灾厄。\n获得3能量。",
+        "text_raw_eng": "Apply {DoomPower:diff()} [gold]Doom[\/gold] to yourself.\nGain {Energy:energyIcons()}.",
+        "variables": {
+            "DoomPower": 3,
+            "Energy": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

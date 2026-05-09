@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ChildOfTheStars",
+        "category": "Regent",
+        "name_chs": "群星之子",
+        "name_eng": "Child of the Stars",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你花费{singleStarIcon}时，每花费一点{singleStarIcon}，获得{BlockForStars:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你花费☆时，每花费一点☆，获得2点格挡。",
+        "text_upgraded_chs": "每当你花费☆时，每花费一点☆，获得4点格挡。",
+        "text_raw_eng": "Whenever you spend {singleStarIcon}, gain {BlockForStars:diff()} [gold]Block[\/gold] for each {singleStarIcon} spent.",
+        "variables": {
+            "BlockForStars": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "BlockForStars": 1
+            }
+        }
+    }
+}

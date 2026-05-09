@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Reanimate",
+        "category": "Necrobinder",
+        "name_chs": "死者苏生",
+        "name_eng": "Reanimate",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。",
+        "text_default_chs": "消耗,召唤20。",
+        "text_upgraded_chs": "消耗,召唤30。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.",
+        "variables": {
+            "Summon": "20m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 5
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Barrage",
+        "category": "Defect",
+        "name_chs": "弹幕齐射",
+        "name_eng": "Barrage",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "当前每有一个[gold]充能球[\/gold]，造成{Damage:diff()}点伤害。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "当前每有一个充能球，造成5点伤害。",
+        "text_upgraded_chs": "当前每有一个充能球，造成9点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage for each [gold]Channeled[\/gold] Orb.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "5m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

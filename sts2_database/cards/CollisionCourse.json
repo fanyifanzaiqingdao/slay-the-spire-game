@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CollisionCourse",
+        "category": "Regent",
+        "name_chs": "碰撞轨迹",
+        "name_eng": "Collision Course",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将一张[gold]碎屑[\/gold]添加至你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成9点伤害。\n将一张碎屑添加至你的手牌。",
+        "text_upgraded_chs": "造成15点伤害。\n将一张碎屑添加至你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd a [gold]Debris[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

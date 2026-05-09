@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Undeath",
+        "category": "Necrobinder",
+        "name_chs": "不死",
+        "name_eng": "Undeath",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在[gold]弃牌堆[\/gold]放入一张此牌的复制品。",
+        "text_default_chs": "获得7点格挡。\n在弃牌堆放入一张此牌的复制品。",
+        "text_upgraded_chs": "获得11点格挡。\n在弃牌堆放入一张此牌的复制品。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd a copy of this card into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Block": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

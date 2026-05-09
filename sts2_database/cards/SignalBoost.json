@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SignalBoost",
+        "category": "Defect",
+        "name_chs": "信号增强",
+        "name_eng": "Signal Boost",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "你的下一张能力牌会额外打出一次。",
+        "text_default_chs": "消耗,你的下一张能力牌会额外打出一次。",
+        "text_upgraded_chs": "消耗,你的下一张能力牌会额外打出一次。",
+        "text_raw_eng": "The next Power you play is played an additional time.",
+        "variables": {
+            "SignalBoostPower": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

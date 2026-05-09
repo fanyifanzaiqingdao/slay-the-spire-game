@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Veilpiercer",
+        "category": "Necrobinder",
+        "name_chs": "刺破帷幕",
+        "name_eng": "Veilpiercer",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你打出的下一张[gold]虚无[\/gold]牌耗能变为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "造成10点伤害。\n你打出的下一张虚无牌耗能变为0能量。",
+        "text_upgraded_chs": "造成16点伤害。\n你打出的下一张虚无牌耗能变为0能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nThe next [gold]Ethereal[\/gold] card you play costs 0 {energyPrefix:energyIcons(1)}.",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

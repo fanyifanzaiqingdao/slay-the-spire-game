@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Eradicate",
+        "category": "Necrobinder",
+        "name_chs": "根除",
+        "name_eng": "Eradicate",
+        "cost": -2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害X次。",
+        "text_default_chs": "保留,造成11点伤害X次。",
+        "text_upgraded_chs": "保留,造成17点伤害X次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage X times.",
+        "variables": {
+            "Damage": "11m",
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

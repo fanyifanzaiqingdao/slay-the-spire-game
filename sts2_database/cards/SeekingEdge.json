@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SeekingEdge",
+        "category": "Regent",
+        "name_chs": "追踪之刃",
+        "name_eng": "Seeking Edge",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。\n[gold]君王之剑[\/gold]现在会对所有敌人造成伤害。",
+        "text_default_chs": "铸造7。\n君王之剑现在会对所有敌人造成伤害。",
+        "text_upgraded_chs": "铸造15。\n君王之剑现在会对所有敌人造成伤害。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.\n[gold]Sovereign Blade[\/gold] now deals damage to ALL enemies.",
+        "variables": {
+            "Forge": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 4
+            }
+        }
+    }
+}

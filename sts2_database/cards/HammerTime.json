@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HammerTime",
+        "category": "Regent",
+        "name_chs": "锤子时间",
+        "name_eng": "Hammer Time",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你[gold]铸造[\/gold]时，所有盟友也都[gold]铸造[\/gold]相同的数值。",
+        "text_default_chs": "每当你铸造时，所有盟友也都铸造相同的数值。",
+        "text_upgraded_chs": "每当你铸造时，所有盟友也都铸造相同的数值。",
+        "text_raw_eng": "Whenever you [gold]Forge[\/gold], all allies [gold]Forge[\/gold] as well.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

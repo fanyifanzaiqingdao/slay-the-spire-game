@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Supermassive",
+        "category": "Regent",
+        "name_chs": "超质量体",
+        "name_eng": "Supermassive",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你在本场战斗中每生成过一张牌，这张牌就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成5点伤害。\n你在本场战斗中每生成过一张牌，这张牌就额外造成3点伤害。",
+        "text_upgraded_chs": "造成5点伤害。\n你在本场战斗中每生成过一张牌，这张牌就额外造成5点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card you created this combat.",
+        "variables": {
+            "CalculationBase": "5m",
+            "ExtraDamage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

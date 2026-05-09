@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Purity",
+        "category": "Colorless",
+        "name_chs": "净化",
+        "name_eng": "Purity",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从[gold]手牌[\/gold]中选择最多{Cards:diff()}张牌消耗。",
+        "text_default_chs": "保留,消耗,从手牌中选择最多3张牌消耗。",
+        "text_upgraded_chs": "保留,消耗,从手牌中选择最多7张牌消耗。",
+        "text_raw_eng": "Exhaust up to {Cards:diff()} cards in your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Retain",
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 2
+            }
+        }
+    }
+}

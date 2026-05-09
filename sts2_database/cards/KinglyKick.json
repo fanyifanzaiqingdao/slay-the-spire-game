@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "KinglyKick",
+        "category": "Regent",
+        "name_chs": "王者之踢",
+        "name_eng": "Kingly Kick",
+        "cost": 4,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n每当你抽到这张牌时，这张牌的耗能减少1。",
+        "text_default_chs": "造成24点伤害。\n每当你抽到这张牌时，这张牌的耗能减少1。",
+        "text_upgraded_chs": "造成36点伤害。\n每当你抽到这张牌时，这张牌的耗能减少1。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nWhenever you draw this card, reduce its cost by 1.",
+        "variables": {
+            "Damage": "24m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

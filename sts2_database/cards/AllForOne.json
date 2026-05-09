@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "AllForOne",
+        "category": "Defect",
+        "name_chs": "万物一心",
+        "name_eng": "All for One",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将你[gold]弃牌堆[\/gold]中的所有0{energyPrefix:energyIcons(1)}牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成10点伤害。\n将你弃牌堆中的所有0能量牌放入你的手牌。",
+        "text_upgraded_chs": "造成18点伤害。\n将你弃牌堆中的所有0能量牌放入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPut ALL 0{energyPrefix:energyIcons(1)} cards from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

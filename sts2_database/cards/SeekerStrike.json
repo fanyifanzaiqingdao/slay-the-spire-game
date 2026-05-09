@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SeekerStrike",
+        "category": "Colorless",
+        "name_chs": "探寻打击",
+        "name_eng": "Seeker Strike",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n从[gold]抽牌堆[\/gold]的随机{Cards:diff()}张牌中选择一张加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成6点伤害。\n从抽牌堆的随机3张牌中选择一张加入你的手牌。",
+        "text_upgraded_chs": "造成12点伤害。\n从抽牌堆的随机3张牌中选择一张加入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nChoose 1 of {Cards:diff()} cards in your [gold]Draw Pile[\/gold] to add into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

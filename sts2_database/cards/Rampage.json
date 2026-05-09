@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rampage",
+        "category": "Ironclad",
+        "name_chs": "暴走",
+        "name_eng": "Rampage",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将这张牌在本场战斗中的伤害增加{Increase:diff()}。",
+        "text_default_chs": "造成9点伤害。\n将这张牌在本场战斗中的伤害增加5。",
+        "text_upgraded_chs": "造成9点伤害。\n将这张牌在本场战斗中的伤害增加13。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIncrease this card's damage by {Increase:diff()} this combat.",
+        "variables": {
+            "Increase": 5,
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 4
+            }
+        }
+    }
+}

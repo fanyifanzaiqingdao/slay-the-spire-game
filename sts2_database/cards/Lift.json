@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Lift",
+        "category": "Colorless",
+        "name_chs": "托举",
+        "name_eng": "Lift",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "给另一名玩家{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "给另一名玩家11点格挡。",
+        "text_upgraded_chs": "给另一名玩家21点格挡。",
+        "text_raw_eng": "Give another player {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 11
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 5
+            }
+        }
+    }
+}

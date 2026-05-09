@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "AstralPulse",
+        "category": "Regent",
+        "name_chs": "星界脉冲",
+        "name_eng": "Astral Pulse",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "对所有敌人造成14点伤害。",
+        "text_upgraded_chs": "对所有敌人造成22点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "14m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

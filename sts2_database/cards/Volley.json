@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Volley",
+        "category": "Colorless",
+        "name_chs": "连射",
+        "name_eng": "Volley",
+        "cost": -2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "随机对敌人造成{Damage:diff()}点伤害X次。",
+        "text_default_chs": "随机对敌人造成10点伤害X次。",
+        "text_upgraded_chs": "随机对敌人造成18点伤害X次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to a random enemy X times.",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

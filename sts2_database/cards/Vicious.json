@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Vicious",
+        "category": "Ironclad",
+        "name_chs": "凶恶",
+        "name_eng": "Vicious",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你给予[gold]易伤[\/gold]时，抽{Cards:diff()}张牌。",
+        "text_default_chs": "每当你给予易伤时，抽1张牌。",
+        "text_upgraded_chs": "每当你给予易伤时，抽3张牌。",
+        "text_raw_eng": "Whenever you apply [gold]Vulnerable[\/gold], draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BansheesCry",
+        "category": "Necrobinder",
+        "name_chs": "女妖之嚎",
+        "name_eng": "Banshee's Cry",
+        "cost": 6,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n本场战斗中每打出过一张[gold]虚无[\/gold]牌，此牌费用就减少{Energy:energyIcons()}。",
+        "text_default_chs": "对所有敌人造成33点伤害。\n本场战斗中每打出过一张虚无牌，此牌费用就减少2能量。",
+        "text_upgraded_chs": "对所有敌人造成45点伤害。\n本场战斗中每打出过一张虚无牌，此牌费用就减少2能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nCosts {Energy:energyIcons()} less for each [gold]Ethereal[\/gold] card played this combat.",
+        "variables": {
+            "Damage": "33m",
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MindRot",
+        "category": "Token",
+        "name_chs": "心灵腐化",
+        "name_eng": "Mind Rot",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "每回合少抽{MindRotPower:diff()}张牌。",
+        "text_default_chs": "每回合少抽1张牌。",
+        "text_upgraded_chs": "每回合少抽1张牌。",
+        "text_raw_eng": "Draw {MindRotPower:diff()} fewer {MindRotPower:plural:card|cards} each turn.",
+        "variables": {
+            "MindRotPower": 1
+        },
+        "upgrades": []
+    }
+}

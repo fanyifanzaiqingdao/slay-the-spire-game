@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Parse",
+        "category": "Necrobinder",
+        "name_chs": "领会",
+        "name_eng": "Parse",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "虚无,抽3张牌。",
+        "text_upgraded_chs": "虚无,抽5张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

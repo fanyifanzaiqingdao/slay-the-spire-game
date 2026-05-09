@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GoldAxe",
+        "category": "Colorless",
+        "name_chs": "金斧",
+        "name_eng": "Gold Axe",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成本场战斗中所打出牌数的伤害。{InCombat:\n（造成{CalculatedDamage:diff()}点伤害）|}",
+        "text_default_chs": "造成本场战斗中所打出牌数的伤害。",
+        "text_upgraded_chs": "保留,造成本场战斗中所打出牌数的伤害。",
+        "text_raw_eng": "Deal damage equal to the number of cards played this combat.{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "ExtraDamage": "1m"
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ColdSnap",
+        "category": "Defect",
+        "name_chs": "寒流",
+        "name_eng": "Cold Snap",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]生成[\/gold]1个[gold]冰霜[\/gold]充能球。",
+        "text_default_chs": "造成6点伤害。\n生成1个冰霜充能球。",
+        "text_upgraded_chs": "造成12点伤害。\n生成1个冰霜充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Channel[\/gold] 1 [gold]Frost[\/gold].",
+        "variables": {
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

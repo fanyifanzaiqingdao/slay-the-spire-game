@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tempest",
+        "category": "Defect",
+        "name_chs": "暴风雨",
+        "name_eng": "Tempest",
+        "cost": -2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]{IfUpgraded:show:X+1|X}个[gold]闪电[\/gold]充能球。",
+        "text_default_chs": "生成X个闪电充能球。",
+        "text_upgraded_chs": "生成X+1个闪电充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] {IfUpgraded:show:X+1|X} [gold]Lightning[\/gold].",
+        "variables": [],
+        "upgrades": []
+    }
+}

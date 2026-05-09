@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Corruption",
+        "category": "Ironclad",
+        "name_chs": "腐化",
+        "name_eng": "Corruption",
+        "cost": 3,
+        "rarity": "Ancient",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "技能牌消耗变为0{energyPrefix:energyIcons(1)}。\n每当你打出一张技能牌时，将其[gold]消耗[\/gold]。",
+        "text_default_chs": "技能牌消耗变为0能量。\n每当你打出一张技能牌时，将其消耗。",
+        "text_upgraded_chs": "技能牌消耗变为0能量。\n每当你打出一张技能牌时，将其消耗。",
+        "text_raw_eng": "Skills cost 0 {energyPrefix:energyIcons(1)}.\nWhenever you play a Skill, [gold]Exhaust[\/gold] it.",
+        "variables": {
+            "Power": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DemonForm",
+        "category": "Ironclad",
+        "name_chs": "恶魔形态",
+        "name_eng": "Demon Form",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，获得{StrengthPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "在你的回合开始时，获得2点力量。",
+        "text_upgraded_chs": "在你的回合开始时，获得3点力量。",
+        "text_raw_eng": "At the start of your turn, gain {StrengthPower:diff()} [gold]Strength[\/gold].",
+        "variables": {
+            "StrengthPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthPower": 1
+            }
+        }
+    }
+}

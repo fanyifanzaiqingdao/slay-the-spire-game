@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Charge",
+        "category": "Regent",
+        "name_chs": "冲锋！！",
+        "name_eng": "CHARGE!!",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "选择你[gold]抽牌堆[\/gold]中的{Cards:diff()}张 牌，将其[gold]变化[\/gold]为\n[gold]{IfUpgraded:show:仆从打击+|仆从打击}[\/gold]。",
+        "text_default_chs": "选择你抽牌堆中的2张牌，将其变化为\n仆从打击。",
+        "text_upgraded_chs": "选择你抽牌堆中的2张牌，将其变化为\n仆从打击+。",
+        "text_raw_eng": "Choose {Cards:diff()} {Cards:plural:card|cards} in your [gold]Draw Pile[\/gold] to [gold]Transform[\/gold] into\n[gold]{Cards:plural:{IfUpgraded:show:Minion Strike+|Minion Strike}[\/gold]|{IfUpgraded:show:Minion Strikes+|Minion Strikes}[\/gold]}.",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "AdaptiveStrike",
+        "category": "Defect",
+        "name_chs": "适应打击",
+        "name_eng": "Adaptive Strike",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将这张牌的一张0{energyPrefix:energyIcons(1)}复制品添加到你的[gold]弃牌堆[\/gold]。",
+        "text_default_chs": "造成18点伤害。\n将这张牌的一张0能量复制品添加到你的弃牌堆。",
+        "text_upgraded_chs": "造成28点伤害。\n将这张牌的一张0能量复制品添加到你的弃牌堆。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd a 0{energyPrefix:energyIcons(1)} copy of this card into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Damage": "18m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

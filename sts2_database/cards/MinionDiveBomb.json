@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MinionDiveBomb",
+        "category": "Token",
+        "name_chs": "仆从俯冲",
+        "name_eng": "Minion Dive Bomb",
+        "cost": 1,
+        "rarity": "Token",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,造成13点伤害。",
+        "text_upgraded_chs": "消耗,造成19点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "13m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

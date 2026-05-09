@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Guilty",
+        "category": "Curse",
+        "name_chs": "愧疚",
+        "name_eng": "Guilty",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "在{Combats:diff()}场战斗后从你的[gold]牌组[\/gold]中移除。",
+        "text_default_chs": "不能被打出,在5场战斗后从你的牌组中移除。",
+        "text_upgraded_chs": "不能被打出,在5场战斗后从你的牌组中移除。",
+        "text_raw_eng": "Removed from your [gold]Deck[\/gold] after {Combats:diff()} {Combats:plural:combat|combats}.",
+        "variables": {
+            "Combats": 5,
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

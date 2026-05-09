@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Cleanse",
+        "category": "Necrobinder",
+        "name_chs": "洁净",
+        "name_eng": "Cleanse",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。\n从你的[gold]抽牌堆[\/gold]中选一张牌[gold]消耗[\/gold]。",
+        "text_default_chs": "召唤3。\n从你的抽牌堆中选一张牌消耗。",
+        "text_upgraded_chs": "召唤7。\n从你的抽牌堆中选一张牌消耗。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.\n[gold]Exhaust[\/gold] 1 card from your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Summon": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 2
+            }
+        }
+    }
+}

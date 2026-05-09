@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CloakAndDagger",
+        "category": "Silent",
+        "name_chs": "斗篷与匕首",
+        "name_eng": "Cloak and Dagger",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将{Cards:diff()}张[gold]小刀[\/gold]添加到你的[gold]手牌[\/gold]。",
+        "text_default_chs": "获得6点格挡。\n将1张小刀添加到你的手牌。",
+        "text_upgraded_chs": "获得6点格挡。\n将3张小刀添加到你的手牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 1,
+            "Block": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

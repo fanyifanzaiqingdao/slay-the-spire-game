@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Begone",
+        "category": "Regent",
+        "name_chs": "下去！",
+        "name_eng": "BEGONE!",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n选择你[gold]手牌[\/gold]中的一张牌，将其[gold]变化[\/gold]为[gold]{IfUpgraded:show:仆从俯冲+|仆从俯冲}[\/gold]。",
+        "text_default_chs": "造成4点伤害。\n选择你手牌中的一张牌，将其变化为仆从俯冲。",
+        "text_upgraded_chs": "造成6点伤害。\n选择你手牌中的一张牌，将其变化为仆从俯冲+。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nChoose a card in your [gold]Hand[\/gold] to [gold]Transform[\/gold] into [gold]{IfUpgraded:show:Minion Dive Bomb+|Minion Dive Bomb}[\/gold].",
+        "variables": {
+            "Damage": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

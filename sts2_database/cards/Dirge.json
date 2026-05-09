@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Dirge",
+        "category": "Necrobinder",
+        "name_chs": "挽歌",
+        "name_eng": "Dirge",
+        "cost": -2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}X次。\n将X张[gold]{IfUpgraded:show:灵魂+|灵魂}[\/gold]添加到你的[gold]抽牌堆[\/gold]中。",
+        "text_default_chs": "召唤3X次。\n将X张灵魂添加到你的抽牌堆中。",
+        "text_upgraded_chs": "召唤5X次。\n将X张灵魂+添加到你的抽牌堆中。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()} X times.\nAdd X [gold]{IfUpgraded:show:Souls+|Souls}[\/gold] into your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Summon": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 1
+            }
+        }
+    }
+}

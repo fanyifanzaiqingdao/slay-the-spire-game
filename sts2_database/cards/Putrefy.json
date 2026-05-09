@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Putrefy",
+        "category": "Necrobinder",
+        "name_chs": "腐败",
+        "name_eng": "Putrefy",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{Power:diff()}层[gold]虚弱[\/gold]。\n给予{Power:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "消耗,给予2层虚弱。\n给予2层易伤。",
+        "text_upgraded_chs": "消耗,给予3层虚弱。\n给予3层易伤。",
+        "text_raw_eng": "Apply {Power:diff()} [gold]Weak[\/gold].\nApply {Power:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "Power": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Power": 1
+            }
+        }
+    }
+}

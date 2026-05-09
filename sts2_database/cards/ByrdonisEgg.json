@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ByrdonisEgg",
+        "category": "Quest",
+        "name_chs": "多尼斯异鸟蛋",
+        "name_eng": "Byrdonis Egg",
+        "cost": -1,
+        "rarity": "Quest",
+        "type": "Quest",
+        "targetType": "None",
+        "text_raw_chs": "能在[gold]休息处[\/gold]被孵化。",
+        "text_default_chs": "不能被打出,能在休息处被孵化。",
+        "text_upgraded_chs": "不能被打出,能在休息处被孵化。",
+        "text_raw_eng": "Can be hatched at a [gold]Rest Site[\/gold].",
+        "variables": {
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

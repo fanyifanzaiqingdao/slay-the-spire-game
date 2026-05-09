@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Ignition",
+        "category": "Defect",
+        "name_chs": "引火",
+        "name_eng": "Ignition",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "使另一名玩家[gold]生成[\/gold][gold]等离子[\/gold]充能球。",
+        "text_default_chs": "消耗,使另一名玩家生成等离子充能球。",
+        "text_upgraded_chs": "使另一名玩家生成等离子充能球。",
+        "text_raw_eng": "Another player [gold]Channels[\/gold] [gold]Plasma[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

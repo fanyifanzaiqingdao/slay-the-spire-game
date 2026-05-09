@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FanOfKnives",
+        "category": "Silent",
+        "name_chs": "刀扇",
+        "name_eng": "Fan of Knives",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]小刀[\/gold]现在会攻击所有敌人。\n将{Shivs:diff()}张[gold]小刀[\/gold]添加到你的[gold]手牌[\/gold]。",
+        "text_default_chs": "小刀现在会攻击所有敌人。\n将4张小刀添加到你的手牌。",
+        "text_upgraded_chs": "小刀现在会攻击所有敌人。\n将6张小刀添加到你的手牌。",
+        "text_raw_eng": "[gold]Shivs[\/gold] now hit ALL enemies.\nAdd {Shivs:diff()} [gold]Shivs[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Shivs": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Shivs": 1
+            }
+        }
+    }
+}

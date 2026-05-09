@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "RocketPunch",
+        "category": "Defect",
+        "name_chs": "火箭飞拳",
+        "name_eng": "Rocket Punch",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽{Cards:diff()}张牌。\n当有一张状态被生成时，将此牌的耗能在本回合降为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "造成13点伤害。\n抽1张牌。\n当有一张状态被生成时，将此牌的耗能在本回合降为0能量。",
+        "text_upgraded_chs": "造成15点伤害。\n抽3张牌。\n当有一张状态被生成时，将此牌的耗能在本回合降为0能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nWhen a Status card is created, reduce this card's cost to 0 {energyPrefix:energyIcons(1)} this turn.",
+        "variables": {
+            "Cards": 1,
+            "Damage": "13m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Cards": 1
+            }
+        }
+    }
+}

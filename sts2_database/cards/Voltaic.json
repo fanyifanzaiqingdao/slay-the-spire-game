@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Voltaic",
+        "category": "Defect",
+        "name_chs": "电流相生",
+        "name_eng": "Voltaic",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]等量于你在这场战斗中[gold]生成过[\/gold]的[gold]闪电[\/gold]充能球数量的[gold]闪电[\/gold]充能球。{InCombat:\n（[gold]生成[\/gold]{CalculatedChannels:diff()}个[gold]闪电[\/gold]充能球）|}",
+        "text_default_chs": "消耗,生成等量于你在这场战斗中生成过的闪电充能球数量的闪电充能球。",
+        "text_upgraded_chs": "生成等量于你在这场战斗中生成过的闪电充能球数量的闪电充能球。",
+        "text_raw_eng": "[gold]Channel Lightning[\/gold] equal to the [gold]Lightning[\/gold] already [gold]Channeled[\/gold] this combat.{InCombat:\n([gold]Channel[\/gold] {CalculatedChannels:diff()} [gold]Lightning[\/gold])|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

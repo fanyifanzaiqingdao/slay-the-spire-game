@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DeadlyPoison",
+        "category": "Silent",
+        "name_chs": "致命毒药",
+        "name_eng": "Deadly Poison",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{PoisonPower:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "给予5层中毒。",
+        "text_upgraded_chs": "给予7层中毒。",
+        "text_raw_eng": "Apply {PoisonPower:diff()} [gold]Poison[\/gold].",
+        "variables": {
+            "PoisonPower": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Poison": 2
+            }
+        }
+    }
+}

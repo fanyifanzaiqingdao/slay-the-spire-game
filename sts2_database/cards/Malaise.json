@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Malaise",
+        "category": "Silent",
+        "name_chs": "萎靡",
+        "name_eng": "Malaise",
+        "cost": -2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "敌人失去X{IfUpgraded:show:+1}点[gold]力量[\/gold]。给予X{IfUpgraded:show:+1}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "消耗,敌人失去X点力量。给予X层虚弱。",
+        "text_upgraded_chs": "消耗,敌人失去X+1点力量。给予X+1层虚弱。",
+        "text_raw_eng": "Enemy loses X{IfUpgraded:show:+1} [gold]Strength[\/gold]. Apply X{IfUpgraded:show:+1} [gold]Weak[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

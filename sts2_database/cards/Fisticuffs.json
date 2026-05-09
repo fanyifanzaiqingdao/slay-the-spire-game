@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fisticuffs",
+        "category": "Colorless",
+        "name_chs": "拳斗",
+        "name_eng": "Fisticuffs",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n获得等量于所造成伤害的[gold]格挡[\/gold]。",
+        "text_default_chs": "造成7点伤害。\n获得等量于所造成伤害的格挡。",
+        "text_upgraded_chs": "造成11点伤害。\n获得等量于所造成伤害的格挡。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nGain [gold]Block[\/gold] equal to damage dealt.",
+        "variables": {
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

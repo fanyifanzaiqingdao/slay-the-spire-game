@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Scavenge",
+        "category": "Defect",
+        "name_chs": "再利用",
+        "name_eng": "Scavenge",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]消耗[\/gold]一张牌。\n在下个回合获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗一张牌。\n在下个回合获得2能量。",
+        "text_upgraded_chs": "消耗一张牌。\n在下个回合获得4能量。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] a card.\nNext turn, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

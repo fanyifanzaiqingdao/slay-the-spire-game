@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MachineLearning",
+        "category": "Defect",
+        "name_chs": "机器学习",
+        "name_eng": "Machine Learning",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，额外抽{Cards:diff()}张牌。",
+        "text_default_chs": "在你的回合开始时，额外抽1张牌。",
+        "text_upgraded_chs": "固有,在你的回合开始时，额外抽1张牌。",
+        "text_raw_eng": "At the start of your turn, draw {Cards:diff()} additional {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

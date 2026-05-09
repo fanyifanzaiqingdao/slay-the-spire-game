@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Shroud",
+        "category": "Necrobinder",
+        "name_chs": "厄运之衣",
+        "name_eng": "Shroud",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你给予[gold]灾厄[\/gold]时，获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你给予灾厄时，获得2点格挡。",
+        "text_upgraded_chs": "每当你给予灾厄时，获得4点格挡。",
+        "text_raw_eng": "Whenever you apply [gold]Doom[\/gold], gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1
+            }
+        }
+    }
+}

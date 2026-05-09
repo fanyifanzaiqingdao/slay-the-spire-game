@@ -1,0 +1,32 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BigBang",
+        "category": "Regent",
+        "name_chs": "大爆炸",
+        "name_eng": "Big Bang",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n获得{Energy:energyIcons()}。\n获得{Stars:starIcons()}。\n[gold]铸造[\/gold]{Forge:diff()}。",
+        "text_default_chs": "消耗,抽1张牌。\n获得1能量。\n获得1☆。\n铸造5。",
+        "text_upgraded_chs": "消耗,固有,抽1张牌。\n获得1能量。\n获得1☆。\n铸造5。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Energy:energyIcons()}.\nGain {Stars:starIcons()}.\n[gold]Forge[\/gold] {Forge:diff()}.",
+        "variables": {
+            "Cards": 1,
+            "Energy": 1,
+            "Stars": 1,
+            "Forge": 5,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

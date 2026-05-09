@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Feral",
+        "category": "Defect",
+        "name_chs": "野性",
+        "name_eng": "Feral",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "",
+        "text_default_chs": "",
+        "text_upgraded_chs": "",
+        "text_raw_eng": "The first {FeralPower:plural:time|{FeralPower:diff()} times} you play a\n0{energyPrefix:energyIcons(1)} Attack each turn,\nreturn it to your [gold]Hand[\/gold].",
+        "variables": {
+            "FeralPower": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

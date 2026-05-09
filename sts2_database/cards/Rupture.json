@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rupture",
+        "category": "Ironclad",
+        "name_chs": "撕裂",
+        "name_eng": "Rupture",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你在你的回合失去生命值时, 获得{StrengthPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "每当你在你的回合失去生命值时,获得1点力量。",
+        "text_upgraded_chs": "每当你在你的回合失去生命值时,获得2点力量。",
+        "text_raw_eng": "Whenever you lose HP on your turn, gain {StrengthPower:diff()} [gold]Strength[\/gold].",
+        "variables": {
+            "StrengthPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Strength": 1
+            }
+        }
+    }
+}

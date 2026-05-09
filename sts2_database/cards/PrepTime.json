@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PrepTime",
+        "category": "Colorless",
+        "name_chs": "准备时间",
+        "name_eng": "Prep Time",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，获得{PrepTimePower:diff()}点[gold]活力[\/gold]。",
+        "text_default_chs": "在你的回合开始时，获得4点活力。",
+        "text_upgraded_chs": "在你的回合开始时，获得6点活力。",
+        "text_raw_eng": "At the start of your turn, gain {PrepTimePower:diff()} [gold]Vigor[\/gold].",
+        "variables": {
+            "PrepTimePower": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "PrepTimePower": 2
+            }
+        }
+    }
+}

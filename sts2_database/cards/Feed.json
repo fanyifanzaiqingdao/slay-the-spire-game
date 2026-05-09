@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Feed",
+        "category": "Ironclad",
+        "name_chs": "狂宴",
+        "name_eng": "Feed",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]斩杀[\/gold]时，永久获得{MaxHp:diff()}点最大生命值。",
+        "text_default_chs": "消耗,造成10点伤害。\n斩杀时，永久获得3点最大生命值。",
+        "text_upgraded_chs": "消耗,造成14点伤害。\n斩杀时，永久获得5点最大生命值。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[\/gold], raise your Max HP by {MaxHp:diff()}.",
+        "variables": {
+            "Damage": "10m",
+            "MaxHp": "3m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "MaxHp": 1
+            }
+        }
+    }
+}

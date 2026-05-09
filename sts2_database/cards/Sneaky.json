@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Sneaky",
+        "category": "Silent",
+        "name_chs": "鬼祟",
+        "name_eng": "Sneaky",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当其他玩家攻击一名敌人时，获得{SneakyPower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "奇巧,每当其他玩家攻击一名敌人时，获得1点格挡。",
+        "text_upgraded_chs": "奇巧,每当其他玩家攻击一名敌人时，获得2点格挡。",
+        "text_raw_eng": "Whenever another player attacks an enemy, gain {SneakyPower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "SneakyPower": 1,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "SneakyPower": 1
+            }
+        }
+    }
+}

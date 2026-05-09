@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SpoilsMap",
+        "category": "Quest",
+        "name_chs": "藏宝图",
+        "name_eng": "Spoils Map",
+        "cost": -1,
+        "rarity": "Quest",
+        "type": "Quest",
+        "targetType": "Self",
+        "text_raw_chs": "在下一阶段的地图上，标记一个有{Gold:diff()}额外[gold]金币[\/gold]的地点。",
+        "text_default_chs": "不能被打出,在下一阶段的地图上，标记一个有600额外金币的地点。",
+        "text_upgraded_chs": "不能被打出,在下一阶段的地图上，标记一个有600额外金币的地点。",
+        "text_raw_eng": "Marks a site of {Gold:diff()} extra [gold]Gold[\/gold] in the next Act.",
+        "variables": {
+            "Gold": 600,
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

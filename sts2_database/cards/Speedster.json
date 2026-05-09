@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Speedster",
+        "category": "Silent",
+        "name_chs": "速行者",
+        "name_eng": "Speedster",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你在回合进行中抽到一张牌时，对所有敌人造成{SpeedsterPower:diff()}点伤害。",
+        "text_default_chs": "每当你在回合进行中抽到一张牌时，对所有敌人造成2点伤害。",
+        "text_upgraded_chs": "每当你在回合进行中抽到一张牌时，对所有敌人造成3点伤害。",
+        "text_raw_eng": "Whenever you draw a card during your turn, deal {SpeedsterPower:diff()} damage to ALL enemies.",
+        "variables": {
+            "SpeedsterPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "SpeedsterPower": 1
+            }
+        }
+    }
+}

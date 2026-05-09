@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Parry",
+        "category": "Regent",
+        "name_chs": "招架",
+        "name_eng": "Parry",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你打出[gold]君王之剑[\/gold]时，获得{ParryPower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你打出君王之剑时，获得6点格挡。",
+        "text_upgraded_chs": "每当你打出君王之剑时，获得9点格挡。",
+        "text_raw_eng": "Whenever you play [gold]Sovereign Blade[\/gold], gain {ParryPower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "ParryPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "ParryPower": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SharedFate",
+        "category": "Necrobinder",
+        "name_chs": "命运同担",
+        "name_eng": "Shared Fate",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "失去{PlayerStrengthLoss:diff()}点[gold]力量[\/gold]。\n敌人失去{EnemyStrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "消耗,失去2点力量。\n敌人失去2点力量。",
+        "text_upgraded_chs": "消耗,失去2点力量。\n敌人失去4点力量。",
+        "text_raw_eng": "Lose {PlayerStrengthLoss:diff()} [gold]Strength[\/gold].\nEnemy loses {EnemyStrengthLoss:diff()} [gold]Strength[\/gold].",
+        "variables": {
+            "EnemyStrengthLoss": 2,
+            "PlayerStrengthLoss": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "EnemyStrengthLoss": 1
+            }
+        }
+    }
+}

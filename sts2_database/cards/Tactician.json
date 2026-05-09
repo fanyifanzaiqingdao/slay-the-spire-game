@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tactician",
+        "category": "Silent",
+        "name_chs": "战术大师",
+        "name_eng": "Tactician",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。",
+        "text_default_chs": "奇巧,获得1能量。",
+        "text_upgraded_chs": "奇巧,获得3能量。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 1,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

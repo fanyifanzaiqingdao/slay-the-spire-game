@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MeteorStrike",
+        "category": "Defect",
+        "name_chs": "陨石打击",
+        "name_eng": "Meteor Strike",
+        "cost": 5,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]生成[\/gold]3个[gold]等离子[\/gold]充能球。",
+        "text_default_chs": "造成24点伤害。\n生成3个等离子充能球。",
+        "text_upgraded_chs": "造成36点伤害。\n生成3个等离子充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Channel[\/gold] 3 [gold]Plasma[\/gold].",
+        "variables": {
+            "Damage": "24m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

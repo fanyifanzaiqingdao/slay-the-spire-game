@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PreciseCut",
+        "category": "Silent",
+        "name_chs": "精确切击",
+        "name_eng": "Precise Cut",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你的[gold]手牌[\/gold]中每有一张牌，此牌的伤害就降低{ExtraDamage:inverseDiff()}点。",
+        "text_default_chs": "造成13点伤害。\n你的手牌中每有一张牌，此牌的伤害就降低2点。",
+        "text_upgraded_chs": "造成19点伤害。\n你的手牌中每有一张牌，此牌的伤害就降低2点。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:inverseDiff()} less damage for each other card in your [gold]Hand[\/gold].",
+        "variables": {
+            "CalculationBase": "13m",
+            "ExtraDamage": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 3
+            }
+        }
+    }
+}

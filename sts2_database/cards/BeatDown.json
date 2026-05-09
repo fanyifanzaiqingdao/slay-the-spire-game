@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BeatDown",
+        "category": "Colorless",
+        "name_chs": "狠揍",
+        "name_eng": "Beat Down",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "打出你[gold]弃牌堆[\/gold]中的{Cards:diff()}张随机攻击牌。",
+        "text_default_chs": "打出你弃牌堆中的3张随机攻击牌。",
+        "text_upgraded_chs": "打出你弃牌堆中的5张随机攻击牌。",
+        "text_raw_eng": "Play {Cards:diff()} random Attacks from your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Cards": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

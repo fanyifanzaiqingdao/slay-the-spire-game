@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "InfernalBlade",
+        "category": "Ironclad",
+        "name_chs": "地狱之刃",
+        "name_eng": "Infernal Blade",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将一张随机攻击牌加入你的[gold]手牌[\/gold]。这张牌在本回合内可以免费打出。",
+        "text_default_chs": "消耗,将一张随机攻击牌加入你的手牌。这张牌在本回合内可以免费打出。",
+        "text_upgraded_chs": "消耗,将一张随机攻击牌加入你的手牌。这张牌在本回合内可以免费打出。",
+        "text_raw_eng": "Add a random Attack into your [gold]Hand[\/gold]. It's free to play this turn.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

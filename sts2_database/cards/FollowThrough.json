@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FollowThrough",
+        "category": "Silent",
+        "name_chs": "跟进",
+        "name_eng": "Follow Through",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n如果在本回合，你打出的上一张牌是技能牌，则给予所有敌人{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "对所有敌人造成6点伤害。\n如果在本回合，你打出的上一张牌是技能牌，则给予所有敌人1层虚弱。",
+        "text_upgraded_chs": "对所有敌人造成10点伤害。\n如果在本回合，你打出的上一张牌是技能牌，则给予所有敌人2层虚弱。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nIf the last card you played this turn was a Skill, apply {WeakPower:diff()} [gold]Weak[\/gold] to ALL enemies.",
+        "variables": {
+            "WeakPower": 1,
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Weak": 1
+            }
+        }
+    }
+}

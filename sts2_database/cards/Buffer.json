@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Buffer",
+        "category": "Defect",
+        "name_chs": "缓冲",
+        "name_eng": "Buffer",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "阻止下{BufferPower:diff()}次你受到的生命值损伤。",
+        "text_default_chs": "阻止下1次你受到的生命值损伤。",
+        "text_upgraded_chs": "阻止下2次你受到的生命值损伤。",
+        "text_raw_eng": "Prevent the next {BufferPower:plural:time|{BufferPower:diff()} times} you would lose HP.",
+        "variables": {
+            "BufferPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "BufferPower": 1
+            }
+        }
+    }
+}

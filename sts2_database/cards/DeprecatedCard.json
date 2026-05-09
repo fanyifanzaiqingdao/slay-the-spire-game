@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DeprecatedCard",
+        "category": "Deprecated",
+        "name_chs": "弃用卡牌",
+        "name_eng": "Deprecated Card",
+        "cost": 0,
+        "rarity": "Deprecated",
+        "type": "",
+        "targetType": "",
+        "text_raw_chs": "这张卡牌已经从游戏中移除。",
+        "text_default_chs": "不能被打出,这张卡牌已经从游戏中移除。",
+        "text_upgraded_chs": "不能被打出,这张卡牌已经从游戏中移除。",
+        "text_raw_eng": "This card has been removed from the game.",
+        "variables": {
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

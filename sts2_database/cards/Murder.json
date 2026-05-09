@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Murder",
+        "category": "Silent",
+        "name_chs": "谋杀",
+        "name_eng": "Murder",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你在本场战斗中每抽过一张牌，此牌就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成1点伤害。\n你在本场战斗中每抽过一张牌，此牌就额外造成1点伤害。",
+        "text_upgraded_chs": "造成1点伤害。\n你在本场战斗中每抽过一张牌，此牌就额外造成1点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card drawn this combat.",
+        "variables": {
+            "CalculationBase": "1m",
+            "ExtraDamage": "1m"
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

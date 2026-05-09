@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DemonicShield",
+        "category": "Ironclad",
+        "name_chs": "恶魔护盾",
+        "name_eng": "Demonic Shield",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "失去{HpLoss:diff()}点生命。\n给予另一位玩家你当前[gold]格挡[\/gold]值的[gold]格挡[\/gold]。{InCombat:\n（给予{CalculatedBlock:diff()}点[gold]格挡[\/gold]）|}",
+        "text_default_chs": "消耗,失去1点生命。\n给予另一位玩家你当前格挡值的格挡。",
+        "text_upgraded_chs": "失去1点生命。\n给予另一位玩家你当前格挡值的格挡。",
+        "text_raw_eng": "Lose {HpLoss:diff()} HP.\nGive another player [gold]Block[\/gold] equal to your [gold]Block[\/gold].{InCombat:\n(Gives {CalculatedBlock:diff()} [gold]Block[\/gold])|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "HpLoss": "1m",
+            "CalculationExtra": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

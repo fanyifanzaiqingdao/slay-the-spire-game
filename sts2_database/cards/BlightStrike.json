@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BlightStrike",
+        "category": "Necrobinder",
+        "name_chs": "荒疫打击",
+        "name_eng": "Blight Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予等量于所造成伤害的[gold]灾厄[\/gold]。",
+        "text_default_chs": "造成8点伤害。\n给予等量于所造成伤害的灾厄。",
+        "text_upgraded_chs": "造成12点伤害。\n给予等量于所造成伤害的灾厄。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply [gold]Doom[\/gold] equal to damage dealt.",
+        "variables": {
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

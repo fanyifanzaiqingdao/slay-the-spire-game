@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Juggling",
+        "category": "Ironclad",
+        "name_chs": "杂耍",
+        "name_eng": "Juggling",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "将你在每回合打出的第三张[gold]攻击牌[\/gold]的复制品加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "将你在每回合打出的第三张攻击牌的复制品加入你的手牌。",
+        "text_upgraded_chs": "固有,将你在每回合打出的第三张攻击牌的复制品加入你的手牌。",
+        "text_raw_eng": "Add a copy of the third [gold]Attack[\/gold] you play each turn into your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

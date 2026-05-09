@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "VoidForm",
+        "category": "Regent",
+        "name_chs": "虚空形态",
+        "name_eng": "Void Form",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "结束你的回合。\n你可以免费打出每回合的前{VoidFormPower:diff()}张牌。",
+        "text_default_chs": "结束你的回合。\n你可以免费打出每回合的前2张牌。",
+        "text_upgraded_chs": "结束你的回合。\n你可以免费打出每回合的前3张牌。",
+        "text_raw_eng": "End your turn.\nThe first {VoidFormPower:plural:card|{VoidFormPower:diff()} cards} you play each turn {VoidFormPower:plural:is|are} free to play.",
+        "variables": {
+            "VoidFormPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "VoidFormPower": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Barricade",
+        "category": "Ironclad",
+        "name_chs": "壁垒",
+        "name_eng": "Barricade",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]格挡[\/gold]不再在你的回合开始时消失。",
+        "text_default_chs": "格挡不再在你的回合开始时消失。",
+        "text_upgraded_chs": "格挡不再在你的回合开始时消失。",
+        "text_raw_eng": "[gold]Block[\/gold] is not removed at the start of your turn.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

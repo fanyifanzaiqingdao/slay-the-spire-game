@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Exterminate",
+        "category": "Event",
+        "name_chs": "杀灭",
+        "name_eng": "Exterminate",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "对所有敌人造成3点伤害4次。",
+        "text_upgraded_chs": "对所有敌人造成5点伤害4次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage {Repeat:diff()} times to ALL enemies.",
+        "variables": {
+            "Damage": "3m",
+            "Repeat": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

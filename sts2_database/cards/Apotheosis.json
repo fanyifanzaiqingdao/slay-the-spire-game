@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Apotheosis",
+        "category": "Event",
+        "name_chs": "神化",
+        "name_eng": "Apotheosis",
+        "cost": 2,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]升级[\/gold]你的全部卡牌。",
+        "text_default_chs": "消耗,固有,升级你的全部卡牌。",
+        "text_upgraded_chs": "消耗,固有,升级你的全部卡牌。",
+        "text_raw_eng": "[gold]Upgrade[\/gold] ALL your cards.",
+        "variables": {
+            "keywords": [
+                "Exhaust",
+                "Innate"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

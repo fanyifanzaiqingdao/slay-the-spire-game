@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Spite",
+        "category": "Ironclad",
+        "name_chs": "怨恨",
+        "name_eng": "Spite",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n如果你在本回合失去过生命值，则抽{Cards:diff()}张牌。",
+        "text_default_chs": "造成6点伤害。\n如果你在本回合失去过生命值，则抽1张牌。",
+        "text_upgraded_chs": "造成12点伤害。\n如果你在本回合失去过生命值，则抽1张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf you lost HP this turn, draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1,
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

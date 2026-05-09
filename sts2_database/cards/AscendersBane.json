@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "AscendersBane",
+        "category": "Curse",
+        "name_chs": "进阶之灾",
+        "name_eng": "Ascender's Bane",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "",
+        "text_default_chs": "永恒,不能被打出,虚无",
+        "text_upgraded_chs": "永恒,不能被打出,虚无",
+        "text_raw_eng": "",
+        "variables": {
+            "keywords": [
+                "Eternal",
+                "Unplayable",
+                "Ethereal"
+            ]
+        },
+        "upgrades": []
+    }
+}

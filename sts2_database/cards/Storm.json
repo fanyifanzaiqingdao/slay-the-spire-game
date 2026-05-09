@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Storm",
+        "category": "Defect",
+        "name_chs": "雷暴",
+        "name_eng": "Storm",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你打出一张能力牌时，[gold]生成[\/gold]{StormPower:diff()}个[gold]闪电[\/gold]充能球。",
+        "text_default_chs": "每当你打出一张能力牌时，生成1个闪电充能球。",
+        "text_upgraded_chs": "每当你打出一张能力牌时，生成2个闪电充能球。",
+        "text_raw_eng": "Whenever you play a Power, [gold]Channel[\/gold] {StormPower:diff()} [gold]Lightning[\/gold].",
+        "variables": {
+            "StormPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "StormPower": 1
+            }
+        }
+    }
+}

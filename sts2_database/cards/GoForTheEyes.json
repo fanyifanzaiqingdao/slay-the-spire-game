@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GoForTheEyes",
+        "category": "Defect",
+        "name_chs": "眼部攻击",
+        "name_eng": "Go for the Eyes",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n如果敌人的意图是攻击，则给予{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "造成3点伤害。\n如果敌人的意图是攻击，则给予1层虚弱。",
+        "text_upgraded_chs": "造成5点伤害。\n如果敌人的意图是攻击，则给予2层虚弱。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf the enemy intends to attack, apply {WeakPower:diff()} [gold]Weak[\/gold].",
+        "variables": {
+            "WeakPower": 1,
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Weak": 1
+            }
+        }
+    }
+}

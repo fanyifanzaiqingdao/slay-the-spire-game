@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Flanking",
+        "category": "Silent",
+        "name_chs": "夹击",
+        "name_eng": "Flanking",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "一名敌人在本回合受到的来自其他玩家的伤害翻倍。",
+        "text_default_chs": "一名敌人在本回合受到的来自其他玩家的伤害翻倍。",
+        "text_upgraded_chs": "一名敌人在本回合受到的来自其他玩家的伤害翻倍。",
+        "text_raw_eng": "The enemy takes double damage from other players this turn.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

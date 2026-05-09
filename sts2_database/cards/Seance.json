@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Seance",
+        "category": "Necrobinder",
+        "name_chs": "降灵",
+        "name_eng": "Seance",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你[gold]抽牌堆[\/gold]中的一张牌变化为[gold]{IfUpgraded:show:灵魂+|灵魂}[\/gold]。",
+        "text_default_chs": "虚无,将你抽牌堆中的一张牌变化为灵魂。",
+        "text_upgraded_chs": "虚无,将你抽牌堆中的一张牌变化为灵魂+。",
+        "text_raw_eng": "Transform a card in your [gold]Draw Pile[\/gold] into [gold]{IfUpgraded:show:Soul+|Soul}[\/gold].",
+        "variables": {
+            "Cards": 1,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": []
+    }
+}

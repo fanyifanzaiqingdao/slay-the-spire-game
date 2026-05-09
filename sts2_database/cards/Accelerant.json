@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Accelerant",
+        "category": "Silent",
+        "name_chs": "触媒",
+        "name_eng": "Accelerant",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]中毒[\/gold]会额外触发{Accelerant:diff()}次。",
+        "text_default_chs": "中毒会额外触发1次。",
+        "text_upgraded_chs": "中毒会额外触发3次。",
+        "text_raw_eng": "[gold]Poison[\/gold] is triggered {Accelerant:diff()} additional {Accelerant:plural:time|times}.",
+        "variables": {
+            "Accelerant": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Accelerant": 1
+            }
+        }
+    }
+}

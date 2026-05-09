@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bloodletting",
+        "category": "Ironclad",
+        "name_chs": "放血",
+        "name_eng": "Bloodletting",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "失去{HpLoss:diff()}点生命。\n获得{Energy:energyIcons()}。",
+        "text_default_chs": "失去3点生命。\n获得2能量。",
+        "text_upgraded_chs": "失去3点生命。\n获得4能量。",
+        "text_raw_eng": "Lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.",
+        "variables": {
+            "HpLoss": "3m",
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

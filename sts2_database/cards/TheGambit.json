@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheGambit",
+        "category": "Colorless",
+        "name_chs": "孤注一掷",
+        "name_eng": "The Gambit",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n如果你在本场战斗中受到未被格挡的伤害，则立刻死亡。",
+        "text_default_chs": "获得50点格挡。\n如果你在本场战斗中受到未被格挡的伤害，则立刻死亡。",
+        "text_upgraded_chs": "获得100点格挡。\n如果你在本场战斗中受到未被格挡的伤害，则立刻死亡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nIf you take unblocked attack damage this combat, die.",
+        "variables": {
+            "Block": 50
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 25
+            }
+        }
+    }
+}

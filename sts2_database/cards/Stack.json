@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Stack",
+        "category": "Event",
+        "name_chs": "堆栈",
+        "name_eng": "Stack",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得等量于与你当前[gold]弃牌堆[\/gold]中牌数{IfUpgraded:show:+{CalculationBase}|}的[gold]格挡[\/gold]值。{InCombat:\n（获得{CalculatedBlock:diff()}点[gold]格挡[\/gold]。）|}",
+        "text_default_chs": "获得等量于与你当前弃牌堆中牌数的格挡值。",
+        "text_upgraded_chs": "获得等量于与你当前弃牌堆中牌数+6的格挡值。",
+        "text_raw_eng": "Gain [gold]Block[\/gold] equal to the number of cards in your [gold]Discard Pile[\/gold]{IfUpgraded:show: +{CalculationBase}|}.{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[\/gold].)|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 3
+            }
+        }
+    }
+}

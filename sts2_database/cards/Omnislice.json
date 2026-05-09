@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Omnislice",
+        "category": "Colorless",
+        "name_chs": "万向斩",
+        "name_eng": "Omnislice",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n对所有其他敌人造成等量的伤害。",
+        "text_default_chs": "造成8点伤害。\n对所有其他敌人造成等量的伤害。",
+        "text_upgraded_chs": "造成14点伤害。\n对所有其他敌人造成等量的伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDamage ALL other enemies equal to the damage dealt.",
+        "variables": {
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

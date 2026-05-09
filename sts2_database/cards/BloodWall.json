@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BloodWall",
+        "category": "Ironclad",
+        "name_chs": "血墙",
+        "name_eng": "Blood Wall",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "失去{HpLoss:diff()}点生命。\n获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "失去2点生命。\n获得16点格挡。",
+        "text_upgraded_chs": "失去2点生命。\n获得24点格挡。",
+        "text_raw_eng": "Lose {HpLoss:diff()} HP.\nGain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 16,
+            "HpLoss": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

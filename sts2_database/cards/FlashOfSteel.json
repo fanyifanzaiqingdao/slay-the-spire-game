@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FlashOfSteel",
+        "category": "Colorless",
+        "name_chs": "亮剑",
+        "name_eng": "Flash of Steel",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽1张牌。",
+        "text_default_chs": "造成5点伤害。\n抽1张牌。",
+        "text_upgraded_chs": "造成11点伤害。\n抽1张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw 1 card.",
+        "variables": {
+            "Cards": 1,
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

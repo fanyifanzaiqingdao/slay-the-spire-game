@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fetch",
+        "category": "Necrobinder",
+        "name_chs": "取回",
+        "name_eng": "Fetch",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n如果这是这张牌第一次在本回合被打出，则抽{Cards:diff()}张牌。",
+        "text_default_chs": "奥斯提造成3点伤害。\n如果这是这张牌第一次在本回合被打出，则抽1张牌。",
+        "text_upgraded_chs": "奥斯提造成9点伤害。\n如果这是这张牌第一次在本回合被打出，则抽1张牌。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nIf this is the first time this card has been played this turn, draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1,
+            "OstyDamage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 3
+            }
+        }
+    }
+}

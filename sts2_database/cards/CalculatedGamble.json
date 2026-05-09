@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CalculatedGamble",
+        "category": "Silent",
+        "name_chs": "计算下注",
+        "name_eng": "Calculated Gamble",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "丢弃你的所有[gold]手牌[\/gold],\n然后抽相同数量的牌。",
+        "text_default_chs": "消耗,丢弃你的所有手牌,\n然后抽相同数量的牌。",
+        "text_upgraded_chs": "消耗,保留,丢弃你的所有手牌,\n然后抽相同数量的牌。",
+        "text_raw_eng": "Discard your [gold]Hand[\/gold],\nthen draw that many cards.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

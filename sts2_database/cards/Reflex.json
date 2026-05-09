@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Reflex",
+        "category": "Silent",
+        "name_chs": "本能反应",
+        "name_eng": "Reflex",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "奇巧,抽2张牌。",
+        "text_upgraded_chs": "奇巧,抽4张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 2,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

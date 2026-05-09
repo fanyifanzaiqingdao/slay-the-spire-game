@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Anger",
+        "category": "Ironclad",
+        "name_chs": "愤怒",
+        "name_eng": "Anger",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将一张此牌的复制品加入你的[gold]弃牌堆[\/gold]。",
+        "text_default_chs": "造成6点伤害。\n将一张此牌的复制品加入你的弃牌堆。",
+        "text_upgraded_chs": "造成10点伤害。\n将一张此牌的复制品加入你的弃牌堆。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd a copy of this card into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SleightOfFlesh",
+        "category": "Necrobinder",
+        "name_chs": "血肉戏法",
+        "name_eng": "Sleight of Flesh",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你给予一个敌人负面状态时，使其受到{SleightOfFleshPower:diff()}点伤害。",
+        "text_default_chs": "每当你给予一个敌人负面状态时，使其受到9点伤害。",
+        "text_upgraded_chs": "每当你给予一个敌人负面状态时，使其受到13点伤害。",
+        "text_raw_eng": "Whenever you apply a debuff to an enemy, they take {SleightOfFleshPower:diff()} damage.",
+        "variables": {
+            "SleightOfFleshPower": 9
+        },
+        "upgrades": {
+            "varChange": {
+                "SleightOfFleshPower": 4
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Iteration",
+        "category": "Defect",
+        "name_chs": "迭代",
+        "name_eng": "Iteration",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每回合你第一次抽到状态牌时，抽{IterationPower:diff()}张牌。",
+        "text_default_chs": "每回合你第一次抽到状态牌时，抽2张牌。",
+        "text_upgraded_chs": "每回合你第一次抽到状态牌时，抽3张牌。",
+        "text_raw_eng": "The first time you draw a Status card each turn, draw {IterationPower:diff()} {IterationPower:plural:card|cards}.",
+        "variables": {
+            "IterationPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "IterationPower": 1
+            }
+        }
+    }
+}

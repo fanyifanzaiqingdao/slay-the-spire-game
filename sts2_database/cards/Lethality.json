@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Lethality",
+        "category": "Necrobinder",
+        "name_chs": "致死性",
+        "name_eng": "Lethality",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每回合的第一张攻击牌会造成{LethalityPower:diff()}%额外伤害。",
+        "text_default_chs": "虚无,每回合的第一张攻击牌会造成50%额外伤害。",
+        "text_upgraded_chs": "虚无,每回合的第一张攻击牌会造成75%额外伤害。",
+        "text_raw_eng": "The first Attack each turn deals {LethalityPower:diff()}% additional damage.",
+        "variables": {
+            "LethalityPower": 50,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "LethalityPower": 25
+            }
+        }
+    }
+}

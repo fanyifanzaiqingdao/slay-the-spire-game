@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SovereignBlade",
+        "category": "Token",
+        "name_chs": "君王之剑",
+        "name_eng": "Sovereign Blade",
+        "cost": 2,
+        "rarity": "Token",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "{SeekingEdgeAmount:cond:>0?对所有敌人|}造成{Damage:diff()}点伤害{Repeat:choose(1):|{}次}。",
+        "text_default_chs": "保留,造成10点伤害",
+        "text_upgraded_chs": "保留,造成10点伤害",
+        "text_raw_eng": "Deal {Damage:diff()} damage{SeekingEdgeAmount:cond:>0? to ALL enemies|}{Repeat:plural:| {} times}.",
+        "variables": {
+            "Damage": "10m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m",
+            "Repeat": 1,
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

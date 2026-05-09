@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EvilEye",
+        "category": "Ironclad",
+        "name_chs": "邪眼",
+        "name_eng": "Evil Eye",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n如果你在本回合获得[gold]消耗过[\/gold]卡牌，则额外获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "获得8点格挡。\n如果你在本回合获得消耗过卡牌，则额外获得8点格挡。",
+        "text_upgraded_chs": "获得14点格挡。\n如果你在本回合获得消耗过卡牌，则额外获得14点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nGain another {Block:diff()} [gold]Block[\/gold] if you have [gold]Exhausted[\/gold] a card this turn.",
+        "variables": {
+            "Block": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

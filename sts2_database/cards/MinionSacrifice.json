@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MinionSacrifice",
+        "category": "Token",
+        "name_chs": "仆从捐躯",
+        "name_eng": "Minion Sacrifice",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "消耗,获得9点格挡。",
+        "text_upgraded_chs": "消耗,获得15点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 9,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

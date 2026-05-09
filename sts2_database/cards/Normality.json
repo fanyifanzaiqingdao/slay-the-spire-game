@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Normality",
+        "category": "Curse",
+        "name_chs": "凡庸",
+        "name_eng": "Normality",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "你在本回合不能打出超过3张牌。{InCombat:\n（还剩{CalculatedCards}张牌）|}",
+        "text_default_chs": "不能被打出,你在本回合不能打出超过3张牌。",
+        "text_upgraded_chs": "不能被打出,你在本回合不能打出超过3张牌。",
+        "text_raw_eng": "You cannot play more than 3 cards this turn.{InCombat:\n({CalculatedCards:plural:{} card|{} cards} left)|}",
+        "variables": {
+            "CalculationBase": "3m",
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

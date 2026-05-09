@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Sow",
+        "category": "Necrobinder",
+        "name_chs": "播种",
+        "name_eng": "Sow",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "保留,对所有敌人造成8点伤害。",
+        "text_upgraded_chs": "保留,对所有敌人造成14点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "8m",
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Coolheaded",
+        "category": "Defect",
+        "name_chs": "冷静头脑",
+        "name_eng": "Coolheaded",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]1个[gold]冰霜[\/gold]充能球。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "生成1个冰霜充能球。\n抽1张牌。",
+        "text_upgraded_chs": "生成1个冰霜充能球。\n抽3张牌。",
+        "text_raw_eng": "[gold]Channel[\/gold] 1 [gold]Frost[\/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

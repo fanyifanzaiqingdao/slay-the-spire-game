@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Expertise",
+        "category": "Silent",
+        "name_chs": "独门绝技",
+        "name_eng": "Expertise",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽牌直至你的[gold]手牌[\/gold]有{Cards:diff()}张牌。",
+        "text_default_chs": "抽牌直至你的手牌有6张牌。",
+        "text_upgraded_chs": "抽牌直至你的手牌有8张牌。",
+        "text_raw_eng": "Draw cards until you have {Cards:diff()} in your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

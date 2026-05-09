@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Sloth",
+        "category": "Token",
+        "name_chs": "懒惰",
+        "name_eng": "Sloth",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "你在每个回合不能打出超过{SlothPower:diff()}张牌。",
+        "text_default_chs": "你在每个回合不能打出超过3张牌。",
+        "text_upgraded_chs": "你在每个回合不能打出超过3张牌。",
+        "text_raw_eng": "You cannot play more than {SlothPower:diff()} {SlothPower:plural:card|cards} each turn.",
+        "variables": {
+            "SlothPower": 3
+        },
+        "upgrades": []
+    }
+}

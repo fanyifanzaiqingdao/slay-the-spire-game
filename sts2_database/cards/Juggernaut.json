@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Juggernaut",
+        "category": "Ironclad",
+        "name_chs": "势不可当",
+        "name_eng": "Juggernaut",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你获得[gold]格挡[\/gold]时，对随机敌人造成{JuggernautPower:diff()}点伤害。",
+        "text_default_chs": "每当你获得格挡时，对随机敌人造成5点伤害。",
+        "text_upgraded_chs": "每当你获得格挡时，对随机敌人造成7点伤害。",
+        "text_raw_eng": "Whenever you gain [gold]Block[\/gold], deal {JuggernautPower:diff()} damage to a random enemy.",
+        "variables": {
+            "JuggernautPower": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "JuggernautPower": 2
+            }
+        }
+    }
+}

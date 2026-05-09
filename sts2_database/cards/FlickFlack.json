@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FlickFlack",
+        "category": "Silent",
+        "name_chs": "翻越撑击",
+        "name_eng": "Flick-Flack",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "奇巧,对所有敌人造成7点伤害。",
+        "text_upgraded_chs": "奇巧,对所有敌人造成11点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "7m",
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

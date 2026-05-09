@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Genesis",
+        "category": "Regent",
+        "name_chs": "创世纪",
+        "name_eng": "Genesis",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，获得{StarsPerTurn:starIcons()}。",
+        "text_default_chs": "在你的回合开始时，获得2。",
+        "text_upgraded_chs": "在你的回合开始时，获得4。",
+        "text_raw_eng": "At the start of your turn, gain {StarsPerTurn:starIcons()}.",
+        "variables": {
+            "StarsPerTurn": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "StarsPerTurn": 1
+            }
+        }
+    }
+}

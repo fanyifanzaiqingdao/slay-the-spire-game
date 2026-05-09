@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Armaments",
+        "category": "Ironclad",
+        "name_chs": "武装",
+        "name_eng": "Armaments",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n[gold]升级[\/gold]你[gold]手牌[\/gold]中的{IfUpgraded:show:所有牌|一张牌}。",
+        "text_default_chs": "获得5点格挡。\n升级你手牌中的一张牌。",
+        "text_upgraded_chs": "获得5点格挡。\n升级你手牌中的所有牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Upgrade[\/gold] {IfUpgraded:show:ALL cards|a card} in your [gold]Hand[\/gold].",
+        "variables": {
+            "Block": 5
+        },
+        "upgrades": []
+    }
+}

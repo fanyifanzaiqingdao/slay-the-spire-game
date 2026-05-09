@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DarkShackles",
+        "category": "Colorless",
+        "name_chs": "黑暗镣铐",
+        "name_eng": "Dark Shackles",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "使一名敌人在本回合失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "消耗,使一名敌人在本回合失去9点力量。",
+        "text_upgraded_chs": "消耗,使一名敌人在本回合失去21点力量。",
+        "text_raw_eng": "Enemy loses {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 9,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthLoss": 6
+            }
+        }
+    }
+}

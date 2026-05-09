@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Compact",
+        "category": "Defect",
+        "name_chs": "压缩",
+        "name_eng": "Compact",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将你[gold]手牌[\/gold]中的全部状态牌[gold]变化[\/gold]为[gold]{IfUpgraded:show:燃料+|燃料}[\/gold]。",
+        "text_default_chs": "获得6点格挡。\n将你手牌中的全部状态牌变化为燃料。",
+        "text_upgraded_chs": "获得8点格挡。\n将你手牌中的全部状态牌变化为燃料+。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Transform[\/gold] all Status cards in your [gold]Hand[\/gold] into [gold]{IfUpgraded:show:Fuel+|Fuel}[\/gold].",
+        "variables": {
+            "Block": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1
+            }
+        }
+    }
+}

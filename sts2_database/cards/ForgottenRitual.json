@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ForgottenRitual",
+        "category": "Ironclad",
+        "name_chs": "被遗忘的仪式",
+        "name_eng": "Forgotten Ritual",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "如果你在本回合[gold]消耗过[\/gold]卡牌，则获得{Energy:energyIcons()}。",
+        "text_default_chs": "如果你在本回合消耗过卡牌，则获得3能量。",
+        "text_upgraded_chs": "如果你在本回合消耗过卡牌，则获得5能量。",
+        "text_raw_eng": "If you [gold]Exhausted[\/gold] a card this turn, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

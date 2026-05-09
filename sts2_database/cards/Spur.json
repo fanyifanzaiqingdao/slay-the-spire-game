@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Spur",
+        "category": "Necrobinder",
+        "name_chs": "增生",
+        "name_eng": "Spur",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。\n[gold]奥斯提[\/gold]回复{Heal:diff()}点生命。",
+        "text_default_chs": "保留,召唤3。\n奥斯提回复5点生命。",
+        "text_upgraded_chs": "保留,召唤7。\n奥斯提回复9点生命。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.\n[gold]Osty[\/gold] heals {Heal:diff()} HP.",
+        "variables": {
+            "Summon": "3m",
+            "Heal": "5m",
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 2,
+                "Heal": 2
+            }
+        }
+    }
+}

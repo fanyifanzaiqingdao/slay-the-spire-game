@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HelloWorld",
+        "category": "Event",
+        "name_chs": "你好世界",
+        "name_eng": "Hello World",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，将一张随机普通牌加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "在你的回合开始时，将一张随机普通牌加入你的手牌。",
+        "text_upgraded_chs": "固有,在你的回合开始时，将一张随机普通牌加入你的手牌。",
+        "text_raw_eng": "At the start of your turn, add a random Common card into your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

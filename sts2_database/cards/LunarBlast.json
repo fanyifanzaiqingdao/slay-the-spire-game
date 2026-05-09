@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "LunarBlast",
+        "category": "Regent",
+        "name_chs": "月面射击",
+        "name_eng": "Lunar Blast",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "本回合中每打出过一张技能牌，此牌额外造成{Damage:diff()}点伤害一次。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "本回合中每打出过一张技能牌，此牌额外造成4点伤害一次。",
+        "text_upgraded_chs": "本回合中每打出过一张技能牌，此牌额外造成6点伤害一次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage for each Skill already played this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "4m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

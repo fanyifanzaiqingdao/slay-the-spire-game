@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheSealedThrone",
+        "category": "Regent",
+        "name_chs": "封印王座",
+        "name_eng": "The Sealed Throne",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每打出一张牌，获得{singleStarIcon}。",
+        "text_default_chs": "你每打出一张牌，获得☆。",
+        "text_upgraded_chs": "固有,你每打出一张牌，获得☆。",
+        "text_raw_eng": "Whenever you play a card, gain {singleStarIcon}.",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

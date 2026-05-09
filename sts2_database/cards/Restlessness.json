@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Restlessness",
+        "category": "Colorless",
+        "name_chs": "心神不宁",
+        "name_eng": "Restlessness",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "如果你的[gold]手牌[\/gold]为空，则抽{Cards:diff()}张牌并获得{Energy:energyIcons()}。",
+        "text_default_chs": "保留,如果你的手牌为空，则抽2张牌并获得2能量。",
+        "text_upgraded_chs": "保留,如果你的手牌为空，则抽4张牌并获得4能量。",
+        "text_raw_eng": "If your [gold]Hand[\/gold] is empty, draw {Cards:diff()} cards and gain {Energy:energyIcons()}.",
+        "variables": {
+            "Cards": 2,
+            "Energy": 2,
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1,
+                "Energy": 1
+            }
+        }
+    }
+}

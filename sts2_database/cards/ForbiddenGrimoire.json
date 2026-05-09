@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ForbiddenGrimoire",
+        "category": "Necrobinder",
+        "name_chs": "禁忌魔典",
+        "name_eng": "Forbidden Grimoire",
+        "cost": 2,
+        "rarity": "Ancient",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在战斗结束时，你可以从你的[gold]牌组[\/gold]中选一张牌移除。",
+        "text_default_chs": "永恒,在战斗结束时，你可以从你的牌组中选一张牌移除。",
+        "text_upgraded_chs": "永恒,在战斗结束时，你可以从你的牌组中选一张牌移除。",
+        "text_raw_eng": "At the end of combat, you may remove a card from your [gold]Deck[\/gold].",
+        "variables": {
+            "keywords": [
+                "Eternal"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

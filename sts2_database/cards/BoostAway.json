@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BoostAway",
+        "category": "Defect",
+        "name_chs": "高速脱离",
+        "name_eng": "Boost Away",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将一张[gold]眩晕[\/gold]添加到你的[gold]弃牌堆[\/gold]中。",
+        "text_default_chs": "获得6点格挡。\n将一张眩晕添加到你的弃牌堆中。",
+        "text_upgraded_chs": "获得12点格挡。\n将一张眩晕添加到你的弃牌堆中。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd a [gold]Dazed[\/gold] into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Block": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

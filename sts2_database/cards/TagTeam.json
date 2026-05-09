@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TagTeam",
+        "category": "Colorless",
+        "name_chs": "双打组合",
+        "name_eng": "Tag Team",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n其他玩家的下一张攻击牌将在该名敌人身上额外生效一次。",
+        "text_default_chs": "造成11点伤害。\n其他玩家的下一张攻击牌将在该名敌人身上额外生效一次。",
+        "text_upgraded_chs": "造成19点伤害。\n其他玩家的下一张攻击牌将在该名敌人身上额外生效一次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nThe next Attack another player plays on the enemy is played an extra time.",
+        "variables": {
+            "Damage": "11m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

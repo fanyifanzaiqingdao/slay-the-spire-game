@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "WellLaidPlans",
+        "category": "Silent",
+        "name_chs": "计划妥当",
+        "name_eng": "Well-Laid Plans",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合结束时，[gold]保留[\/gold]最多{RetainAmount:diff()}张牌。",
+        "text_default_chs": "在你的回合结束时，保留最多1张牌。",
+        "text_upgraded_chs": "在你的回合结束时，保留最多3张牌。",
+        "text_raw_eng": "At the end of your turn, [gold]Retain[\/gold] up to {RetainAmount:diff()} {RetainAmount:plural:card|cards}.",
+        "variables": {
+            "RetainAmount": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "RetainAmount": 1
+            }
+        }
+    }
+}

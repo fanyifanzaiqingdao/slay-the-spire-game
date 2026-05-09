@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ShadowShield",
+        "category": "Defect",
+        "name_chs": "暗影之盾",
+        "name_eng": "Shadow Shield",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n[gold]生成[\/gold]1个[gold]黑暗[\/gold]充能球。",
+        "text_default_chs": "获得11点格挡。\n生成1个黑暗充能球。",
+        "text_upgraded_chs": "获得19点格挡。\n生成1个黑暗充能球。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Channel[\/gold] 1 [gold]Dark[\/gold].",
+        "variables": {
+            "Block": 11
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

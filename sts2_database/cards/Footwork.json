@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Footwork",
+        "category": "Silent",
+        "name_chs": "灵动步法",
+        "name_eng": "Footwork",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{DexterityPower:diff()}点[gold]敏捷[\/gold]。",
+        "text_default_chs": "获得2点敏捷。",
+        "text_upgraded_chs": "获得3点敏捷。",
+        "text_raw_eng": "Gain {DexterityPower:diff()} [gold]Dexterity[\/gold].",
+        "variables": {
+            "DexterityPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Dexterity": 1
+            }
+        }
+    }
+}

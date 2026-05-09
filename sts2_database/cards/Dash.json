@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Dash",
+        "category": "Silent",
+        "name_chs": "冲刺",
+        "name_eng": "Dash",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n造成{Damage:diff()}点伤害。",
+        "text_default_chs": "获得10点格挡。\n造成10点伤害。",
+        "text_upgraded_chs": "获得16点格挡。\n造成16点伤害。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nDeal {Damage:diff()} damage.",
+        "variables": {
+            "Block": 10,
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3,
+                "Block": 3
+            }
+        }
+    }
+}

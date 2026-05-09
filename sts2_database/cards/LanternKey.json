@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "LanternKey",
+        "category": "Quest",
+        "name_chs": "灯火钥匙",
+        "name_eng": "Lantern Key",
+        "cost": -1,
+        "rarity": "Quest",
+        "type": "Quest",
+        "targetType": "Self",
+        "text_raw_chs": "在下一阶段解锁一个特殊事件。",
+        "text_default_chs": "不能被打出,在下一阶段解锁一个特殊事件。",
+        "text_upgraded_chs": "不能被打出,在下一阶段解锁一个特殊事件。",
+        "text_raw_eng": "Unlocks a special event in the next Act.",
+        "variables": {
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tremble",
+        "category": "Ironclad",
+        "name_chs": "战栗",
+        "name_eng": "Tremble",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "给予2层易伤。",
+        "text_upgraded_chs": "给予3层易伤。",
+        "text_raw_eng": "Apply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Vulnerable": 1
+            }
+        }
+    }
+}

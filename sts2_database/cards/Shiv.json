@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Shiv",
+        "category": "Token",
+        "name_chs": "小刀",
+        "name_eng": "Shiv",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "{FanOfKnivesAmount:cond:>0? 对所有敌人|}造成{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,造成4点伤害。",
+        "text_upgraded_chs": "消耗,造成8点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage{FanOfKnivesAmount:cond:>0? to ALL enemies|}.",
+        "variables": {
+            "Damage": "4m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

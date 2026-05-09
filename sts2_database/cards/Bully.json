@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bully",
+        "category": "Ironclad",
+        "name_chs": "欺凌",
+        "name_eng": "Bully",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n该敌人身上每有一层[gold]易伤[\/gold]就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成4点伤害。\n该敌人身上每有一层易伤就额外造成2点伤害。",
+        "text_upgraded_chs": "造成4点伤害。\n该敌人身上每有一层易伤就额外造成4点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each [gold]Vulnerable[\/gold] on the enemy.",
+        "variables": {
+            "CalculationBase": "4m",
+            "ExtraDamage": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

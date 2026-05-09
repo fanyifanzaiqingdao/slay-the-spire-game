@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ShrugItOff",
+        "category": "Ironclad",
+        "name_chs": "耸肩无视",
+        "name_eng": "Shrug It Off",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "获得8点格挡。\n抽1张牌。",
+        "text_upgraded_chs": "获得14点格挡。\n抽1张牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nDraw {Cards:diff()} card.",
+        "variables": {
+            "Cards": 1,
+            "Block": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

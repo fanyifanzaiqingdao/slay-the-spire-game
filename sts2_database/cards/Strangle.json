@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Strangle",
+        "category": "Silent",
+        "name_chs": "紧勒",
+        "name_eng": "Strangle",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你在这个回合内每出一张牌，该名敌人都会失去{StranglePower:diff()}点生命。",
+        "text_default_chs": "造成8点伤害。\n你在这个回合内每出一张牌，该名敌人都会失去2点生命。",
+        "text_upgraded_chs": "造成12点伤害。\n你在这个回合内每出一张牌，该名敌人都会失去3点生命。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nWhenever you play a card this turn, the enemy loses {StranglePower:diff()} HP.",
+        "variables": {
+            "StranglePower": 2,
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "StranglePower": 1,
+                "Damage": 2
+            }
+        }
+    }
+}

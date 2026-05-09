@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TwinStrike",
+        "category": "Ironclad",
+        "name_chs": "双重打击",
+        "name_eng": "Twin Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。",
+        "text_default_chs": "造成5点伤害两次。",
+        "text_upgraded_chs": "造成9点伤害两次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.",
+        "variables": {
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MadScience",
+        "category": "Event",
+        "name_chs": "疯狂科学",
+        "name_eng": "Mad Science",
+        "cost": 0,
+        "rarity": "Unknown",
+        "type": "Unknown",
+        "targetType": "Unknown",
+        "text_raw_chs": "{CardType:choose(Attack|Skill|Power):造成{Damage:diff()}点伤害{Violence:{ViolenceHits:diff()}次|}。|获得{Block:diff()}点[gold]格挡[\/gold]。|}{HasRider:{Sapping:\n给予{SappingWeak:diff()}层[gold]虚弱[\/gold]。\n给予{SappingVulnerable:diff()}层[gold]易伤[\/gold]。|}{Choking:\n本回合，你每打出一张牌，该敌人失去{ChokingDamage:diff()}点生命。|}{Energized:\n获得{EnergizedEnergy:energyIcons()}。|}{Wisdom:\n抽{WisdomCards:diff()}张牌|}{Chaos:\n将一张随机牌放入你的[gold]手牌[\/gold]，这张牌在本回合耗能变为0{energyPrefix:energyIcons(1)}。|}{Expertise:获得{ExpertiseStrength:diff()}点[gold]力量[\/gold]。\n获得{ExpertiseDexterity:diff()}点[gold]敏捷[\/gold]。|}{Curious:能力牌的耗能减少{CuriousReduction:diff()}{energyPrefix:energyIcons(1)}。|}{Improvement:在战斗结束时，[gold]升级[\/gold]你牌组中的一张随机牌。|}|{CardType:choose(Attack|Skill|Power):\n？？？|\n？？？|？？？}}",
+        "text_default_chs": "todo",
+        "text_upgraded_chs": null,
+        "text_raw_eng": "{CardType:choose(Attack|Skill|Power):Deal {Damage:diff()} damage{Violence: {ViolenceHits:diff()} times|}.|Gain {Block:diff()} [gold]Block[\/gold].|}{HasRider:{Sapping:\nApply {SappingWeak:diff()} [gold]Weak[\/gold].\nApply {SappingVulnerable:diff()} [gold]Vulnerable[\/gold].|}{Choking:\nWhenever you play a card this turn, the enemy loses {ChokingDamage:diff()} HP.|}{Energized:\nGain {EnergizedEnergy:energyIcons()}.|}{Wisdom:\nDraw {WisdomCards:diff()} cards.|}{Chaos:\nAdd a random card into your [gold]Hand[\/gold]. It costs 0 {energyPrefix:energyIcons(1)} this turn.|}{Expertise:Gain {ExpertiseStrength:diff()} [gold]Strength[\/gold].\nGain {ExpertiseDexterity:diff()} [gold]Dexterity[\/gold].|}{Curious:Powers cost {CuriousReduction:diff()} {energyPrefix:energyIcons(1)} less.|}{Improvement:At the end of combat, [gold]Upgrade[\/gold] a random card.|}|{CardType:choose(Attack|Skill|Power):\n???|\n???|???}}",
+        "variables": {
+            "WeakPower": 2,
+            "VulnerablePower": 2,
+            "StranglePower": 6,
+            "StrengthPower": 2,
+            "DexterityPower": 2,
+            "ViolenceHits": 3,
+            "WisdomCards": 3,
+            "CuriousReduction": 1,
+            "Block": 8,
+            "Damage": "12m"
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ],
+            "removedKeywords": [],
+            "costChange": 0,
+            "varChange": []
+        }
+    }
+}

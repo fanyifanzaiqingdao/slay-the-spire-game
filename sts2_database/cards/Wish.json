@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Wish",
+        "category": "Event",
+        "name_chs": "许愿",
+        "name_eng": "Wish",
+        "cost": 0,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你[gold]抽牌堆[\/gold]中的一张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,将你抽牌堆中的一张牌放入你的手牌。",
+        "text_upgraded_chs": "消耗,保留,将你抽牌堆中的一张牌放入你的手牌。",
+        "text_raw_eng": "Put a card from your [gold]Draw Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

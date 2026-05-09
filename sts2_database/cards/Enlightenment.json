@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Enlightenment",
+        "category": "Event",
+        "name_chs": "开悟",
+        "name_eng": "Enlightenment",
+        "cost": 0,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在这{IfUpgraded:show:场战斗|个回合}，你当前[gold]手牌[\/gold]中所有牌的耗能降低至1。",
+        "text_default_chs": "消耗,在这个回合，你当前手牌中所有牌的耗能降低至1。",
+        "text_upgraded_chs": "消耗,在这场战斗，你当前手牌中所有牌的耗能降低至1。",
+        "text_raw_eng": "Reduce the cost of ALL cards in your [gold]Hand[\/gold] to 1 this {IfUpgraded:show:combat|turn}.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

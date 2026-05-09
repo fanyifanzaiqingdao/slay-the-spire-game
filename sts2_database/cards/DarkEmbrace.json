@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DarkEmbrace",
+        "category": "Ironclad",
+        "name_chs": "黑暗之拥",
+        "name_eng": "Dark Embrace",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当有一张牌被[gold]消耗[\/gold]时，\n抽1张牌。",
+        "text_default_chs": "每当有一张牌被消耗时，\n抽1张牌。",
+        "text_upgraded_chs": "每当有一张牌被消耗时，\n抽1张牌。",
+        "text_raw_eng": "Whenever a card is [gold]Exhausted[\/gold],\ndraw 1 card.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

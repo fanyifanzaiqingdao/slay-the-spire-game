@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HiddenGem",
+        "category": "Colorless",
+        "name_chs": "未掘宝石",
+        "name_eng": "Hidden Gem",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "你[gold]抽牌堆[\/gold]中的一张随机牌获得{Replay:diff()}层[gold]重放[\/gold]。",
+        "text_default_chs": "你抽牌堆中的一张随机牌获得2层重放。",
+        "text_upgraded_chs": "你抽牌堆中的一张随机牌获得4层重放。",
+        "text_raw_eng": "A random card in your [gold]Draw Pile[\/gold] gains [gold]Replay[\/gold] {Replay:diff()}.",
+        "variables": {
+            "Replay": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Replay": 1
+            }
+        }
+    }
+}

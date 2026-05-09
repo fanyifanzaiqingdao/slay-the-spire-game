@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GuidingStar",
+        "category": "Regent",
+        "name_chs": "引导之星",
+        "name_eng": "Guiding Star",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在下一回合抽{Cards:diff()}张牌。",
+        "text_default_chs": "造成12点伤害。\n在下一回合抽2张牌。",
+        "text_upgraded_chs": "造成14点伤害。\n在下一回合抽4张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nNext turn, draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 2,
+            "Damage": "12m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Cards": 1
+            }
+        }
+    }
+}

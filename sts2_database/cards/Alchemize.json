@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Alchemize",
+        "category": "Colorless",
+        "name_chs": "炼制药水",
+        "name_eng": "Alchemize",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得一瓶随机药水。",
+        "text_default_chs": "消耗,获得一瓶随机药水。",
+        "text_upgraded_chs": "消耗,获得一瓶随机药水。",
+        "text_raw_eng": "Procure a random potion.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

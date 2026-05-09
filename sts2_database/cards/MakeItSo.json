@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MakeItSo",
+        "category": "Regent",
+        "name_chs": "如此甚好",
+        "name_eng": "Make It So",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你每在一回合内打出{Cards:diff()}张技能牌，就将这张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成6点伤害。\n你每在一回合内打出3张技能牌，就将这张牌放入你的手牌。",
+        "text_upgraded_chs": "造成12点伤害。\n你每在一回合内打出3张技能牌，就将这张牌放入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nEvery {Cards:diff()} {Cards:plural:Skill|Skills} you play in a turn, put this into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

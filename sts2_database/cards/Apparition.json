@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Apparition",
+        "category": "Event",
+        "name_chs": "灵体",
+        "name_eng": "Apparition",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{IntangiblePower:diff()}层[gold]无实体[\/gold]。",
+        "text_default_chs": "虚无,消耗,获得1层无实体。",
+        "text_upgraded_chs": "消耗,获得1层无实体。",
+        "text_raw_eng": "Gain {IntangiblePower:diff()} [gold]Intangible[\/gold].",
+        "variables": {
+            "IntangiblePower": 1,
+            "keywords": [
+                "Ethereal",
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Ethereal"
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rage",
+        "category": "Ironclad",
+        "name_chs": "狂怒",
+        "name_eng": "Rage",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "打出此牌后，你在这个回合内每打出一张攻击牌，获得{Power:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "打出此牌后，你在这个回合内每打出一张攻击牌，获得3点格挡。",
+        "text_upgraded_chs": "打出此牌后，你在这个回合内每打出一张攻击牌，获得5点格挡。",
+        "text_raw_eng": "Whenever you play an Attack this turn, gain {Power:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Power": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Power": 2
+            }
+        }
+    }
+}

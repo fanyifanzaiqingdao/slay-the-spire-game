@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DodgeAndRoll",
+        "category": "Silent",
+        "name_chs": "闪躲翻滚",
+        "name_eng": "Dodge and Roll",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在下个回合，获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "获得4点格挡。\n在下个回合，获得4点格挡。",
+        "text_upgraded_chs": "获得8点格挡。\n在下个回合，获得8点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nNext turn, gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Venerate",
+        "category": "Regent",
+        "name_chs": "崇拜",
+        "name_eng": "Venerate",
+        "cost": 1,
+        "rarity": "Basic",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Stars:starIcons()}。",
+        "text_default_chs": "获得2☆。",
+        "text_upgraded_chs": "获得4☆。",
+        "text_raw_eng": "Gain {Stars:starIcons()}.",
+        "variables": {
+            "Stars": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Stars": 1
+            }
+        }
+    }
+}

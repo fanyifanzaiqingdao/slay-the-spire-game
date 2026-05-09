@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Shatter",
+        "category": "Defect",
+        "name_chs": "打碎",
+        "name_eng": "Shatter",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n[gold]激发[\/gold]所有充能球。",
+        "text_default_chs": "对所有敌人造成11点伤害。\n激发所有充能球。",
+        "text_upgraded_chs": "对所有敌人造成19点伤害。\n激发所有充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Evoke[\/gold] all of your Orbs.",
+        "variables": {
+            "Damage": "11m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

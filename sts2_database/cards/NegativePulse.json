@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "NegativePulse",
+        "category": "Necrobinder",
+        "name_chs": "负能量脉冲",
+        "name_eng": "Negative Pulse",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n给予所有敌人{DoomPower:diff()}层[gold]灾厄[\/gold]。",
+        "text_default_chs": "获得5点格挡。\n给予所有敌人7层灾厄。",
+        "text_upgraded_chs": "获得7点格挡。\n给予所有敌人11层灾厄。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nApply {DoomPower:diff()} [gold]Doom[\/gold] to ALL enemies.",
+        "variables": {
+            "DoomPower": 7,
+            "Block": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1,
+                "Doom": 4
+            }
+        }
+    }
+}

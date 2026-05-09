@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BootSequence",
+        "category": "Defect",
+        "name_chs": "启动流程",
+        "name_eng": "Boot Sequence",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "固有,消耗,获得10点格挡。",
+        "text_upgraded_chs": "固有,消耗,获得16点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 10,
+            "keywords": [
+                "Innate",
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

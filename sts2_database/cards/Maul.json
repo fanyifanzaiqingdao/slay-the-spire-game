@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Maul",
+        "category": "Event",
+        "name_chs": "撕咬",
+        "name_eng": "Maul",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。\n在这场战斗中，将所有“撕咬”牌的伤害增加{Increase:diff()}。",
+        "text_default_chs": "造成5点伤害两次。\n在这场战斗中，将所有“撕咬”牌的伤害增加1。",
+        "text_upgraded_chs": "造成7点伤害两次。\n在这场战斗中，将所有“撕咬”牌的伤害增加3。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.\nIncrease the damage of ALL Maul cards by {Increase:diff()} this combat.",
+        "variables": {
+            "Increase": 1,
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 1,
+                "Damage": 1
+            }
+        }
+    }
+}

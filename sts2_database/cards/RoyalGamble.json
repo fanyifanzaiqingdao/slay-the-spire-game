@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "RoyalGamble",
+        "category": "Regent",
+        "name_chs": "胜券在王",
+        "name_eng": "Royal Gamble",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Stars:diff()}{singleStarIcon}。",
+        "text_default_chs": "消耗,获得9☆☆。",
+        "text_upgraded_chs": "消耗,保留,获得9☆☆。",
+        "text_raw_eng": "Gain {Stars:diff()} {singleStarIcon}.",
+        "variables": {
+            "Stars": 9,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

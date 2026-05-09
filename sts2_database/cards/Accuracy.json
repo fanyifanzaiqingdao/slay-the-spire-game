@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Accuracy",
+        "category": "Silent",
+        "name_chs": "精准",
+        "name_eng": "Accuracy",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]小刀[\/gold]额外造成{AccuracyPower:diff()}点伤害。",
+        "text_default_chs": "小刀额外造成4点伤害。",
+        "text_upgraded_chs": "小刀额外造成6点伤害。",
+        "text_raw_eng": "[gold]Shivs[\/gold] deal {AccuracyPower:diff()} additional damage.",
+        "variables": {
+            "AccuracyPower": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "AccuracyPower": 2
+            }
+        }
+    }
+}

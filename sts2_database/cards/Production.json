@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Production",
+        "category": "Colorless",
+        "name_chs": "生产制造",
+        "name_eng": "Production",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,获得2能量。",
+        "text_upgraded_chs": "获得2能量。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

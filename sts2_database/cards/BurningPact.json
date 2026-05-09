@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BurningPact",
+        "category": "Ironclad",
+        "name_chs": "燃烧契约",
+        "name_eng": "Burning Pact",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]消耗[\/gold]1张牌。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗1张牌。\n抽2张牌。",
+        "text_upgraded_chs": "消耗1张牌。\n抽4张牌。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] 1 card.\nDraw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

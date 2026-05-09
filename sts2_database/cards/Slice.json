@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Slice",
+        "category": "Silent",
+        "name_chs": "切割",
+        "name_eng": "Slice",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "造成6点伤害。",
+        "text_upgraded_chs": "造成12点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

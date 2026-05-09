@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Doubt",
+        "category": "Curse",
+        "name_chs": "疑虑",
+        "name_eng": "Doubt",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的[gold]手牌[\/gold]中，获得{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，获得1层虚弱。",
+        "text_upgraded_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，获得1层虚弱。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold], gain {WeakPower:diff()} [gold]Weak[\/gold].",
+        "variables": {
+            "WeakPower": 1,
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

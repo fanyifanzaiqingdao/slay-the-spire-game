@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Neurosurge",
+        "category": "Necrobinder",
+        "name_chs": "精神过载",
+        "name_eng": "Neurosurge",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n抽{Cards:diff()}张牌。\n在你的回合开始时，给予自身{NeurosurgePower:diff()}层[gold]灾厄[\/gold]。",
+        "text_default_chs": "获得3能量。\n抽2张牌。\n在你的回合开始时，给予自身3层灾厄。",
+        "text_upgraded_chs": "获得5能量。\n抽2张牌。\n在你的回合开始时，给予自身3层灾厄。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nAt the start of your turn, apply {NeurosurgePower:diff()} [gold]Doom[\/gold] to yourself.",
+        "variables": {
+            "NeurosurgePower": 3,
+            "Cards": 2,
+            "Energy": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

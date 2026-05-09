@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CrimsonMantle",
+        "category": "Ironclad",
+        "name_chs": "绯红披风",
+        "name_eng": "Crimson Mantle",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，失去1点生命并获得{CrimsonMantlePower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "在你的回合开始时，失去1点生命并获得8点格挡。",
+        "text_upgraded_chs": "在你的回合开始时，失去1点生命并获得10点格挡。",
+        "text_raw_eng": "At the start of your turn, lose 1 HP and gain {CrimsonMantlePower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "CrimsonMantlePower": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "CrimsonMantlePower": 2
+            }
+        }
+    }
+}

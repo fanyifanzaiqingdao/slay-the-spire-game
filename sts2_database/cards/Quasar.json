@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Quasar",
+        "category": "Regent",
+        "name_chs": "类星体",
+        "name_eng": "Quasar",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从3张随机{IfUpgraded:show:[gold]升级过[\/gold]的|}无色牌中选择1张加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "从3张随机无色牌中选择1张加入你的手牌。",
+        "text_upgraded_chs": "从3张随机升级过的无色牌中选择1张加入你的手牌。",
+        "text_raw_eng": "Choose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[\/gold]|} Colorless cards to add into your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": []
+    }
+}

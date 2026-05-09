@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FlameBarrier",
+        "category": "Ironclad",
+        "name_chs": "火焰屏障",
+        "name_eng": "Flame Barrier",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n你在这个回合每受到一次攻击，都会对攻击者造成{DamageBack:diff()}点伤害。",
+        "text_default_chs": "获得12点格挡。\n你在这个回合每受到一次攻击，都会对攻击者造成4点伤害。",
+        "text_upgraded_chs": "获得20点格挡。\n你在这个回合每受到一次攻击，都会对攻击者造成8点伤害。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nWhenever you are attacked this turn, deal {DamageBack:diff()} damage back.",
+        "variables": {
+            "DamageBack": 4,
+            "Block": 12
+        },
+        "upgrades": {
+            "varChange": {
+                "DamageBack": 2,
+                "Block": 4
+            }
+        }
+    }
+}

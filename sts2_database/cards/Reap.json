@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Reap",
+        "category": "Necrobinder",
+        "name_chs": "收割",
+        "name_eng": "Reap",
+        "cost": 3,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "保留,造成27点伤害。",
+        "text_upgraded_chs": "保留,造成39点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "27m",
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

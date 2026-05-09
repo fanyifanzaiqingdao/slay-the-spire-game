@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PullFromBelow",
+        "category": "Necrobinder",
+        "name_chs": "亡魂牵引",
+        "name_eng": "Pull from Below",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "本场战斗中每打出过一张[gold]虚无[\/gold]牌，此牌就造成{Damage:diff()}点伤害一次。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "本场战斗中每打出过一张虚无牌，此牌就造成5点伤害一次。",
+        "text_upgraded_chs": "本场战斗中每打出过一张虚无牌，此牌就造成9点伤害一次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage for each [gold]Ethereal[\/gold] card played this combat.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "5m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

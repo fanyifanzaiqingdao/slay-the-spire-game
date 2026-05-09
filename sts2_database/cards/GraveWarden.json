@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GraveWarden",
+        "category": "Necrobinder",
+        "name_chs": "守墓人",
+        "name_eng": "Grave Warden",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将一张[gold]{IfUpgraded:show:灵魂+|灵魂}[\/gold]放入你的[gold]抽牌堆[\/gold]中。",
+        "text_default_chs": "获得8点格挡。\n将一张灵魂放入你的抽牌堆中。",
+        "text_upgraded_chs": "获得12点格挡。\n将一张灵魂+放入你的抽牌堆中。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd a [gold]{IfUpgraded:show:Soul+|Soul}[\/gold] into your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Cards": 1,
+            "Block": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

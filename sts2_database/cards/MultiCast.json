@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MultiCast",
+        "category": "Defect",
+        "name_chs": "多重释放",
+        "name_eng": "Multi-Cast",
+        "cost": -2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]激发[\/gold]你最右侧的充能球{IfUpgraded:show:X+1|X}次。",
+        "text_default_chs": "激发你最右侧的充能球X次。",
+        "text_upgraded_chs": "激发你最右侧的充能球X+1次。",
+        "text_raw_eng": "[gold]Evoke[\/gold] your rightmost Orb {IfUpgraded:show:X+1|X} times.",
+        "variables": [],
+        "upgrades": []
+    }
+}

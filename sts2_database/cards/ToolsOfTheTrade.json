@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ToolsOfTheTrade",
+        "category": "Silent",
+        "name_chs": "必备工具",
+        "name_eng": "Tools of the Trade",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，抽1张牌，丢弃1张牌。",
+        "text_default_chs": "在你的回合开始时，抽1张牌，丢弃1张牌。",
+        "text_upgraded_chs": "在你的回合开始时，抽1张牌，丢弃1张牌。",
+        "text_raw_eng": "At the start of your turn, draw 1 card and discard 1 card.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

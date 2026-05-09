@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tank",
+        "category": "Ironclad",
+        "name_chs": "肉盾",
+        "name_eng": "Tank",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "承受双倍来自敌人的伤害。\n敌人的伤害对盟友减半。",
+        "text_default_chs": "承受双倍来自敌人的伤害。\n敌人的伤害对盟友减半。",
+        "text_upgraded_chs": "承受双倍来自敌人的伤害。\n敌人的伤害对盟友减半。",
+        "text_raw_eng": "Take double damage from enemies.\nAllies take half damage from enemies.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

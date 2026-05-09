@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Toxic",
+        "category": "Status",
+        "name_chs": "毒素",
+        "name_eng": "Toxic",
+        "cost": 1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，这张牌在你的[gold]手牌[\/gold]中，则受到{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,在你的回合结束时，这张牌在你的手牌中，则受到5点伤害。",
+        "text_upgraded_chs": "消耗,在你的回合结束时，这张牌在你的手牌中，则受到5点伤害。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold], take {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "5m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Smokestack",
+        "category": "Defect",
+        "name_chs": "烟囱",
+        "name_eng": "Smokestack",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你生成一张状态牌时，对所有敌人造成{SmokestackPower:diff()}点伤害。",
+        "text_default_chs": "每当你生成一张状态牌时，对所有敌人造成5点伤害。",
+        "text_upgraded_chs": "每当你生成一张状态牌时，对所有敌人造成7点伤害。",
+        "text_raw_eng": "Whenever you create a Status, deal {SmokestackPower:diff()} damage to ALL enemies.",
+        "variables": {
+            "SmokestackPower": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "SmokestackPower": 2
+            }
+        }
+    }
+}

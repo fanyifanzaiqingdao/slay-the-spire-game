@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Arsenal",
+        "category": "Regent",
+        "name_chs": "武器库",
+        "name_eng": "Arsenal",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每打出一张无色牌，都获得{ArsenalPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "你每打出一张无色牌，都获得1点力量。",
+        "text_upgraded_chs": "你每打出一张无色牌，都获得2点力量。",
+        "text_raw_eng": "Whenever you play a Colorless card, gain {ArsenalPower:diff()} [gold]Strength[\/gold].",
+        "variables": {
+            "ArsenalPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "ArsenalPower": 1
+            }
+        }
+    }
+}

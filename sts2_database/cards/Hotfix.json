@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hotfix",
+        "category": "Defect",
+        "name_chs": "热修复",
+        "name_eng": "Hotfix",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在本回合获得{FocusPower:diff()}点[gold]集中[\/gold]。",
+        "text_default_chs": "在本回合获得2点集中。",
+        "text_upgraded_chs": "在本回合获得3点集中。",
+        "text_raw_eng": "Gain {FocusPower:diff()} [gold]Focus[\/gold] this turn.",
+        "variables": {
+            "FocusPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "FocusPower": 1
+            }
+        }
+    }
+}

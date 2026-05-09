@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rebound",
+        "category": "Event",
+        "name_chs": "弹回",
+        "name_eng": "Rebound",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将你在本回合打出的下一张牌放置到你的[gold]抽牌堆[\/gold]顶部。",
+        "text_default_chs": "造成9点伤害。\n将你在本回合打出的下一张牌放置到你的抽牌堆顶部。",
+        "text_upgraded_chs": "造成15点伤害。\n将你在本回合打出的下一张牌放置到你的抽牌堆顶部。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPut the next card you play this turn on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

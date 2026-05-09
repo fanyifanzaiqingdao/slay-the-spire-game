@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BeamCell",
+        "category": "Defect",
+        "name_chs": "光束射线",
+        "name_eng": "Beam Cell",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "造成3点伤害。\n给予1层易伤。",
+        "text_upgraded_chs": "造成5点伤害。\n给予2层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 1,
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CallOfTheVoid",
+        "category": "Necrobinder",
+        "name_chs": "虚空之唤",
+        "name_eng": "Call of the Void",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，将{Cards:diff()}张随机牌添加到你的[gold]手牌[\/gold]中。添加的牌会获得[gold]虚无[\/gold]。",
+        "text_default_chs": "在你的回合开始时，将1张随机牌添加到你的手牌中。添加的牌会获得虚无。",
+        "text_upgraded_chs": "固有,在你的回合开始时，将1张随机牌添加到你的手牌中。添加的牌会获得虚无。",
+        "text_raw_eng": "At the start of your turn, add {Cards:diff()} random {Cards:plural:card|cards} into your [gold]Hand[\/gold]. {Cards:plural:It gains|They gain} [gold]Ethereal[\/gold].",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

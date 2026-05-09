@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Resonance",
+        "category": "Regent",
+        "name_chs": "共鸣",
+        "name_eng": "Resonance",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "获得{StrengthPower:diff()}点[gold]力量[\/gold]。所有敌人失去1点[gold]力量[\/gold]。",
+        "text_default_chs": "获得1点力量。所有敌人失去1点力量。",
+        "text_upgraded_chs": "获得2点力量。所有敌人失去1点力量。",
+        "text_raw_eng": "Gain {StrengthPower:diff()} [gold]Strength[\/gold]. ALL enemies lose 1 [gold]Strength[\/gold].",
+        "variables": {
+            "StrengthPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthPower": 1
+            }
+        }
+    }
+}

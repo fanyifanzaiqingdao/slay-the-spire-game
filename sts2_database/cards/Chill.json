@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Chill",
+        "category": "Defect",
+        "name_chs": "冰寒",
+        "name_eng": "Chill",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "当前每有一名敌人，就[gold]生成[\/gold]1个[gold]冰霜[\/gold]充能球。",
+        "text_default_chs": "消耗,当前每有一名敌人，就生成1个冰霜充能球。",
+        "text_upgraded_chs": "当前每有一名敌人，就生成1个冰霜充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] 1 [gold]Frost[\/gold] for each enemy.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

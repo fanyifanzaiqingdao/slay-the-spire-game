@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HiddenCache",
+        "category": "Regent",
+        "name_chs": "隐秘藏品",
+        "name_eng": "Hidden Cache",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Stars:starIcons()}。\n在下个回合获得{StarNextTurnPower:starIcons()}。",
+        "text_default_chs": "获得1☆。\n在下个回合获得3。",
+        "text_upgraded_chs": "获得1☆。\n在下个回合获得4。",
+        "text_raw_eng": "Gain {Stars:starIcons()}.\nNext turn, gain {StarNextTurnPower:starIcons()}.",
+        "variables": {
+            "StarNextTurnPower": 3,
+            "Stars": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "StarNextTurnPower": 1
+            }
+        }
+    }
+}

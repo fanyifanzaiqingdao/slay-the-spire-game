@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Overclock",
+        "category": "Defect",
+        "name_chs": "超频",
+        "name_eng": "Overclock",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n将一张[gold]灼伤[\/gold]加入你的[gold]弃牌堆[\/gold]。",
+        "text_default_chs": "抽2张牌。\n将一张灼伤加入你的弃牌堆。",
+        "text_upgraded_chs": "抽4张牌。\n将一张灼伤加入你的弃牌堆。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.\nAdd a [gold]Burn[\/gold] into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

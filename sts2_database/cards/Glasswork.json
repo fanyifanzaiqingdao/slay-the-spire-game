@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Glasswork",
+        "category": "Defect",
+        "name_chs": "玻璃工艺",
+        "name_eng": "Glasswork",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n[gold]生成[\/gold]1个[gold]玻璃[\/gold]充能球。",
+        "text_default_chs": "获得5点格挡。\n生成1个玻璃充能球。",
+        "text_upgraded_chs": "获得11点格挡。\n生成1个玻璃充能球。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Channel[\/gold] 1 [gold]Glass[\/gold].",
+        "variables": {
+            "Block": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

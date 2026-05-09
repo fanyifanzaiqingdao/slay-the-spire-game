@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ReaperForm",
+        "category": "Necrobinder",
+        "name_chs": "死神形态",
+        "name_eng": "Reaper Form",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你的攻击造成伤害时，同时给予等量的[gold]灾厄[\/gold]。",
+        "text_default_chs": "每当你的攻击造成伤害时，同时给予等量的灾厄。",
+        "text_upgraded_chs": "保留,每当你的攻击造成伤害时，同时给予等量的灾厄。",
+        "text_raw_eng": "Whenever Attacks deal damage, they also apply that much [gold]Doom[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

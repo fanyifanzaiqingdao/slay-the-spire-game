@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TrueGrit",
+        "category": "Ironclad",
+        "name_chs": "坚毅",
+        "name_eng": "True Grit",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n{IfUpgraded:show:| 随机}[gold]消耗[\/gold]1张牌。",
+        "text_default_chs": "获得7点格挡。\n随机消耗1张牌。",
+        "text_upgraded_chs": "获得11点格挡。\n消耗1张牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Exhaust[\/gold] 1 card{IfUpgraded:show:| at random}.",
+        "variables": {
+            "Block": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

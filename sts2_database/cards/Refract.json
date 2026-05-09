@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Refract",
+        "category": "Defect",
+        "name_chs": "折射",
+        "name_eng": "Refract",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。\n[gold]生成[\/gold]{Repeat:diff()}个[gold]玻璃[\/gold]充能球。",
+        "text_default_chs": "造成9点伤害两次。\n生成2个玻璃充能球。",
+        "text_upgraded_chs": "造成15点伤害两次。\n生成2个玻璃充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.\n[gold]Channel[\/gold] {Repeat:diff()} [gold]Glass[\/gold].",
+        "variables": {
+            "Repeat": 2,
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

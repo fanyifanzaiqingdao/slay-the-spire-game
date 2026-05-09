@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FranticEscape",
+        "category": "Status",
+        "name_chs": "狂乱逃离",
+        "name_eng": "Frantic Escape",
+        "cost": 1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "Self",
+        "text_raw_chs": "远离。\n将[gold]沙坑[\/gold]的计数加1。\n这张牌的耗能加1。",
+        "text_default_chs": "远离。\n将沙坑的计数加1。\n这张牌的耗能加1。",
+        "text_upgraded_chs": "远离。\n将沙坑的计数加1。\n这张牌的耗能加1。",
+        "text_raw_eng": "Get farther away.\nIncrease [gold]Sandpit[\/gold] by 1.\nIncrease the cost of this card by 1.",
+        "variables": [],
+        "upgrades": []
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "IronWave",
+        "category": "Ironclad",
+        "name_chs": "铁斩波",
+        "name_eng": "Iron Wave",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n造成{Damage:diff()}点伤害。",
+        "text_default_chs": "获得5点格挡。\n造成5点伤害。",
+        "text_upgraded_chs": "获得9点格挡。\n造成9点伤害。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nDeal {Damage:diff()} damage.",
+        "variables": {
+            "Block": 5,
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Block": 2
+            }
+        }
+    }
+}

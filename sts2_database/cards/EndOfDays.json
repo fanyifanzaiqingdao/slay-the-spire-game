@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EndOfDays",
+        "category": "Necrobinder",
+        "name_chs": "末日降临",
+        "name_eng": "End of Days",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "给予所有敌人{DoomPower:diff()}层[gold]灾厄[\/gold]。\n杀死所有[gold]灾厄[\/gold]大于等于自身生命值的敌人。",
+        "text_default_chs": "给予所有敌人29层灾厄。\n杀死所有灾厄大于等于自身生命值的敌人。",
+        "text_upgraded_chs": "给予所有敌人37层灾厄。\n杀死所有灾厄大于等于自身生命值的敌人。",
+        "text_raw_eng": "Apply {DoomPower:diff()} [gold]Doom[\/gold] to ALL enemies.\nKill enemies with at least as much [gold]Doom[\/gold] as HP.",
+        "variables": {
+            "DoomPower": 29
+        },
+        "upgrades": {
+            "varChange": {
+                "Doom": 8
+            }
+        }
+    }
+}

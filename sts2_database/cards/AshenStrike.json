@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "AshenStrike",
+        "category": "Ironclad",
+        "name_chs": "灰烬打击",
+        "name_eng": "Ashen Strike",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你的[gold]消耗牌堆[\/gold]中每有一张牌，伤害增加{ExtraDamage:diff()}。",
+        "text_default_chs": "造成6点伤害。\n你的消耗牌堆中每有一张牌，伤害增加3。",
+        "text_upgraded_chs": "造成6点伤害。\n你的消耗牌堆中每有一张牌，伤害增加5。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card in your [gold]Exhaust Pile[\/gold].",
+        "variables": {
+            "CalculationBase": "6m",
+            "ExtraDamage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "UltimateDefend",
+        "category": "Colorless",
+        "name_chs": "究极防御",
+        "name_eng": "Ultimate Defend",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "获得11点格挡。",
+        "text_upgraded_chs": "获得19点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 11
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

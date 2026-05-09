@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Snakebite",
+        "category": "Silent",
+        "name_chs": "蛇咬",
+        "name_eng": "Snakebite",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{PoisonPower:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "保留,给予7层中毒。",
+        "text_upgraded_chs": "保留,给予10层中毒。",
+        "text_raw_eng": "Apply {PoisonPower:diff()} [gold]Poison[\/gold].",
+        "variables": {
+            "PoisonPower": 7,
+            "keywords": [
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Poison": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Unmovable",
+        "category": "Ironclad",
+        "name_chs": "坚定不移",
+        "name_eng": "Unmovable",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "翻倍你每回合第一次从卡牌中获得的[gold]格挡[\/gold]。",
+        "text_default_chs": "翻倍你每回合第一次从卡牌中获得的格挡。",
+        "text_upgraded_chs": "翻倍你每回合第一次从卡牌中获得的格挡。",
+        "text_raw_eng": "The first time you gain [gold]Block[\/gold] from a card each turn, double the amount gained.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Countdown",
+        "category": "Necrobinder",
+        "name_chs": "倒数计时",
+        "name_eng": "Countdown",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，给予随机敌人{CountdownPower:diff()}点[gold]灾厄[\/gold]。",
+        "text_default_chs": "在你的回合开始时，给予随机敌人6点灾厄。",
+        "text_upgraded_chs": "在你的回合开始时，给予随机敌人9点灾厄。",
+        "text_raw_eng": "At the start of your turn, apply {CountdownPower:diff()} [gold]Doom[\/gold] to a random enemy.",
+        "variables": {
+            "CountdownPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "CountdownPower": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PillarOfCreation",
+        "category": "Regent",
+        "name_chs": "创世之柱",
+        "name_eng": "Pillar of Creation",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你生成一张卡牌, 就获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你生成一张卡牌,就获得3点格挡。",
+        "text_upgraded_chs": "每当你生成一张卡牌,就获得5点格挡。",
+        "text_raw_eng": "Whenever you create a card, gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1
+            }
+        }
+    }
+}

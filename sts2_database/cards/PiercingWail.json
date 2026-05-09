@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PiercingWail",
+        "category": "Silent",
+        "name_chs": "尖啸",
+        "name_eng": "Piercing Wail",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "所有敌人在本回合失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "消耗,所有敌人在本回合失去6点力量。",
+        "text_upgraded_chs": "消耗,所有敌人在本回合失去10点力量。",
+        "text_raw_eng": "ALL enemies lose {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 6,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthLoss": 2
+            }
+        }
+    }
+}

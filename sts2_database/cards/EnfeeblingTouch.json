@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EnfeeblingTouch",
+        "category": "Necrobinder",
+        "name_chs": "弱化之触",
+        "name_eng": "Enfeebling Touch",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "让一名敌人在本回合内失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "虚无,让一名敌人在本回合内失去8点力量。",
+        "text_upgraded_chs": "虚无,让一名敌人在本回合内失去14点力量。",
+        "text_raw_eng": "Enemy loses {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 8,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "StrengthLoss": 3
+            }
+        }
+    }
+}

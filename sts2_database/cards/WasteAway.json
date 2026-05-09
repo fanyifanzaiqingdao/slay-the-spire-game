@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "WasteAway",
+        "category": "Token",
+        "name_chs": "衰朽",
+        "name_eng": "Waste Away",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "每回合失去{WasteAwayPower:diff()}点{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "每回合失去1点能量。",
+        "text_upgraded_chs": "每回合失去1点能量。",
+        "text_raw_eng": "Gain {WasteAwayPower:diff()} less {energyPrefix:energyIcons(1)} per turn.",
+        "variables": {
+            "WasteAwayPower": 1
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SporeMind",
+        "category": "Curse",
+        "name_chs": "孢子心灵",
+        "name_eng": "Spore Mind",
+        "cost": 1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "",
+        "text_default_chs": "消耗",
+        "text_upgraded_chs": "消耗",
+        "text_raw_eng": "",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

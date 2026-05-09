@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Patter",
+        "category": "Regent",
+        "name_chs": "星星点点",
+        "name_eng": "Patter",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n获得{VigorPower:diff()}点[gold]活力[\/gold]。",
+        "text_default_chs": "获得8点格挡。\n获得2点活力。",
+        "text_upgraded_chs": "获得12点格挡。\n获得3点活力。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nGain {VigorPower:diff()} [gold]Vigor[\/gold].",
+        "variables": {
+            "VigorPower": 2,
+            "Block": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "VigorPower": 1,
+                "Block": 2
+            }
+        }
+    }
+}

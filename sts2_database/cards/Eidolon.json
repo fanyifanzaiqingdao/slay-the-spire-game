@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Eidolon",
+        "category": "Necrobinder",
+        "name_chs": "幻景",
+        "name_eng": "Eidolon",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]消耗[\/gold]所有[gold]手牌[\/gold]。\n如果有至少9张牌通过这个方法被[gold]消耗[\/gold]了，则获得1层[gold]无实体[\/gold]。",
+        "text_default_chs": "消耗所有手牌。\n如果有至少9张牌通过这个方法被消耗了，则获得1层无实体。",
+        "text_upgraded_chs": "消耗所有手牌。\n如果有至少9张牌通过这个方法被消耗了，则获得1层无实体。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] your [gold]Hand[\/gold].\nIf 9 cards were [gold]Exhausted[\/gold] this way, gain 1 [gold]Intangible[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Aggression",
+        "category": "Ironclad",
+        "name_chs": "好勇斗狠",
+        "name_eng": "Aggression",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，将你[gold]弃牌堆[\/gold]的一张随机攻击牌放入你的[gold]手牌[\/gold]并将其[gold]升级[\/gold]。",
+        "text_default_chs": "在你的回合开始时，将你弃牌堆的一张随机攻击牌放入你的手牌并将其升级。",
+        "text_upgraded_chs": "固有,在你的回合开始时，将你弃牌堆的一张随机攻击牌放入你的手牌并将其升级。",
+        "text_raw_eng": "At the start of your turn, put a random Attack from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold] and [gold]Upgrade[\/gold] it.",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HandTrick",
+        "category": "Silent",
+        "name_chs": "手上技法",
+        "name_eng": "Hand Trick",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在本回合给你[gold]手牌[\/gold]中的一张技能牌添加[gold]奇巧[\/gold]。",
+        "text_default_chs": "获得7点格挡。\n在本回合给你手牌中的一张技能牌添加奇巧。",
+        "text_upgraded_chs": "获得13点格挡。\n在本回合给你手牌中的一张技能牌添加奇巧。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd [gold]Sly[\/gold] to a Skill in your [gold]Hand[\/gold] this turn.",
+        "variables": {
+            "Block": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

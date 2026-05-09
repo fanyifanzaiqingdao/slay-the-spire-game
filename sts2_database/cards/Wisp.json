@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Wisp",
+        "category": "Necrobinder",
+        "name_chs": "鬼火",
+        "name_eng": "Wisp",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,获得1能量。",
+        "text_upgraded_chs": "消耗,保留,获得1能量。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BoneShards",
+        "category": "Necrobinder",
+        "name_chs": "碎骨",
+        "name_eng": "Bone Shards",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "如果[gold]奥斯提[\/gold]存活，则他对所有敌人造成{OstyDamage:diff()}点伤害并且你获得{Block:diff()}点[gold]格挡[\/gold]。\n然后[gold]奥斯提[\/gold]死去。",
+        "text_default_chs": "如果奥斯提存活，则他对所有敌人造成9点伤害并且你获得9点格挡。\n然后奥斯提死去。",
+        "text_upgraded_chs": "如果奥斯提存活，则他对所有敌人造成15点伤害并且你获得15点格挡。\n然后奥斯提死去。",
+        "text_raw_eng": "If [gold]Osty[\/gold] is alive, he deals {OstyDamage:diff()} damage to ALL enemies and you gain {Block:diff()} [gold]Block[\/gold].\n[gold]Osty[\/gold] dies.",
+        "variables": {
+            "Block": 9,
+            "OstyDamage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 3,
+                "Block": 3
+            }
+        }
+    }
+}

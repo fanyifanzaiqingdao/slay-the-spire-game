@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SpectrumShift",
+        "category": "Regent",
+        "name_chs": "光谱偏移",
+        "name_eng": "Spectrum Shift",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，将{Cards:diff()}张随机无色牌添加到你的[gold]手牌[\/gold]中。",
+        "text_default_chs": "在你的回合开始时，将1张随机无色牌添加到你的手牌中。",
+        "text_upgraded_chs": "在你的回合开始时，将1张随机无色牌添加到你的手牌中。",
+        "text_raw_eng": "At the start of your turn, add {Cards:diff()} random Colorless {Cards:plural:card|cards} into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

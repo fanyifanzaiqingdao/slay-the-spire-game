@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Transfigure",
+        "category": "Necrobinder",
+        "name_chs": "重构",
+        "name_eng": "Transfigure",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "给一张[gold]手牌[\/gold]添加[gold]重放[\/gold]。\n其费用增加1{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,给一张手牌添加重放。\n其费用增加11能量。",
+        "text_upgraded_chs": "给一张手牌添加重放。\n其费用增加11能量。",
+        "text_raw_eng": "Add [gold]Replay[\/gold] to a card in your [gold]Hand[\/gold].\nIt costs an extra {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

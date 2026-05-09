@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Catastrophe",
+        "category": "Colorless",
+        "name_chs": "横祸",
+        "name_eng": "Catastrophe",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从你的[gold]抽牌堆[\/gold]中随机打出{Cards:diff()}张牌。",
+        "text_default_chs": "从你的抽牌堆中随机打出2张牌。",
+        "text_upgraded_chs": "从你的抽牌堆中随机打出4张牌。",
+        "text_raw_eng": "Play {Cards:diff()} random {Cards:plural:card|cards} from your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

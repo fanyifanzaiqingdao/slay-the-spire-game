@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Stratagem",
+        "category": "Colorless",
+        "name_chs": "计策",
+        "name_eng": "Stratagem",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你的[gold]抽牌堆[\/gold]打乱洗牌时，选择一张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "每当你的抽牌堆打乱洗牌时，选择一张牌放入你的手牌。",
+        "text_upgraded_chs": "每当你的抽牌堆打乱洗牌时，选择一张牌放入你的手牌。",
+        "text_raw_eng": "Whenever you shuffle your [gold]Draw Pile[\/gold], choose a card from it to put into your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

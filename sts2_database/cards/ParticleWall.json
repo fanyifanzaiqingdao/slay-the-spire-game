@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ParticleWall",
+        "category": "Regent",
+        "name_chs": "粒子墙",
+        "name_eng": "Particle Wall",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将此牌返回你的[gold]手牌[\/gold]。",
+        "text_default_chs": "获得9点格挡。\n将此牌返回你的手牌。",
+        "text_upgraded_chs": "获得15点格挡。\n将此牌返回你的手牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nReturn this card to your [gold]Hand[\/gold].",
+        "variables": {
+            "Block": 9
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

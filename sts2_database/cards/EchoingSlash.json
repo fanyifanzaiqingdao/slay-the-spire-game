@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EchoingSlash",
+        "category": "Silent",
+        "name_chs": "回响斩击",
+        "name_eng": "Echoing Slash",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n每有一名敌人被击杀，就重复此效果。",
+        "text_default_chs": "对所有敌人造成10点伤害。\n每有一名敌人被击杀，就重复此效果。",
+        "text_upgraded_chs": "对所有敌人造成16点伤害。\n每有一名敌人被击杀，就重复此效果。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nRepeat this effect for each enemy killed.",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

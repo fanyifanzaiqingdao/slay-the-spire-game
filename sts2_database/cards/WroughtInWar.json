@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "WroughtInWar",
+        "category": "Regent",
+        "name_chs": "战火铸就",
+        "name_eng": "Wrought in War",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]铸造[\/gold]{Forge:diff()}。",
+        "text_default_chs": "造成7点伤害。\n铸造5。",
+        "text_upgraded_chs": "造成11点伤害。\n铸造9。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Forge[\/gold] {Forge:diff()}.",
+        "variables": {
+            "Damage": "7m",
+            "Forge": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Forge": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Nightmare",
+        "category": "Silent",
+        "name_chs": "夜魇",
+        "name_eng": "Nightmare",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "选择一张牌。\n在下个回合将这张牌的3张复制品加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,选择一张牌。\n在下个回合将这张牌的3张复制品加入你的手牌。",
+        "text_upgraded_chs": "消耗,选择一张牌。\n在下个回合将这张牌的3张复制品加入你的手牌。",
+        "text_raw_eng": "Choose a card.\nNext turn, add 3 copies of that card into your [gold]Hand[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

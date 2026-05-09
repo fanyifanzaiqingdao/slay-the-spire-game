@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Unleash",
+        "category": "Necrobinder",
+        "name_chs": "出击",
+        "name_eng": "Unleash",
+        "cost": 1,
+        "rarity": "Basic",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{CalculatedDamage:diff()}点伤害。\n这张牌额外造成等量于[gold]奥斯提[\/gold]当前生命值的伤害。",
+        "text_default_chs": "奥斯提造成6点伤害。\n这张牌额外造成等量于奥斯提当前生命值的伤害。",
+        "text_upgraded_chs": "奥斯提造成12点伤害。\n这张牌额外造成等量于奥斯提当前生命值的伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {CalculatedDamage:diff()} damage.\nDeals additional damage equal to [gold]Osty's[\/gold] current HP.",
+        "variables": {
+            "CalculationBase": "6m",
+            "ExtraDamage": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 3
+            }
+        }
+    }
+}

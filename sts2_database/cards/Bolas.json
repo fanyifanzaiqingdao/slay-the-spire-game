@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bolas",
+        "category": "Colorless",
+        "name_chs": "流星锤",
+        "name_eng": "Bolas",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在你的下个回合开始时，将此卡返回你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成3点伤害。\n在你的下个回合开始时，将此卡返回你的手牌。",
+        "text_upgraded_chs": "造成5点伤害。\n在你的下个回合开始时，将此卡返回你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAt the start of your next turn, return this to your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CompileDriver",
+        "category": "Defect",
+        "name_chs": "编译冲击",
+        "name_eng": "Compile Driver",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你每有一种不同的充能球，就抽一张牌。{InCombat:\n（抽{CalculatedCards:diff()}张牌）}",
+        "text_default_chs": "造成7点伤害。\n你每有一种不同的充能球，就抽一张牌。",
+        "text_upgraded_chs": "造成13点伤害。\n你每有一种不同的充能球，就抽一张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw 1 card for each unique Orb you have.{InCombat:\n(Draw {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
+        "variables": {
+            "Damage": "7m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

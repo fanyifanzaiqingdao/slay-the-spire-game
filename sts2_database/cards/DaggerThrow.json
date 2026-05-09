@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DaggerThrow",
+        "category": "Silent",
+        "name_chs": "投掷匕首",
+        "name_eng": "Dagger Throw",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽1张牌。\n丢弃一张牌。",
+        "text_default_chs": "造成9点伤害。\n抽1张牌。\n丢弃一张牌。",
+        "text_upgraded_chs": "造成15点伤害。\n抽1张牌。\n丢弃一张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw 1 card.\nDiscard 1 card.",
+        "variables": {
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

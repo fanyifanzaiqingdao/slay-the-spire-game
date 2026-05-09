@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BattleTrance",
+        "category": "Ironclad",
+        "name_chs": "战斗专注",
+        "name_eng": "Battle Trance",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n你在本回合内不能再抽任何牌。",
+        "text_default_chs": "抽3张牌。\n你在本回合内不能再抽任何牌。",
+        "text_upgraded_chs": "抽5张牌。\n你在本回合内不能再抽任何牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.\nYou cannot draw additional cards this turn.",
+        "variables": {
+            "Cards": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

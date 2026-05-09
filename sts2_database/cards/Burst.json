@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Burst",
+        "category": "Silent",
+        "name_chs": "爆发",
+        "name_eng": "Burst",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在这个回合，你打出的下{IfUpgraded:show:2}{Skills:plural:|}张技能牌会被额外打出一次。",
+        "text_default_chs": "在这个回合，你打出的下张技能牌会被额外打出一次。",
+        "text_upgraded_chs": "在这个回合，你打出的下2张技能牌会被额外打出一次。",
+        "text_raw_eng": "This turn, your next{IfUpgraded:show: 2} {Skills:plural:Skill is|Skills are} played an extra time.",
+        "variables": {
+            "Skills": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Skills": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Cinder",
+        "category": "Ironclad",
+        "name_chs": "余烬",
+        "name_eng": "Cinder",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]消耗[\/gold]你的[gold]抽牌堆[\/gold]顶部的牌。",
+        "text_default_chs": "造成17点伤害。\n消耗你的抽牌堆顶部的牌。",
+        "text_upgraded_chs": "造成27点伤害。\n消耗你的抽牌堆顶部的牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Exhaust[\/gold] the top card of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "CardsToExhaust": 1,
+            "Damage": "17m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Modded",
+        "category": "Defect",
+        "name_chs": "模组改造",
+        "name_eng": "Modded",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Repeat:diff()}个充能球栏位。\n抽{Cards:diff()}张牌。这张牌的耗能加1。",
+        "text_default_chs": "获得1个充能球栏位。\n抽1张牌。这张牌的耗能加1。",
+        "text_upgraded_chs": "获得1个充能球栏位。\n抽3张牌。这张牌的耗能加1。",
+        "text_raw_eng": "Gain {Repeat:diff()} Orb {Repeat:plural:Slot|Slots}.\nDraw {Cards:diff()} {Cards:plural:card|cards}. Increase this card's cost by 1.",
+        "variables": {
+            "Cards": 1,
+            "Repeat": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

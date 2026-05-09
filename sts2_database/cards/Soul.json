@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Soul",
+        "category": "Token",
+        "name_chs": "灵魂",
+        "name_eng": "Soul",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,抽2张牌。",
+        "text_upgraded_chs": "消耗,抽4张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

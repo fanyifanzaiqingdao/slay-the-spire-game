@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MoltenFist",
+        "category": "Ironclad",
+        "name_chs": "熔融之拳",
+        "name_eng": "Molten Fist",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将该敌人身上的[gold]易伤[\/gold]层数翻倍。",
+        "text_default_chs": "消耗,造成10点伤害。\n将该敌人身上的易伤层数翻倍。",
+        "text_upgraded_chs": "消耗,造成18点伤害。\n将该敌人身上的易伤层数翻倍。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDouble the enemy's [gold]Vulnerable[\/gold].",
+        "variables": {
+            "Damage": "10m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

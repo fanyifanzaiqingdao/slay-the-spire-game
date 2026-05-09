@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MasterOfStrategy",
+        "category": "Colorless",
+        "name_chs": "战略大师",
+        "name_eng": "Master of Strategy",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,抽3张牌。",
+        "text_upgraded_chs": "消耗,抽5张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

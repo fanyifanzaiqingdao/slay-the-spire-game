@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Caltrops",
+        "category": "Event",
+        "name_chs": "铁蒺藜",
+        "name_eng": "Caltrops",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你被攻击时，对攻击者造成{ThornsPower:diff()}点伤害。",
+        "text_default_chs": "每当你被攻击时，对攻击者造成3点伤害。",
+        "text_upgraded_chs": "每当你被攻击时，对攻击者造成5点伤害。",
+        "text_raw_eng": "Whenever you are attacked, deal {ThornsPower:diff()} damage back.",
+        "variables": {
+            "ThornsPower": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "ThornsPower": 2
+            }
+        }
+    }
+}

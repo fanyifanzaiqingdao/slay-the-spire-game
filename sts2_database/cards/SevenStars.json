@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SevenStars",
+        "category": "Regent",
+        "name_chs": "七星",
+        "name_eng": "Seven Stars",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害{Repeat}次。",
+        "text_default_chs": "对所有敌人造成7点伤害7次。",
+        "text_upgraded_chs": "对所有敌人造成7点伤害7次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies {Repeat:plural:{} time|{} times}.",
+        "variables": {
+            "Damage": "7m",
+            "Repeat": 7
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

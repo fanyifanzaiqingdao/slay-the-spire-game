@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MomentumStrike",
+        "category": "Defect",
+        "name_chs": "趁势打击",
+        "name_eng": "Momentum Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n这张牌的耗能降为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "造成10点伤害。\n这张牌的耗能降为0能量。",
+        "text_upgraded_chs": "造成16点伤害。\n这张牌的耗能降为0能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nReduce this card's cost to 0 {energyPrefix:energyIcons(1)}.",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

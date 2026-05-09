@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Prophesize",
+        "category": "Regent",
+        "name_chs": "预言",
+        "name_eng": "Prophesize",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "抽6张牌。",
+        "text_upgraded_chs": "抽12张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 3
+            }
+        }
+    }
+}

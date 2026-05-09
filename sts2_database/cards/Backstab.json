@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Backstab",
+        "category": "Silent",
+        "name_chs": "背刺",
+        "name_eng": "Backstab",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,固有,造成11点伤害。",
+        "text_upgraded_chs": "消耗,固有,造成19点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "11m",
+            "keywords": [
+                "Exhaust",
+                "Innate"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

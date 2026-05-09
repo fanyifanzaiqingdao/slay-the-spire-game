@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HeavenlyDrill",
+        "category": "Regent",
+        "name_chs": "天际钻头",
+        "name_eng": "Heavenly Drill",
+        "cost": -2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害X次。\n如果X的最终数值为{Energy:diff()}或以上，则将X的数值翻倍。",
+        "text_default_chs": "造成8点伤害X次。\n如果X的最终数值为4能量或以上，则将X的数值翻倍。",
+        "text_upgraded_chs": "造成12点伤害X次。\n如果X的最终数值为4能量或以上，则将X的数值翻倍。",
+        "text_raw_eng": "Deal {Damage:diff()} damage X times.\nDouble X if it's {Energy:diff()} or more.",
+        "variables": {
+            "Damage": "8m",
+            "Energy": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

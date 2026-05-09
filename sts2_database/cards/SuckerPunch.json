@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SuckerPunch",
+        "category": "Silent",
+        "name_chs": "突然一拳",
+        "name_eng": "Sucker Punch",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "造成8点伤害。\n给予1层虚弱。",
+        "text_upgraded_chs": "造成12点伤害。\n给予2层虚弱。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[\/gold].",
+        "variables": {
+            "WeakPower": 1,
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Weak": 1
+            }
+        }
+    }
+}

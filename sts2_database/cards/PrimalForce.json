@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PrimalForce",
+        "category": "Ironclad",
+        "name_chs": "原始力量",
+        "name_eng": "Primal Force",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将[gold]手牌[\/gold]中的所有攻击牌变化为[gold]{IfUpgraded:show:巨石+|巨石}[\/gold]。",
+        "text_default_chs": "将手牌中的所有攻击牌变化为巨石。",
+        "text_upgraded_chs": "将手牌中的所有攻击牌变化为巨石+。",
+        "text_raw_eng": "Transform all Attacks in your [gold]Hand[\/gold] into [gold]{IfUpgraded:show:Giant Rock+|Giant Rock}[\/gold].",
+        "variables": [],
+        "upgrades": []
+    }
+}

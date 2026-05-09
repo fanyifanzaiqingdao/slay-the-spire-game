@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Glimmer",
+        "category": "Regent",
+        "name_chs": "微光",
+        "name_eng": "Glimmer",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n将你[gold]手牌[\/gold]中的{PutBack:diff()}张牌放到[gold]抽牌堆[\/gold]顶部。",
+        "text_default_chs": "抽3张牌。\n将你手牌中的1张牌放到抽牌堆顶部。",
+        "text_upgraded_chs": "抽5张牌。\n将你手牌中的1张牌放到抽牌堆顶部。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nPut {PutBack:diff()} {PutBack:plural:card|cards} from your [gold]Hand[\/gold] on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "PutBack": 1,
+            "Cards": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

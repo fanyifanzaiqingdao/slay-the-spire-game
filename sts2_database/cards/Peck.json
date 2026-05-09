@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Peck",
+        "category": "Event",
+        "name_chs": "啄击",
+        "name_eng": "Peck",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "造成2点伤害3次。",
+        "text_upgraded_chs": "造成2点伤害5次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage {Repeat:diff()} times.",
+        "variables": {
+            "Damage": "2m",
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PoisonedStab",
+        "category": "Silent",
+        "name_chs": "带毒刺击",
+        "name_eng": "Poisoned Stab",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{PoisonPower:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "造成6点伤害。\n给予3层中毒。",
+        "text_upgraded_chs": "造成10点伤害。\n给予4层中毒。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[\/gold].",
+        "variables": {
+            "PoisonPower": 3,
+            "Damage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Poison": 1
+            }
+        }
+    }
+}

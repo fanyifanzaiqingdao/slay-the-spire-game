@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PanicButton",
+        "category": "Colorless",
+        "name_chs": "应急按钮",
+        "name_eng": "Panic Button",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n你在接下来的{Turns:diff()}回合内无法再从卡牌中获得[gold]格挡[\/gold]。",
+        "text_default_chs": "消耗,获得30点格挡。\n你在接下来的2回合内无法再从卡牌中获得格挡。",
+        "text_upgraded_chs": "消耗,获得50点格挡。\n你在接下来的2回合内无法再从卡牌中获得格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nYou cannot gain [gold]Block[\/gold] from cards for {Turns:diff()} {Turns:plural:turn|turns}.",
+        "variables": {
+            "Turns": 2,
+            "Block": 30,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 10
+            }
+        }
+    }
+}

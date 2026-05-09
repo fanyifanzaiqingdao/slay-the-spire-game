@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DramaticEntrance",
+        "category": "Colorless",
+        "name_chs": "闪亮登场",
+        "name_eng": "Dramatic Entrance",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,固有,对所有敌人造成11点伤害。",
+        "text_upgraded_chs": "消耗,固有,对所有敌人造成19点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "11m",
+            "keywords": [
+                "Exhaust",
+                "Innate"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

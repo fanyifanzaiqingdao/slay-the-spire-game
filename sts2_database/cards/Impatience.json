@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Impatience",
+        "category": "Colorless",
+        "name_chs": "急躁",
+        "name_eng": "Impatience",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "如果你的[gold]手牌[\/gold]中没有攻击牌，抽{Cards:diff()}张牌。",
+        "text_default_chs": "如果你的手牌中没有攻击牌，抽2张牌。",
+        "text_upgraded_chs": "如果你的手牌中没有攻击牌，抽4张牌。",
+        "text_raw_eng": "If you have no Attacks in your [gold]Hand[\/gold], draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

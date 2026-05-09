@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Misery",
+        "category": "Necrobinder",
+        "name_chs": "苦难",
+        "name_eng": "Misery",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予其他敌人该名敌人身上的所有负面效果。",
+        "text_default_chs": "造成7点伤害。\n给予其他敌人该名敌人身上的所有负面效果。",
+        "text_upgraded_chs": "保留,造成11点伤害。\n给予其他敌人该名敌人身上的所有负面效果。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply any debuffs on the enemy to ALL other enemies.",
+        "variables": {
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ],
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Outbreak",
+        "category": "Silent",
+        "name_chs": "毒性爆发",
+        "name_eng": "Outbreak",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你给予{Repeat:diff()}次[gold]中毒[\/gold]，就对所有敌人造成{OutbreakPower:diff()}点伤害。",
+        "text_default_chs": "每当你给予3次中毒，就对所有敌人造成11点伤害。",
+        "text_upgraded_chs": "每当你给予3次中毒，就对所有敌人造成15点伤害。",
+        "text_raw_eng": "Every {Repeat:plural:time|{Repeat:diff()} times} you apply [gold]Poison[\/gold], deal {OutbreakPower:diff()} damage to ALL enemies.",
+        "variables": {
+            "OutbreakPower": 11,
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "OutbreakPower": 4
+            }
+        }
+    }
+}

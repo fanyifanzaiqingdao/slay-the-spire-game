@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DeathsDoor",
+        "category": "Necrobinder",
+        "name_chs": "死亡之门",
+        "name_eng": "Death's Door",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n如果你在本回合中曾给予过[gold]灾厄[\/gold]，则额外获得{Repeat:diff()}次[gold]格挡[\/gold]。",
+        "text_default_chs": "获得6点格挡。\n如果你在本回合中曾给予过灾厄，则额外获得2次格挡。",
+        "text_upgraded_chs": "获得8点格挡。\n如果你在本回合中曾给予过灾厄，则额外获得2次格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nIf you applied [gold]Doom[\/gold] this turn, gain [gold]Block[\/gold] {Repeat:diff()} additional {Repeat:plural:time|times}.",
+        "variables": {
+            "Block": 6,
+            "Repeat": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1
+            }
+        }
+    }
+}

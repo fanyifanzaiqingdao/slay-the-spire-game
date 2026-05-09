@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CrashLanding",
+        "category": "Regent",
+        "name_chs": "迫降",
+        "name_eng": "Crash Landing",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n用[gold]碎屑[\/gold]填满你的[gold]手牌[\/gold]。",
+        "text_default_chs": "对所有敌人造成21点伤害。\n用碎屑填满你的手牌。",
+        "text_upgraded_chs": "对所有敌人造成31点伤害。\n用碎屑填满你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nFill your [gold]Hand[\/gold] with [gold]Debris[\/gold].",
+        "variables": {
+            "Damage": "21m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

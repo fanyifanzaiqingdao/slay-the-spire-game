@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Entropy",
+        "category": "Colorless",
+        "name_chs": "熵",
+        "name_eng": "Entropy",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，[gold]变化[\/gold]你[gold]手牌[\/gold]中的{Cards:diff()}张牌。",
+        "text_default_chs": "在你的回合开始时，变化你手牌中的1张牌。",
+        "text_upgraded_chs": "固有,在你的回合开始时，变化你手牌中的1张牌。",
+        "text_raw_eng": "At the start of your turn, [gold]Transform[\/gold] {Cards:diff()} {Cards:plural:card|cards} in your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

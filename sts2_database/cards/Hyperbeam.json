@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hyperbeam",
+        "category": "Defect",
+        "name_chs": "超能光束",
+        "name_eng": "Hyperbeam",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n失去{FocusPower:diff()}点[gold]集中[\/gold]。",
+        "text_default_chs": "对所有敌人造成26点伤害。\n失去3点集中。",
+        "text_upgraded_chs": "对所有敌人造成42点伤害。\n失去3点集中。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nLose {FocusPower:diff()} [gold]Focus[\/gold].",
+        "variables": {
+            "FocusPower": 3,
+            "Damage": "26m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 8
+            }
+        }
+    }
+}

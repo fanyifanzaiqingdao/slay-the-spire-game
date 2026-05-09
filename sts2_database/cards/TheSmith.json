@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheSmith",
+        "category": "Regent",
+        "name_chs": "铸剑者",
+        "name_eng": "The Smith",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。",
+        "text_default_chs": "铸造30。",
+        "text_upgraded_chs": "铸造50。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.",
+        "variables": {
+            "Forge": 30
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 10
+            }
+        }
+    }
+}

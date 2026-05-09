@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BouncingFlask",
+        "category": "Silent",
+        "name_chs": "弹跳药瓶",
+        "name_eng": "Bouncing Flask",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "随机给予敌人{PoisonPower:diff()}层[gold]中毒[\/gold]{Repeat:diff()}次。",
+        "text_default_chs": "随机给予敌人3层中毒3次。",
+        "text_upgraded_chs": "随机给予敌人3层中毒5次。",
+        "text_raw_eng": "Apply {PoisonPower:diff()} [gold]Poison[\/gold] to a random enemy {Repeat:diff()} times.",
+        "variables": {
+            "PoisonPower": 3,
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

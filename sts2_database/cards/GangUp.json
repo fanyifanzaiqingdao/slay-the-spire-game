@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GangUp",
+        "category": "Colorless",
+        "name_chs": "群起攻之",
+        "name_eng": "Gang Up",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n本回合其他玩家攻击该敌人时，该牌就造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成5点伤害。\n本回合其他玩家攻击该敌人时，该牌就造成5点伤害。",
+        "text_upgraded_chs": "造成5点伤害。\n本回合其他玩家攻击该敌人时，该牌就造成9点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each time another player has attacked the enemy this turn.",
+        "variables": {
+            "CalculationBase": "5m",
+            "ExtraDamage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HelixDrill",
+        "category": "Defect",
+        "name_chs": "螺旋钻击",
+        "name_eng": "Helix Drill",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "在本回合中，每个被使用的{energyPrefix:energyIcons(1)}，都会使此牌造成{Damage:diff()}点伤害一次。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "在本回合中，每个被使用的能量，都会使此牌造成3点伤害一次。",
+        "text_upgraded_chs": "在本回合中，每个被使用的能量，都会使此牌造成7点伤害一次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage for each {energyPrefix:energyIcons(1)} previously spent this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "3m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

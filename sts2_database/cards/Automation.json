@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Automation",
+        "category": "Colorless",
+        "name_chs": "自动化",
+        "name_eng": "Automation",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每抽10张牌，获得{Energy:energyIcons()}。",
+        "text_default_chs": "你每抽10张牌，获得1能量。",
+        "text_upgraded_chs": "你每抽10张牌，获得1能量。",
+        "text_raw_eng": "Every 10 cards you draw, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

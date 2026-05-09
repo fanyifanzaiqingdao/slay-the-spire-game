@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BeatIntoShape",
+        "category": "Regent",
+        "name_chs": "锻打成型",
+        "name_eng": "Beat into Shape",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]铸造[\/gold]{CalculatedForge:diff()}。\n本回合此前你击中过该敌人几次，就额外[gold]铸造[\/gold]{CalculationExtra:diff()}。",
+        "text_default_chs": "造成5点伤害。\n铸造5。\n本回合此前你击中过该敌人几次，就额外铸造5。",
+        "text_upgraded_chs": "造成9点伤害。\n铸造9。\n本回合此前你击中过该敌人几次，就额外铸造9。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Forge[\/gold] {CalculatedForge:diff()}.\n[gold]Forges[\/gold] an additional {CalculationExtra:diff()} for every other time you've hit the enemy this turn.",
+        "variables": {
+            "Damage": "5m",
+            "CalculationBase": "5m",
+            "CalculationExtra": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "CalculationBase": 2,
+                "CalculationExtra": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "JackOfAllTrades",
+        "category": "Colorless",
+        "name_chs": "花样百出",
+        "name_eng": "Jack of All Trades",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将{Cards:diff()}张随机无色牌加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,将1张随机无色牌加入你的手牌。",
+        "text_upgraded_chs": "消耗,将3张随机无色牌加入你的手牌。",
+        "text_raw_eng": "Add {Cards:diff()} random Colorless {Cards:plural:card|cards} into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

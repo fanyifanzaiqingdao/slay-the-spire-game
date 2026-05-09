@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Havoc",
+        "category": "Ironclad",
+        "name_chs": "破灭",
+        "name_eng": "Havoc",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "打出[gold]抽牌堆[\/gold]顶部的牌并将其[gold]消耗[\/gold]。",
+        "text_default_chs": "打出抽牌堆顶部的牌并将其消耗。",
+        "text_upgraded_chs": "打出抽牌堆顶部的牌并将其消耗。",
+        "text_raw_eng": "Play the top card of your [gold]Draw Pile[\/gold] and [gold]Exhaust[\/gold] it.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

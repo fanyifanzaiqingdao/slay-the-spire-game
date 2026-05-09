@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Cruelty",
+        "category": "Ironclad",
+        "name_chs": "残酷",
+        "name_eng": "Cruelty",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "有[gold]易伤[\/gold]状态的敌人额外受到{CrueltyPower:diff()}%的伤害。",
+        "text_default_chs": "有易伤状态的敌人额外受到25%的伤害。",
+        "text_upgraded_chs": "有易伤状态的敌人额外受到50%的伤害。",
+        "text_raw_eng": "[gold]Vulnerable[\/gold] enemies take an additional {CrueltyPower:diff()}% damage.",
+        "variables": {
+            "CrueltyPower": 25
+        },
+        "upgrades": {
+            "varChange": {
+                "CrueltyPower": 25
+            }
+        }
+    }
+}

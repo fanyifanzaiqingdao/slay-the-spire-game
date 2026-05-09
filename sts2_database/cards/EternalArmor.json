@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EternalArmor",
+        "category": "Colorless",
+        "name_chs": "永恒铠甲",
+        "name_eng": "Eternal Armor",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{PlatingPower:diff()}层[gold]覆甲[\/gold]。",
+        "text_default_chs": "获得7层覆甲。",
+        "text_upgraded_chs": "获得9层覆甲。",
+        "text_raw_eng": "Gain {PlatingPower:diff()} [gold]Plating[\/gold].",
+        "variables": {
+            "PlatingPower": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "PlatingPower": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TearAsunder",
+        "category": "Ironclad",
+        "name_chs": "扯碎",
+        "name_eng": "Tear Asunder",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在本场战斗中，你每失去过一次生命值，这张牌就额外造成一次伤害。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "造成5点伤害。\n在本场战斗中，你每失去过一次生命值，这张牌就额外造成一次伤害。",
+        "text_upgraded_chs": "造成9点伤害。\n在本场战斗中，你每失去过一次生命值，这张牌就额外造成一次伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nHits an additional time for each time you lost HP this combat.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times}.)|}",
+        "variables": {
+            "Damage": "5m",
+            "Repeat": 1,
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

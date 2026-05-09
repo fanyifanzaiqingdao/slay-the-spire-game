@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Claw",
+        "category": "Defect",
+        "name_chs": "爪击",
+        "name_eng": "Claw",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n本场战斗中所有爪击卡牌的伤害增加{Increase:diff()}点。",
+        "text_default_chs": "造成3点伤害。\n本场战斗中所有爪击卡牌的伤害增加2点。",
+        "text_upgraded_chs": "造成5点伤害。\n本场战斗中所有爪击卡牌的伤害增加4点。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIncrease the damage of ALL Claw cards by {Increase:diff()} this combat.",
+        "variables": {
+            "Increase": 2,
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 1,
+                "Damage": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HeirloomHammer",
+        "category": "Regent",
+        "name_chs": "传承之锤",
+        "name_eng": "Heirloom Hammer",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n选择你[gold]手牌[\/gold]中的一张无色牌。将这张牌的一张复制品放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成17点伤害。\n选择你手牌中的一张无色牌。将这张牌的一张复制品放入你的手牌。",
+        "text_upgraded_chs": "造成27点伤害。\n选择你手牌中的一张无色牌。将这张牌的一张复制品放入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nChoose a Colorless card in your [gold]Hand[\/gold]. Add a copy of that card into your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "17m",
+            "Repeat": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheBomb",
+        "category": "Colorless",
+        "name_chs": "炸弹",
+        "name_eng": "The Bomb",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在{Turns:diff()}回合结束后，对所有敌人造成{BombDamage:diff()}点伤害。",
+        "text_default_chs": "在3回合结束后，对所有敌人造成40点伤害。",
+        "text_upgraded_chs": "在3回合结束后，对所有敌人造成60点伤害。",
+        "text_raw_eng": "At the end of {Turns:diff()} {Turns:plural:turn|turns}, deal {BombDamage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Turns": 3,
+            "BombDamage": 40
+        },
+        "upgrades": {
+            "varChange": {
+                "BombDamage": 10
+            }
+        }
+    }
+}

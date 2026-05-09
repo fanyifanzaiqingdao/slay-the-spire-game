@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Deathbringer",
+        "category": "Necrobinder",
+        "name_chs": "死亡使者",
+        "name_eng": "Deathbringer",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "给予所有敌人{DoomPower:diff()}层[gold]灾厄[\/gold]和{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "给予所有敌人21层灾厄和1层虚弱。",
+        "text_upgraded_chs": "给予所有敌人26层灾厄和1层虚弱。",
+        "text_raw_eng": "Apply {DoomPower:diff()} [gold]Doom[\/gold] and {WeakPower:diff()} [gold]Weak[\/gold] to ALL enemies.",
+        "variables": {
+            "DoomPower": 21,
+            "WeakPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Doom": 5
+            }
+        }
+    }
+}

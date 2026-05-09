@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Sunder",
+        "category": "Defect",
+        "name_chs": "分离",
+        "name_eng": "Sunder",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n如果这张牌击杀了敌人，则获得{Energy:energyIcons()}。",
+        "text_default_chs": "造成24点伤害。\n如果这张牌击杀了敌人，则获得3能量。",
+        "text_upgraded_chs": "造成40点伤害。\n如果这张牌击杀了敌人，则获得3能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf this kills an enemy, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Damage": "24m",
+            "Energy": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 8
+            }
+        }
+    }
+}

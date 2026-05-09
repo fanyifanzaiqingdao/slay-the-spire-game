@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Adrenaline",
+        "category": "Silent",
+        "name_chs": "肾上腺素",
+        "name_eng": "Adrenaline",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n抽2张牌。",
+        "text_default_chs": "消耗,获得1能量。\n抽2张牌。",
+        "text_upgraded_chs": "消耗,获得3能量。\n抽2张牌。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nDraw 2 cards.",
+        "variables": {
+            "Cards": 2,
+            "Energy": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

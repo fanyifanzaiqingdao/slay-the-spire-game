@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Coolant",
+        "category": "Defect",
+        "name_chs": "冷却剂",
+        "name_eng": "Coolant",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，你每有一种不同的充能球，就获得{CoolantPower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "在你的回合开始时，你每有一种不同的充能球，就获得2点格挡。",
+        "text_upgraded_chs": "在你的回合开始时，你每有一种不同的充能球，就获得3点格挡。",
+        "text_raw_eng": "At the start of your turn, gain {CoolantPower:diff()} [gold]Block[\/gold] for each unique Orb you have.",
+        "variables": {
+            "CoolantPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "CoolantPower": 1
+            }
+        }
+    }
+}

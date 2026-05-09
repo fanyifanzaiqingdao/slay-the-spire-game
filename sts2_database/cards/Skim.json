@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Skim",
+        "category": "Defect",
+        "name_chs": "快速检索",
+        "name_eng": "Skim",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。",
+        "text_default_chs": "抽3张牌。",
+        "text_upgraded_chs": "抽5张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

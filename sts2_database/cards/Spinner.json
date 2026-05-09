@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Spinner",
+        "category": "Defect",
+        "name_chs": "旋转工艺",
+        "name_eng": "Spinner",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "{IfUpgraded:show:[gold]生成[\/gold]1个[gold]玻璃[\/gold]充能球。\n|}在你的回合开始时，[gold]生成[\/gold]1个[gold]玻璃[\/gold]充能球。",
+        "text_default_chs": "在你的回合开始时，生成1个玻璃充能球。",
+        "text_upgraded_chs": "生成1个玻璃充能球。\n在你的回合开始时，生成1个玻璃充能球。",
+        "text_raw_eng": "{IfUpgraded:show:[gold]Channel[\/gold] 1 [gold]Glass[\/gold].\n|}At the start of your turn, [gold]Channel[\/gold] 1 [gold]Glass[\/gold].",
+        "variables": {
+            "SpinnerPower": 1
+        },
+        "upgrades": []
+    }
+}

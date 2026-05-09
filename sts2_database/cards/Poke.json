@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Poke",
+        "category": "Necrobinder",
+        "name_chs": "戳击",
+        "name_eng": "Poke",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。",
+        "text_default_chs": "奥斯提造成6点伤害。",
+        "text_upgraded_chs": "奥斯提造成12点伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.",
+        "variables": {
+            "OstyDamage": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 3
+            }
+        }
+    }
+}

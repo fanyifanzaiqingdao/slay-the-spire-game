@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Splash",
+        "category": "Colorless",
+        "name_chs": "飞溅",
+        "name_eng": "Splash",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从3张其他角色的{IfUpgraded:show:[gold]升级过的[\/gold]}攻击牌中选择1张加入你的[gold]手牌[\/gold]。这张牌在本回合免费打出。",
+        "text_default_chs": "从3张其他角色的攻击牌中选择1张加入你的手牌。这张牌在本回合免费打出。",
+        "text_upgraded_chs": "从3张其他角色的升级过的攻击牌中选择1张加入你的手牌。这张牌在本回合免费打出。",
+        "text_raw_eng": "Choose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[\/gold]} Attacks from another character to add into your [gold]Hand[\/gold]. It's free to play this turn.",
+        "variables": [],
+        "upgrades": []
+    }
+}

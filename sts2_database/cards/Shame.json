@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Shame",
+        "category": "Curse",
+        "name_chs": "羞耻",
+        "name_eng": "Shame",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的[gold]手牌[\/gold]中，则获得{Frail:diff()}层[gold]脆弱[\/gold]。",
+        "text_default_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则获得1层脆弱。",
+        "text_upgraded_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则获得1层脆弱。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold], gain {Frail:diff()} [gold]Frail[\/gold].",
+        "variables": {
+            "Frail": 1,
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BodySlam",
+        "category": "Ironclad",
+        "name_chs": "全身撞击",
+        "name_eng": "Body Slam",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成你当前[gold]格挡[\/gold]值的伤害。{InCombat:\n（造成{CalculatedDamage:diff()}点伤害）|}",
+        "text_default_chs": "造成你当前格挡值的伤害。",
+        "text_upgraded_chs": "造成你当前格挡值的伤害。",
+        "text_raw_eng": "Deal damage equal to your [gold]Block[\/gold].{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "ExtraDamage": "1m"
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

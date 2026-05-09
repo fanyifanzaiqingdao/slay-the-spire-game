@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FeedingFrenzy",
+        "category": "Event",
+        "name_chs": "疯狂进食",
+        "name_eng": "Feeding Frenzy",
+        "cost": 0,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在本回合内获得{StrengthPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "在本回合内获得5点力量。",
+        "text_upgraded_chs": "在本回合内获得7点力量。",
+        "text_raw_eng": "Gain {StrengthPower:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthPower": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Strength": 2
+            }
+        }
+    }
+}

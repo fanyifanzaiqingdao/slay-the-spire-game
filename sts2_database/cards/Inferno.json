@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Inferno",
+        "category": "Ironclad",
+        "name_chs": "狱火",
+        "name_eng": "Inferno",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，失去1点生命。\n每当你在你的回合内失去生命时，对所有敌人造成{InfernoPower:diff()}点伤害。",
+        "text_default_chs": "在你的回合开始时，失去1点生命。\n每当你在你的回合内失去生命时，对所有敌人造成6点伤害。",
+        "text_upgraded_chs": "在你的回合开始时，失去1点生命。\n每当你在你的回合内失去生命时，对所有敌人造成9点伤害。",
+        "text_raw_eng": "At the start of your turn, lose 1 HP.\nWhenever you lose HP on your turn, deal {InfernoPower:diff()} damage to ALL enemies.",
+        "variables": {
+            "InfernoPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "InfernoPower": 3
+            }
+        }
+    }
+}

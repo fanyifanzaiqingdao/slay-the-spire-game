@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bludgeon",
+        "category": "Ironclad",
+        "name_chs": "重锤",
+        "name_eng": "Bludgeon",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "造成32点伤害。",
+        "text_upgraded_chs": "造成52点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "32m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 10
+            }
+        }
+    }
+}

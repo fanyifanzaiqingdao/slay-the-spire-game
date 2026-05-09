@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Glacier",
+        "category": "Defect",
+        "name_chs": "冰川",
+        "name_eng": "Glacier",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n[gold]生成[\/gold]2个[gold]冰霜[\/gold]充能球。",
+        "text_default_chs": "获得6点格挡。\n生成2个冰霜充能球。",
+        "text_upgraded_chs": "获得12点格挡。\n生成2个冰霜充能球。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Channel[\/gold] 2 [gold]Frost[\/gold].",
+        "variables": {
+            "Block": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

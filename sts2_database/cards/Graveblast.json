@@ -1,0 +1,32 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Graveblast",
+        "category": "Necrobinder",
+        "name_chs": "坟冢爆射",
+        "name_eng": "Graveblast",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将[gold]弃牌堆[\/gold]中的一张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,造成4点伤害。\n将弃牌堆中的一张牌放入你的手牌。",
+        "text_upgraded_chs": "造成8点伤害。\n将弃牌堆中的一张牌放入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPut a card from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "4m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ],
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

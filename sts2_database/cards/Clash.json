@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Clash",
+        "category": "Event",
+        "name_chs": "交锋",
+        "name_eng": "Clash",
+        "cost": 0,
+        "rarity": "Event",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "只有在[gold]手牌[\/gold]中每一张牌都是攻击牌时才能被打出。\n造成{Damage:diff()}点伤害。",
+        "text_default_chs": "只有在手牌中每一张牌都是攻击牌时才能被打出。\n造成14点伤害。",
+        "text_upgraded_chs": "只有在手牌中每一张牌都是攻击牌时才能被打出。\n造成22点伤害。",
+        "text_raw_eng": "Can only be played if every card in your [gold]Hand[\/gold] is an Attack.\nDeal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "14m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

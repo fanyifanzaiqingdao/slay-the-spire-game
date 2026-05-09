@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Squeeze",
+        "category": "Necrobinder",
+        "name_chs": "榨取",
+        "name_eng": "Squeeze",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{CalculatedDamage:diff()}点伤害。\n你每有一张[gold]奥斯提[\/gold]的攻击牌，这张牌就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "奥斯提造成25点伤害。\n你每有一张奥斯提的攻击牌，这张牌就额外造成5点伤害。",
+        "text_upgraded_chs": "奥斯提造成35点伤害。\n你每有一张奥斯提的攻击牌，这张牌就额外造成7点伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your other [gold]Osty[\/gold] Attacks.",
+        "variables": {
+            "CalculationBase": "25m",
+            "ExtraDamage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 5,
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

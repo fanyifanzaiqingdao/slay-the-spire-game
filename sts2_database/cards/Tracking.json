@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Tracking",
+        "category": "Silent",
+        "name_chs": "跟踪",
+        "name_eng": "Tracking",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "有[gold]虚弱[\/gold]状态的敌人，所受的攻击伤害翻倍。",
+        "text_default_chs": "有虚弱状态的敌人，所受的攻击伤害翻倍。",
+        "text_upgraded_chs": "有虚弱状态的敌人，所受的攻击伤害翻倍。",
+        "text_raw_eng": "[gold]Weak[\/gold] enemies take double damage from Attacks.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ThrummingHatchet",
+        "category": "Colorless",
+        "name_chs": "无休手斧",
+        "name_eng": "Thrumming Hatchet",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在你的下个回合开始时，将此卡返回你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成11点伤害。\n在你的下个回合开始时，将此卡返回你的手牌。",
+        "text_upgraded_chs": "造成17点伤害。\n在你的下个回合开始时，将此卡返回你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAt the start of your next turn, return this to your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "11m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

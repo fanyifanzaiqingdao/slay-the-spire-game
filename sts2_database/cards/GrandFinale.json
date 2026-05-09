@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GrandFinale",
+        "category": "Silent",
+        "name_chs": "华丽收场",
+        "name_eng": "Grand Finale",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "只有当你的[gold]抽牌堆[\/gold]中没有牌时才能打出。对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "只有当你的抽牌堆中没有牌时才能打出。对所有敌人造成50点伤害。",
+        "text_upgraded_chs": "只有当你的抽牌堆中没有牌时才能打出。对所有敌人造成70点伤害。",
+        "text_raw_eng": "Can only be played if there are no cards in your [gold]Draw Pile[\/gold]. Deal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "50m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 10
+            }
+        }
+    }
+}

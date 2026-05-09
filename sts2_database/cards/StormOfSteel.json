@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "StormOfSteel",
+        "category": "Silent",
+        "name_chs": "钢铁风暴",
+        "name_eng": "Storm of Steel",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "丢弃所有[gold]手牌[\/gold]。\n每丢弃一张牌，就将一张[gold]{IfUpgraded:show:小刀+|小刀}[\/gold]添加至你的[gold]手牌[\/gold]。",
+        "text_default_chs": "丢弃所有手牌。\n每丢弃一张牌，就将一张小刀添加至你的手牌。",
+        "text_upgraded_chs": "丢弃所有手牌。\n每丢弃一张牌，就将一张小刀+添加至你的手牌。",
+        "text_raw_eng": "Discard your [gold]Hand[\/gold].\nAdd 1 [gold]{IfUpgraded:show:Shiv+|Shiv}[\/gold] into your [gold]Hand[\/gold] for each card discarded.",
+        "variables": [],
+        "upgrades": []
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Demesne",
+        "category": "Necrobinder",
+        "name_chs": "领域",
+        "name_eng": "Demesne",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，获得{Energy:energyIcons()}并额外多抽{Cards:diff()}张牌。",
+        "text_default_chs": "虚无,在你的回合开始时，获得1能量并额外多抽1张牌。",
+        "text_upgraded_chs": "虚无,在你的回合开始时，获得1能量并额外多抽1张牌。",
+        "text_raw_eng": "At the start of your turn, gain {Energy:energyIcons()} and draw {Cards:diff()} additional {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1,
+            "Energy": 1,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

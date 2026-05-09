@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "NoxiousFumes",
+        "category": "Silent",
+        "name_chs": "毒雾",
+        "name_eng": "Noxious Fumes",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，给予所有敌人{PoisonPerTurn:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "在你的回合开始时，给予所有敌人2层中毒。",
+        "text_upgraded_chs": "在你的回合开始时，给予所有敌人4层中毒。",
+        "text_raw_eng": "At the start of your turn, apply {PoisonPerTurn:diff()} [gold]Poison[\/gold] to ALL enemies.",
+        "variables": {
+            "PoisonPerTurn": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "PoisonPerTurn": 1
+            }
+        }
+    }
+}

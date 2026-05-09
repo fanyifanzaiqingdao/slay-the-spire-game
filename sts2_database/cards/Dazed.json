@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Dazed",
+        "category": "Status",
+        "name_chs": "晕眩",
+        "name_eng": "Dazed",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "",
+        "text_default_chs": "虚无,不能被打出",
+        "text_upgraded_chs": "虚无,不能被打出",
+        "text_raw_eng": "",
+        "variables": {
+            "keywords": [
+                "Ethereal",
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

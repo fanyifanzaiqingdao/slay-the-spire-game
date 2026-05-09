@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MonarchsGaze",
+        "category": "Regent",
+        "name_chs": "王之凝视",
+        "name_eng": "Monarch's Gaze",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你攻击敌人的时候，这名敌人在本回合失去{StrengthLoss:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "每当你攻击敌人的时候，这名敌人在本回合失去1点力量。",
+        "text_upgraded_chs": "每当你攻击敌人的时候，这名敌人在本回合失去1点力量。",
+        "text_raw_eng": "Whenever you attack an enemy, it loses {StrengthLoss:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthLoss": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

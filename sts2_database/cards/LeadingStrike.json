@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "LeadingStrike",
+        "category": "Silent",
+        "name_chs": "先制打击",
+        "name_eng": "Leading Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将{Shivs:diff()}张[gold]小刀[\/gold]加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成7点伤害。\n将1张小刀加入你的手牌。",
+        "text_upgraded_chs": "造成13点伤害。\n将1张小刀加入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd {Shivs:diff()} [gold]Shiv[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Shivs": 1,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Loop",
+        "category": "Defect",
+        "name_chs": "循环",
+        "name_eng": "Loop",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，触发你最右侧的一个充能球的被动能力{IfUpgraded:show:2次}。",
+        "text_default_chs": "在你的回合开始时，触发你最右侧的一个充能球的被动能力。",
+        "text_upgraded_chs": "在你的回合开始时，触发你最右侧的一个充能球的被动能力2次。",
+        "text_raw_eng": "At the start of your turn, trigger the passive ability of your rightmost Orb{IfUpgraded:show: 2 times}.",
+        "variables": {
+            "Loop": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Loop": 1
+            }
+        }
+    }
+}

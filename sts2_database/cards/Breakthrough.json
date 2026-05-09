@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Breakthrough",
+        "category": "Ironclad",
+        "name_chs": "突破",
+        "name_eng": "Breakthrough",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "失去{HpLoss:diff()}点生命。\n对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "失去1点生命。\n对所有敌人造成9点伤害。",
+        "text_upgraded_chs": "失去1点生命。\n对所有敌人造成17点伤害。",
+        "text_raw_eng": "Lose {HpLoss:diff()} HP.\nDeal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Damage": "9m",
+            "HpLoss": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

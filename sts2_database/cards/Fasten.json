@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fasten",
+        "category": "Colorless",
+        "name_chs": "勒紧",
+        "name_eng": "Fasten",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "从“防御”牌中额外获得{ExtraBlock:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "从“防御”牌中额外获得5点格挡。",
+        "text_upgraded_chs": "从“防御”牌中额外获得9点格挡。",
+        "text_raw_eng": "Gain an additional {ExtraBlock:diff()} [gold]Block[\/gold] from Defend cards.",
+        "variables": {
+            "ExtraBlock": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraBlock": 2
+            }
+        }
+    }
+}

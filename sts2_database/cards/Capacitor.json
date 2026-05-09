@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Capacitor",
+        "category": "Defect",
+        "name_chs": "扩容",
+        "name_eng": "Capacitor",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Repeat:diff()}个充能球栏位。",
+        "text_default_chs": "获得2个充能球栏位。",
+        "text_upgraded_chs": "获得4个充能球栏位。",
+        "text_raw_eng": "Gain {Repeat:diff()} Orb Slots.",
+        "variables": {
+            "Repeat": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

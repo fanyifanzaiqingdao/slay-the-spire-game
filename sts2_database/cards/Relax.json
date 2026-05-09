@@ -1,0 +1,33 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Relax",
+        "category": "Event",
+        "name_chs": "放松",
+        "name_eng": "Relax",
+        "cost": 3,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n下个回合，抽{Cards:diff()}张牌并获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,获得15点格挡。\n下个回合，抽2张牌并获得2能量。",
+        "text_upgraded_chs": "消耗,获得19点格挡。\n下个回合，抽4张牌并获得4能量。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nNext turn, draw {Cards:diff()} {Cards:plural:card|cards} and gain {Energy:energyIcons()}.",
+        "variables": {
+            "Cards": 2,
+            "Block": 15,
+            "Energy": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2,
+                "Cards": 1,
+                "Energy": 1
+            }
+        }
+    }
+}

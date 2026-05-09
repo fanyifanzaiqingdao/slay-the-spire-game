@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BiasedCognition",
+        "category": "Defect",
+        "name_chs": "偏差认知",
+        "name_eng": "Biased Cognition",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{FocusPower:diff()}点[gold]集中[\/gold]。\n在你的回合开始时，失去{BiasedCognitionPower:diff()}点[gold]集中[\/gold]。",
+        "text_default_chs": "获得4点集中。\n在你的回合开始时，失去1点集中。",
+        "text_upgraded_chs": "获得5点集中。\n在你的回合开始时，失去1点集中。",
+        "text_raw_eng": "Gain {FocusPower:diff()} [gold]Focus[\/gold].\nAt the start of your turn, lose {BiasedCognitionPower:diff()} [gold]Focus[\/gold].",
+        "variables": {
+            "FocusPower": 4,
+            "BiasedCognitionPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "FocusPower": 1
+            }
+        }
+    }
+}

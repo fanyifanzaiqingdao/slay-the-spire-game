@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Decay",
+        "category": "Curse",
+        "name_chs": "腐朽",
+        "name_eng": "Decay",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的[gold]手牌[\/gold]中, 你受到{Damage:diff()}点伤害。",
+        "text_default_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中,你受到2点伤害。",
+        "text_upgraded_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中,你受到2点伤害。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold], take {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "2m",
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

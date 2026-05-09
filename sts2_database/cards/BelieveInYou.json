@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BelieveInYou",
+        "category": "Colorless",
+        "name_chs": "相信着你",
+        "name_eng": "Believe in You",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "另一名玩家获得{Energy:energyIcons()}。",
+        "text_default_chs": "另一名玩家获得3能量。",
+        "text_upgraded_chs": "另一名玩家获得5能量。",
+        "text_raw_eng": "Another player gains {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

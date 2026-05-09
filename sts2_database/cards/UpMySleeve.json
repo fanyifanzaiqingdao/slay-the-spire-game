@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "UpMySleeve",
+        "category": "Silent",
+        "name_chs": "袖里乾坤",
+        "name_eng": "Up My Sleeve",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将{Cards:diff()}张[gold]小刀[\/gold]加入你的[gold]手牌[\/gold]。\n这张牌的耗能减少1。",
+        "text_default_chs": "将3张小刀加入你的手牌。\n这张牌的耗能减少1。",
+        "text_upgraded_chs": "将5张小刀加入你的手牌。\n这张牌的耗能减少1。",
+        "text_raw_eng": "Add {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[\/gold] into your [gold]Hand[\/gold].\nReduce this card's cost by 1.",
+        "variables": {
+            "Cards": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

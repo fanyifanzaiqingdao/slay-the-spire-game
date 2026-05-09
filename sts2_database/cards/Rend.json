@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rend",
+        "category": "Colorless",
+        "name_chs": "撕碎",
+        "name_eng": "Rend",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n该名敌人身上每有一种负面效果，就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成15点伤害。\n该名敌人身上每有一种负面效果，就额外造成5点伤害。",
+        "text_upgraded_chs": "造成21点伤害。\n该名敌人身上每有一种负面效果，就额外造成11点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each unique debuff on the enemy.",
+        "variables": {
+            "CalculationBase": "15m",
+            "ExtraDamage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 3,
+                "CalculationBase": 3
+            }
+        }
+    }
+}

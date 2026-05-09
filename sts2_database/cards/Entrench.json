@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Entrench",
+        "category": "Event",
+        "name_chs": "巩固",
+        "name_eng": "Entrench",
+        "cost": 2,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你当前的[gold]格挡[\/gold]翻倍。",
+        "text_default_chs": "将你当前的格挡翻倍。",
+        "text_upgraded_chs": "将你当前的格挡翻倍。",
+        "text_raw_eng": "Double your [gold]Block[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Uproar",
+        "category": "Defect",
+        "name_chs": "骚动",
+        "name_eng": "Uproar",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。\n随机打出你的[gold]抽牌堆[\/gold]中的1张攻击牌。",
+        "text_default_chs": "造成5点伤害两次。\n随机打出你的抽牌堆中的1张攻击牌。",
+        "text_upgraded_chs": "造成9点伤害两次。\n随机打出你的抽牌堆中的1张攻击牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.\nPlay a random Attack from your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

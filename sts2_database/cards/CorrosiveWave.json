@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CorrosiveWave",
+        "category": "Silent",
+        "name_chs": "腐蚀波",
+        "name_eng": "Corrosive Wave",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "打出此牌后，你在本回合每抽到一张牌，就给予所有敌人{CorrosiveWave:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "打出此牌后，你在本回合每抽到一张牌，就给予所有敌人3层中毒。",
+        "text_upgraded_chs": "打出此牌后，你在本回合每抽到一张牌，就给予所有敌人5层中毒。",
+        "text_raw_eng": "Whenever you draw a card this turn, apply {CorrosiveWave:diff()} [gold]Poison[\/gold] to ALL enemies.",
+        "variables": {
+            "CorrosiveWave": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "CorrosiveWave": 1
+            }
+        }
+    }
+}

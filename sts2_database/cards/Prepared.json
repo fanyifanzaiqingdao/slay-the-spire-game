@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Prepared",
+        "category": "Silent",
+        "name_chs": "早有准备",
+        "name_eng": "Prepared",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n丢弃{Cards:diff()}张牌。",
+        "text_default_chs": "抽1张牌。\n丢弃1张牌。",
+        "text_upgraded_chs": "抽3张牌。\n丢弃3张牌。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fear",
+        "category": "Necrobinder",
+        "name_chs": "恐惧",
+        "name_eng": "Fear",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "虚无,造成7点伤害。\n给予1层易伤。",
+        "text_upgraded_chs": "虚无,造成9点伤害。\n给予2层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 1,
+            "Damage": "7m",
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

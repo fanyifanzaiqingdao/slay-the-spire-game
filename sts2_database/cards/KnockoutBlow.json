@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "KnockoutBlow",
+        "category": "Regent",
+        "name_chs": "决胜一击",
+        "name_eng": "Knockout Blow",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n如果此牌击杀了敌人，获得{Stars:starIcons()}。",
+        "text_default_chs": "造成30点伤害。\n如果此牌击杀了敌人，获得5☆。",
+        "text_upgraded_chs": "造成46点伤害。\n如果此牌击杀了敌人，获得5☆。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf this kills an enemy, gain {Stars:starIcons()}.",
+        "variables": {
+            "Damage": "30m",
+            "Stars": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 8
+            }
+        }
+    }
+}

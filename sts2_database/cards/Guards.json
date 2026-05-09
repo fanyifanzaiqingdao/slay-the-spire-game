@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Guards",
+        "category": "Regent",
+        "name_chs": "护驾！！！",
+        "name_eng": "GUARDS!!!",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你[gold]手牌[\/gold]中的任意张牌[gold]变化[\/gold]为[gold]{IfUpgraded:show:仆从捐躯+|仆从捐躯}[\/gold]。",
+        "text_default_chs": "消耗,将你手牌中的任意张牌变化为仆从捐躯。",
+        "text_upgraded_chs": "消耗,将你手牌中的任意张牌变化为仆从捐躯+。",
+        "text_raw_eng": "[gold]Transform[\/gold] any number of cards in your [gold]Hand[\/gold] into [gold]{IfUpgraded:show:Minion Sacrifice+|Minion Sacrifice}[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": []
+    }
+}

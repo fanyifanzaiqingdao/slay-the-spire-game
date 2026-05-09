@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SummonForth",
+        "category": "Regent",
+        "name_chs": "征召上前",
+        "name_eng": "Summon Forth",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。\n不论何处，将[gold]君王之剑[\/gold]放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "铸造8。\n不论何处，将君王之剑放入你的手牌。",
+        "text_upgraded_chs": "铸造14。\n不论何处，将君王之剑放入你的手牌。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.\nPut [gold]Sovereign Blade[\/gold] into your [gold]Hand[\/gold] from anywhere.",
+        "variables": {
+            "Forge": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 3
+            }
+        }
+    }
+}

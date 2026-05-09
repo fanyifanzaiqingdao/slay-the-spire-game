@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "RightHandHand",
+        "category": "Necrobinder",
+        "name_chs": "得力助手",
+        "name_eng": "Right Hand Hand",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n每当你打出耗能为{Energy:energyIcons()}或以上的牌，将此牌从[gold]弃牌堆[\/gold]放回你的[gold]手牌[\/gold]。",
+        "text_default_chs": "奥斯提造成4点伤害。\n每当你打出耗能为2能量或以上的牌，将此牌从弃牌堆放回你的手牌。",
+        "text_upgraded_chs": "奥斯提造成8点伤害。\n每当你打出耗能为2能量或以上的牌，将此牌从弃牌堆放回你的手牌。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nWhenever you play a card that costs {Energy:energyIcons()} or more, return this to your [gold]Hand[\/gold] from the [gold]Discard Pile[\/gold].",
+        "variables": {
+            "OstyDamage": "4m",
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 2
+            }
+        }
+    }
+}

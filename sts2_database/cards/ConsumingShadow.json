@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ConsumingShadow",
+        "category": "Defect",
+        "name_chs": "吞噬暗影",
+        "name_eng": "Consuming Shadow",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]{Repeat:diff()}个[gold]黑暗[\/gold]充能球。\n在你的回合结束时，[gold]激发[\/gold]你最左侧的充能球。",
+        "text_default_chs": "生成2个黑暗充能球。\n在你的回合结束时，激发你最左侧的充能球。",
+        "text_upgraded_chs": "生成4个黑暗充能球。\n在你的回合结束时，激发你最左侧的充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] {Repeat:diff()} [gold]Dark[\/gold].\nAt the end of your turn, [gold]Evoke[\/gold] your leftmost Orb.",
+        "variables": {
+            "ConsumingShadowPower": 1,
+            "Repeat": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

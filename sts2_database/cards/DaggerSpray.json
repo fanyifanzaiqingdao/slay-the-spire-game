@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DaggerSpray",
+        "category": "Silent",
+        "name_chs": "匕首雨",
+        "name_eng": "Dagger Spray",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害两次。",
+        "text_default_chs": "对所有敌人造成4点伤害两次。",
+        "text_upgraded_chs": "对所有敌人造成8点伤害两次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies twice.",
+        "variables": {
+            "Damage": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

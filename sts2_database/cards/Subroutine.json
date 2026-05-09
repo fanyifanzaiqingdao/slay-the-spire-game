@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Subroutine",
+        "category": "Defect",
+        "name_chs": "子程序",
+        "name_eng": "Subroutine",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "当你打出一张能力牌时，获得{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "当你打出一张能力牌时，获得能量。",
+        "text_upgraded_chs": "当你打出一张能力牌时，获得能量。",
+        "text_raw_eng": "Whenever you play a Power, gain {energyPrefix:energyIcons(1)}.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

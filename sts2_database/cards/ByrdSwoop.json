@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ByrdSwoop",
+        "category": "Event",
+        "name_chs": "异鸟扑击",
+        "name_eng": "Byrd Swoop",
+        "cost": 0,
+        "rarity": "Event",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。",
+        "text_default_chs": "造成14点伤害。",
+        "text_upgraded_chs": "造成22点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "14m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Flechettes",
+        "category": "Silent",
+        "name_chs": "飞镖",
+        "name_eng": "Flechettes",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]手牌[\/gold]中每有一张技能牌，造成{Damage:diff()}点伤害。{InCombat:\n（攻击{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "手牌中每有一张技能牌，造成5点伤害。",
+        "text_upgraded_chs": "手牌中每有一张技能牌，造成9点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage for each Skill in your [gold]Hand[\/gold].{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "5m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

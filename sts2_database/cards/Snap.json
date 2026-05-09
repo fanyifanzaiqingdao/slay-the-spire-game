@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Snap",
+        "category": "Necrobinder",
+        "name_chs": "抓取",
+        "name_eng": "Snap",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n给[gold]手牌[\/gold]中的一张牌添加[gold]保留[\/gold]。",
+        "text_default_chs": "奥斯提造成7点伤害。\n给手牌中的一张牌添加保留。",
+        "text_upgraded_chs": "奥斯提造成13点伤害。\n给手牌中的一张牌添加保留。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nAdd [gold]Retain[\/gold] to a card in your [gold]Hand[\/gold].",
+        "variables": {
+            "OstyDamage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 3
+            }
+        }
+    }
+}

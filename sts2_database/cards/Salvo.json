@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Salvo",
+        "category": "Colorless",
+        "name_chs": "箭雨",
+        "name_eng": "Salvo",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在本回合[gold]保留[\/gold]你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成12点伤害。\n在本回合保留你的手牌。",
+        "text_upgraded_chs": "造成20点伤害。\n在本回合保留你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Retain[\/gold] your [gold]Hand[\/gold] this turn.",
+        "variables": {
+            "Damage": "12m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4
+            }
+        }
+    }
+}

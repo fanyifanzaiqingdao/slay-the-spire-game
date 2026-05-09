@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GatherLight",
+        "category": "Regent",
+        "name_chs": "收集光辉",
+        "name_eng": "Gather Light",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n获得{Stars:starIcons()}。",
+        "text_default_chs": "获得7点格挡。\n获得1☆。",
+        "text_upgraded_chs": "获得13点格挡。\n获得1☆。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nGain {Stars:starIcons()}.",
+        "variables": {
+            "Block": 7,
+            "Stars": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Intercept",
+        "category": "Colorless",
+        "name_chs": "拦截",
+        "name_eng": "Intercept",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将本回合所有要对另一名玩家发起的攻击转移到你的身上。",
+        "text_default_chs": "获得9点格挡。\n将本回合所有要对另一名玩家发起的攻击转移到你的身上。",
+        "text_upgraded_chs": "获得17点格挡。\n将本回合所有要对另一名玩家发起的攻击转移到你的身上。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nRedirect all incoming attacks that would be dealt to another player this turn to you.",
+        "variables": {
+            "Block": 9
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

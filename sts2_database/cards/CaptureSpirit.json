@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CaptureSpirit",
+        "category": "Necrobinder",
+        "name_chs": "捕捉灵魂",
+        "name_eng": "Capture Spirit",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "敌人失去{Damage:diff()}点生命。\n将{Cards:diff()}张[gold]灵魂[\/gold]加入你的[gold]抽牌堆[\/gold]。",
+        "text_default_chs": "敌人失去3点生命。\n将3张灵魂加入你的抽牌堆。",
+        "text_upgraded_chs": "敌人失去5点生命。\n将5张灵魂加入你的抽牌堆。",
+        "text_raw_eng": "Enemy loses {Damage:diff()} HP.\nAdd {Cards:diff()} [gold]{Cards:plural:Soul|Souls}[\/gold] into your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "Damage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Cards": 1
+            }
+        }
+    }
+}

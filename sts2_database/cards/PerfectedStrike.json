@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PerfectedStrike",
+        "category": "Ironclad",
+        "name_chs": "完美打击",
+        "name_eng": "Perfected Strike",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你每有一张名字中含有“打击”的牌，伤害+{ExtraDamage:diff()}。",
+        "text_default_chs": "造成6点伤害。\n你每有一张名字中含有“打击”的牌，伤害+2。",
+        "text_upgraded_chs": "造成6点伤害。\n你每有一张名字中含有“打击”的牌，伤害+4。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your cards containing “Strike”.",
+        "variables": {
+            "CalculationBase": "6m",
+            "ExtraDamage": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

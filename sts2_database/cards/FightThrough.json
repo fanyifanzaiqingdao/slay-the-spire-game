@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FightThrough",
+        "category": "Defect",
+        "name_chs": "强撑",
+        "name_eng": "Fight Through",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将2张[gold]伤口[\/gold]加入你的[gold]弃牌堆[\/gold]。",
+        "text_default_chs": "获得13点格挡。\n将2张伤口加入你的弃牌堆。",
+        "text_upgraded_chs": "获得21点格挡。\n将2张伤口加入你的弃牌堆。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAdd 2 [gold]Wounds[\/gold] into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Block": 13
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

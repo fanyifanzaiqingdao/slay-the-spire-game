@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Scourge",
+        "category": "Necrobinder",
+        "name_chs": "鞭打",
+        "name_eng": "Scourge",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{DoomPower:diff()}层[gold]灾厄[\/gold]。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "给予13层灾厄。\n抽1张牌。",
+        "text_upgraded_chs": "给予16层灾厄。\n抽3张牌。",
+        "text_raw_eng": "Apply {DoomPower:diff()} [gold]Doom[\/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "DoomPower": 13,
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Doom": 3,
+                "Cards": 1
+            }
+        }
+    }
+}

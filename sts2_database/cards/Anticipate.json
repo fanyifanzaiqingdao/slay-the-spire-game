@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Anticipate",
+        "category": "Silent",
+        "name_chs": "预判",
+        "name_eng": "Anticipate",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在本回合获得{DexterityPower:diff()}点[gold]敏捷[\/gold]。",
+        "text_default_chs": "在本回合获得3点敏捷。",
+        "text_upgraded_chs": "在本回合获得5点敏捷。",
+        "text_raw_eng": "Gain {DexterityPower:diff()} [gold]Dexterity[\/gold] this turn.",
+        "variables": {
+            "DexterityPower": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Dexterity": 2
+            }
+        }
+    }
+}

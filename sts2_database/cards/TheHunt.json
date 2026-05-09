@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheHunt",
+        "category": "Silent",
+        "name_chs": "狩猎",
+        "name_eng": "The Hunt",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]斩杀[\/gold]时，额外获得一组卡牌奖励。",
+        "text_default_chs": "消耗,造成10点伤害。\n斩杀时，额外获得一组卡牌奖励。",
+        "text_upgraded_chs": "消耗,造成20点伤害。\n斩杀时，额外获得一组卡牌奖励。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[\/gold], gain an additional card reward.",
+        "variables": {
+            "Damage": "10m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

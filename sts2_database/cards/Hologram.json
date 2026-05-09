@@ -1,0 +1,32 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hologram",
+        "category": "Defect",
+        "name_chs": "全息影像",
+        "name_eng": "Hologram",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将[gold]弃牌堆[\/gold]中的一张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,获得3点格挡。\n将弃牌堆中的一张牌放入你的手牌。",
+        "text_upgraded_chs": "获得7点格挡。\n将弃牌堆中的一张牌放入你的手牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nPut a card from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Block": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ],
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

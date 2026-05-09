@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Haunt",
+        "category": "Necrobinder",
+        "name_chs": "纠缠",
+        "name_eng": "Haunt",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你打出一张[gold]灵魂[\/gold]时，随机一名敌人失去{HpLoss:diff()}点生命。",
+        "text_default_chs": "每当你打出一张灵魂时，随机一名敌人失去6点生命。",
+        "text_upgraded_chs": "每当你打出一张灵魂时，随机一名敌人失去10点生命。",
+        "text_raw_eng": "Whenever you play a [gold]Soul[\/gold], a random enemy loses {HpLoss:diff()} HP.",
+        "variables": {
+            "HpLoss": "6m"
+        },
+        "upgrades": {
+            "varChange": {
+                "HpLoss": 2
+            }
+        }
+    }
+}

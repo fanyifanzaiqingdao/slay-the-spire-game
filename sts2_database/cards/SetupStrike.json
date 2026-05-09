@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SetupStrike",
+        "category": "Ironclad",
+        "name_chs": "预备打击",
+        "name_eng": "Setup Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在本回合内获得{StrengthPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "造成7点伤害。\n在本回合内获得2点力量。",
+        "text_upgraded_chs": "造成11点伤害。\n在本回合内获得3点力量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nGain {StrengthPower:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthPower": 2,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Strength": 1
+            }
+        }
+    }
+}

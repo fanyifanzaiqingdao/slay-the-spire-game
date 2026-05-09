@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TrashToTreasure",
+        "category": "Defect",
+        "name_chs": "化废为宝",
+        "name_eng": "Trash to Treasure",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你生成状态牌的时候，随机[gold]生成[\/gold]一个充能球。",
+        "text_default_chs": "每当你生成状态牌的时候，随机生成一个充能球。",
+        "text_upgraded_chs": "固有,每当你生成状态牌的时候，随机生成一个充能球。",
+        "text_raw_eng": "Whenever you create a Status card, [gold]Channel[\/gold] 1 random Orb.",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

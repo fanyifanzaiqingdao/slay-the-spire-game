@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PhantomBlades",
+        "category": "Silent",
+        "name_chs": "幻影之刃",
+        "name_eng": "Phantom Blades",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]小刀[\/gold]获得[gold]保留[\/gold]。\n你在每回合打出的第一张[gold]小刀[\/gold]额外造成{PhantomBladesPower:diff()}点伤害。",
+        "text_default_chs": "小刀获得保留。\n你在每回合打出的第一张小刀额外造成9点伤害。",
+        "text_upgraded_chs": "小刀获得保留。\n你在每回合打出的第一张小刀额外造成12点伤害。",
+        "text_raw_eng": "[gold]Shivs[\/gold] gain [gold]Retain[\/gold].\nThe first [gold]Shiv[\/gold] you play each turn deals {PhantomBladesPower:diff()} additional damage.",
+        "variables": {
+            "PhantomBladesPower": 9
+        },
+        "upgrades": {
+            "varChange": {
+                "PhantomBladesPower": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Quadcast",
+        "category": "Defect",
+        "name_chs": "四重释放",
+        "name_eng": "Quadcast",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]激发[\/gold]你最右侧的充能球{Repeat:diff()}次。",
+        "text_default_chs": "激发你最右侧的充能球4次。",
+        "text_upgraded_chs": "激发你最右侧的充能球4次。",
+        "text_raw_eng": "[gold]Evoke[\/gold] your rightmost Orb {Repeat:diff()} {Repeat:plural:time|times}.",
+        "variables": {
+            "Repeat": 4
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

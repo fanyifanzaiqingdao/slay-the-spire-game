@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Jackpot",
+        "category": "Colorless",
+        "name_chs": "大奖",
+        "name_eng": "Jackpot",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将{Cards:diff()}张随机{IfUpgraded:show:[gold]升级过[\/gold]的}0{energyPrefix:energyIcons(1)}的牌加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "造成25点伤害。\n将3张随机0能量的牌加入你的手牌。",
+        "text_upgraded_chs": "造成35点伤害。\n将3张随机升级过的0能量的牌加入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd {Cards:diff()} random{IfUpgraded:show: [gold]Upgraded[\/gold]} 0{energyPrefix:energyIcons(1)} {Cards:plural:card|cards} into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "Damage": "25m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

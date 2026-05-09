@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MeteorShower",
+        "category": "Regent",
+        "name_chs": "流星雨",
+        "name_eng": "Meteor Shower",
+        "cost": 0,
+        "rarity": "Ancient",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n给予所有敌人{WeakPower:diff()}层[gold]虚弱[\/gold]和[gold]易伤[\/gold]。",
+        "text_default_chs": "对所有敌人造成14点伤害。\n给予所有敌人2层虚弱和易伤。",
+        "text_upgraded_chs": "对所有敌人造成28点伤害。\n给予所有敌人2层虚弱和易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nApply {WeakPower:diff()} [gold]Weak[\/gold] and [gold]Vulnerable[\/gold] to ALL enemies.",
+        "variables": {
+            "VulnerablePower": 2,
+            "WeakPower": 2,
+            "Damage": "14m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 7
+            }
+        }
+    }
+}

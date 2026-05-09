@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SweepingGaze",
+        "category": "Token",
+        "name_chs": "扫荡凝视",
+        "name_eng": "Sweeping Gaze",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Attack",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]对随机一名敌人造成{OstyDamage:diff()}点伤害。",
+        "text_default_chs": "虚无,消耗,奥斯提对随机一名敌人造成10点伤害。",
+        "text_upgraded_chs": "虚无,消耗,奥斯提对随机一名敌人造成20点伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage to a random enemy.",
+        "variables": {
+            "OstyDamage": "10m",
+            "keywords": [
+                "Ethereal",
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 5
+            }
+        }
+    }
+}

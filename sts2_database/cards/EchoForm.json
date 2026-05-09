@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EchoForm",
+        "category": "Defect",
+        "name_chs": "回响形态",
+        "name_eng": "Echo Form",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每回合打出的第一张牌会被打出两次。",
+        "text_default_chs": "虚无,你每回合打出的第一张牌会被打出两次。",
+        "text_upgraded_chs": "你每回合打出的第一张牌会被打出两次。",
+        "text_raw_eng": "The first card you play each turn is played an extra time.",
+        "variables": {
+            "EchoForm": 1,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Ethereal"
+            ]
+        }
+    }
+}

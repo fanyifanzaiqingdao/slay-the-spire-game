@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Mayhem",
+        "category": "Colorless",
+        "name_chs": "乱战",
+        "name_eng": "Mayhem",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，打出你[gold]抽牌堆[\/gold]顶部的牌。",
+        "text_default_chs": "在你的回合开始时，打出你抽牌堆顶部的牌。",
+        "text_upgraded_chs": "在你的回合开始时，打出你抽牌堆顶部的牌。",
+        "text_raw_eng": "At the start of your turn, play the top card of your [gold]Draw Pile[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

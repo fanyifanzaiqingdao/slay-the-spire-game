@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BulletTime",
+        "category": "Silent",
+        "name_chs": "子弹时间",
+        "name_eng": "Bullet Time",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "你在本回合内不能再抽牌。你[gold]手牌[\/gold]中的所有牌在本回合免费打出。",
+        "text_default_chs": "你在本回合内不能再抽牌。你手牌中的所有牌在本回合免费打出。",
+        "text_upgraded_chs": "你在本回合内不能再抽牌。你手牌中的所有牌在本回合免费打出。",
+        "text_raw_eng": "You cannot draw additional cards this turn. ALL cards in your [gold]Hand[\/gold] are free to play this turn.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

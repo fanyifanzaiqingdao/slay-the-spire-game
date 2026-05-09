@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BladeOfInk",
+        "category": "Silent",
+        "name_chs": "墨之刃",
+        "name_eng": "Blade of Ink",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "每当你在本回合打出一张攻击牌时，本回合获得{StrengthPower:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "每当你在本回合打出一张攻击牌时，本回合获得2点力量。",
+        "text_upgraded_chs": "每当你在本回合打出一张攻击牌时，本回合获得3点力量。",
+        "text_raw_eng": "This turn, whenever you play an Attack, gain {StrengthPower:diff()} [gold]Strength[\/gold] this turn.",
+        "variables": {
+            "StrengthPower": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Strength": 1
+            }
+        }
+    }
+}

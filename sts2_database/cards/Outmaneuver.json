@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Outmaneuver",
+        "category": "Event",
+        "name_chs": "抢占先机",
+        "name_eng": "Outmaneuver",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在下个回合获得{Energy:energyIcons()}。",
+        "text_default_chs": "在下个回合获得2能量。",
+        "text_upgraded_chs": "在下个回合获得4能量。",
+        "text_raw_eng": "Next turn, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SecondWind",
+        "category": "Ironclad",
+        "name_chs": "重振精神",
+        "name_eng": "Second Wind",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]消耗[\/gold][gold]手牌[\/gold]中所有非攻击牌，每张获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "消耗手牌中所有非攻击牌，每张获得5点格挡。",
+        "text_upgraded_chs": "消耗手牌中所有非攻击牌，每张获得9点格挡。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] all non-Attack cards in your [gold]Hand[\/gold]. Gain {Block:diff()} [gold]Block[\/gold] for each card [gold]Exhausted[\/gold].",
+        "variables": {
+            "Block": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

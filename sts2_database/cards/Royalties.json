@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Royalties",
+        "category": "Regent",
+        "name_chs": "王国资产",
+        "name_eng": "Royalties",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在战斗结束时，获得{Gold:diff()}[gold]金币[\/gold]。",
+        "text_default_chs": "在战斗结束时，获得30金币。",
+        "text_upgraded_chs": "在战斗结束时，获得40金币。",
+        "text_raw_eng": "At the end of combat, gain {Gold:diff()} [gold]Gold[\/gold].",
+        "variables": {
+            "Gold": 30
+        },
+        "upgrades": {
+            "varChange": {
+                "Gold": 5
+            }
+        }
+    }
+}

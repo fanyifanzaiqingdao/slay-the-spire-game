@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Conqueror",
+        "category": "Regent",
+        "name_chs": "征服者",
+        "name_eng": "Conqueror",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。\n[gold]君王之剑[\/gold]在本回合对敌人造成双倍伤害。",
+        "text_default_chs": "铸造3。\n君王之剑在本回合对敌人造成双倍伤害。",
+        "text_upgraded_chs": "铸造7。\n君王之剑在本回合对敌人造成双倍伤害。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.\n[gold]Sovereign Blade[\/gold] deals double damage to the enemy this turn.",
+        "variables": {
+            "Forge": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 2
+            }
+        }
+    }
+}

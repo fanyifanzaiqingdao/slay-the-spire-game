@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SwordBoomerang",
+        "category": "Ironclad",
+        "name_chs": "飞剑回旋镖",
+        "name_eng": "Sword Boomerang",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "随机对敌人造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "随机对敌人造成3点伤害3次。",
+        "text_upgraded_chs": "随机对敌人造成3点伤害5次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times.",
+        "variables": {
+            "Damage": "3m",
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

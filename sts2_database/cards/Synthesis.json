@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Synthesis",
+        "category": "Defect",
+        "name_chs": "人工合成",
+        "name_eng": "Synthesis",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你打出的下一张能力牌耗能变为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "造成12点伤害。\n你打出的下一张能力牌耗能变为0能量。",
+        "text_upgraded_chs": "造成24点伤害。\n你打出的下一张能力牌耗能变为0能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nThe next Power you play costs 0 {energyPrefix:energyIcons(1)}.",
+        "variables": {
+            "Damage": "12m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

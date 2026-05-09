@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Discovery",
+        "category": "Colorless",
+        "name_chs": "发现",
+        "name_eng": "Discovery",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从3张随机牌中选择1张加入你的[gold]手牌[\/gold]。这张牌在本回合的耗能为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "消耗,从3张随机牌中选择1张加入你的手牌。这张牌在本回合的耗能为0能量。",
+        "text_upgraded_chs": "从3张随机牌中选择1张加入你的手牌。这张牌在本回合的耗能为0能量。",
+        "text_raw_eng": "Choose 1 of 3 random cards to add into your [gold]Hand[\/gold]. It costs 0 {energyPrefix:energyIcons(1)} this turn.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "InfiniteBlades",
+        "category": "Silent",
+        "name_chs": "无尽刀刃",
+        "name_eng": "Infinite Blades",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，在你的[gold]手牌[\/gold]中加入1张[gold]小刀[\/gold]。",
+        "text_default_chs": "在你的回合开始时，在你的手牌中加入1张小刀。",
+        "text_upgraded_chs": "固有,在你的回合开始时，在你的手牌中加入1张小刀。",
+        "text_raw_eng": "At the start of your turn, add 1 [gold]Shiv[\/gold] into your [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

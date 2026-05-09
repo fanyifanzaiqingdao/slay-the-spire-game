@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Void",
+        "category": "Status",
+        "name_chs": "虚空",
+        "name_eng": "Void",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "每当你抽到这张牌时，失去{Energy:energyIcons()}。",
+        "text_default_chs": "不能被打出,虚无,每当你抽到这张牌时，失去1能量。",
+        "text_upgraded_chs": "不能被打出,虚无,每当你抽到这张牌时，失去1能量。",
+        "text_raw_eng": "Whenever you draw this card, lose {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 1,
+            "keywords": [
+                "Unplayable",
+                "Ethereal"
+            ]
+        },
+        "upgrades": []
+    }
+}

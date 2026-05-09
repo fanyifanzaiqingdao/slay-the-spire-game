@@ -1,0 +1,20 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Largesse",
+        "category": "Regent",
+        "name_chs": "慷慨捐助",
+        "name_eng": "Largesse",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "将一张随机的{IfUpgraded:show:[gold]升级过的[\/gold]}无色牌添加至一位其他玩家的[gold]手牌[\/gold]中。",
+        "text_default_chs": "将一张随机的无色牌添加至一位其他玩家的手牌中。",
+        "text_upgraded_chs": "将一张随机的升级过的无色牌添加至一位其他玩家的手牌中。",
+        "text_raw_eng": "Another player adds 1 random{IfUpgraded:show: [gold]Upgraded[\/gold]} Colorless card to their [gold]Hand[\/gold].",
+        "variables": [],
+        "upgrades": []
+    }
+}

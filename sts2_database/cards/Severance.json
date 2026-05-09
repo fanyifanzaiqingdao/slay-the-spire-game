@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Severance",
+        "category": "Necrobinder",
+        "name_chs": "切断",
+        "name_eng": "Severance",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将一张[gold]灵魂[\/gold]分别加入你的[gold]抽牌堆[\/gold]，[gold]手牌[\/gold]和[gold]弃牌堆[\/gold]中。",
+        "text_default_chs": "造成13点伤害。\n将一张灵魂分别加入你的抽牌堆，手牌和弃牌堆中。",
+        "text_upgraded_chs": "造成23点伤害。\n将一张灵魂分别加入你的抽牌堆，手牌和弃牌堆中。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd a [gold]Soul[\/gold] into your [gold]Draw Pile[\/gold], [gold]Hand[\/gold], and [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Damage": "13m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

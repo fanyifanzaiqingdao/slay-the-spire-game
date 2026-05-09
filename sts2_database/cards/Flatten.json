@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Flatten",
+        "category": "Necrobinder",
+        "name_chs": "重压",
+        "name_eng": "Flatten",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n如果[gold]奥斯提[\/gold]本回合攻击过，则这张牌的费用变为0{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "奥斯提造成12点伤害。\n如果奥斯提本回合攻击过，则这张牌的费用变为0能量。",
+        "text_upgraded_chs": "奥斯提造成20点伤害。\n如果奥斯提本回合攻击过，则这张牌的费用变为0能量。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nThis card costs 0 {energyPrefix:energyIcons(1)} if [gold]Osty[\/gold] has attacked this turn.",
+        "variables": {
+            "OstyDamage": "12m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 4
+            }
+        }
+    }
+}

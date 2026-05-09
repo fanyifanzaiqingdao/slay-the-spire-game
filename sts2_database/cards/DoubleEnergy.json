@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DoubleEnergy",
+        "category": "Defect",
+        "name_chs": "双倍能量",
+        "name_eng": "Double Energy",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你的能量翻倍。",
+        "text_default_chs": "消耗,将你的能量翻倍。",
+        "text_upgraded_chs": "消耗,将你的能量翻倍。",
+        "text_raw_eng": "Double your Energy.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

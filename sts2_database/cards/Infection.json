@@ -1,0 +1,25 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Infection",
+        "category": "Status",
+        "name_chs": "感染",
+        "name_eng": "Infection",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，如果这张牌在你的[gold]手牌[\/gold]中，则受到{Damage:diff()}点伤害。",
+        "text_default_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则受到3点伤害。",
+        "text_upgraded_chs": "不能被打出,在你的回合结束时，如果这张牌在你的手牌中，则受到3点伤害。",
+        "text_raw_eng": "At the end of your turn, if this is in your [gold]Hand[\/gold], take {Damage:diff()} damage.",
+        "variables": {
+            "Damage": "3m",
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

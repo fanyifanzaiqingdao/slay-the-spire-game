@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "WraithForm",
+        "category": "Silent",
+        "name_chs": "幽魂形态",
+        "name_eng": "Wraith Form",
+        "cost": 3,
+        "rarity": "Ancient",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{IntangiblePower:diff()}[gold]无实体[\/gold]。\n在你的回合开始时，失去{WraithFormPower:diff()}点[gold]敏捷[\/gold]。",
+        "text_default_chs": "获得2无实体。\n在你的回合开始时，失去1点敏捷。",
+        "text_upgraded_chs": "获得3无实体。\n在你的回合开始时，失去1点敏捷。",
+        "text_raw_eng": "Gain {IntangiblePower:diff()} [gold]Intangible[\/gold].\nAt the start of your turn, lose {WraithFormPower:diff()} [gold]Dexterity[\/gold].",
+        "variables": {
+            "IntangiblePower": 2,
+            "WraithFormPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "IntangiblePower": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Pinpoint",
+        "category": "Silent",
+        "name_chs": "精密瞄准",
+        "name_eng": "Pinpoint",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n你在本回合中每打出过一张技能牌，其耗能减少1{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "造成17点伤害。\n你在本回合中每打出过一张技能牌，其耗能减少1能量。",
+        "text_upgraded_chs": "造成27点伤害。\n你在本回合中每打出过一张技能牌，其耗能减少1能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nCosts 1 less {energyPrefix:energyIcons(1)} for each Skill played this turn.",
+        "variables": {
+            "Damage": "17m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

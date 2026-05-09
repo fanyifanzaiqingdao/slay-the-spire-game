@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MementoMori",
+        "category": "Silent",
+        "name_chs": "铭记死亡",
+        "name_eng": "Memento Mori",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n本回合每丢弃过一张牌，则增加{ExtraDamage:diff()}点额外伤害。",
+        "text_default_chs": "造成8点伤害。\n本回合每丢弃过一张牌，则增加4点额外伤害。",
+        "text_upgraded_chs": "造成12点伤害。\n本回合每丢弃过一张牌，则增加6点额外伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card discarded this turn.",
+        "variables": {
+            "CalculationBase": "8m",
+            "ExtraDamage": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 2,
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

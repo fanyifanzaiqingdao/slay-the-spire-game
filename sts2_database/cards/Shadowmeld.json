@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Shadowmeld",
+        "category": "Silent",
+        "name_chs": "融入暗影",
+        "name_eng": "Shadowmeld",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "本回合你获得的[gold]格挡[\/gold]值翻倍。",
+        "text_default_chs": "本回合你获得的格挡值翻倍。",
+        "text_upgraded_chs": "本回合你获得的格挡值翻倍。",
+        "text_raw_eng": "Double your [gold]Block[\/gold] gain this turn.",
+        "variables": {
+            "Power": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

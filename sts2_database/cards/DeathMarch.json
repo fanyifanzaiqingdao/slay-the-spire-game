@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DeathMarch",
+        "category": "Necrobinder",
+        "name_chs": "死亡行军",
+        "name_eng": "Death March",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你在回合进行中每抽到一张牌，都会使其额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成8点伤害。\n你在回合进行中每抽到一张牌，都会使其额外造成3点伤害。",
+        "text_upgraded_chs": "造成10点伤害。\n你在回合进行中每抽到一张牌，都会使其额外造成5点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card drawn during your turn.",
+        "variables": {
+            "CalculationBase": "8m",
+            "ExtraDamage": "3m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 1,
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

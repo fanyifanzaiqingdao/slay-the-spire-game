@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Invoke",
+        "category": "Necrobinder",
+        "name_chs": "唤起",
+        "name_eng": "Invoke",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在下个回合[gold]召唤[\/gold]{Summon:diff()}并获得{Energy:energyIcons()}。",
+        "text_default_chs": "在下个回合召唤2并获得2能量。",
+        "text_upgraded_chs": "在下个回合召唤4并获得4能量。",
+        "text_raw_eng": "Next turn, [gold]Summon[\/gold] {Summon:diff()} and gain {Energy:energyIcons()}.",
+        "variables": {
+            "Summon": "2m",
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 1,
+                "Energy": 1
+            }
+        }
+    }
+}

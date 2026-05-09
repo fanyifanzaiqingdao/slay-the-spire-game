@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GlimpseBeyond",
+        "category": "Necrobinder",
+        "name_chs": "彼岸一瞥",
+        "name_eng": "Glimpse Beyond",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AllAllies",
+        "text_raw_chs": "在所有玩家的[gold]抽牌堆[\/gold]中加入{Cards:diff()}张[gold]灵魂[\/gold]。",
+        "text_default_chs": "消耗,在所有玩家的抽牌堆中加入3张灵魂。",
+        "text_upgraded_chs": "消耗,在所有玩家的抽牌堆中加入5张灵魂。",
+        "text_raw_eng": "ALL players add {Cards:diff()} [gold]{Cards:plural:Soul|Souls}[\/gold] into their [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

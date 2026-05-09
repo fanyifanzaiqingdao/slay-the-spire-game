@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Metamorphosis",
+        "category": "Event",
+        "name_chs": "羽化",
+        "name_eng": "Metamorphosis",
+        "cost": 2,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在你的[gold]抽牌堆[\/gold]中加入{Cards:diff()}张随机攻击牌。它们在本场战斗中可以被免费打出。",
+        "text_default_chs": "消耗,在你的抽牌堆中加入3张随机攻击牌。它们在本场战斗中可以被免费打出。",
+        "text_upgraded_chs": "消耗,在你的抽牌堆中加入7张随机攻击牌。它们在本场战斗中可以被免费打出。",
+        "text_raw_eng": "Add {Cards:diff()} random Attacks into your [gold]Draw Pile[\/gold]. They're free to play this combat.",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 2
+            }
+        }
+    }
+}

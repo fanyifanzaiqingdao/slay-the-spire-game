@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Thrash",
+        "category": "Ironclad",
+        "name_chs": "痛殴",
+        "name_eng": "Thrash",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。\n[gold]消耗[\/gold]你的[gold]手牌[\/gold]中随机一张攻击牌，并将它的伤害添加给这张牌。",
+        "text_default_chs": "造成4点伤害两次。\n消耗你的手牌中随机一张攻击牌，并将它的伤害添加给这张牌。",
+        "text_upgraded_chs": "造成8点伤害两次。\n消耗你的手牌中随机一张攻击牌，并将它的伤害添加给这张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.\n[gold]Exhaust[\/gold] a random Attack in your [gold]Hand[\/gold] and add its damage to this card.",
+        "variables": {
+            "Damage": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2
+            }
+        }
+    }
+}

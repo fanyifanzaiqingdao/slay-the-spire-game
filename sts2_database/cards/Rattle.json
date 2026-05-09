@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Rattle",
+        "category": "Necrobinder",
+        "name_chs": "猛晃",
+        "name_eng": "Rattle",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{OstyDamage:diff()}点伤害。\n他在本回合每攻击过一次，此牌就额外造成一次伤害。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "奥斯提造成7点伤害。\n他在本回合每攻击过一次，此牌就额外造成一次伤害。",
+        "text_upgraded_chs": "奥斯提造成11点伤害。\n他在本回合每攻击过一次，此牌就额外造成一次伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage.\nHits an additional time for each other time he has attacked this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "OstyDamage": "7m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 2
+            }
+        }
+    }
+}

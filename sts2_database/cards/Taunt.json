@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Taunt",
+        "category": "Ironclad",
+        "name_chs": "挑衅",
+        "name_eng": "Taunt",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "获得7点格挡。\n给予1层易伤。",
+        "text_upgraded_chs": "获得9点格挡。\n给予2层易伤。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 1,
+            "Block": 7
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

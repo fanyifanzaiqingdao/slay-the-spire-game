@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Survivor",
+        "category": "Silent",
+        "name_chs": "生存者",
+        "name_eng": "Survivor",
+        "cost": 1,
+        "rarity": "Basic",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n丢弃1张牌。",
+        "text_default_chs": "获得8点格挡。\n丢弃1张牌。",
+        "text_upgraded_chs": "获得14点格挡。\n丢弃1张牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nDiscard 1 card.",
+        "variables": {
+            "Block": 8
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

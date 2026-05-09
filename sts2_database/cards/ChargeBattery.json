@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ChargeBattery",
+        "category": "Defect",
+        "name_chs": "充电",
+        "name_eng": "Charge Battery",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在下个回合获得{Energy:energyIcons()}。",
+        "text_default_chs": "获得7点格挡。\n在下个回合获得1能量。",
+        "text_upgraded_chs": "获得13点格挡。\n在下个回合获得1能量。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nNext turn, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Block": 7,
+            "Energy": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

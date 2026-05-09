@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "MinionStrike",
+        "category": "Token",
+        "name_chs": "仆从打击",
+        "name_eng": "Minion Strike",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,造成7点伤害。\n抽1张牌。",
+        "text_upgraded_chs": "消耗,造成13点伤害。\n抽1张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1,
+            "Damage": "7m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

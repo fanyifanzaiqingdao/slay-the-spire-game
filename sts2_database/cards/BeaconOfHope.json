@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BeaconOfHope",
+        "category": "Colorless",
+        "name_chs": "希望灯塔",
+        "name_eng": "Beacon of Hope",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你在你的回合获得[gold]格挡[\/gold]时，其他玩家获得相应一半的[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你在你的回合获得格挡时，其他玩家获得相应一半的格挡。",
+        "text_upgraded_chs": "固有,每当你在你的回合获得格挡时，其他玩家获得相应一半的格挡。",
+        "text_raw_eng": "Whenever you gain [gold]Block[\/gold] on your turn, other players gain half that much [gold]Block[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "addKeywords": [
+                "Innate"
+            ]
+        }
+    }
+}

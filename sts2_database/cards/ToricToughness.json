@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ToricToughness",
+        "category": "Event",
+        "name_chs": "坚韧之环",
+        "name_eng": "Toric Toughness",
+        "cost": 2,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在接下来的{Turns:diff()}个回合开始时，获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "获得5点格挡。\n在接下来的2个回合开始时，获得5点格挡。",
+        "text_upgraded_chs": "获得9点格挡。\n在接下来的2个回合开始时，获得9点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nGain {Block:diff()} [gold]Block[\/gold] at the start of the next {Turns:diff()} {Turns:plural:turn|turns}.",
+        "variables": {
+            "Turns": 2,
+            "Block": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

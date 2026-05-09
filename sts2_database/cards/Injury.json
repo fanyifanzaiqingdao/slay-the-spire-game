@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Injury",
+        "category": "Curse",
+        "name_chs": "受伤",
+        "name_eng": "Injury",
+        "cost": -1,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "",
+        "text_default_chs": "不能被打出",
+        "text_upgraded_chs": "不能被打出",
+        "text_raw_eng": "",
+        "variables": {
+            "keywords": [
+                "Unplayable"
+            ]
+        },
+        "upgrades": []
+    }
+}

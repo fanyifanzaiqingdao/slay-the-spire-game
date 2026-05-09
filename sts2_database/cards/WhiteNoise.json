@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "WhiteNoise",
+        "category": "Defect",
+        "name_chs": "白噪音",
+        "name_eng": "White Noise",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将一张随机能力牌加入你的[gold]手牌[\/gold]。这张牌在本回合内免费打出。",
+        "text_default_chs": "消耗,将一张随机能力牌加入你的手牌。这张牌在本回合内免费打出。",
+        "text_upgraded_chs": "消耗,将一张随机能力牌加入你的手牌。这张牌在本回合内免费打出。",
+        "text_raw_eng": "Add a random Power into your [gold]Hand[\/gold]. It's free to play this turn.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

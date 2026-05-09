@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GeneticAlgorithm",
+        "category": "Defect",
+        "name_chs": "遗传算法",
+        "name_eng": "Genetic Algorithm",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n每打出一次，这张牌在本局游戏中的[gold]格挡[\/gold]值永久增加{Increase:diff()}点。",
+        "text_default_chs": "消耗,获得1点格挡。\n每打出一次，这张牌在本局游戏中的格挡值永久增加3点。",
+        "text_upgraded_chs": "消耗,获得1点格挡。\n每打出一次，这张牌在本局游戏中的格挡值永久增加5点。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nPermanently increase this card's [gold]Block[\/gold] by {Increase:diff()}.",
+        "variables": {
+            "Increase": 3,
+            "keywords": [
+                "Exhaust"
+            ],
+            "Block": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 1
+            }
+        }
+    }
+}

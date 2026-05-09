@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Luminesce",
+        "category": "Token",
+        "name_chs": "冷光",
+        "name_eng": "Luminesce",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,保留,获得2能量。",
+        "text_upgraded_chs": "消耗,保留,获得4能量。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2,
+            "keywords": [
+                "Exhaust",
+                "Retain"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

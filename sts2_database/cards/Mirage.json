@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Mirage",
+        "category": "Silent",
+        "name_chs": "蜃景",
+        "name_eng": "Mirage",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得等同于所有敌人[gold]中毒[\/gold]层数的[gold]格挡[\/gold]。{InCombat:\n（获得{CalculatedBlock:diff()}点[gold]格挡[\/gold]）|}",
+        "text_default_chs": "消耗,获得等同于所有敌人中毒层数的格挡。",
+        "text_upgraded_chs": "消耗,获得等同于所有敌人中毒层数的格挡。",
+        "text_raw_eng": "Gain [gold]Block[\/gold] equal to [gold]Poison[\/gold] on ALL enemies.{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[\/gold])|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

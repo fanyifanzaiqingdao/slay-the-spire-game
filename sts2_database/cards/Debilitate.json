@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Debilitate",
+        "category": "Necrobinder",
+        "name_chs": "摧残",
+        "name_eng": "Debilitate",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在接下来的{DebilitatePower:diff()}回合内，该敌人身上的[gold]易伤[\/gold]与[gold]虚弱[\/gold]效率翻倍。",
+        "text_default_chs": "造成7点伤害。\n在接下来的3回合内，该敌人身上的易伤与虚弱效率翻倍。",
+        "text_upgraded_chs": "造成11点伤害。\n在接下来的4回合内，该敌人身上的易伤与虚弱效率翻倍。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Vulnerable[\/gold] and [gold]Weak[\/gold] are twice as effective against the enemy for the next {DebilitatePower:diff()} {DebilitatePower:plural:turn|turns}.",
+        "variables": {
+            "DebilitatePower": 3,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "DebilitatePower": 1,
+                "Damage": 2
+            }
+        }
+    }
+}

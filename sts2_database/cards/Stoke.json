@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Stoke",
+        "category": "Ironclad",
+        "name_chs": "添柴",
+        "name_eng": "Stoke",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]消耗[\/gold]所有[gold]手牌[\/gold]。\n然后抽相同数量张牌。",
+        "text_default_chs": "消耗,消耗所有手牌。\n然后抽相同数量张牌。",
+        "text_upgraded_chs": "消耗,消耗所有手牌。\n然后抽相同数量张牌。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] your [gold]Hand[\/gold].\nDraw a card for each card [gold]Exhausted[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

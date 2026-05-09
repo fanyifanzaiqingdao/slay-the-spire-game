@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Alignment",
+        "category": "Regent",
+        "name_chs": "星位序列",
+        "name_eng": "Alignment",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。",
+        "text_default_chs": "获得2能量。",
+        "text_upgraded_chs": "获得4能量。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

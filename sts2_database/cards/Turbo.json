@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Turbo",
+        "category": "Defect",
+        "name_chs": "内核加速",
+        "name_eng": "TURBO",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n将一张[gold]虚空[\/gold]加入你的[gold]弃牌堆[\/gold]。",
+        "text_default_chs": "获得2能量。\n将一张虚空加入你的弃牌堆。",
+        "text_upgraded_chs": "获得4能量。\n将一张虚空加入你的弃牌堆。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nAdd a [gold]Void[\/gold] into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

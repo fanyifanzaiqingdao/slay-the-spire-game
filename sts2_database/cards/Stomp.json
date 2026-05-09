@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Stomp",
+        "category": "Ironclad",
+        "name_chs": "踩踏",
+        "name_eng": "Stomp",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n你在本回合中每打出过一张攻击牌，其耗能减少1{energyPrefix:energyIcons(1)}。",
+        "text_default_chs": "对所有敌人造成12点伤害。\n你在本回合中每打出过一张攻击牌，其耗能减少1能量。",
+        "text_upgraded_chs": "对所有敌人造成18点伤害。\n你在本回合中每打出过一张攻击牌，其耗能减少1能量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nCosts 1 less {energyPrefix:energyIcons(1)} for each Attack played this turn.",
+        "variables": {
+            "Damage": "12m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

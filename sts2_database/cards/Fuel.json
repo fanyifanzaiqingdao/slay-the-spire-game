@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fuel",
+        "category": "Token",
+        "name_chs": "燃料",
+        "name_eng": "Fuel",
+        "cost": 0,
+        "rarity": "Token",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,获得1能量。\n抽1张牌。",
+        "text_upgraded_chs": "消耗,获得1能量。\n抽3张牌。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 1,
+            "Energy": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

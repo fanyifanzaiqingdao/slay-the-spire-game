@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ThinkingAhead",
+        "category": "Colorless",
+        "name_chs": "深谋远虑",
+        "name_eng": "Thinking Ahead",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n将[gold]手牌[\/gold]中的一张牌放到你的[gold]抽牌堆[\/gold]的顶端。",
+        "text_default_chs": "消耗,抽2张牌。\n将手牌中的一张牌放到你的抽牌堆的顶端。",
+        "text_upgraded_chs": "抽2张牌。\n将手牌中的一张牌放到你的抽牌堆的顶端。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nPut 1 card from your [gold]Hand[\/gold] on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Cards": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

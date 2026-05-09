@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Thunder",
+        "category": "Defect",
+        "name_chs": "雷霆",
+        "name_eng": "Thunder",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你[gold]激发闪电[\/gold]充能球时，对被命中的敌人造成{ThunderPower:diff()}点伤害。",
+        "text_default_chs": "每当你激发闪电充能球时，对被命中的敌人造成6点伤害。",
+        "text_upgraded_chs": "每当你激发闪电充能球时，对被命中的敌人造成8点伤害。",
+        "text_raw_eng": "Whenever you [gold]Evoke Lightning[\/gold], deal {ThunderPower:diff()} damage to each enemy hit.",
+        "variables": {
+            "ThunderPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "ThunderPower": 2
+            }
+        }
+    }
+}

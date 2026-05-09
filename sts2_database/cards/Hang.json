@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hang",
+        "category": "Necrobinder",
+        "name_chs": "吊杀",
+        "name_eng": "Hang",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n让所有“吊杀”牌对这名敌人造成的伤害翻倍。",
+        "text_default_chs": "造成10点伤害。\n让所有“吊杀”牌对这名敌人造成的伤害翻倍。",
+        "text_upgraded_chs": "造成16点伤害。\n让所有“吊杀”牌对这名敌人造成的伤害翻倍。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDouble the damage ALL Hang cards deal to this enemy.",
+        "variables": {
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Friendship",
+        "category": "Necrobinder",
+        "name_chs": "友谊",
+        "name_eng": "Friendship",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "失去{StrengthPower:inverseDiff()}点[gold]力量[\/gold]。\n在每个回合开始时获得{Energy:energyIcons()}。",
+        "text_default_chs": "失去2点力量。\n在每个回合开始时获得1能量。",
+        "text_upgraded_chs": "失去1点力量。\n在每个回合开始时获得1能量。",
+        "text_raw_eng": "Lose {StrengthPower:inverseDiff()} [gold]Strength[\/gold].\nGain {Energy:energyIcons()} at the start of each turn.",
+        "variables": {
+            "StrengthPower": 2,
+            "Energy": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Strength": -1
+            }
+        }
+    }
+}

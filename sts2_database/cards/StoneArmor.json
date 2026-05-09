@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "StoneArmor",
+        "category": "Ironclad",
+        "name_chs": "岩石铠甲",
+        "name_eng": "Stone Armor",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{PlatingPower:diff()}层[gold]覆甲[\/gold]。",
+        "text_default_chs": "获得4层覆甲。",
+        "text_upgraded_chs": "获得6层覆甲。",
+        "text_raw_eng": "Gain {PlatingPower:diff()} [gold]Plating[\/gold].",
+        "variables": {
+            "PlatingPower": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "PlatingPower": 2
+            }
+        }
+    }
+}

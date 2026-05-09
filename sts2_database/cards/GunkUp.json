@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "GunkUp",
+        "category": "Defect",
+        "name_chs": "污秽攻击",
+        "name_eng": "Gunk Up",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害{Repeat:diff()}次。\n在你的[gold]弃牌堆[\/gold]中加入一张[gold]黏液[\/gold]。",
+        "text_default_chs": "造成4点伤害3次。\n在你的弃牌堆中加入一张黏液。",
+        "text_upgraded_chs": "造成6点伤害3次。\n在你的弃牌堆中加入一张黏液。",
+        "text_raw_eng": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.\nAdd a [gold]Slimed[\/gold] into your [gold]Discard Pile[\/gold].",
+        "variables": {
+            "Damage": "4m",
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

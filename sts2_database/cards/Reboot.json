@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Reboot",
+        "category": "Defect",
+        "name_chs": "重启",
+        "name_eng": "Reboot",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你的所有未消耗的卡牌重新洗牌放入[gold]抽牌堆[\/gold]。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,将你的所有未消耗的卡牌重新洗牌放入抽牌堆。\n抽4张牌。",
+        "text_upgraded_chs": "消耗,将你的所有未消耗的卡牌重新洗牌放入抽牌堆。\n抽8张牌。",
+        "text_raw_eng": "Shuffle ALL your cards into your [gold]Draw Pile[\/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 4,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Protector",
+        "category": "Necrobinder",
+        "name_chs": "守护者",
+        "name_eng": "Protector",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]奥斯提[\/gold]造成{CalculatedDamage:diff()}点伤害。\n额外造成等量于[gold]奥斯提[\/gold][gold]最大生命值[\/gold]的伤害。",
+        "text_default_chs": "奥斯提造成10点伤害。\n额外造成等量于奥斯提最大生命值的伤害。",
+        "text_upgraded_chs": "奥斯提造成20点伤害。\n额外造成等量于奥斯提最大生命值的伤害。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {CalculatedDamage:diff()} damage.\nDeals additional damage equal to [gold]Osty's[\/gold] [gold]Max HP[\/gold].",
+        "variables": {
+            "CalculationBase": "10m",
+            "ExtraDamage": "1m"
+        },
+        "upgrades": {
+            "costChange": -1,
+            "varChange": {
+                "CalculationBase": 5
+            }
+        }
+    }
+}

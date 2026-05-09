@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Ricochet",
+        "category": "Silent",
+        "name_chs": "连续反弹",
+        "name_eng": "Ricochet",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "随机对敌人造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "奇巧,随机对敌人造成3点伤害4次。",
+        "text_upgraded_chs": "奇巧,随机对敌人造成3点伤害6次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to a random enemy {Repeat:diff()} times.",
+        "variables": {
+            "Damage": "3m",
+            "Repeat": 4,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "LightningRod",
+        "category": "Defect",
+        "name_chs": "引雷针",
+        "name_eng": "Lightning Rod",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在下{LightningRodPower:diff()}个回合开始时,[gold]生成[\/gold]1个[gold]闪电[\/gold]充能球。",
+        "text_default_chs": "获得4点格挡。\n在下2个回合开始时,生成1个闪电充能球。",
+        "text_upgraded_chs": "获得10点格挡。\n在下2个回合开始时,生成1个闪电充能球。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAt the start of the next {LightningRodPower:plural:turn|{:diff()} turns}, [gold]Channel[\/gold] 1 [gold]Lightning[\/gold].",
+        "variables": {
+            "LightningRodPower": 2,
+            "Block": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

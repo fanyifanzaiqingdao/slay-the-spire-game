@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Defy",
+        "category": "Necrobinder",
+        "name_chs": "违逆",
+        "name_eng": "Defy",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n给予{WeakPower:diff()}层[gold]虚弱[\/gold]。",
+        "text_default_chs": "虚无,获得6点格挡。\n给予1层虚弱。",
+        "text_upgraded_chs": "虚无,获得8点格挡。\n给予2层虚弱。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nApply {WeakPower:diff()} [gold]Weak[\/gold].",
+        "variables": {
+            "WeakPower": 1,
+            "Block": 6,
+            "keywords": [
+                "Ethereal"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 1,
+                "Weak": 1
+            }
+        }
+    }
+}

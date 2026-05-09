@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FightMe",
+        "category": "Ironclad",
+        "name_chs": "与我一战！",
+        "name_eng": "Fight Me!",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害两次。\n获得{StrengthPower:diff()}点[gold]力量[\/gold]。\n该敌人获得{EnemyStrength:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "造成5点伤害两次。\n获得2点力量。\n该敌人获得1点力量。",
+        "text_upgraded_chs": "造成7点伤害两次。\n获得3点力量。\n该敌人获得1点力量。",
+        "text_raw_eng": "Deal {Damage:diff()} damage twice.\nGain {StrengthPower:diff()} [gold]Strength[\/gold].\nThe enemy gains {EnemyStrength:diff()} [gold]Strength[\/gold].",
+        "variables": {
+            "StrengthPower": 2,
+            "EnemyStrength": 1,
+            "Damage": "5m",
+            "Repeat": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Strength": 1
+            }
+        }
+    }
+}

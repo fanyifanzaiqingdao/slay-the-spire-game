@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Enthralled",
+        "category": "Curse",
+        "name_chs": "执迷",
+        "name_eng": "Enthralled",
+        "cost": 2,
+        "rarity": "Curse",
+        "type": "Curse",
+        "targetType": "None",
+        "text_raw_chs": "如果这张牌在你的[gold]手牌[\/gold]中，你必须优先打出这张牌。",
+        "text_default_chs": "永恒,如果这张牌在你的手牌中，你必须优先打出这张牌。",
+        "text_upgraded_chs": "永恒,如果这张牌在你的手牌中，你必须优先打出这张牌。",
+        "text_raw_eng": "If this is in your [gold]Hand[\/gold], it must be played before other cards.",
+        "variables": {
+            "keywords": [
+                "Eternal"
+            ]
+        },
+        "upgrades": []
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bombardment",
+        "category": "Regent",
+        "name_chs": "轰击",
+        "name_eng": "Bombardment",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n在你的回合开始时，从[gold]消耗牌堆[\/gold]打出这张牌。",
+        "text_default_chs": "消耗,造成18点伤害。\n在你的回合开始时，从消耗牌堆打出这张牌。",
+        "text_upgraded_chs": "消耗,造成30点伤害。\n在你的回合开始时，从消耗牌堆打出这张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAt the start of your turn, plays from the [gold]Exhaust Pile[\/gold].",
+        "variables": {
+            "Damage": "18m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Disintegration",
+        "category": "Token",
+        "name_chs": "瓦解",
+        "name_eng": "Disintegration",
+        "cost": -1,
+        "rarity": "Status",
+        "type": "Status",
+        "targetType": "None",
+        "text_raw_chs": "在你的回合结束时，受到{DisintegrationPower:diff()}点伤害。",
+        "text_default_chs": "在你的回合结束时，受到6点伤害。",
+        "text_upgraded_chs": "在你的回合结束时，受到6点伤害。",
+        "text_raw_eng": "At the end of your turn, take {DisintegrationPower:diff()} damage.",
+        "variables": {
+            "DisintegrationPower": 6
+        },
+        "upgrades": []
+    }
+}

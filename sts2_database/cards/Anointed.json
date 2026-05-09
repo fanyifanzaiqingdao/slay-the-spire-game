@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Anointed",
+        "category": "Colorless",
+        "name_chs": "天选",
+        "name_eng": "Anointed",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将你[gold]抽牌堆[\/gold]中的所有[gold]稀有[\/gold]牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,将你抽牌堆中的所有稀有牌放入你的手牌。",
+        "text_upgraded_chs": "消耗,保留,将你抽牌堆中的所有稀有牌放入你的手牌。",
+        "text_raw_eng": "Put every [gold]Rare[\/gold] card from your [gold]Draw Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "addKeywords": [
+                "Retain"
+            ]
+        }
+    }
+}

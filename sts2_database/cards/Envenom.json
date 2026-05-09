@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Envenom",
+        "category": "Silent",
+        "name_chs": "涂毒",
+        "name_eng": "Envenom",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每有一次攻击造成未被格挡的伤害，就给予{EnvenomPower:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "每有一次攻击造成未被格挡的伤害，就给予1层中毒。",
+        "text_upgraded_chs": "每有一次攻击造成未被格挡的伤害，就给予2层中毒。",
+        "text_raw_eng": "Whenever an Attack deals unblocked damage, apply {EnvenomPower:diff()} [gold]Poison[\/gold].",
+        "variables": {
+            "EnvenomPower": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "EnvenomPower": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bodyguard",
+        "category": "Necrobinder",
+        "name_chs": "护卫",
+        "name_eng": "Bodyguard",
+        "cost": 1,
+        "rarity": "Basic",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。",
+        "text_default_chs": "召唤5。",
+        "text_upgraded_chs": "召唤9。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.",
+        "variables": {
+            "Summon": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 2
+            }
+        }
+    }
+}

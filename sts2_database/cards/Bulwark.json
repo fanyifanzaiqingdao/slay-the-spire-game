@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bulwark",
+        "category": "Regent",
+        "name_chs": "铸墙",
+        "name_eng": "Bulwark",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n[gold]铸造[\/gold]{Forge:diff()}。",
+        "text_default_chs": "获得13点格挡。\n铸造10。",
+        "text_upgraded_chs": "获得19点格挡。\n铸造16。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\n[gold]Forge[\/gold] {Forge:diff()}.",
+        "variables": {
+            "Block": 13,
+            "Forge": 10
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3,
+                "Forge": 3
+            }
+        }
+    }
+}

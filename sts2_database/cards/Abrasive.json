@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Abrasive",
+        "category": "Silent",
+        "name_chs": "磨蚀",
+        "name_eng": "Abrasive",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "获得{DexterityPower:diff()}点[gold]敏捷[\/gold]。\n获得{ThornsPower:diff()}点[gold]荆棘[\/gold]。",
+        "text_default_chs": "奇巧,获得1点敏捷。\n获得4点荆棘。",
+        "text_upgraded_chs": "奇巧,获得1点敏捷。\n获得6点荆棘。",
+        "text_raw_eng": "Gain {DexterityPower:diff()} [gold]Dexterity[\/gold].\nGain {ThornsPower:diff()} [gold]Thorns[\/gold].",
+        "variables": {
+            "ThornsPower": 4,
+            "DexterityPower": 1,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "ThornsPower": 2
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PaleBlueDot",
+        "category": "Regent",
+        "name_chs": "暗淡蓝点",
+        "name_eng": "Pale Blue Dot",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "如果你在一回合内打出了大于等于{CardPlay}张牌，在下个回合开始时抽{Cards:diff()}张牌。",
+        "text_default_chs": "如果你在一回合内打出了大于等于5张牌，在下个回合开始时抽1张牌。",
+        "text_upgraded_chs": "如果你在一回合内打出了大于等于5张牌，在下个回合开始时抽3张牌。",
+        "text_raw_eng": "If you play {CardPlay} or more cards in a turn, draw {Cards:diff()} {Cards:plural:card|cards} at the start of your next turn.",
+        "variables": {
+            "CardPlay": 5,
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FiendFire",
+        "category": "Ironclad",
+        "name_chs": "恶魔之焰",
+        "name_eng": "Fiend Fire",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "[gold]消耗[\/gold]所有[gold]手牌[\/gold]。\n每张被[gold]消耗[\/gold]的牌造成{Damage:diff()}点伤害。",
+        "text_default_chs": "消耗,消耗所有手牌。\n每张被消耗的牌造成7点伤害。",
+        "text_upgraded_chs": "消耗,消耗所有手牌。\n每张被消耗的牌造成13点伤害。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] your [gold]Hand[\/gold].\nDeal {Damage:diff()} damage for each card [gold]Exhausted[\/gold].",
+        "variables": {
+            "Damage": "7m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

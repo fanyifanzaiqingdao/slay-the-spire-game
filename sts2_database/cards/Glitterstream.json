@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Glitterstream",
+        "category": "Regent",
+        "name_chs": "流光溢彩",
+        "name_eng": "Glitterstream",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在下一回合获得{BlockNextTurn:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "获得11点格挡。\n在下一回合获得4点格挡。",
+        "text_upgraded_chs": "获得15点格挡。\n在下一回合获得8点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nNext turn, gain {BlockNextTurn:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "BlockNextTurn": 4,
+            "Block": 11
+        },
+        "upgrades": {
+            "varChange": {
+                "BlockNextTurn": 2,
+                "Block": 2
+            }
+        }
+    }
+}

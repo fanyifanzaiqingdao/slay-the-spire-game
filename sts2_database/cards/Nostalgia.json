@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Nostalgia",
+        "category": "Colorless",
+        "name_chs": "怀旧",
+        "name_eng": "Nostalgia",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "将你每回合打出第一张攻击或技能牌，置于你的[gold]抽牌堆[\/gold]顶端。",
+        "text_default_chs": "将你每回合打出第一张攻击或技能牌，置于你的抽牌堆顶端。",
+        "text_upgraded_chs": "将你每回合打出第一张攻击或技能牌，置于你的抽牌堆顶端。",
+        "text_raw_eng": "The first Attack or Skill you play each turn is placed on top of your [gold]Draw Pile[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "RollingBoulder",
+        "category": "Colorless",
+        "name_chs": "滚石",
+        "name_eng": "Rolling Boulder",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，对所有敌人造成{RollingBoulderPower:diff()}点伤害，然后将该伤害增加{IncrementAmount:diff()}点。",
+        "text_default_chs": "在你的回合开始时，对所有敌人造成5点伤害，然后将该伤害增加5点。",
+        "text_upgraded_chs": "在你的回合开始时，对所有敌人造成10点伤害，然后将该伤害增加5点。",
+        "text_raw_eng": "At the start of your turn, deal {RollingBoulderPower:diff()} damage to ALL enemies and increase this damage by {IncrementAmount:diff()}.",
+        "variables": {
+            "RollingBoulderPower": 5,
+            "IncrementAmount": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "RollingBoulderPower": 5
+            }
+        }
+    }
+}

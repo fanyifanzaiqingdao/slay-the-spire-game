@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SolarStrike",
+        "category": "Regent",
+        "name_chs": "太阳打击",
+        "name_eng": "Solar Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n获得{Stars:starIcons()}。",
+        "text_default_chs": "造成8点伤害。\n获得1☆。",
+        "text_upgraded_chs": "造成10点伤害。\n获得3☆。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nGain {Stars:starIcons()}.",
+        "variables": {
+            "Damage": "8m",
+            "Stars": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1,
+                "Stars": 1
+            }
+        }
+    }
+}

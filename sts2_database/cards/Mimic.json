@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Mimic",
+        "category": "Colorless",
+        "name_chs": "拟态",
+        "name_eng": "Mimic",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyAlly",
+        "text_raw_chs": "获得等同于另一位玩家[gold]格挡[\/gold]值的[gold]格挡[\/gold]。",
+        "text_default_chs": "消耗,获得等同于另一位玩家格挡值的格挡。",
+        "text_upgraded_chs": "获得等同于另一位玩家格挡值的格挡。",
+        "text_raw_eng": "Gain [gold]Block[\/gold] equal to the [gold]Block[\/gold] on another player.",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CosmicIndifference",
+        "category": "Regent",
+        "name_chs": "宇宙冷漠",
+        "name_eng": "Cosmic Indifference",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n将[gold]弃牌堆[\/gold]中的一张牌放到你的[gold]抽牌堆[\/gold]的顶部。",
+        "text_default_chs": "获得6点格挡。\n将弃牌堆中的一张牌放到你的抽牌堆的顶部。",
+        "text_upgraded_chs": "获得12点格挡。\n将弃牌堆中的一张牌放到你的抽牌堆的顶部。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nPut a card from your [gold]Discard Pile[\/gold] on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Block": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

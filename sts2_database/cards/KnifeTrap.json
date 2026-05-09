@@ -1,0 +1,23 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "KnifeTrap",
+        "category": "Silent",
+        "name_chs": "刀刃陷阱",
+        "name_eng": "Knife Trap",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "将你[gold]消耗牌堆[\/gold]中的所有[gold]小刀[\/gold]{IfUpgraded:show:[gold]升级[\/gold]然后|}对一名敌人打出。{InCombat:\n（打出{CalculatedShivs:diff()}张[gold]小刀[\/gold]）|}",
+        "text_default_chs": "将你消耗牌堆中的所有小刀对一名敌人打出。",
+        "text_upgraded_chs": "将你消耗牌堆中的所有小刀升级然后对一名敌人打出。",
+        "text_raw_eng": "{IfUpgraded:show:[gold]Upgrade[\/gold] and play|Play} every [gold]Shiv[\/gold] in your [gold]Exhaust Pile[\/gold] on the enemy.{InCombat:\n(Plays {CalculatedShivs:diff()} [gold]{CalculatedShivs:plural:Shiv|Shivs}[\/gold])|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": []
+    }
+}

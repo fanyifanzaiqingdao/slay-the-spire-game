@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hailstorm",
+        "category": "Defect",
+        "name_chs": "冰雹风暴",
+        "name_eng": "Hailstorm",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合结束时，如果你有[gold]冰霜[\/gold]充能球，则对所有敌人造成{HailstormPower:diff()}点伤害。",
+        "text_default_chs": "在你的回合结束时，如果你有冰霜充能球，则对所有敌人造成6点伤害。",
+        "text_upgraded_chs": "在你的回合结束时，如果你有冰霜充能球，则对所有敌人造成8点伤害。",
+        "text_raw_eng": "At the end of your turn, if you have [gold]Frost[\/gold], deal {HailstormPower:diff()} damage to ALL enemies.",
+        "variables": {
+            "HailstormPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "HailstormPower": 2
+            }
+        }
+    }
+}

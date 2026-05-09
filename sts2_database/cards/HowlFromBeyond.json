@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HowlFromBeyond",
+        "category": "Ironclad",
+        "name_chs": "彼岸咆哮",
+        "name_eng": "Howl from Beyond",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害。\n在你的回合开始时，从[gold]消耗牌堆[\/gold]将此牌打出。",
+        "text_default_chs": "对所有敌人造成16点伤害。\n在你的回合开始时，从消耗牌堆将此牌打出。",
+        "text_upgraded_chs": "对所有敌人造成26点伤害。\n在你的回合开始时，从消耗牌堆将此牌打出。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies.\nAt the start of your turn, plays from the [gold]Exhaust Pile[\/gold].",
+        "variables": {
+            "Damage": "16m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Afterlife",
+        "category": "Necrobinder",
+        "name_chs": "来生",
+        "name_eng": "Afterlife",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。",
+        "text_default_chs": "消耗,召唤6。",
+        "text_upgraded_chs": "消耗,召唤12。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.",
+        "variables": {
+            "Summon": "6m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 3
+            }
+        }
+    }
+}

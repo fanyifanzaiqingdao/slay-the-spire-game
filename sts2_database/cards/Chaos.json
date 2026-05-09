@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Chaos",
+        "category": "Defect",
+        "name_chs": "混沌",
+        "name_eng": "Chaos",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]{Repeat:diff()}个随机充能球。",
+        "text_default_chs": "生成1个随机充能球。",
+        "text_upgraded_chs": "生成3个随机充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] {Repeat:diff()} random {Repeat:plural:Orb|Orbs}.",
+        "variables": {
+            "Repeat": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

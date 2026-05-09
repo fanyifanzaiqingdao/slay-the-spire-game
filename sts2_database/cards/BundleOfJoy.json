@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BundleOfJoy",
+        "category": "Regent",
+        "name_chs": "新生之喜",
+        "name_eng": "Bundle of Joy",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "将{Cards:diff()}张随机无色牌添加到你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,将3张随机无色牌添加到你的手牌。",
+        "text_upgraded_chs": "消耗,将5张随机无色牌添加到你的手牌。",
+        "text_raw_eng": "Add {Cards:diff()} random Colorless {Cards:plural:card|cards} into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

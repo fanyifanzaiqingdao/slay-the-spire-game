@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EnergySurge",
+        "category": "Defect",
+        "name_chs": "能量涌动",
+        "name_eng": "Energy Surge",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllAllies",
+        "text_raw_chs": "所有玩家获得{Energy:energyIcons()}。",
+        "text_default_chs": "消耗,所有玩家获得2能量。",
+        "text_upgraded_chs": "消耗,所有玩家获得4能量。",
+        "text_raw_eng": "ALL players gain {Energy:energyIcons()}.",
+        "variables": {
+            "Energy": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

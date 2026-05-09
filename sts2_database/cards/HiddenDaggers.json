@@ -1,0 +1,23 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HiddenDaggers",
+        "category": "Silent",
+        "name_chs": "隐秘匕首",
+        "name_eng": "Hidden Daggers",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "丢弃{Cards:diff()}张牌。\n将{Shivs:diff()}张[gold]{IfUpgraded:show:小刀+|小刀}[\/gold]加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "丢弃2张牌。\n将2张小刀加入你的手牌。",
+        "text_upgraded_chs": "丢弃2张牌。\n将2张小刀+加入你的手牌。",
+        "text_raw_eng": "Discard {Cards:diff()} {Cards:plural:card|cards}.\nAdd {Shivs:diff()} [gold]{Cards:plural:{IfUpgraded:show:Shiv+|Shiv}|{IfUpgraded:show:Shivs+|Shivs}}[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Shivs": 2,
+            "Cards": 2
+        },
+        "upgrades": []
+    }
+}

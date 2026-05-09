@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Oblivion",
+        "category": "Necrobinder",
+        "name_chs": "湮灭",
+        "name_eng": "Oblivion",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "你在本回合内每打出一张牌，就给予该敌人{DoomPower:diff()}层[gold]灾厄[\/gold]。",
+        "text_default_chs": "你在本回合内每打出一张牌，就给予该敌人3层灾厄。",
+        "text_upgraded_chs": "你在本回合内每打出一张牌，就给予该敌人4层灾厄。",
+        "text_raw_eng": "Whenever you play a card this turn, apply {DoomPower:diff()} [gold]Doom[\/gold] to the enemy.",
+        "variables": {
+            "DoomPower": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Doom": 1
+            }
+        }
+    }
+}

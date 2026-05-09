@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Whistle",
+        "category": "Event",
+        "name_chs": "吹哨",
+        "name_eng": "Whistle",
+        "cost": 3,
+        "rarity": "Ancient",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]眩晕[\/gold]该敌人",
+        "text_default_chs": "消耗,造成33点伤害。\n眩晕该敌人",
+        "text_upgraded_chs": "消耗,造成55点伤害。\n眩晕该敌人",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Stun[\/gold] the enemy.",
+        "variables": {
+            "Damage": "33m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 11
+            }
+        }
+    }
+}

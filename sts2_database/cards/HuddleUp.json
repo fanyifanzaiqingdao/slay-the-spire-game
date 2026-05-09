@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "HuddleUp",
+        "category": "Colorless",
+        "name_chs": "抱团",
+        "name_eng": "Huddle Up",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllAllies",
+        "text_raw_chs": "所有玩家抽{Cards:diff()}张牌。",
+        "text_default_chs": "所有玩家抽2张牌。",
+        "text_upgraded_chs": "所有玩家抽4张牌。",
+        "text_raw_eng": "ALL allies draw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SentryMode",
+        "category": "Necrobinder",
+        "name_chs": "哨卫模式",
+        "name_eng": "Sentry Mode",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "在你的回合开始时，将{SentryModePower:diff()}张[gold]扫荡凝视[\/gold]加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "在你的回合开始时，将1张扫荡凝视加入你的手牌。",
+        "text_upgraded_chs": "在你的回合开始时，将1张扫荡凝视加入你的手牌。",
+        "text_raw_eng": "At the start of your turn, add {SentryModePower:diff()} [gold]Sweeping Gaze[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "SentryModePower": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

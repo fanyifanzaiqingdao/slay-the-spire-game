@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Knockdown",
+        "category": "Colorless",
+        "name_chs": "击倒",
+        "name_eng": "Knockdown",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n该敌人在本回合受到的来自其他玩家的伤害{IfUpgraded:show:翻三倍|翻倍}。",
+        "text_default_chs": "造成10点伤害。\n该敌人在本回合受到的来自其他玩家的伤害翻倍。",
+        "text_upgraded_chs": "造成18点伤害。\n该敌人在本回合受到的来自其他玩家的伤害翻三倍。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nThe enemy takes {IfUpgraded:show:triple|double} damage from other players this turn.",
+        "variables": {
+            "KnockdownPower": 2,
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "KnockdownPower": 1,
+                "Damage": 4
+            }
+        }
+    }
+}

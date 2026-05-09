@@ -1,0 +1,31 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Offering",
+        "category": "Ironclad",
+        "name_chs": "祭品",
+        "name_eng": "Offering",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "失去{HpLoss:diff()}点生命。\n获得{Energy:energyIcons()}。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "消耗,失去6点生命。\n获得2能量。\n抽3张牌。",
+        "text_upgraded_chs": "消耗,失去6点生命。\n获得2能量。\n抽7张牌。",
+        "text_raw_eng": "Lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.\nDraw {Cards:diff()} cards.",
+        "variables": {
+            "Cards": 3,
+            "HpLoss": "6m",
+            "Energy": 2,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 2
+            }
+        }
+    }
+}

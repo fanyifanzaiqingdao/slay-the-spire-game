@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Synchronize",
+        "category": "Defect",
+        "name_chs": "同步",
+        "name_eng": "Synchronize",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "你每有一种不同的充能球，就在本回合获得{CalculationExtra:diff()}点[gold]集中[\/gold]。{InCombat:\n（获得{CalculatedFocus:diff()}点[gold]集中[\/gold]）|}",
+        "text_default_chs": "消耗,你每有一种不同的充能球，就在本回合获得2点集中。",
+        "text_upgraded_chs": "你每有一种不同的充能球，就在本回合获得2点集中。",
+        "text_raw_eng": "Gain {CalculationExtra:diff()} [gold]Focus[\/gold] this turn for each unique Orb you have.{InCombat:\n(Gain {CalculatedFocus:diff()} [gold]Focus[\/gold])|}",
+        "variables": {
+            "CalculationBase": "0m",
+            "CalculationExtra": "2m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

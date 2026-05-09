@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Fusion",
+        "category": "Defect",
+        "name_chs": "聚变",
+        "name_eng": "Fusion",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]生成[\/gold]1个[gold]等离子[\/gold]充能球。",
+        "text_default_chs": "生成1个等离子充能球。",
+        "text_upgraded_chs": "生成1个等离子充能球。",
+        "text_raw_eng": "[gold]Channel[\/gold] 1 [gold]Plasma[\/gold].",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

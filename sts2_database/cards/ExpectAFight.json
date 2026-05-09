@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ExpectAFight",
+        "category": "Ironclad",
+        "name_chs": "跃跃欲试",
+        "name_eng": "Expect a Fight",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "你的[gold]手牌[\/gold]中每有一张攻击牌，就会获得{energyPrefix:energyIcons(1)}。{InCombat:\n（获得{CalculatedEnergy:energyIcons()}。）|}",
+        "text_default_chs": "你的手牌中每有一张攻击牌，就会获得能量。",
+        "text_upgraded_chs": "你的手牌中每有一张攻击牌，就会获得能量。",
+        "text_raw_eng": "Gain {energyPrefix:energyIcons(1)} for each Attack in your [gold]Hand[\/gold].{InCombat:\n(Gain {CalculatedEnergy:energyIcons()}.)|}",
+        "variables": {
+            "Energy": 0,
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

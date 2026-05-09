@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "FlakCannon",
+        "category": "Defect",
+        "name_chs": "散射炮",
+        "name_eng": "Flak Cannon",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "RandomEnemy",
+        "text_raw_chs": "[gold]消耗[\/gold]你所有的[gold]状态[\/gold]牌。\n每有一张被[gold]消耗[\/gold]的牌，就随机对敌人造成{Damage:diff()}点伤害。{InCombat:\n（攻击{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "消耗你所有的状态牌。\n每有一张被消耗的牌，就随机对敌人造成8点伤害。",
+        "text_upgraded_chs": "消耗你所有的状态牌。\n每有一张被消耗的牌，就随机对敌人造成14点伤害。",
+        "text_raw_eng": "[gold]Exhaust[\/gold] ALL your [gold]Status[\/gold] cards.\nDeal {Damage:diff()} damage to a random enemy for each card [gold]Exhausted[\/gold].{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "8m",
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

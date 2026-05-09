@@ -1,0 +1,22 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Hellraiser",
+        "category": "Ironclad",
+        "name_chs": "地狱狂徒",
+        "name_eng": "Hellraiser",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你抽到名字中有“打击”的牌时，对一名随机敌人打出这张牌。",
+        "text_default_chs": "每当你抽到名字中有“打击”的牌时，对一名随机敌人打出这张牌。",
+        "text_upgraded_chs": "每当你抽到名字中有“打击”的牌时，对一名随机敌人打出这张牌。",
+        "text_raw_eng": "Whenever you draw a card containing “Strike”, it is played against a random enemy.",
+        "variables": [],
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "NoEscape",
+        "category": "Necrobinder",
+        "name_chs": "无处可逃",
+        "name_eng": "No Escape",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{CalculationBase:diff()}层[gold]灾厄[\/gold]，敌人身上每有{DoomThreshold:diff()}层[gold]灾厄[\/gold]，则额外给予这名敌人{CalculationExtra:diff()}层[gold]灾厄[\/gold]。{IsTargeting:\n（给予{CalculatedDoom:diff()}层[gold]灾厄[\/gold]）|}",
+        "text_default_chs": "给予10层灾厄，敌人身上每有10层灾厄，则额外给予这名敌人5层灾厄。",
+        "text_upgraded_chs": "给予20层灾厄，敌人身上每有10层灾厄，则额外给予这名敌人5层灾厄。",
+        "text_raw_eng": "Apply {CalculationBase:diff()} [gold]Doom[\/gold], plus an additional {CalculationExtra:diff()} [gold]Doom[\/gold] for every {DoomThreshold:diff()} [gold]Doom[\/gold] already on this enemy.{IsTargeting:\n(Apply {CalculatedDoom:diff()} [gold]Doom[\/gold])|}",
+        "variables": {
+            "DoomThreshold": 10,
+            "CalculationBase": "10m",
+            "CalculationExtra": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 5
+            }
+        }
+    }
+}

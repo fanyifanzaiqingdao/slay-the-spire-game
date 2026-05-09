@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Melancholy",
+        "category": "Necrobinder",
+        "name_chs": "忧郁",
+        "name_eng": "Melancholy",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n每当有任何生物死亡时，这张牌的耗能减少{Energy:energyIcons()}。",
+        "text_default_chs": "获得13点格挡。\n每当有任何生物死亡时，这张牌的耗能减少1能量。",
+        "text_upgraded_chs": "获得21点格挡。\n每当有任何生物死亡时，这张牌的耗能减少1能量。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nReduce this card's cost by {Energy:energyIcons()} whenever ANYONE dies.",
+        "variables": {
+            "Block": 13,
+            "Energy": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 4
+            }
+        }
+    }
+}

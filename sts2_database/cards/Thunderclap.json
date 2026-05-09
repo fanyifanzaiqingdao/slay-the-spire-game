@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Thunderclap",
+        "category": "Ironclad",
+        "name_chs": "闪电霹雳",
+        "name_eng": "Thunderclap",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害，给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "对所有敌人造成4点伤害，给予1层易伤。",
+        "text_upgraded_chs": "对所有敌人造成10点伤害，给予1层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage and apply {VulnerablePower:diff()} [gold]Vulnerable[\/gold] to ALL enemies.",
+        "variables": {
+            "VulnerablePower": 1,
+            "Damage": "4m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

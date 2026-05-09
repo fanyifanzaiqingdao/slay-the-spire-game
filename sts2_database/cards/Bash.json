@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Bash",
+        "category": "Ironclad",
+        "name_chs": "痛击",
+        "name_eng": "Bash",
+        "cost": 2,
+        "rarity": "Basic",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "造成8点伤害。\n给予2层易伤。",
+        "text_upgraded_chs": "造成12点伤害。\n给予3层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "VulnerablePower": 2,
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 2,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

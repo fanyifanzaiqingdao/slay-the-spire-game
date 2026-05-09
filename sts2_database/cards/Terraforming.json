@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Terraforming",
+        "category": "Regent",
+        "name_chs": "地形改造",
+        "name_eng": "Terraforming",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{VigorPower:diff()}点[gold]活力[\/gold]。",
+        "text_default_chs": "获得6点活力。",
+        "text_upgraded_chs": "获得8点活力。",
+        "text_raw_eng": "Gain {VigorPower:diff()} [gold]Vigor[\/gold].",
+        "variables": {
+            "VigorPower": 6
+        },
+        "upgrades": {
+            "varChange": {
+                "VigorPower": 2
+            }
+        }
+    }
+}

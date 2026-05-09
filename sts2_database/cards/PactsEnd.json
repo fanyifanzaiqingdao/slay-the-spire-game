@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PactsEnd",
+        "category": "Ironclad",
+        "name_chs": "契约终结",
+        "name_eng": "Pact's End",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "只有在你的[gold]消耗牌堆[\/gold]拥有大于等于{Cards:diff()}张牌的时候才能被打出。\n对所有敌人造成{Damage:diff()}点伤害。",
+        "text_default_chs": "只有在你的消耗牌堆拥有大于等于3张牌的时候才能被打出。\n对所有敌人造成17点伤害。",
+        "text_upgraded_chs": "只有在你的消耗牌堆拥有大于等于3张牌的时候才能被打出。\n对所有敌人造成29点伤害。",
+        "text_raw_eng": "Can only be played if you have {Cards:diff()} or more {Cards:plural:card|cards} in your [gold]Exhaust Pile[\/gold].\nDeal {Damage:diff()} damage to ALL enemies.",
+        "variables": {
+            "Cards": 3,
+            "Damage": "17m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 6
+            }
+        }
+    }
+}

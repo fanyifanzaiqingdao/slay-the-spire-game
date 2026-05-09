@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "NecroMastery",
+        "category": "Necrobinder",
+        "name_chs": "亡灵精通",
+        "name_eng": "Necro Mastery",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]召唤[\/gold]{Summon:diff()}。\n每当[gold]奥斯提[\/gold]失去生命值时，\n所有敌人失去等量生命值。",
+        "text_default_chs": "召唤5。\n每当奥斯提失去生命值时，\n所有敌人失去等量生命值。",
+        "text_upgraded_chs": "召唤11。\n每当奥斯提失去生命值时，\n所有敌人失去等量生命值。",
+        "text_raw_eng": "[gold]Summon[\/gold] {Summon:diff()}.\nWhenever [gold]Osty[\/gold] loses HP,\nALL enemies lose that much HP as well.",
+        "variables": {
+            "Summon": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Summon": 3
+            }
+        }
+    }
+}

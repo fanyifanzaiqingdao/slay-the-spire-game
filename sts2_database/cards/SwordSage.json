@@ -1,0 +1,24 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SwordSage",
+        "category": "Regent",
+        "name_chs": "剑圣",
+        "name_eng": "Sword Sage",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]君王之剑[\/gold]的耗能加1。[gold]君王之剑[\/gold]现在会额外命中一次。",
+        "text_default_chs": "君王之剑的耗能加1。君王之剑现在会额外命中一次。",
+        "text_upgraded_chs": "君王之剑的耗能加1。君王之剑现在会额外命中一次。",
+        "text_raw_eng": "Increase the cost of [gold]Sovereign Blade[\/gold] by 1. [gold]Sovereign Blade[\/gold] now hits an additional time.",
+        "variables": {
+            "SwordSagePower": 1
+        },
+        "upgrades": {
+            "costChange": -1
+        }
+    }
+}

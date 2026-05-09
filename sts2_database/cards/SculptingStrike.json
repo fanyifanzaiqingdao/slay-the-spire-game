@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SculptingStrike",
+        "category": "Necrobinder",
+        "name_chs": "雕琢打击",
+        "name_eng": "Sculpting Strike",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将[gold]虚无[\/gold]添加至一张[gold]手牌[\/gold]。",
+        "text_default_chs": "造成8点伤害。\n将虚无添加至一张手牌。",
+        "text_upgraded_chs": "造成14点伤害。\n将虚无添加至一张手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nAdd [gold]Ethereal[\/gold] to a card in your [gold]Hand[\/gold].",
+        "variables": {
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

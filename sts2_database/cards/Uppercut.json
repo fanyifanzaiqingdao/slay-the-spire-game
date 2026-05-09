@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Uppercut",
+        "category": "Ironclad",
+        "name_chs": "上勾拳",
+        "name_eng": "Uppercut",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n给予{Power:diff()}层[gold]虚弱[\/gold]。\n给予{Power:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "造成13点伤害。\n给予1层虚弱。\n给予1层易伤。",
+        "text_upgraded_chs": "造成13点伤害。\n给予2层虚弱。\n给予2层易伤。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nApply {Power:diff()} [gold]Weak[\/gold].\nApply {Power:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "Power": 1,
+            "Damage": "13m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Power": 1
+            }
+        }
+    }
+}

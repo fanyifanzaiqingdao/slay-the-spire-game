@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "SerpentForm",
+        "category": "Silent",
+        "name_chs": "群蛇形态",
+        "name_eng": "Serpent Form",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "你每打出一张牌，就对随机一名敌人造成{SerpentFormPower:diff()}点伤害。",
+        "text_default_chs": "你每打出一张牌，就对随机一名敌人造成4点伤害。",
+        "text_upgraded_chs": "你每打出一张牌，就对随机一名敌人造成5点伤害。",
+        "text_raw_eng": "Whenever you play a card, deal {SerpentFormPower:diff()} damage to a random enemy.",
+        "variables": {
+            "SerpentFormPower": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "SerpentFormPower": 1
+            }
+        }
+    }
+}

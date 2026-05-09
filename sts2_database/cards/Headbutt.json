@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Headbutt",
+        "category": "Ironclad",
+        "name_chs": "头槌",
+        "name_eng": "Headbutt",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将你[gold]弃牌堆[\/gold]中的一张牌放到[gold]抽牌堆[\/gold]顶部。",
+        "text_default_chs": "造成9点伤害。\n将你弃牌堆中的一张牌放到抽牌堆顶部。",
+        "text_upgraded_chs": "造成15点伤害。\n将你弃牌堆中的一张牌放到抽牌堆顶部。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPut a card from your [gold]Discard Pile[\/gold] on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "Damage": "9m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3
+            }
+        }
+    }
+}

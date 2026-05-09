@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Finesse",
+        "category": "Colorless",
+        "name_chs": "妙计",
+        "name_eng": "Finesse",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n抽1张牌。",
+        "text_default_chs": "获得4点格挡。\n抽1张牌。",
+        "text_upgraded_chs": "获得10点格挡。\n抽1张牌。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nDraw 1 card.",
+        "variables": {
+            "Cards": 1,
+            "Block": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

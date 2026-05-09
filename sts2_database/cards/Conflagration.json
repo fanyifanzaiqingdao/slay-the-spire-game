@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Conflagration",
+        "category": "Ironclad",
+        "name_chs": "焚烧",
+        "name_eng": "Conflagration",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{CalculatedDamage:diff()}点伤害。\n你在本回合中每打出过一张其他攻击牌，这张牌的伤害就提升{ExtraDamage:diff()}点。",
+        "text_default_chs": "对所有敌人造成8点伤害。\n你在本回合中每打出过一张其他攻击牌，这张牌的伤害就提升2点。",
+        "text_upgraded_chs": "对所有敌人造成10点伤害。\n你在本回合中每打出过一张其他攻击牌，这张牌的伤害就提升4点。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage to ALL enemies.\nDeals {ExtraDamage:diff()} additional damage for each other Attack you've played this turn.",
+        "variables": {
+            "CalculationBase": "8m",
+            "ExtraDamage": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "CalculationBase": 1,
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

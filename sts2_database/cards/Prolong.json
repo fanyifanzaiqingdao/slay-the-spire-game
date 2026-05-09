@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Prolong",
+        "category": "Colorless",
+        "name_chs": "延伸",
+        "name_eng": "Prolong",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在下个回合获得等量于你当前[gold]格挡[\/gold]值的[gold]格挡[\/gold]。",
+        "text_default_chs": "消耗,在下个回合获得等量于你当前格挡值的格挡。",
+        "text_upgraded_chs": "在下个回合获得等量于你当前格挡值的格挡。",
+        "text_raw_eng": "Next turn, gain [gold]Block[\/gold] equal to your current [gold]Block[\/gold].",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

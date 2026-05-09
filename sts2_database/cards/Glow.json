@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Glow",
+        "category": "Regent",
+        "name_chs": "辉光",
+        "name_eng": "Glow",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Stars:starIcons()}。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "获得1☆。\n抽2张牌。",
+        "text_upgraded_chs": "获得3☆。\n抽2张牌。",
+        "text_raw_eng": "Gain {Stars:starIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 2,
+            "Stars": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Stars": 1
+            }
+        }
+    }
+}

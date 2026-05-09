@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "EscapePlan",
+        "category": "Silent",
+        "name_chs": "逃脱计划",
+        "name_eng": "Escape Plan",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽1张牌。\n如果抽到的是技能牌，则获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "抽1张牌。\n如果抽到的是技能牌，则获得3点格挡。",
+        "text_upgraded_chs": "抽1张牌。\n如果抽到的是技能牌，则获得7点格挡。",
+        "text_raw_eng": "Draw 1 card.\nIf you draw a Skill, gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 2
+            }
+        }
+    }
+}

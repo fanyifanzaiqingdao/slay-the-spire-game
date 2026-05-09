@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BlackHole",
+        "category": "Regent",
+        "name_chs": "黑洞",
+        "name_eng": "Black Hole",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你使用或获得{singleStarIcon}时, 对所有敌人造成{BlackHolePower:diff()}点伤害。",
+        "text_default_chs": "每当你使用或获得☆时,对所有敌人造成3点伤害。",
+        "text_upgraded_chs": "每当你使用或获得☆时,对所有敌人造成4点伤害。",
+        "text_raw_eng": "Whenever you spend or gain {singleStarIcon}, deal {BlackHolePower:diff()} damage to ALL enemies.",
+        "variables": {
+            "BlackHolePower": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "BlackHolePower": 1
+            }
+        }
+    }
+}

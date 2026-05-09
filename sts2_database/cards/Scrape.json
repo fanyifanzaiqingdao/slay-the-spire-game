@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Scrape",
+        "category": "Defect",
+        "name_chs": "刮削",
+        "name_eng": "Scrape",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽{Cards:diff()}张牌。\n丢弃抽到的牌中耗能不为0{energyPrefix:energyIcons(1)}的牌。",
+        "text_default_chs": "造成7点伤害。\n抽4张牌。\n丢弃抽到的牌中耗能不为0能量的牌。",
+        "text_upgraded_chs": "造成13点伤害。\n抽6张牌。\n丢弃抽到的牌中耗能不为0能量的牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} cards.\nDiscard all cards drawn this way that do not cost 0 {energyPrefix:energyIcons(1)}.",
+        "variables": {
+            "Cards": 4,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3,
+                "Cards": 1
+            }
+        }
+    }
+}

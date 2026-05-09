@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "KinglyPunch",
+        "category": "Regent",
+        "name_chs": "王者之拳",
+        "name_eng": "Kingly Punch",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n每当你抽到这张牌时，在这场战斗中其伤害增加{Increase:diff()}。",
+        "text_default_chs": "造成8点伤害。\n每当你抽到这张牌时，在这场战斗中其伤害增加3。",
+        "text_upgraded_chs": "造成8点伤害。\n每当你抽到这张牌时，在这场战斗中其伤害增加7。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nWhenever you draw this card, increase its damage by {Increase:diff()} this combat.",
+        "variables": {
+            "Increase": 3,
+            "Damage": "8m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 2
+            }
+        }
+    }
+}

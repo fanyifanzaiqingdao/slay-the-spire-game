@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DrumOfBattle",
+        "category": "Ironclad",
+        "name_chs": "战鼓",
+        "name_eng": "Drum of Battle",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n在你的回合开始时，[gold]消耗[\/gold]你的[gold]抽牌堆[\/gold]顶部的牌。",
+        "text_default_chs": "抽2张牌。\n在你的回合开始时，消耗你的抽牌堆顶部的牌。",
+        "text_upgraded_chs": "抽4张牌。\n在你的回合开始时，消耗你的抽牌堆顶部的牌。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.\nAt the start of your turn, [gold]Exhaust[\/gold] the top card of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "DrumOfBattlePower": 1,
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

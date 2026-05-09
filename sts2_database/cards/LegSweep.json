@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "LegSweep",
+        "category": "Silent",
+        "name_chs": "扫腿",
+        "name_eng": "Leg Sweep",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{WeakPower:diff()}层[gold]虚弱[\/gold]。\n获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "给予2层虚弱。\n获得11点格挡。",
+        "text_upgraded_chs": "给予3层虚弱。\n获得17点格挡。",
+        "text_raw_eng": "Apply {WeakPower:diff()} [gold]Weak[\/gold].\nGain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "WeakPower": 2,
+            "Block": 11
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3,
+                "Weak": 1
+            }
+        }
+    }
+}

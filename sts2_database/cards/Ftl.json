@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Ftl",
+        "category": "Defect",
+        "name_chs": "超越光速",
+        "name_eng": "FTL",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n如果你在这回合打出的牌数小于{PlayMax:diff()}张，抽1张牌。",
+        "text_default_chs": "造成5点伤害。\n如果你在这回合打出的牌数小于3张，抽1张牌。",
+        "text_upgraded_chs": "造成7点伤害。\n如果你在这回合打出的牌数小于5张，抽1张牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nIf you have played fewer than {PlayMax:diff()} cards this turn, draw 1 card.",
+        "variables": {
+            "PlayMax": 3,
+            "Cards": 1,
+            "Damage": "5m"
+        },
+        "upgrades": {
+            "varChange": {
+                "PlayMax": 1,
+                "Damage": 1
+            }
+        }
+    }
+}

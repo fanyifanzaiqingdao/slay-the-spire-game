@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "KnowThyPlace",
+        "category": "Regent",
+        "name_chs": "何人僭越",
+        "name_eng": "Know Thy Place",
+        "cost": 0,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{WeakPower:diff()}层[gold]虚弱[\/gold]。\n给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "消耗,给予1层虚弱。\n给予1层易伤。",
+        "text_upgraded_chs": "给予1层虚弱。\n给予1层易伤。",
+        "text_raw_eng": "Apply {WeakPower:diff()} [gold]Weak[\/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].",
+        "variables": {
+            "WeakPower": 1,
+            "VulnerablePower": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

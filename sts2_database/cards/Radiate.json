@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Radiate",
+        "category": "Regent",
+        "name_chs": "辐射",
+        "name_eng": "Radiate",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "你在本回合每获得一点{Stars:starIcons()}，则此牌就所有敌人造成{Damage:diff()}点伤害一次。{InCombat:\n（命中{CalculatedHits:diff()}次）|}",
+        "text_default_chs": "你在本回合每获得一点1☆，则此牌就所有敌人造成3点伤害一次。",
+        "text_upgraded_chs": "你在本回合每获得一点1☆，则此牌就所有敌人造成5点伤害一次。",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies for each {Stars:starIcons()} gained this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+        "variables": {
+            "Damage": "3m",
+            "Stars": 1,
+            "CalculationBase": "0m",
+            "CalculationExtra": "1m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 1
+            }
+        }
+    }
+}

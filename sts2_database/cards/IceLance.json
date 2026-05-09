@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "IceLance",
+        "category": "Defect",
+        "name_chs": "冰之长枪",
+        "name_eng": "Ice Lance",
+        "cost": 3,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n[gold]生成[\/gold]{Repeat:diff()}个[gold]冰霜[\/gold]充能球。",
+        "text_default_chs": "造成19点伤害。\n生成3个冰霜充能球。",
+        "text_upgraded_chs": "造成29点伤害。\n生成3个冰霜充能球。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\n[gold]Channel[\/gold] {Repeat:diff()} [gold]Frost[\/gold].",
+        "variables": {
+            "Damage": "19m",
+            "Repeat": 3
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 5
+            }
+        }
+    }
+}

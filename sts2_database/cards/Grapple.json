@@ -1,0 +1,28 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Grapple",
+        "category": "Ironclad",
+        "name_chs": "擒拿",
+        "name_eng": "Grapple",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n当你在本回合获得[gold]格挡[\/gold]时，对该敌人造成{GrapplePower:diff()}点伤害。",
+        "text_default_chs": "造成7点伤害。\n当你在本回合获得格挡时，对该敌人造成5点伤害。",
+        "text_upgraded_chs": "造成11点伤害。\n当你在本回合获得格挡时，对该敌人造成7点伤害。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nWhenever you gain [gold]Block[\/gold] this turn, deal {GrapplePower:diff()} damage to the enemy.",
+        "variables": {
+            "GrapplePower": 5,
+            "Damage": "7m"
+        },
+        "upgrades": {
+            "varChange": {
+                "GrapplePower": 2,
+                "Damage": 2
+            }
+        }
+    }
+}

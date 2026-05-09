@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "PhotonCut",
+        "category": "Regent",
+        "name_chs": "光子切割",
+        "name_eng": "Photon Cut",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n抽{Cards:diff()}张牌。\n将[gold]手牌[\/gold]中的一张牌放到[gold]抽牌堆[\/gold]顶部。",
+        "text_default_chs": "造成10点伤害。\n抽1张牌。\n将手牌中的一张牌放到抽牌堆顶部。",
+        "text_upgraded_chs": "造成16点伤害。\n抽3张牌。\n将手牌中的一张牌放到抽牌堆顶部。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nPut 1 card from your [gold]Hand[\/gold] on top of your [gold]Draw Pile[\/gold].",
+        "variables": {
+            "PutBack": 1,
+            "Cards": 1,
+            "Damage": "10m"
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 3,
+                "Cards": 1
+            }
+        }
+    }
+}

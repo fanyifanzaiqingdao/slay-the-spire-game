@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DanseMacabre",
+        "category": "Necrobinder",
+        "name_chs": "死亡之舞",
+        "name_eng": "Danse Macabre",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "每当你打出一张耗能大于等于{Energy:energyIcons()}的牌时，获得{DanseMacabrePower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "每当你打出一张耗能大于等于2能量的牌时，获得3点格挡。",
+        "text_upgraded_chs": "每当你打出一张耗能大于等于2能量的牌时，获得4点格挡。",
+        "text_raw_eng": "Whenever you play a card that costs {Energy:energyIcons()} or more, gain {DanseMacabrePower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "DanseMacabrePower": 3,
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "DanseMacabrePower": 1
+            }
+        }
+    }
+}

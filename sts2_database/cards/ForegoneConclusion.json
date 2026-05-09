@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "ForegoneConclusion",
+        "category": "Regent",
+        "name_chs": "既定事项",
+        "name_eng": "Foregone Conclusion",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "在下个回合，从你的[gold]抽牌堆[\/gold]中选择{Cards:diff()}张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "在下个回合，从你的抽牌堆中选择2张牌放入你的手牌。",
+        "text_upgraded_chs": "在下个回合，从你的抽牌堆中选择4张牌放入你的手牌。",
+        "text_raw_eng": "Next turn, put {Cards:diff()} cards from your [gold]Draw Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

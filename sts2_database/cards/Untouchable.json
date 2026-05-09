@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Untouchable",
+        "category": "Silent",
+        "name_chs": "触不可及",
+        "name_eng": "Untouchable",
+        "cost": 2,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "奇巧,获得9点格挡。",
+        "text_upgraded_chs": "奇巧,获得15点格挡。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "Block": 9,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

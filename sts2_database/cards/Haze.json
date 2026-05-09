@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "Haze",
+        "category": "Silent",
+        "name_chs": "迷雾",
+        "name_eng": "Haze",
+        "cost": 3,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "给予所有敌人{PoisonPower:diff()}层[gold]中毒[\/gold]。",
+        "text_default_chs": "奇巧,给予所有敌人4层中毒。",
+        "text_upgraded_chs": "奇巧,给予所有敌人6层中毒。",
+        "text_raw_eng": "Apply {PoisonPower:diff()} [gold]Poison[\/gold] to ALL enemies.",
+        "variables": {
+            "PoisonPower": 4,
+            "keywords": [
+                "Sly"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Poison": 2
+            }
+        }
+    }
+}

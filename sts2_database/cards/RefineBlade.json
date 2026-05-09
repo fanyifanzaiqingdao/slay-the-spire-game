@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "RefineBlade",
+        "category": "Regent",
+        "name_chs": "淬炼刀刃",
+        "name_eng": "Refine Blade",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。\n在下个回合获得{Energy:energyIcons()}。",
+        "text_default_chs": "铸造6。\n在下个回合获得1能量。",
+        "text_upgraded_chs": "铸造14。\n在下个回合获得1能量。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.\nNext turn, gain {Energy:energyIcons()}.",
+        "variables": {
+            "Forge": 6,
+            "Energy": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 4
+            }
+        }
+    }
+}

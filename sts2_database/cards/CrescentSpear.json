@@ -1,0 +1,27 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "CrescentSpear",
+        "category": "Regent",
+        "name_chs": "新月长矛",
+        "name_eng": "Crescent Spear",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{CalculatedDamage:diff()}点伤害。\n你每有一张拥有{singleStarIcon}耗能的卡牌，这张牌就额外造成{ExtraDamage:diff()}点伤害。",
+        "text_default_chs": "造成6点伤害。\n你每有一张拥有☆耗能的卡牌，这张牌就额外造成2点伤害。",
+        "text_upgraded_chs": "造成6点伤害。\n你每有一张拥有☆耗能的卡牌，这张牌就额外造成4点伤害。",
+        "text_raw_eng": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your cards that have a {singleStarIcon} cost.",
+        "variables": {
+            "CalculationBase": "6m",
+            "ExtraDamage": "2m"
+        },
+        "upgrades": {
+            "varChange": {
+                "ExtraDamage": 1
+            }
+        }
+    }
+}

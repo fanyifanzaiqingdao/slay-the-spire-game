@@ -1,0 +1,26 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "IAmInvincible",
+        "category": "Regent",
+        "name_chs": "所向无敌",
+        "name_eng": "I Am Invincible",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Block:diff()}点[gold]格挡[\/gold]。\n在你的回合结束时，如果这张牌位于[gold]抽牌堆[\/gold]顶部，则将其打出。",
+        "text_default_chs": "获得9点格挡。\n在你的回合结束时，如果这张牌位于抽牌堆顶部，则将其打出。",
+        "text_upgraded_chs": "获得15点格挡。\n在你的回合结束时，如果这张牌位于抽牌堆顶部，则将其打出。",
+        "text_raw_eng": "Gain {Block:diff()} [gold]Block[\/gold].\nAt the end of your turn, if this is on top of your [gold]Draw Pile[\/gold], play it.",
+        "variables": {
+            "Block": 9
+        },
+        "upgrades": {
+            "varChange": {
+                "Block": 3
+            }
+        }
+    }
+}

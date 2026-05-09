@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "TheScythe",
+        "category": "Necrobinder",
+        "name_chs": "巨镰",
+        "name_eng": "The Scythe",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n这张牌在本局游戏中的伤害永久性增加{Increase:diff()}。",
+        "text_default_chs": "消耗,造成13点伤害。\n这张牌在本局游戏中的伤害永久性增加3。",
+        "text_upgraded_chs": "消耗,造成13点伤害。\n这张牌在本局游戏中的伤害永久性增加5。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPermanently increase this card's damage by {Increase:diff()}.",
+        "variables": {
+            "Increase": 3,
+            "keywords": [
+                "Exhaust"
+            ],
+            "Damage": 13
+        },
+        "upgrades": {
+            "varChange": {
+                "Increase": 1
+            }
+        }
+    }
+}

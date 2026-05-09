@@ -1,0 +1,29 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "BrightestFlame",
+        "category": "Event",
+        "name_chs": "至亮之焰",
+        "name_eng": "Brightest Flame",
+        "cost": 0,
+        "rarity": "Ancient",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n抽{Cards:diff()}张牌。\n失去{MaxHp:diff()}点最大生命。",
+        "text_default_chs": "获得2能量。\n抽2张牌。\n失去1点最大生命。",
+        "text_upgraded_chs": "获得4能量。\n抽4张牌。\n失去1点最大生命。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nLose {MaxHp:diff()} Max HP.",
+        "variables": {
+            "Cards": 2,
+            "MaxHp": "1m",
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1,
+                "Cards": 1
+            }
+        }
+    }
+}

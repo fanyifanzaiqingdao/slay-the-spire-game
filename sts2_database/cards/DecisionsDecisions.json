@@ -1,0 +1,30 @@
+{
+    "game_version": "0.98.2",
+    "database_version": 1,
+    "card": {
+        "key": "DecisionsDecisions",
+        "category": "Regent",
+        "name_chs": "抉择，抉择",
+        "name_eng": "Decisions, Decisions",
+        "cost": 0,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n选择你[gold]手牌[\/gold]中的一张技能牌，并将其打出{Repeat:diff()}次。",
+        "text_default_chs": "消耗,抽3张牌。\n选择你手牌中的一张技能牌，并将其打出3次。",
+        "text_upgraded_chs": "消耗,抽7张牌。\n选择你手牌中的一张技能牌，并将其打出3次。",
+        "text_raw_eng": "Draw {Cards:diff()} cards.\nChoose a Skill in your [gold]Hand[\/gold] and play it {Repeat:diff()} times.",
+        "variables": {
+            "Cards": 3,
+            "Repeat": 3,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 2
+            }
+        }
+    }
+}
