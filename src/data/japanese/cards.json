@@ -9,7 +9,7 @@
     "energy_cost": 1,
     "effect": {
       "damage": 6,
-      "bonus_correct_first_try": 4,
+      "bonus_correct_first_try": 3,
       "chain_bonus": null
     },
     "question_tags": [
@@ -32,7 +32,7 @@
     "energy_cost": 1,
     "effect": {
       "damage": 9,
-      "bonus_correct_first_try": 5,
+      "bonus_correct_first_try": 4,
       "chain_bonus": null
     },
     "question_tags": [
@@ -56,7 +56,7 @@
     "effect": {
       "damage": 9,
       "bonus_correct_first_try": 3,
-      "chain_bonus": 4
+      "chain_bonus": 3
     },
     "question_tags": [
       "noun",
@@ -77,8 +77,8 @@
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 14,
-      "bonus_correct_first_try": 6,
+      "damage": 11,
+      "bonus_correct_first_try": 5,
       "chain_bonus": null
     },
     "question_tags": [
@@ -149,9 +149,9 @@
     "rarity": "rare",
     "energy_cost": 2,
     "effect": {
-      "damage": 16,
+      "damage": 13,
       "bonus_if_block_active": 6,
-      "bonus_correct_first_try": 0,
+      "bonus_correct_first_try": 2,
       "chain_bonus": null
     },
     "question_tags": [
@@ -174,8 +174,8 @@
     "energy_cost": 2,
     "effect": {
       "damage": 12,
-      "chain_bonus": 6,
-      "bonus_correct_first_try": 0
+      "chain_bonus": 5,
+      "bonus_correct_first_try": 2
     },
     "question_tags": [
       "noun",
@@ -286,7 +286,7 @@
     "energy_cost": 2,
     "effect": {
       "block": 16,
-      "bonus_correct_first_try": 5,
+      "bonus_correct_first_try": 4,
       "chain_bonus": null
     },
     "question_tags": [
@@ -445,7 +445,7 @@
     "energy_cost": 0,
     "effect": {
       "damage": 0,
-      "block": 12,
+      "block": 10,
       "draw": 1
     },
     "question_tags": [
@@ -489,7 +489,7 @@
     "rarity": "rare",
     "energy_cost": 1,
     "effect": {
-      "damage": 11,
+      "damage": 10,
       "block": 5
     },
     "question_tags": [
@@ -509,7 +509,7 @@
     "rarity": "uncommon",
     "energy_cost": 1,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "block": 7
     },
     "question_tags": [
@@ -549,7 +549,7 @@
     "rarity": "common",
     "energy_cost": 0,
     "effect": {
-      "damage": 11,
+      "damage": 9,
       "block": 2
     },
     "question_tags": [
@@ -589,7 +589,7 @@
     "rarity": "uncommon",
     "energy_cost": 0,
     "effect": {
-      "damage": 13,
+      "damage": 10,
       "block": 5
     },
     "question_tags": [
@@ -689,7 +689,7 @@
     "rarity": "uncommon",
     "energy_cost": 0,
     "effect": {
-      "damage": 10,
+      "damage": 8,
       "block": 6
     },
     "question_tags": [
@@ -709,7 +709,7 @@
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "block": 3
     },
     "question_tags": [
@@ -749,7 +749,7 @@
     "rarity": "common",
     "energy_cost": 1,
     "effect": {
-      "damage": 12,
+      "damage": 10,
       "block": 1
     },
     "question_tags": [
@@ -769,7 +769,7 @@
     "rarity": "uncommon",
     "energy_cost": 1,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "block": 3
     },
     "question_tags": [
@@ -809,7 +809,7 @@
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "block": 5
     },
     "question_tags": [
@@ -849,7 +849,7 @@
     "rarity": "rare",
     "energy_cost": 1,
     "effect": {
-      "damage": 11,
+      "damage": 10,
       "block": 4
     },
     "question_tags": [
@@ -1009,7 +1009,7 @@
     "rarity": "uncommon",
     "energy_cost": 1,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "block": 1
     },
     "question_tags": [
@@ -1069,7 +1069,7 @@
     "rarity": "uncommon",
     "energy_cost": 0,
     "effect": {
-      "damage": 12,
+      "damage": 9,
       "block": 5
     },
     "question_tags": [
@@ -1243,7 +1243,7 @@
     "energy_cost": 1,
     "effect": {
       "damage": 8,
-      "chain_bonus": 4
+      "chain_bonus": 3
     },
     "question_tags": [
       "act1",
@@ -1311,7 +1311,7 @@
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 14,
+      "damage": 11,
       "reflect_damage": 1
     },
     "question_tags": [
@@ -1334,7 +1334,7 @@
     "rarity": "rare",
     "energy_cost": 3,
     "effect": {
-      "damage": 18,
+      "damage": 15,
       "bonus_if_block_active": 6,
       "reflect_stacks": 1
     },
@@ -1382,7 +1382,7 @@
     "energy_cost": 2,
     "effect": {
       "damage": 11,
-      "chain_bonus": 8
+      "chain_bonus": 7
     },
     "question_tags": [
       "act1",
@@ -1404,7 +1404,7 @@
     "rarity": "rare",
     "energy_cost": 4,
     "effect": {
-      "damage": 22
+      "damage": 18
     },
     "question_tags": [
       "act1",
@@ -1494,7 +1494,7 @@
     "energy_cost": 2,
     "effect": {
       "damage": 13,
-      "bonus_correct_first_try": 5
+      "bonus_correct_first_try": 4
     },
     "question_tags": [
       "act1",
@@ -1516,7 +1516,7 @@
     "rarity": "uncommon",
     "energy_cost": 2,
     "effect": {
-      "damage": 15
+      "damage": 12
     },
     "question_tags": [
       "act1",
@@ -2037,7 +2037,7 @@
     "energy_cost": 2,
     "effect": {
       "damage": 8,
-      "bonus_correct_first_try": 4
+      "bonus_correct_first_try": 3
     },
     "question_tags": [
       "act1",
@@ -2331,7 +2331,7 @@
     "energy_cost": 2,
     "effect": {
       "damage_all": 8,
-      "bonus_correct_first_try": 4,
+      "bonus_correct_first_try": 3,
       "chain_bonus": null
     },
     "question_tags": [
@@ -2359,7 +2359,10 @@
       "bonus_correct_first_try": 2,
       "chain_bonus": 3
     },
-    "question_tags": ["verb", "job_dev"],
+    "question_tags": [
+      "verb",
+      "job_dev"
+    ],
     "flavor_target": "把复杂度压进调用栈。",
     "flavor_native": "Shove the complexity down the call stack.",
     "upgradeable": false,
@@ -2376,8 +2379,12 @@
     "energy_cost": 1,
     "job": "dev",
     "pool": "act1",
-    "effect": { "block": 8 },
-    "question_tags": ["job_dev"],
+    "effect": {
+      "block": 8
+    },
+    "question_tags": [
+      "job_dev"
+    ],
     "flavor_target": "讲给鸭子听，格挡会自己长出来。",
     "flavor_native": "Explain it to the duck — block appears from clarity.",
     "upgradeable": false,
@@ -2400,7 +2407,9 @@
       "enemy_weak": 2,
       "exhaust_self": true
     },
-    "question_tags": ["job_qa"],
+    "question_tags": [
+      "job_qa"
+    ],
     "flavor_target": "非必现，但一复现就写进用例。",
     "flavor_native": "Non-deterministic, but the case is written in blood.",
     "upgradeable": false,
@@ -2422,7 +2431,9 @@
       "enemy_weak": 2,
       "exhaust_self": true
     },
-    "question_tags": ["job_qa"],
+    "question_tags": [
+      "job_qa"
+    ],
     "flavor_target": "这张工单写完就从牌库里删掉。",
     "flavor_native": "This ticket leaves the deck after filing.",
     "upgradeable": false,
@@ -2443,7 +2454,10 @@
       "enemy_poison": 2,
       "enemy_vulnerable": 2
     },
-    "question_tags": ["job_dev", "status"],
+    "question_tags": [
+      "job_dev",
+      "status"
+    ],
     "flavor_target": "PR 公开处刑，弱点挂毒一起晒。",
     "flavor_native": "Public diff review — every flaw gets sunlight.",
     "upgradeable": false,
@@ -2464,7 +2478,10 @@
       "enemy_poison": 3,
       "enemy_vulnerable": 1
     },
-    "question_tags": ["job_dev", "status"],
+    "question_tags": [
+      "job_dev",
+      "status"
+    ],
     "flavor_target": "一点一点漏，弱点也跟着放大。",
     "flavor_native": "Drip by drip until OOM.",
     "upgradeable": false,
@@ -2485,7 +2502,10 @@
       "enemy_poison": 2,
       "enemy_vulnerable": 1
     },
-    "question_tags": ["job_dev", "status"],
+    "question_tags": [
+      "job_dev",
+      "status"
+    ],
     "flavor_target": "Sunset 日期一到，漏洞旧债一起结算。",
     "flavor_native": "Sunset date — legacy gaps show skin and bleed.",
     "upgradeable": false,
@@ -2506,9 +2526,35 @@
       "enemy_poison_all": 2,
       "enemy_vulnerable_all": 1
     },
-    "question_tags": ["job_dev", "status"],
+    "question_tags": [
+      "job_dev",
+      "status"
+    ],
     "flavor_target": "复盘邮件一发，全线挂毒易伤。",
     "flavor_native": "Postmortem blast — vuln and poison hit every lane.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_power_scheduled_toxic_audit",
+    "campaign": "japanese",
+    "name_target": "定期毒检通告",
+    "name_native": "Scheduled Toxic Audit",
+    "type": "reading",
+    "rarity": "rare",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "register_poison_all_each_turn": 2
+    },
+    "question_tags": [
+      "job_dev",
+      "power"
+    ],
+    "flavor_target": "合规日历一响，全员名下自动挂毒。",
+    "flavor_native": "Compliance calendar fires — poison auto-assigns to every assignee.",
     "upgradeable": false,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
@@ -2528,7 +2574,10 @@
       "block": 5,
       "exhaust_self": true
     },
-    "question_tags": ["job_qa", "status"],
+    "question_tags": [
+      "job_qa",
+      "status"
+    ],
     "flavor_target": "三步复现打包带走，这张牌也能丢进 exhaust。",
     "flavor_native": "Zip your repro — this card exhausts like the ticket.",
     "upgradeable": false,
@@ -2549,9 +2598,346 @@
       "enemy_weak": 3,
       "exhaust_self_gain_energy": 2
     },
-    "question_tags": ["job_qa", "status"],
+    "question_tags": [
+      "job_qa",
+      "status"
+    ],
     "flavor_target": "旧 Bug 回来了——烧一张换两点能量接着测。",
     "flavor_native": "Regression returns — burn this card for juice to keep testing.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "starter_code_strike",
+    "campaign": "japanese",
+    "name_target": "敲代码",
+    "name_native": "Code Strike",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 6
+    },
+    "question_tags": [
+      "prog_v2",
+      "starter"
+    ],
+    "flavor_target": "先把能跑的写出来。",
+    "flavor_native": "Ship something runnable first.",
+    "upgradeable": true,
+    "upgraded_id": "starter_code_strike_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "starter_code_strike_plus",
+    "campaign": "japanese",
+    "name_target": "敲代码+",
+    "name_native": "Code Strike+",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 9
+    },
+    "question_tags": [
+      "prog_v2",
+      "starter"
+    ],
+    "flavor_target": "先把能跑的写出来。",
+    "flavor_native": "Ship something runnable first.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "starter_defensive_logic",
+    "campaign": "japanese",
+    "name_target": "写防御逻辑",
+    "name_native": "Defensive Logic",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "block": 5
+    },
+    "question_tags": [
+      "prog_v2",
+      "starter"
+    ],
+    "flavor_target": "至少别让系统当场倒下。",
+    "flavor_native": "Don't let production fall over.",
+    "upgradeable": true,
+    "upgraded_id": "starter_defensive_logic_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "starter_defensive_logic_plus",
+    "campaign": "japanese",
+    "name_target": "写防御逻辑+",
+    "name_native": "Defensive Logic+",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "block": 8
+    },
+    "question_tags": [
+      "prog_v2",
+      "starter"
+    ],
+    "flavor_target": "至少别让系统当场倒下。",
+    "flavor_native": "Don't let production fall over.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "common_printf_debug",
+    "campaign": "japanese",
+    "name_target": "打印调试",
+    "name_native": "Printf Debug",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 0,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 3,
+      "draw": 1
+    },
+    "question_tags": [
+      "prog_v2",
+      "common"
+    ],
+    "flavor_target": "console.log 能解决很多沉默。",
+    "flavor_native": "console.log breaks the silence.",
+    "upgradeable": true,
+    "upgraded_id": "common_printf_debug_plus",
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "common_printf_debug_plus",
+    "campaign": "japanese",
+    "name_target": "打印调试+",
+    "name_native": "Printf Debug+",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 0,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 5,
+      "draw": 1
+    },
+    "question_tags": [
+      "prog_v2",
+      "common"
+    ],
+    "flavor_target": "console.log 能解决很多沉默。",
+    "flavor_native": "console.log breaks the silence.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_overclock_line",
+    "campaign": "japanese",
+    "name_target": "超频直线",
+    "name_native": "Overclock Line",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 11,
+      "bonus_correct_first_try": 4,
+      "energy_overdraft": 2
+    },
+    "question_tags": [
+      "verb",
+      "overload"
+    ],
+    "flavor_target": "把下一回合的能量提前透支到今天。",
+    "flavor_native": "Borrow tomorrow's compile budget today.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_coolant_patch",
+    "campaign": "japanese",
+    "name_target": "散热补丁",
+    "name_native": "Coolant Patch",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "overload_global_remove": 5
+    },
+    "question_tags": [
+      "overload"
+    ],
+    "flavor_target": "给系统浇一桶冷水，过载也跟着降下来。",
+    "flavor_native": "Pour coolant on the dashboard — stress drops with temperature.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_gc_pause",
+    "campaign": "japanese",
+    "name_target": "GC 停顿",
+    "name_native": "GC Pause",
+    "type": "grammar",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "overload_global_clear": true,
+      "heal": 4
+    },
+    "question_tags": [
+      "overload"
+    ],
+    "flavor_target": "暂停全局回收前，先把心智垃圾清零。",
+    "flavor_native": "Stop-the-world — clear mind heap first.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_spike_commit",
+    "campaign": "japanese",
+    "name_target": "尖峰提交",
+    "name_native": "Spike Commit",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 9,
+      "bonus_correct_first_try": 3,
+      "overload_global_add": 3
+    },
+    "question_tags": [
+      "overload"
+    ],
+    "flavor_target": "提交越大，技术债温度计越高。",
+    "flavor_native": "Big deploy — big thermal debt.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_thermal_strike",
+    "campaign": "japanese",
+    "name_target": "升温直击",
+    "name_native": "Thermal Strike",
+    "type": "vocabulary",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 7,
+      "bonus_correct_first_try": 2,
+      "bonus_damage_per_overload_global": 1
+    },
+    "question_tags": [
+      "overload",
+      "job_dev"
+    ],
+    "flavor_target": "栈越深，散热风扇转得越狠。",
+    "flavor_native": "More heat in the rack — more bite on the hit.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_shunt_shield",
+    "campaign": "japanese",
+    "name_target": "分流护盾",
+    "name_native": "Shunt Shield",
+    "type": "grammar",
+    "rarity": "common",
+    "energy_cost": 1,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "block": 6,
+      "bonus_block_per_overload_global": 1
+    },
+    "question_tags": [
+      "overload",
+      "job_dev"
+    ],
+    "flavor_target": "把多余电流挡在外面——过载越高，闸得越严。",
+    "flavor_native": "Shunt the surge — higher debt, thicker guard plates.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_cluster_blast",
+    "campaign": "japanese",
+    "name_target": "机架殉爆",
+    "name_native": "Rack Blast",
+    "type": "vocabulary",
+    "rarity": "uncommon",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage_all": 8,
+      "bonus_correct_first_try": 3,
+      "bonus_damage_per_overload_global": 1
+    },
+    "question_tags": [
+      "overload",
+      "job_dev"
+    ],
+    "flavor_target": "一行过热，整排机架跟着啸叫。",
+    "flavor_native": "One hot row — the whole rack screams.",
+    "upgradeable": false,
+    "upgraded_id": null,
+    "illustration": "/images/skill_placeholder.png"
+  },
+  {
+    "id": "jp_dev_redline_finisher",
+    "campaign": "japanese",
+    "name_target": "红线终结",
+    "name_native": "Redline Finisher",
+    "type": "vocabulary",
+    "rarity": "rare",
+    "energy_cost": 2,
+    "job": "dev",
+    "pool": "act1",
+    "effect": {
+      "damage": 10,
+      "bonus_correct_first_try": 4,
+      "bonus_damage_per_overload_global": 2,
+      "overload_scaling_cap": 12
+    },
+    "question_tags": [
+      "overload",
+      "job_dev"
+    ],
+    "flavor_target": "红线以内随便浪；超出部分伤害封顶，但前面已经够疼。",
+    "flavor_native": "Redline hard — bonus damage caps so you don't melt the DC.",
     "upgradeable": false,
     "upgraded_id": null,
     "illustration": "/images/skill_placeholder.png"
