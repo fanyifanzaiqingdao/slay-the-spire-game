@@ -7,6 +7,7 @@ import CardHand from '../combat/CardHand.jsx'
 import { EnergyOrb, CardPile } from '../combat/CombatHudPieces.jsx'
 import { DeckOverlay } from '../shared/TopBar.jsx'
 import { useAudio } from '../../hooks/useAudio.js'
+import { getPvpCollectionDeck } from '../../utils/pvpCollectionDeck.js'
 import cardsJson from '../../data/japanese/cards.json'
 
 /** Vite may expose JSON as array or `{ default: [...] }` — both must work or cardMap is empty and hand vanishes. */
@@ -60,6 +61,9 @@ export function PvpScreen() {
   const [lastError, setLastError] = useState(null)
   const [enemyDropHighlight, setEnemyDropHighlight] = useState(false)
   const [openPile, setOpenPile] = useState(null) // 'draw' | 'discard' | 'exhaust' | null
+  const [campaignCardMap, setCampaignCardMap] = useState(PVP_CARD_MAP_BASE)
+  const [registeredDeckSize, setRegisteredDeckSize] = useState(null)
+  const deckSentRef = useRef(false)
 
   const flushPending = useCallback(() => {
     const ws = wsRef.current
@@ -109,12 +113,20 @@ export function PvpScreen() {
           setRoomCode(msg.roomCode)
           setLobbyCount(1)
           setGameState(null)
+          deckSentRef.current = false
+          setRegisteredDeckSize(null)
           return
         }
         if (msg.type === 'joined') {
           setRoomCode(msg.roomCode)
           setLobbyCount((c) => Math.max(c, msg.slot + 1))
           setGameState(null)
+          deckSentRef.current = false
+          setRegisteredDeckSize(null)
+          return
+        }
+        if (msg.type === 'pvp_deck_ack') {
+          setRegisteredDeckSize(typeof msg.size === 'number' ? msg.size : null)
           return
         }
         if (msg.type === 'lobby_update') {
@@ -145,7 +157,7 @@ export function PvpScreen() {
     }
   }, [connect])
 
-  const send = (obj) => {
+  const send = useCallback((obj) => {
     const ws = wsRef.current
     if (ws?.readyState === WebSocket.OPEN) {
       try {
@@ -159,7 +171,28 @@ export function PvpScreen() {
     if (!ws || ws.readyState === WebSocket.CLOSED) {
       connect()
     }
-  }
+  }, [connect])
+
+  useEffect(() => {
+    const col = getPvpCollectionDeck()
+    const camp = col?.campaign || 'japanese'
+    if (camp === 'japanese') {
+      setCampaignCardMap(PVP_CARD_MAP_BASE)
+      return
+    }
+    let cancelled = false
+    import(/* @vite-ignore */ `../../data/${camp}/cards.json`)
+      .then((mod) => {
+        const raw = mod?.default ?? mod
+        const list = Array.isArray(raw) ? raw : raw?.default
+        if (cancelled || !Array.isArray(list)) return
+        setCampaignCardMap(Object.fromEntries(list.map((c) => [c.id, c])))
+      })
+      .catch(() => {
+        if (!cancelled) setCampaignCardMap(PVP_CARD_MAP_BASE)
+      })
+    return () => { cancelled = true }
+  }, [])
 
   const createRoom = () => send({ type: 'create_room' })
   const joinRoom = () => {
@@ -173,6 +206,16 @@ export function PvpScreen() {
 
   const playing = gameState?.phase === 'playing'
   const ended = gameState?.phase === 'ended'
+
+  useEffect(() => {
+    if (!connected || !roomCode) return
+    if (playing || ended) return
+    if (deckSentRef.current) return
+    const col = getPvpCollectionDeck()
+    if (!col?.cardIds?.length) return
+    send({ type: 'set_pvp_deck', deck: col.cardIds })
+    deckSentRef.current = true
+  }, [connected, roomCode, playing, ended, send])
   const turnN = Number(gameState?.turn)
   const yourSlotN = Number(gameState?.yourSlot)
   const isYourTurn = playing && !Number.isNaN(turnN) && !Number.isNaN(yourSlotN) && turnN === yourSlotN
@@ -188,13 +231,13 @@ export function PvpScreen() {
 
   const cardMapResolved = useMemo(
     () =>
-      mergeCardMapForIds(PVP_CARD_MAP_BASE, [
+      mergeCardMapForIds(campaignCardMap, [
         ...handIds,
         ...deckIds,
         ...discardIds,
         ...exhaustIds,
       ]),
-    [handIds, deckIds, discardIds, exhaustIds],
+    [campaignCardMap, handIds, deckIds, discardIds, exhaustIds],
   )
   /** Server may only expose counts; prefer array length else numeric counts from clonePlayerPublic. */
   const drawPileCount = Math.max(deckIds.length, you?.deckCount ?? 0)
@@ -241,7 +284,12 @@ export function PvpScreen() {
           <h1 className="text-3xl text-amber-300 mb-2 shrink-0" style={{ fontFamily: "'Cinzel', serif" }}>
             {t('pvp.title')}
           </h1>
-          <p className="text-sm text-gray-500 mb-8 max-w-xl text-center shrink-0">{t('pvp.hint')}</p>
+          <p className="text-sm text-gray-500 mb-4 max-w-xl text-center shrink-0">{t('pvp.hint')}</p>
+          {registeredDeckSize != null && (
+            <p className="text-xs text-emerald-400/90 mb-6 max-w-xl text-center shrink-0">
+              {t('pvp.lobbyDeckReady', { count: registeredDeckSize })}
+            </p>
+          )}
 
           {lastError && (
             <div className="mb-4 text-red-400 text-sm font-mono">{t(`pvp.errors.${lastError}`, lastError)}</div>
@@ -408,9 +456,7 @@ export function PvpScreen() {
                   retainedCards={[]}
                   retainGrowthStacks={{}}
                   selectedCardId={null}
-                  chainActive={false}
-                  chainType={null}
-                  hasChainBracelet={false}
+                  lastPlayWasAttack={false}
                   disabled={!isYourTurn || ended}
                   onCardSelect={handleCardSelect}
                   enemyDropZoneRef={enemyDropZoneRef}

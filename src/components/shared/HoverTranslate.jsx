@@ -15,6 +15,8 @@ export function HoverTranslate({ children, translation, className = '' }) {
 
   if (!translation) return <span className={className}>{children}</span>
 
+  const multiline = typeof translation === 'string' && translation.includes('\n')
+
   return (
     <span
       className={`relative cursor-help border-b border-dotted border-current ${className}`}
@@ -30,10 +32,12 @@ export function HoverTranslate({ children, translation, className = '' }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5
+            className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5
                        bg-gray-900/95 border border-gray-600/50 text-white text-xs
-                       rounded-lg whitespace-nowrap z-50 pointer-events-none
-                       shadow-xl shadow-black/50"
+                       rounded-lg z-50 pointer-events-none shadow-xl shadow-black/50
+                       ${multiline
+              ? 'max-w-[min(92vw,22rem)] whitespace-pre-line text-left leading-relaxed'
+              : 'whitespace-nowrap'}`}
           >
             {translation}
             {/* Small arrow */}

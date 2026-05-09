@@ -25,13 +25,17 @@ import { ACT1_MAX_FLOOR, isAct1ProgrammerRun } from '../../constants/act1Pool.js
 import { LootScreen } from './LootScreen.jsx'
 import { RELICS, pickRandomRelicForLoot } from '../../data/relics.js'
 import { relicLocalizedName } from '../../utils/relicI18n.js'
-import { BLITZ_CLIPBOARD_MAX_TURNS } from '../../constants/relicCombat.js'
+import { BLITZ_CLIPBOARD_MAX_TURNS, SCRIBES_SEAL_BONUS_DRAW_NEXT_FIGHT } from '../../constants/relicCombat.js'
+import {
+  collectMasterDeckIdsFromRunState,
+  savePvpCollectionDeck,
+} from '../../utils/pvpCollectionDeck.js'
+import { getEffectiveEnergyCost } from '../../utils/relicCombatHelpers.js'
+import { isOverloadMechanicsActive } from '../../utils/overloadMechanics.js'
 
 /** Fallback when portrait PNG/SVG both fail — mirrors CharacterSelect tiles */
 const ROLE_PORTRAIT_EMOJI = {
-  hana: '👩‍💻',
   kenji: '🖥️',
-  yuki: '🧯',
   ren: '🧪',
   minjun: '🎨',
   jiwoo: '✨',
@@ -75,6 +79,8 @@ export function CombatScreen() {
 
   const [turnPhase, setTurnPhase] = useState(null)
 
+  const programmerOverloadActive = isOverloadMechanicsActive(store)
+
   const hasPlayableCard = useMemo(() => {
     if (turnPhase !== PHASE.PLAYER_TURN) return false
     const silenced = new Set(silencedTypes)
@@ -83,9 +89,9 @@ export function CombatScreen() {
       if (!c) return false
       if (store.lockedCards.includes(id)) return false
       if (silenced.has(c.type)) return false
-      return store.energy >= c.energy_cost
+      return store.energy >= getEffectiveEnergyCost(c, store.relics, programmerOverloadActive)
     })
-  }, [turnPhase, store.hand, store.lockedCards, store.energy, cardMap, silencedTypes])
+  }, [turnPhase, store.hand, store.lockedCards, store.energy, cardMap, silencedTypes, store.relics, programmerOverloadActive])
 
   const [bossPhase, setBossPhase] = useState(1)
   const [isShakingEnemy, setIsShakingEnemy] = useState(false)
@@ -138,10 +144,14 @@ export function CombatScreen() {
     || campaignId
     || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('lq_run_campaign_id') : '')
     || 'japanese'
-  const portraitCharId =
+  const portraitCharIdRaw =
     store.character?.id
     || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('lq_run_character_id') : '')
     || 'kenji'
+  const portraitCharId =
+    portraitCampaign === 'japanese' && (portraitCharIdRaw === 'hana' || portraitCharIdRaw === 'yuki')
+      ? 'kenji'
+      : portraitCharIdRaw
   const portraitBase = `/images/characters/${portraitCampaign}/${portraitCharId}`
 
   useEffect(() => {
@@ -314,9 +324,56 @@ export function CombatScreen() {
 
   const handleSelectEnemySlot = useCallback((slotIndex) => {
     if (turnPhase !== PHASE.PLAYER_TURN) return
+    const st = useRunStore.getState()
+    const pack = st.combatEnemySlots || []
+    const hp = pack.length > 0
+      ? (pack[slotIndex]?.hp ?? 0)
+      : (slotIndex === 0 ? (st.enemyHp ?? 0) : 0)
+    if (hp <= 0) return
     playSFX('button_click')
-    useRunStore.getState().syncActiveEnemySlot(slotIndex)
+    if (pack.length > 0) {
+      st.syncActiveEnemySlot(slotIndex)
+    }
+    useRunStore.setState({ enemyAttackTargetConfirmed: true })
   }, [turnPhase, playSFX])
+
+  /** Drag-drop onto enemies: resolve slot under cursor so directed attacks aren't blocked by missing click-first. */
+  const resolveEnemyTargetFromDrag = useCallback((clientX, clientY) => {
+    if (turnPhase !== PHASE.PLAYER_TURN) return
+    const stack = typeof document !== 'undefined' ? document.elementsFromPoint(clientX, clientY) : []
+    for (const node of stack) {
+      const wrap = typeof node.closest === 'function' ? node.closest('[data-enemy-slot-index]') : null
+      if (!wrap) continue
+      const raw = wrap.getAttribute('data-enemy-slot-index')
+      const i = raw != null ? parseInt(raw, 10) : NaN
+      if (Number.isNaN(i)) continue
+      const slot = enemySlots[i]
+      if (slot && (slot.hp ?? 0) > 0) {
+        handleSelectEnemySlot(i)
+        return
+      }
+    }
+    let best = -1
+    let bestD = Infinity
+    if (typeof document !== 'undefined') {
+      document.querySelectorAll('[data-enemy-slot-index]').forEach((wrap) => {
+        const raw = wrap.getAttribute('data-enemy-slot-index')
+        const i = raw != null ? parseInt(raw, 10) : NaN
+        if (Number.isNaN(i)) return
+        const slot = enemySlots[i]
+        if (!slot || (slot.hp ?? 0) <= 0) return
+        const r = wrap.getBoundingClientRect()
+        const cx = (r.left + r.right) / 2
+        const cy = (r.top + r.bottom) / 2
+        const d = (clientX - cx) ** 2 + (clientY - cy) ** 2
+        if (d < bestD) {
+          bestD = d
+          best = i
+        }
+      })
+    }
+    if (best >= 0) handleSelectEnemySlot(best)
+  }, [turnPhase, enemySlots, handleSelectEnemySlot])
 
   const handleVictory = useCallback(async (choice = null) => {
     const s = useRunStore.getState()
@@ -327,6 +384,21 @@ export function CombatScreen() {
 
     const generatedLoot = []
 
+    const rsPreEnd = useRunStore.getState()
+    if (rsPreEnd.relics?.includes('water_cooler_charm')) {
+      rsPreEnd.healHp(1)
+    }
+    if (
+      rsPreEnd.relics?.includes('scribes_seal')
+      && (rsPreEnd.playerHpLossThisFight || 0) === 0
+    ) {
+      useRunStore.setState({ bonusDrawFirstHandNextFight: SCRIBES_SEAL_BONUS_DRAW_NEXT_FIGHT })
+    }
+
+    if (isOverloadMechanicsActive(rsPreEnd) && rsPreEnd.relics?.includes('radiator_fin')) {
+      rsPreEnd.applyOverloadGlobalDelta(-2)
+    }
+
     // 1. Gold
     let baseGold = Math.floor(10 + accuracy * 20)
     if (choice?.reward?.type === 'gold') baseGold += choice.reward.amount
@@ -336,7 +408,7 @@ export function CombatScreen() {
     // 2. Potion
     const dropRate = getPotionDropRate(enemyTier, isBoss)
     if (Math.random() < dropRate) {
-      const potionId = getRandomPotionDrop(currentFloor)
+      const potionId = getRandomPotionDrop(currentFloor, { overloadMechanics: isOverloadMechanicsActive(s) })
       const potionData = getPotionData(potionId)
       generatedLoot.push({ id: 'potion', type: 'potion', potionId, icon: potionData?.icon || '🧪', label: potionData?.name || 'Unknown Potion' })
     }
@@ -371,6 +443,17 @@ export function CombatScreen() {
       })
     }
 
+    if (isBoss) {
+      const snapshot = collectMasterDeckIdsFromRunState(s)
+      savePvpCollectionDeck({ campaign: s.campaign || 'japanese', cardIds: snapshot })
+      generatedLoot.push({
+        id: 'pvp-collection-notice',
+        type: 'notice',
+        icon: '📚',
+        label: t('pvp.collectionDeckSaved', { count: snapshot.length }),
+      })
+    }
+
     s.resetPotionEffects()
     s.endFight()
 
@@ -391,7 +474,7 @@ export function CombatScreen() {
 
     setLoot(generatedLoot)
     playSFX('loot_appear')
-  }, [playSFX, stopMusic])
+  }, [playSFX, stopMusic, t])
 
   // Fallback: if fight has ended but loot modal failed to open, return to map.
   useEffect(() => {
@@ -423,6 +506,8 @@ export function CombatScreen() {
     } else if (item.type === 'relic' && item.relicId) {
       playSFX('relic_obtain')
       s.addRelic(item.relicId)
+    } else if (item.type === 'notice') {
+      playSFX('button_click')
     }
     setLoot(prev => prev.filter(l => l.id !== lootId))
   }, [loot])
@@ -631,25 +716,30 @@ export function CombatScreen() {
             }`}
           >
             {enemySlots.map((slot, i) => (
-              <EnemyDisplay
+              <div
                 key={slot.instanceId || `enemy-${i}`}
-                enemy={slot.def}
-                hp={slot.hp}
-                maxHp={slot.maxHp}
-                armor={slot.armor ?? 0}
-                furyStacks={slot.furyStacks ?? 0}
-                intentIndex={slot.intentIndex ?? 0}
-                activeBuffs={store.activeEnemyBuffs}
-                isShaking={isShakingEnemy}
-                enemyAction={isEnemyPhase && (store.activeEnemySlotIndex ?? 0) === i ? enemyAction : null}
-                phase={bossPhase > 1 ? bossPhase : undefined}
-                vulnerableTurns={slot.vulnerableTurns ?? 0}
-                weakTurns={slot.weakTurns ?? 0}
-                poisonStacks={slot.poisonStacks ?? 0}
-                selectable={isPlayerTurn && enemySlots.length > 1 && !awaitingCombatPick}
-                selected={(store.activeEnemySlotIndex ?? 0) === i}
-                onSelect={() => handleSelectEnemySlot(i)}
-              />
+                data-enemy-slot-index={i}
+                className="inline-flex flex-col items-center"
+              >
+                <EnemyDisplay
+                  enemy={slot.def}
+                  hp={slot.hp}
+                  maxHp={slot.maxHp}
+                  armor={slot.armor ?? 0}
+                  furyStacks={slot.furyStacks ?? 0}
+                  intentIndex={slot.intentIndex ?? 0}
+                  activeBuffs={store.activeEnemyBuffs}
+                  isShaking={isShakingEnemy}
+                  enemyAction={isEnemyPhase && (store.activeEnemySlotIndex ?? 0) === i ? enemyAction : null}
+                  phase={bossPhase > 1 ? bossPhase : undefined}
+                  vulnerableTurns={slot.vulnerableTurns ?? 0}
+                  weakTurns={slot.weakTurns ?? 0}
+                  poisonStacks={slot.poisonStacks ?? 0}
+                  selectable={isPlayerTurn && !awaitingCombatPick && (slot.hp ?? 0) > 0}
+                  selected={(store.activeEnemySlotIndex ?? 0) === i}
+                  onSelect={() => handleSelectEnemySlot(i)}
+                />
+              </div>
             ))}
           </div>
 
@@ -767,13 +857,14 @@ export function CombatScreen() {
                 retainedCards={store.retainedCards}
                 retainGrowthStacks={store.retainGrowthStacks}
                 selectedCardId={activeCardId}
-                chainActive={store.chainActive}
-                chainType={store.chainType}
-                hasChainBracelet={store.relics?.includes('chain_bracelet') ?? false}
+                lastPlayWasAttack={store.lastPlayWasAttack}
                 disabled={!isPlayerTurn || awaitingCombatPick}
                 onCardSelect={selectCard}
                 enemyDropZoneRef={enemyDropZoneRef}
                 onDragHoverEnemy={onEnemyDragHover}
+                onDragReleaseOnEnemy={resolveEnemyTargetFromDrag}
+                relics={store.relics}
+                programmerOverloadActive={programmerOverloadActive}
               />
             </div>
           </div>

@@ -10,11 +10,12 @@ import {
   buildPublicState,
   playCard,
   endTurn,
+  normalizePvpDeckIds,
 } from './pvp/gameEngine.mjs'
 
 const PORT = Number(process.env.PORT) || 3334
 
-/** @type {Map<string, { code: string, clients: Map<WebSocket, { slot: number }>, game: ReturnType<typeof createInitialGame> | null }>} */
+/** @type {Map<string, { code: string, clients: Map<WebSocket, { slot: number }>, game: ReturnType<typeof createInitialGame> | null, decks: (string[] | null)[] }>} */
 const rooms = new Map()
 
 function genRoomCode() {
@@ -60,7 +61,7 @@ wss.on('connection', (ws) => {
     if (type === 'create_room') {
       let code = genRoomCode()
       while (rooms.has(code)) code = genRoomCode()
-      rooms.set(code, { code, clients: new Map(), game: null })
+      rooms.set(code, { code, clients: new Map(), game: null, decks: [null, null] })
       ctx.roomCode = code
       ctx.slot = 0
       const room = rooms.get(code)
@@ -92,6 +93,22 @@ wss.on('connection', (ws) => {
       return
     }
 
+    if (type === 'set_pvp_deck') {
+      const code = ctx.roomCode
+      if (!code) {
+        send(ws, { type: 'error', error: 'not_in_room' })
+        return
+      }
+      const room = rooms.get(code)
+      if (!room) return
+      const meta = room.clients.get(ws)
+      if (meta == null) return
+      const norm = normalizePvpDeckIds(data.deck)
+      room.decks[meta.slot] = norm
+      send(ws, { type: 'pvp_deck_ack', slot: meta.slot, size: norm.length })
+      return
+    }
+
     if (type === 'start_game') {
       const code = ctx.roomCode
       if (!code) {
@@ -103,7 +120,9 @@ wss.on('connection', (ws) => {
         send(ws, { type: 'error', error: 'need_two_players' })
         return
       }
-      room.game = createInitialGame()
+      const d0 = room.decks[0]
+      const d1 = room.decks[1]
+      room.game = createInitialGame(d0, d1)
       for (const [c, meta] of room.clients) {
         send(c, { type: 'state', ...safePublic(room, meta.slot) })
       }

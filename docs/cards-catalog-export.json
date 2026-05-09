@@ -1,0 +1,3585 @@
+{
+  "meta": {
+    "generatedAt": "2026-05-08T13:06:29.200Z",
+    "description": "Auto-export of card definitions + plain-language effect summaries (mirrors draft UI strings).",
+    "sources": [
+      "src/data/japanese/cards.json",
+      "src/data/korean/cards.json",
+      "src/data/spanish/cards.json"
+    ]
+  },
+  "stats": {
+    "total": 143,
+    "byCampaign": {
+      "japanese": 122,
+      "korean": 10,
+      "spanish": 11
+    },
+    "overall": {
+      "byType": {
+        "vocabulary": 63,
+        "grammar": 50,
+        "reading": 29,
+        "curse": 1
+      },
+      "byRarity": {
+        "common": 75,
+        "uncommon": 48,
+        "rare": 19,
+        "curse": 1
+      },
+      "byEnergy": {
+        "0": 18,
+        "1": 77,
+        "2": 43,
+        "3": 4,
+        "4": 1
+      }
+    }
+  },
+  "cards": [
+    {
+      "id": "common_printf_debug",
+      "campaign": "japanese",
+      "name_target": "打印调试",
+      "name_native": "Printf Debug",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 3,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 3 点伤害 抽 1 张牌",
+      "effect_summary_en": "Deal 3 damage Draw 1 card",
+      "flavor_target": "console.log 能解决很多沉默。",
+      "flavor_native": "console.log breaks the silence.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "common_printf_debug_plus",
+      "question_tags": [
+        "prog_v2",
+        "common"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "common_printf_debug_plus",
+      "campaign": "japanese",
+      "name_target": "打印调试+",
+      "name_native": "Printf Debug+",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 5,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 5 点伤害 抽 1 张牌",
+      "effect_summary_en": "Deal 5 damage Draw 1 card",
+      "flavor_target": "console.log 能解决很多沉默。",
+      "flavor_native": "console.log breaks the silence.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "prog_v2",
+        "common"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_api_spam",
+      "campaign": "japanese",
+      "name_target": "接口狂刷",
+      "name_native": "API Spam",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 8
+      },
+      "effect_summary_zh": "造成 8 点伤害",
+      "effect_summary_en": "Deal 8 damage",
+      "flavor_target": "限流以后再说。",
+      "flavor_native": "Rate limit later.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_arch_diagram",
+      "campaign": "japanese",
+      "name_target": "架构图",
+      "name_native": "Architecture Diagram",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 7,
+        "block": 6,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 7 点伤害 获得 6 点格挡 抽 1 张牌",
+      "effect_summary_en": "Deal 7 damage Gain 6 Block Draw 1 card",
+      "flavor_target": "方框箭头。",
+      "flavor_native": "Boxes and arrows.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_backlog_triage",
+      "campaign": "japanese",
+      "name_target": "Backlog 梳理",
+      "name_native": "Backlog Triage",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "block": 6,
+        "bonus_correct_first_try": 2,
+        "next_hit_damage_bonus": 4
+      },
+      "effect_summary_zh": "造成 6 点伤害，首打 +2 获得 6 点格挡 本场下一张伤害牌 +4。",
+      "effect_summary_en": "Deal 6 damage, +2 if first try Gain 6 Block Next damage card this fight +4.",
+      "flavor_target": "先推进一截，再用范围换缓冲。",
+      "flavor_native": "Ship a slice, buy time with scope.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "dev_act1_backlog_triage_plus",
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_backlog_triage_plus",
+      "campaign": "japanese",
+      "name_target": "Backlog 梳理+",
+      "name_native": "Backlog Triage+",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 8,
+        "block": 8,
+        "bonus_correct_first_try": 3,
+        "next_hit_damage_bonus": 6
+      },
+      "effect_summary_zh": "造成 8 点伤害，首打 +3 获得 8 点格挡 本场下一张伤害牌 +6。",
+      "effect_summary_en": "Deal 8 damage, +3 if first try Gain 8 Block Next damage card this fight +6.",
+      "flavor_target": "理清了，下一拳带依据。",
+      "flavor_native": "Sorted. The next punch has receipts.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_benchmark",
+      "campaign": "japanese",
+      "name_target": "基准一击",
+      "name_native": "Benchmark Strike",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 15
+      },
+      "effect_summary_zh": "造成 15 点伤害",
+      "effect_summary_en": "Deal 15 damage",
+      "flavor_target": "数据说话。",
+      "flavor_native": "Numbers talk.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_breaker_shell",
+      "campaign": "japanese",
+      "name_target": "熔断护壳",
+      "name_native": "Circuit Breaker Shell",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "block": 10,
+        "reflect_stacks": 2
+      },
+      "effect_summary_zh": "获得 10 点格挡 本场战斗反伤次数 +2",
+      "effect_summary_en": "Gain 10 Block +2 Reflect stack(s) this fight",
+      "flavor_target": "先跳闸，后问因。",
+      "flavor_native": "Trip first, ask later.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_cherry_pick",
+      "campaign": "japanese",
+      "name_target": "挑拣提交",
+      "name_native": "Cherry-Pick",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 8,
+        "chain_bonus": 4
+      },
+      "effect_summary_zh": "造成 8 点伤害 连携：+4",
+      "effect_summary_en": "Deal 8 damage Chain: +4",
+      "flavor_target": "只要这一笔。",
+      "flavor_native": "Just this commit.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_code_review",
+      "campaign": "japanese",
+      "name_target": "代码评审",
+      "name_native": "Code Review",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 8
+      },
+      "effect_summary_zh": "获得 8 点格挡",
+      "effect_summary_en": "Gain 8 Block",
+      "flavor_target": "待 LGTM。",
+      "flavor_native": "LGTM pending.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_container_escape",
+      "campaign": "japanese",
+      "name_target": "容器逃逸",
+      "name_native": "Container Escape",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "effect": {
+        "damage": 17
+      },
+      "effect_summary_zh": "造成 17 点伤害",
+      "effect_summary_en": "Deal 17 damage",
+      "flavor_target": "打破笼子。",
+      "flavor_native": "Break the cage.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_curse_echo_invoice",
+      "campaign": "japanese",
+      "name_target": "回声工单",
+      "name_native": "Echo Invoice",
+      "type": "curse",
+      "rarity": "curse",
+      "energy_cost": 0,
+      "effect": {
+        "duplicate_self_when_discarded": true
+      },
+      "effect_summary_zh": "未被消耗并进入弃牌堆时：复制一张加入弃牌堆。",
+      "effect_summary_en": "When discarded (not Exhaust): add a copy to Discard.",
+      "flavor_target": "结案了，但没清空。",
+      "flavor_native": "Closed but never cleared.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "curse"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_deadlock",
+      "campaign": "japanese",
+      "name_target": "死锁终结",
+      "name_native": "Deadlock",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "effect": {
+        "damage": 18,
+        "bonus_if_block_active": 6,
+        "reflect_stacks": 1
+      },
+      "effect_summary_zh": "造成 18 点伤害 有格挡时额外 +6。 本场战斗反伤次数 +1",
+      "effect_summary_en": "Deal 18 damage +6 if Block active. +1 Reflect stack(s) this fight",
+      "flavor_target": "全员等待。",
+      "flavor_native": "Everyone waits.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_diff_expectations",
+      "campaign": "japanese",
+      "name_target": "对齐差异",
+      "name_native": "Diff Expectations",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "effect": {
+        "damage": 10,
+        "draw": 2
+      },
+      "effect_summary_zh": "造成 10 点伤害 抽 2 张牌",
+      "effect_summary_en": "Deal 10 damage Draw 2 cards",
+      "flavor_target": "范围漂移。",
+      "flavor_native": "Scope drift.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_feature_flag",
+      "campaign": "japanese",
+      "name_target": "特性开关",
+      "name_native": "Feature Flag",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "block": 9,
+        "retain": true
+      },
+      "effect_summary_zh": "获得 9 点格挡 保留：每多保留一回合，格挡 +4。",
+      "effect_summary_en": "Gain 9 Block Retain: +4 Block each turn held.",
+      "flavor_target": "安全翻转。",
+      "flavor_native": "Flip safely.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_git_blame",
+      "campaign": "japanese",
+      "name_target": "甩锅追踪",
+      "name_native": "Git Blame",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 5 点伤害 抽 1 张牌",
+      "effect_summary_en": "Deal 5 damage Draw 1 card",
+      "flavor_target": "当然不是你。",
+      "flavor_native": "Not you, of course.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_guard_clause",
+      "campaign": "japanese",
+      "name_target": "卫语句",
+      "name_native": "Guard Clause",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 6,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "获得 6 点格挡",
+      "effect_summary_en": "Gain 6 Block",
+      "flavor_target": "早返回。",
+      "flavor_native": "Return early.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_hotfix",
+      "campaign": "japanese",
+      "name_target": "热修复",
+      "name_native": "Hotfix",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "bonus_correct_first_try": 3
+      },
+      "effect_summary_zh": "造成 6 点伤害，首打 +3",
+      "effect_summary_en": "Deal 6 damage, +3 if first try",
+      "flavor_target": "先上线。",
+      "flavor_native": "Ship first.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_incident_triage",
+      "campaign": "japanese",
+      "name_target": "事故分流",
+      "name_native": "Incident Triage",
+      "type": "grammar",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "block": 16
+      },
+      "effect_summary_zh": "获得 16 点格挡",
+      "effect_summary_en": "Gain 16 Block",
+      "flavor_target": "一级事故台。",
+      "flavor_native": "Sev-1 desk.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_lambda_jab",
+      "campaign": "japanese",
+      "name_target": "匿名刺拳",
+      "name_native": "Lambda Jab",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7
+      },
+      "effect_summary_zh": "造成 7 点伤害",
+      "effect_summary_en": "Deal 7 damage",
+      "flavor_target": "简洁的痛。",
+      "flavor_native": "Concise pain.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_memory_leak",
+      "campaign": "japanese",
+      "name_target": "内存泄漏",
+      "name_native": "Memory Leak",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 14,
+        "reflect_damage": 1
+      },
+      "effect_summary_zh": "造成 14 点伤害 本场战斗每层反伤伤害 +1",
+      "effect_summary_en": "Deal 14 damage +1 Reflect damage per stack this fight",
+      "flavor_target": "忘了释放。",
+      "flavor_native": "Forgot to free.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_merge_conflict",
+      "campaign": "japanese",
+      "name_target": "合并冲突",
+      "name_native": "Merge Conflict",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 10,
+        "hits": 2
+      },
+      "effect_summary_zh": "造成 10 点伤害（2 段）",
+      "effect_summary_en": "Deal 10 damage (×2 hits)",
+      "flavor_target": "两边都有理。",
+      "flavor_native": "Two truths.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_metrics_dashboard",
+      "campaign": "japanese",
+      "name_target": "指标盘",
+      "name_native": "Metrics Dashboard",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "draw": 2
+      },
+      "effect_summary_zh": "抽 2 张牌",
+      "effect_summary_en": "Draw 2 cards",
+      "flavor_target": "红线绿线。",
+      "flavor_native": "Red line green line.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_oncall_wisdom",
+      "campaign": "japanese",
+      "name_target": "值班智慧",
+      "name_native": "Oncall Wisdom",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "heal": 8,
+        "block": 4
+      },
+      "effect_summary_zh": "获得 4 点格挡 恢复 8 点生命",
+      "effect_summary_en": "Gain 4 Block Heal 8 HP",
+      "flavor_target": "寻呼机育人。",
+      "flavor_native": "Pager teaches.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_pair_session",
+      "campaign": "japanese",
+      "name_target": "结对缓冲",
+      "name_native": "Pair Session",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5,
+        "draw": 1
+      },
+      "effect_summary_zh": "获得 5 点格挡 抽 1 张牌",
+      "effect_summary_en": "Gain 5 Block Draw 1 card",
+      "flavor_target": "两把键盘。",
+      "flavor_native": "Two keyboards.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_patch_tuesday",
+      "campaign": "japanese",
+      "name_target": "补丁星期二",
+      "name_native": "Patch Tuesday",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 12,
+        "bonus_correct_first_try": 3
+      },
+      "effect_summary_zh": "造成 12 点伤害，首打 +3",
+      "effect_summary_en": "Deal 12 damage, +3 if first try",
+      "flavor_target": "微软时间。",
+      "flavor_native": "Microsoft hours.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_postmortem",
+      "campaign": "japanese",
+      "name_target": "复盘治疗",
+      "name_native": "Postmortem",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "block": 10,
+        "heal": 3
+      },
+      "effect_summary_zh": "获得 10 点格挡 恢复 3 点生命",
+      "effect_summary_en": "Gain 10 Block Heal 3 HP",
+      "flavor_target": "无责。",
+      "flavor_native": "Blameless.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_printf_debug",
+      "campaign": "japanese",
+      "name_target": "打印调试",
+      "name_native": "Printf Debug",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 4
+      },
+      "effect_summary_zh": "造成 4 点伤害",
+      "effect_summary_en": "Deal 4 damage",
+      "flavor_target": "上线前都管用。",
+      "flavor_native": "Works until it ships.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_race_condition",
+      "campaign": "japanese",
+      "name_target": "竞态一击",
+      "name_native": "Race Condition",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "造成 9 点伤害，首打 +2",
+      "effect_summary_en": "Deal 9 damage, +2 if first try",
+      "flavor_target": "谁先谁后？",
+      "flavor_native": "Who runs first?",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_readme",
+      "campaign": "japanese",
+      "name_target": "读我",
+      "name_native": "README",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 4,
+        "block": 4
+      },
+      "effect_summary_zh": "造成 4 点伤害 获得 4 点格挡",
+      "effect_summary_en": "Deal 4 damage Gain 4 Block",
+      "flavor_target": "先读文档。",
+      "flavor_native": "RTFM.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_refactor_spree",
+      "campaign": "japanese",
+      "name_target": "重构狂欢",
+      "name_native": "Refactor Spree",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 11,
+        "chain_bonus": 8
+      },
+      "effect_summary_zh": "造成 11 点伤害 连携：+8",
+      "effect_summary_en": "Deal 11 damage Chain: +8",
+      "flavor_target": "测试还绿时。",
+      "flavor_native": "While tests pass.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_rfc_skim",
+      "campaign": "japanese",
+      "name_target": "扫规范",
+      "name_native": "RFC Skim",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 6,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 6 点伤害 抽 1 张牌",
+      "effect_summary_en": "Deal 6 damage Draw 1 card",
+      "flavor_target": "快速扫过。",
+      "flavor_native": "Skim fast.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_rollback",
+      "campaign": "japanese",
+      "name_target": "回滚",
+      "name_native": "Rollback",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "block": 14
+      },
+      "effect_summary_zh": "获得 14 点格挡",
+      "effect_summary_en": "Gain 14 Block",
+      "flavor_target": "撤销现实。",
+      "flavor_native": "Undo reality.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_runbook",
+      "campaign": "japanese",
+      "name_target": "手册格挡",
+      "name_native": "Runbook",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "block": 12
+      },
+      "effect_summary_zh": "获得 12 点格挡",
+      "effect_summary_en": "Gain 12 Block",
+      "flavor_target": "一步步来。",
+      "flavor_native": "Step-by-step.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_ship_it",
+      "campaign": "japanese",
+      "name_target": "上线按钮",
+      "name_native": "Ship It",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 6 点伤害 抽 1 张牌",
+      "effect_summary_en": "Deal 6 damage Draw 1 card",
+      "flavor_target": "够绿就发。",
+      "flavor_native": "Green enough.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_skill_energy_scavenge",
+      "campaign": "japanese",
+      "name_target": "能量回收",
+      "name_native": "Energy Scavenge",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "exhaust_one_hand_gain_its_energy": true
+      },
+      "effect_summary_zh": "消耗 1 张手牌。获得等同于该牌消耗能量的能量。",
+      "effect_summary_en": "Exhaust 1 card from your hand. Gain Energy equal to its cost.",
+      "flavor_target": "撕一张票，换它的电量。",
+      "flavor_native": "Burn a ticket to steal its voltage.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_skill_return_lane",
+      "campaign": "japanese",
+      "name_target": "回路收回",
+      "name_native": "Return Lane",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "block": 3,
+        "pick_from_discard_to_hand": 1,
+        "exhaust_self": true
+      },
+      "effect_summary_zh": "获得 3 点格挡 从弃牌堆将 1 张牌收回手牌。消耗。",
+      "effect_summary_en": "Gain 3 Block Return 1 card from Discard to your hand. Exhaust.",
+      "flavor_target": "从回收站把活儿捞回手里（类杀戮「重现」）。",
+      "flavor_native": "Like STS Recreation — pull work back from the bin.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "dev_act1_skill_return_lane_plus",
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_skill_return_lane_plus",
+      "campaign": "japanese",
+      "name_target": "回路收回+",
+      "name_native": "Return Lane+",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5,
+        "pick_from_discard_to_hand": 1,
+        "exhaust_self": false
+      },
+      "effect_summary_zh": "获得 5 点格挡 从弃牌堆将 1 张牌收回手牌。",
+      "effect_summary_en": "Gain 5 Block Return 1 card from Discard to your hand.",
+      "flavor_target": "照样捞牌，不再烧掉这张技能。",
+      "flavor_native": "Same lane, no burnout.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_skill_scope_trim",
+      "campaign": "japanese",
+      "name_target": "范围修剪",
+      "name_native": "Scope Trim",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "draw_then_discard_hand": {
+          "draw": 3,
+          "discard": 1
+        }
+      },
+      "effect_summary_zh": "抽 3 张；将 1 张手牌置入弃牌堆。",
+      "effect_summary_en": "Draw 3. Discard 1 card(s) from your hand.",
+      "flavor_target": "先铺开，再剪掉一根枝。",
+      "flavor_native": "Draw wide, cut one branch.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "dev_act1_skill_scope_trim_plus",
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_skill_scope_trim_plus",
+      "campaign": "japanese",
+      "name_target": "范围修剪+",
+      "name_native": "Scope Trim+",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "draw_then_discard_hand": {
+          "draw": 4,
+          "discard": 1
+        }
+      },
+      "effect_summary_zh": "抽 4 张；将 1 张手牌置入弃牌堆。",
+      "effect_summary_en": "Draw 4. Discard 1 card(s) from your hand.",
+      "flavor_target": "网更大，剪法照旧。",
+      "flavor_native": "Wider net, same cut.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_slack_dnd",
+      "campaign": "japanese",
+      "name_target": "免打扰盾",
+      "name_native": "Slack DnD",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 7
+      },
+      "effect_summary_zh": "获得 7 点格挡",
+      "effect_summary_en": "Gain 7 Block",
+      "flavor_target": "专注模式。",
+      "flavor_native": "Focus mode.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_slo_barrier",
+      "campaign": "japanese",
+      "name_target": "SLO 屏障",
+      "name_native": "SLO Barrier",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "block": 11,
+        "draw": 1
+      },
+      "effect_summary_zh": "获得 11 点格挡 抽 1 张牌",
+      "effect_summary_en": "Gain 11 Block Draw 1 card",
+      "flavor_target": "错误预算。",
+      "flavor_native": "Error budget.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_stack_overflow",
+      "campaign": "japanese",
+      "name_target": "栈溢出打击",
+      "name_native": "Stack Overflow",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 12,
+        "reflect_stacks": 2
+      },
+      "effect_summary_zh": "造成 12 点伤害 本场战斗反伤次数 +2",
+      "effect_summary_en": "Deal 12 damage +2 Reflect stack(s) this fight",
+      "flavor_target": "调用栈过深。",
+      "flavor_native": "Deep call stack.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_stakeholder_ping",
+      "campaign": "japanese",
+      "name_target": "干系人点名",
+      "name_native": "Stakeholder Ping",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "block": 3
+      },
+      "effect_summary_zh": "造成 5 点伤害 获得 3 点格挡",
+      "effect_summary_en": "Deal 5 damage Gain 3 Block",
+      "flavor_target": "全体注意。",
+      "flavor_native": "@here",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_standup_block",
+      "campaign": "japanese",
+      "name_target": "站会格挡",
+      "name_native": "Standup Block",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 6
+      },
+      "effect_summary_zh": "获得 6 点格挡",
+      "effect_summary_en": "Gain 6 Block",
+      "flavor_target": "昨天今天。",
+      "flavor_native": "Yesterday today.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_sticky_feature",
+      "campaign": "japanese",
+      "name_target": "粘性需求",
+      "name_native": "Sticky Feature",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "retain": true
+      },
+      "effect_summary_zh": "造成 6 点伤害 保留：每多保留一回合，格挡 +4。",
+      "effect_summary_en": "Deal 6 damage Retain: +4 Block each turn held.",
+      "flavor_target": "撕不下来。",
+      "flavor_native": "Cannot peel off.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_tech_spec",
+      "campaign": "japanese",
+      "name_target": "技术规格",
+      "name_native": "Tech Spec",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 8,
+        "bonus_correct_first_try": 4
+      },
+      "effect_summary_zh": "造成 8 点伤害，首打 +4",
+      "effect_summary_en": "Deal 8 damage, +4 if first try",
+      "flavor_target": "已签字。",
+      "flavor_native": "Signed off.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "reading"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_type_safety",
+      "campaign": "japanese",
+      "name_target": "类型安全",
+      "name_native": "Type Safety",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 13,
+        "bonus_correct_first_try": 5
+      },
+      "effect_summary_zh": "造成 13 点伤害，首打 +5",
+      "effect_summary_en": "Deal 13 damage, +5 if first try",
+      "flavor_target": "编译期护盾。",
+      "flavor_native": "Compile-time shield.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_unit_nudge",
+      "campaign": "japanese",
+      "name_target": "单测轻推",
+      "name_native": "Unit Test Nudge",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7
+      },
+      "effect_summary_zh": "造成 7 点伤害",
+      "effect_summary_en": "Deal 7 damage",
+      "flavor_target": "轻推断言。",
+      "flavor_native": "Nudge the assertion.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_vocab_ingenious_ping",
+      "campaign": "japanese",
+      "name_target": "奇巧回显",
+      "name_native": "Ping Snap",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "造成 5 点伤害，首打 +2",
+      "effect_summary_en": "Deal 5 damage, +2 if first try",
+      "flavor_target": "丢掉时也会回响。",
+      "flavor_native": "It answers when dropped.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": [
+        "ingenious"
+      ]
+    },
+    {
+      "id": "dev_act1_zero_day",
+      "campaign": "japanese",
+      "name_target": "零日直拳",
+      "name_native": "Zero-Day Punch",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 4,
+      "effect": {
+        "damage": 22
+      },
+      "effect_summary_zh": "造成 22 点伤害",
+      "effect_summary_en": "Deal 22 damage",
+      "flavor_target": "紧急补丁。",
+      "flavor_native": "Urgent patch.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "vocabulary"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "dev_act1_zero_trust",
+      "campaign": "japanese",
+      "name_target": "零信任壳",
+      "name_native": "Zero Trust Shell",
+      "type": "grammar",
+      "rarity": "rare",
+      "energy_cost": 3,
+      "effect": {
+        "block": 20
+      },
+      "effect_summary_zh": "获得 20 点格挡",
+      "effect_summary_en": "Gain 20 Block",
+      "flavor_target": "持续校验。",
+      "flavor_native": "Verify always.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "act1",
+        "grammar"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_iron_vow",
+      "campaign": "japanese",
+      "name_target": "SLA 护符",
+      "name_native": "SLA Ward",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "block": 12,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "获得 12 点格挡",
+      "effect_summary_en": "Gain 12 Block",
+      "flavor_target": "到期前绝不倒下。",
+      "flavor_native": "Uptime is a promise.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb-form",
+        "polite"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_meditate",
+      "campaign": "japanese",
+      "name_target": "技术债冥想",
+      "name_native": "Tech Debt Meditate",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "block": 6,
+        "retain": true
+      },
+      "effect_summary_zh": "获得 6 点格挡 保留：每多保留一回合，格挡 +4。",
+      "effect_summary_en": "Gain 6 Block Retain: +4 Block each turn held.",
+      "flavor_target": "闭眼全是 TODO。",
+      "flavor_native": "Close eyes, see only TODOs.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb-form",
+        "te-form"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_particle_shield",
+      "campaign": "japanese",
+      "name_target": "卫语句",
+      "name_native": "Guard Clause",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 7,
+        "chain_bonus": 2
+      },
+      "effect_summary_zh": "获得 7 点格挡 连携：+2",
+      "effect_summary_en": "Gain 7 Block Chain: +2",
+      "flavor_target": "早 return，早轻松。",
+      "flavor_native": "Return early, sleep better.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "particle",
+        "wa",
+        "ni"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_steady_stance",
+      "campaign": "japanese",
+      "name_target": "零停机站姿",
+      "name_native": "Zero-Downtime Stance",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "block": 4,
+        "retain": true
+      },
+      "effect_summary_zh": "获得 4 点格挡 保留：每多保留一回合，格挡 +4。",
+      "effect_summary_en": "Gain 4 Block Retain: +4 Block each turn held.",
+      "flavor_target": "发布窗口里别抖。",
+      "flavor_native": "Steady hands on deploy day.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "particle",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_stone_skin",
+      "campaign": "japanese",
+      "name_target": "不可变壳",
+      "name_native": "Immutable Shell",
+      "type": "grammar",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "block": 16,
+        "bonus_correct_first_try": 5,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "获得 16 点格挡",
+      "effect_summary_en": "Gain 16 Block",
+      "flavor_target": "状态机写进 DNA。",
+      "flavor_native": "State machine coded into the bones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "grammar",
+        "sentence-structure"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_ward",
+      "campaign": "japanese",
+      "name_target": "Code Review",
+      "name_native": "Code Review",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "获得 5 点格挡",
+      "effect_summary_en": "Gain 5 Block",
+      "flavor_target": "有人看过就不算裸奔。",
+      "flavor_native": "Two pairs of eyes beat zero.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "jp_gram_ward_plus",
+      "question_tags": [
+        "particle",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_gram_ward_plus",
+      "campaign": "japanese",
+      "name_target": "Code Review+",
+      "name_native": "Code Review+",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 8,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "获得 8 点格挡",
+      "effect_summary_en": "Gain 8 Block",
+      "flavor_target": "LGTM 盖章加强版。",
+      "flavor_native": "Rubber stamp, reinforced.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "particle",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_105",
+      "campaign": "japanese",
+      "name_target": "规范·4",
+      "name_native": "Incident Shell",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 13,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 13 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 13 damage Gain 5 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_107",
+      "campaign": "japanese",
+      "name_target": "规范·6",
+      "name_native": "SLO Barrier",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 9,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 9 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 9 damage Gain 5 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_108",
+      "campaign": "japanese",
+      "name_target": "规范·1",
+      "name_native": "Scope Guard",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 13,
+        "block": 1
+      },
+      "effect_summary_zh": "造成 13 点伤害 获得 1 点格挡",
+      "effect_summary_en": "Deal 13 damage Gain 1 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_112",
+      "campaign": "japanese",
+      "name_target": "规范·5",
+      "name_native": "Runbook Shield",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 6 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 6 damage Gain 2 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_118",
+      "campaign": "japanese",
+      "name_target": "规范·5",
+      "name_native": "Runbook Shield",
+      "type": "grammar",
+      "rarity": "rare",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 11,
+        "block": 4
+      },
+      "effect_summary_zh": "造成 11 点伤害 获得 4 点格挡",
+      "effect_summary_en": "Deal 11 damage Gain 4 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_126",
+      "campaign": "japanese",
+      "name_target": "规范·1",
+      "name_native": "Scope Guard",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 14,
+        "block": 1
+      },
+      "effect_summary_zh": "造成 14 点伤害 获得 1 点格挡",
+      "effect_summary_en": "Deal 14 damage Gain 1 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_129",
+      "campaign": "japanese",
+      "name_target": "规范·4",
+      "name_native": "Incident Shell",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 12,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 12 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 12 damage Gain 5 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_grammar_gen_130",
+      "campaign": "japanese",
+      "name_target": "规范·5",
+      "name_native": "Runbook Shield",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 8,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 8 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 8 damage Gain 2 Block",
+      "flavor_target": "流程兜底。",
+      "flavor_native": "Process absorbs chaos.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_job_dev_rubber_duck",
+      "campaign": "japanese",
+      "name_target": "小黄鸭调试",
+      "name_native": "Rubber Duck",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 8
+      },
+      "effect_summary_zh": "获得 8 点格挡",
+      "effect_summary_en": "Gain 8 Block",
+      "flavor_target": "讲给鸭子听，格挡会自己长出来。",
+      "flavor_native": "Explain it to the duck — block appears from clarity.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_dev"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_job_dev_stack_push",
+      "campaign": "japanese",
+      "name_target": "进栈重击",
+      "name_native": "Stack Push",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7,
+        "bonus_correct_first_try": 2,
+        "chain_bonus": 3
+      },
+      "effect_summary_zh": "造成 7 点伤害，首打 +2 连携：+3",
+      "effect_summary_en": "Deal 7 damage, +2 if first try Chain: +3",
+      "flavor_target": "把复杂度压进调用栈。",
+      "flavor_native": "Shove the complexity down the call stack.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "job_dev"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_job_qa_flaky_run",
+      "campaign": "japanese",
+      "name_target": "偶发复现",
+      "name_native": "Flaky Repro",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "damage_target": "random",
+        "enemy_weak": 2,
+        "exhaust_self": true
+      },
+      "effect_summary_zh": "对随机一名敌人造成 5 点伤害 虚弱 2 回合（造成的攻击伤害降低）— 单体",
+      "effect_summary_en": "Deal 5 damage to a RANDOM enemy Weak 2 turns (deals less damage) — one target",
+      "flavor_target": "非必现，但一复现就写进用例。",
+      "flavor_native": "Non-deterministic, but the case is written in blood.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_qa"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_job_qa_triage_barrier",
+      "campaign": "japanese",
+      "name_target": "定级屏障",
+      "name_native": "Triage Barrier",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 9,
+        "enemy_weak": 2,
+        "exhaust_self": true
+      },
+      "effect_summary_zh": "获得 9 点格挡 虚弱 2 回合（造成的攻击伤害降低）— 单体",
+      "effect_summary_en": "Gain 9 Block Weak 2 turns (deals less damage) — one target",
+      "flavor_target": "这张工单写完就从牌库里删掉。",
+      "flavor_native": "This ticket leaves the deck after filing.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_qa"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_read_newcomers_luck",
+      "campaign": "japanese",
+      "name_target": "新人手册",
+      "name_native": "Onboarding Doc",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 0,
+        "block": 12,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 0 点伤害 获得 12 点格挡 抽 1 张牌",
+      "effect_summary_en": "Deal 0 damage Gain 12 Block Draw 1 card",
+      "flavor_target": "第一天总能蒙对。",
+      "flavor_native": "Day-one luck is real.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "jp_read_newcomers_luck_plus",
+      "question_tags": [
+        "reading",
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_read_returnees_insight",
+      "campaign": "japanese",
+      "name_target": "回流指南",
+      "name_native": "Re-onboarding",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 10,
+        "exhaust_self_gain_energy": 1
+      },
+      "effect_summary_zh": "造成 10 点伤害 消耗：获得 1 点能量。",
+      "effect_summary_en": "Deal 10 damage Exhaust: +1 Energy.",
+      "flavor_target": "老员工也要重新读。",
+      "flavor_native": "Even veterans RTFM again.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "jp_read_returnees_insight_plus",
+      "question_tags": [
+        "reading",
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_read_spirit_scroll",
+      "campaign": "japanese",
+      "name_target": "读 README",
+      "name_native": "README Scroll",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "heal": 6,
+        "draw": 1,
+        "stun": 0,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "恢复 6 点生命 抽 1 张牌",
+      "effect_summary_en": "Heal 6 HP Draw 1 card",
+      "flavor_target": "文档读完算我输…开玩笑的。",
+      "flavor_native": "RTFM — respectfully.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "reading",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_read_travelers_wisdom",
+      "campaign": "japanese",
+      "name_target": "架构白皮书",
+      "name_native": "Architecture Doc",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "heal": 0,
+        "draw": 2,
+        "stun": 0,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "抽 2 张牌",
+      "effect_summary_en": "Draw 2 cards",
+      "flavor_target": "图很丑但管用。",
+      "flavor_native": "Ugly diagram, clear truth.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "reading",
+        "narrative"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_read_void_surge",
+      "campaign": "japanese",
+      "name_target": "RFC 深潜",
+      "name_native": "RFC Deep Dive",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "heal": 3,
+        "exhaust_self_gain_energy": 2
+      },
+      "effect_summary_zh": "恢复 3 点生命 消耗：获得 2 点能量。",
+      "effect_summary_en": "Heal 3 HP Exhaust: +2 Energy.",
+      "flavor_target": "空白处全是假设。",
+      "flavor_native": "The void is full of assumptions.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "reading",
+        "narrative"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_103",
+      "campaign": "japanese",
+      "name_target": "洞察·2",
+      "name_native": "RFC Skim",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 11,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 11 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 11 damage Gain 2 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_109",
+      "campaign": "japanese",
+      "name_target": "洞察·2",
+      "name_native": "RFC Skim",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 6,
+        "block": 0
+      },
+      "effect_summary_zh": "造成 6 点伤害",
+      "effect_summary_en": "Deal 6 damage",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_110",
+      "campaign": "japanese",
+      "name_target": "洞察·3",
+      "name_native": "Diff Expectations",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 10,
+        "block": 6
+      },
+      "effect_summary_zh": "造成 10 点伤害 获得 6 点格挡",
+      "effect_summary_en": "Deal 10 damage Gain 6 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_111",
+      "campaign": "japanese",
+      "name_target": "洞察·4",
+      "name_native": "Retro Insight",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 14,
+        "block": 3
+      },
+      "effect_summary_zh": "造成 14 点伤害 获得 3 点格挡",
+      "effect_summary_en": "Deal 14 damage Gain 3 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_113",
+      "campaign": "japanese",
+      "name_target": "洞察·6",
+      "name_native": "Sprint Notes",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 12,
+        "block": 1
+      },
+      "effect_summary_zh": "造成 12 点伤害 获得 1 点格挡",
+      "effect_summary_en": "Deal 12 damage Gain 1 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_119",
+      "campaign": "japanese",
+      "name_target": "洞察·6",
+      "name_native": "Sprint Notes",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 8,
+        "block": 7
+      },
+      "effect_summary_zh": "造成 8 点伤害 获得 7 点格挡",
+      "effect_summary_en": "Deal 8 damage Gain 7 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_124",
+      "campaign": "japanese",
+      "name_target": "洞察·5",
+      "name_native": "Stakeholder Memo",
+      "type": "reading",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 7,
+        "block": 7
+      },
+      "effect_summary_zh": "造成 7 点伤害 获得 7 点格挡",
+      "effect_summary_en": "Deal 7 damage Gain 7 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_125",
+      "campaign": "japanese",
+      "name_target": "洞察·6",
+      "name_native": "Sprint Notes",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 7,
+        "block": 7
+      },
+      "effect_summary_zh": "造成 7 点伤害 获得 7 点格挡",
+      "effect_summary_en": "Deal 7 damage Gain 7 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_127",
+      "campaign": "japanese",
+      "name_target": "洞察·2",
+      "name_native": "RFC Skim",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 12,
+        "block": 3
+      },
+      "effect_summary_zh": "造成 12 点伤害 获得 3 点格挡",
+      "effect_summary_en": "Deal 12 damage Gain 3 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_128",
+      "campaign": "japanese",
+      "name_target": "洞察·3",
+      "name_native": "Diff Expectations",
+      "type": "reading",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 11,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 11 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 11 damage Gain 2 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_reading_gen_131",
+      "campaign": "japanese",
+      "name_target": "洞察·6",
+      "name_native": "Sprint Notes",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7,
+        "block": 6
+      },
+      "effect_summary_zh": "造成 7 点伤害 获得 6 点格挡",
+      "effect_summary_en": "Deal 7 damage Gain 6 Block",
+      "flavor_target": "读懂再拍板。",
+      "flavor_native": "Read between the milestones.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_code_review",
+      "campaign": "japanese",
+      "name_target": "代码评审曝光",
+      "name_native": "Code Review Exposure",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "enemy_poison": 2,
+        "enemy_vulnerable": 2
+      },
+      "effect_summary_zh": "易伤 2 回合（受到的伤害 +50%）— 单体 中毒 +2（每回合开始时受伤，再 −1 层）— 单体",
+      "effect_summary_en": "Vulnerable 2 turns (takes +50% damage) — one target Poison +2 (HP each turn, then −1 stack) — one target",
+      "flavor_target": "PR 公开处刑，弱点挂毒一起晒。",
+      "flavor_native": "Public diff review — every flaw gets sunlight.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_dev",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_deprecation_notice",
+      "campaign": "japanese",
+      "name_target": "废弃接口通告",
+      "name_native": "Deprecation Notice",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "enemy_poison": 2,
+        "enemy_vulnerable": 1
+      },
+      "effect_summary_zh": "易伤 1 回合（受到的伤害 +50%）— 单体 中毒 +2（每回合开始时受伤，再 −1 层）— 单体",
+      "effect_summary_en": "Vulnerable 1 turns (takes +50% damage) — one target Poison +2 (HP each turn, then −1 stack) — one target",
+      "flavor_target": "Sunset 日期一到，漏洞旧债一起结算。",
+      "flavor_native": "Sunset date — legacy gaps show skin and bleed.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_dev",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_incident_all_hands",
+      "campaign": "japanese",
+      "name_target": "全员事故复盘",
+      "name_native": "All-Hands Incident",
+      "type": "grammar",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "enemy_poison_all": 2,
+        "enemy_vulnerable_all": 1
+      },
+      "effect_summary_zh": "全体易伤 1 回合 全体中毒 +2 层",
+      "effect_summary_en": "ALL enemies: Vulnerable 1 turns ALL enemies: Poison +2",
+      "flavor_target": "复盘邮件一发，全线挂毒易伤。",
+      "flavor_native": "Postmortem blast — vuln and poison hit every lane.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_dev",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_memory_leak",
+      "campaign": "japanese",
+      "name_target": "内存泄漏",
+      "name_native": "Memory Leak",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "enemy_poison": 3,
+        "enemy_vulnerable": 1
+      },
+      "effect_summary_zh": "易伤 1 回合（受到的伤害 +50%）— 单体 中毒 +3（每回合开始时受伤，再 −1 层）— 单体",
+      "effect_summary_en": "Vulnerable 1 turns (takes +50% damage) — one target Poison +3 (HP each turn, then −1 stack) — one target",
+      "flavor_target": "一点一点漏，弱点也跟着放大。",
+      "flavor_native": "Drip by drip until OOM.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_dev",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_minimal_repro",
+      "campaign": "japanese",
+      "name_target": "最小复现包",
+      "name_native": "Minimal Repro Zip",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "enemy_weak": 2,
+        "block": 5,
+        "exhaust_self": true
+      },
+      "effect_summary_zh": "获得 5 点格挡 虚弱 2 回合（造成的攻击伤害降低）— 单体",
+      "effect_summary_en": "Gain 5 Block Weak 2 turns (deals less damage) — one target",
+      "flavor_target": "三步复现打包带走，这张牌也能丢进 exhaust。",
+      "flavor_native": "Zip your repro — this card exhausts like the ticket.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_qa",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_status_regression_mold",
+      "campaign": "japanese",
+      "name_target": "回归发霉",
+      "name_native": "Regression Mold",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "enemy_weak": 3,
+        "exhaust_self_gain_energy": 2
+      },
+      "effect_summary_zh": "消耗：获得 2 点能量。 虚弱 3 回合（造成的攻击伤害降低）— 单体",
+      "effect_summary_en": "Exhaust: +2 Energy. Weak 3 turns (deals less damage) — one target",
+      "flavor_target": "旧 Bug 回来了——烧一张换两点能量接着测。",
+      "flavor_native": "Regression returns — burn this card for juice to keep testing.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "job_qa",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_branch_prune",
+      "campaign": "japanese",
+      "name_target": "分支修剪",
+      "name_native": "Branch Prune",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage_all": 5,
+        "bonus_correct_first_try": 3,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "对所有敌人造成 5 点伤害，首打 +3",
+      "effect_summary_en": "Deal 5 damage to ALL enemies, +3 if first try",
+      "flavor_target": "一次提交，清掉所有 feature 旗标。",
+      "flavor_native": "One merge to rule every open branch.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "jp_vocab_branch_prune_plus",
+      "question_tags": [
+        "verb",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_branch_prune_plus",
+      "campaign": "japanese",
+      "name_target": "分支修剪+",
+      "name_native": "Branch Prune+",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage_all": 8,
+        "bonus_correct_first_try": 4,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "对所有敌人造成 8 点伤害，首打 +4",
+      "effect_summary_en": "Deal 8 damage to ALL enemies, +4 if first try",
+      "flavor_target": "连 staging 一起剃干净。",
+      "flavor_native": "Even the staging lane gets a haircut.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_kanji_blade",
+      "campaign": "japanese",
+      "name_target": "严格模式",
+      "name_native": "Strict Mode",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 16,
+        "bonus_if_block_active": 6,
+        "bonus_correct_first_try": 0,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "造成 16 点伤害 有格挡时额外 +6。",
+      "effect_summary_en": "Deal 16 damage +6 if Block active.",
+      "flavor_target": "类型即武器。",
+      "flavor_native": "Types are the blade.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "group2"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_lucky_fork",
+      "campaign": "japanese",
+      "name_target": "幸运分叉",
+      "name_native": "Lucky Fork",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7,
+        "damage_target": "random",
+        "bonus_correct_first_try": 3,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "对随机一名敌人造成 7 点伤害，首打 +3",
+      "effect_summary_en": "Deal 7 damage to a RANDOM enemy, +3 if first try",
+      "flavor_target": "调度器掷骰子，谁中招谁接锅。",
+      "flavor_native": "The scheduler rolls dice; someone pays the IO tax.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_mountain_echo",
+      "campaign": "japanese",
+      "name_target": "日志回声",
+      "name_native": "Log Echo",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 12,
+        "chain_bonus": 6,
+        "bonus_correct_first_try": 0
+      },
+      "effect_summary_zh": "造成 12 点伤害 连携：+6",
+      "effect_summary_en": "Deal 12 damage Chain: +6",
+      "flavor_target": "println 也是输出。",
+      "flavor_native": "println is still observability.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "noun",
+        "nature"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_spirit_surge",
+      "campaign": "japanese",
+      "name_target": "内存尖峰",
+      "name_native": "Memory Spike",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 14,
+        "bonus_correct_first_try": 6,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "造成 14 点伤害，首打 +6",
+      "effect_summary_en": "Deal 14 damage, +6 if first try",
+      "flavor_target": "GC 之前先输出。",
+      "flavor_native": "Peak RAM before the GC gods notice.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "group1",
+        "movement"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_strike",
+      "campaign": "japanese",
+      "name_target": "热修复",
+      "name_native": "Hotfix",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "bonus_correct_first_try": 4,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "造成 6 点伤害，首打 +4",
+      "effect_summary_en": "Deal 6 damage, +4 if first try",
+      "flavor_target": "先上线，再解释。",
+      "flavor_native": "Ship first, explain later.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "jp_vocab_strike_plus",
+      "question_tags": [
+        "verb",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_strike_plus",
+      "campaign": "japanese",
+      "name_target": "热修复+",
+      "name_native": "Hotfix+",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9,
+        "bonus_correct_first_try": 5,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "造成 9 点伤害，首打 +5",
+      "effect_summary_en": "Deal 9 damage, +5 if first try",
+      "flavor_target": "补丁叠补丁。",
+      "flavor_native": "Patches all the way down.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_swift_strike",
+      "campaign": "japanese",
+      "name_target": "CI 连击",
+      "name_native": "CI Strike",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 7,
+        "bonus_correct_first_try": 2,
+        "chain_bonus": null,
+        "draw": 1
+      },
+      "effect_summary_zh": "造成 7 点伤害，首打 +2 抽 1 张牌",
+      "effect_summary_en": "Deal 7 damage, +2 if first try Draw 1 card",
+      "flavor_target": "绿了就等于赢了。",
+      "flavor_native": "Green pipeline, green soul.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "adjective",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_tactical_retreat",
+      "campaign": "japanese",
+      "name_target": "git stash",
+      "name_native": "Git Stash",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "discard_draw": 1
+      },
+      "effect_summary_zh": "弃 1 张，抽 2 张。",
+      "effect_summary_en": "Discard 1, draw 2.",
+      "flavor_target": "不是逃，是战略暂存。",
+      "flavor_native": "Tactical WIP, not cowardice.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "verb",
+        "movement"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_twin_fang",
+      "campaign": "japanese",
+      "name_target": "双机热备",
+      "name_native": "Dual Dispatch",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 5,
+        "hits": 2,
+        "bonus_correct_first_try": 2,
+        "chain_bonus": null
+      },
+      "effect_summary_zh": "造成 5 点伤害，首打 +2（2 段）",
+      "effect_summary_en": "Deal 5 damage, +2 if first try (×2 hits)",
+      "flavor_target": "主从各一刀。",
+      "flavor_native": "Primary and replica both swing.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "noun",
+        "animal"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocab_wild_slash",
+      "campaign": "japanese",
+      "name_target": "重构乱斩",
+      "name_native": "Refactor Rush",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9,
+        "bonus_correct_first_try": 3,
+        "chain_bonus": 4
+      },
+      "effect_summary_zh": "造成 9 点伤害，首打 +3 连携：+4",
+      "effect_summary_en": "Deal 9 damage, +3 if first try Chain: +4",
+      "flavor_target": "大改特改，生死有命。",
+      "flavor_native": "Big bang refactor energy.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": null,
+      "question_tags": [
+        "noun",
+        "basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_100",
+      "campaign": "japanese",
+      "name_target": "交付·5",
+      "name_native": "Dead Code Cut",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 11,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 11 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 11 damage Gain 5 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_101",
+      "campaign": "japanese",
+      "name_target": "交付·6",
+      "name_native": "Merge Rebase",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 14,
+        "block": 7
+      },
+      "effect_summary_zh": "造成 14 点伤害 获得 7 点格挡",
+      "effect_summary_en": "Deal 14 damage Gain 7 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_102",
+      "campaign": "japanese",
+      "name_target": "交付·1",
+      "name_native": "Lint Strike",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 12,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 12 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 12 damage Gain 2 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_104",
+      "campaign": "japanese",
+      "name_target": "交付·3",
+      "name_native": "Hotfix Hammer",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 9,
+        "block": 2
+      },
+      "effect_summary_zh": "造成 9 点伤害 获得 2 点格挡",
+      "effect_summary_en": "Deal 9 damage Gain 2 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_106",
+      "campaign": "japanese",
+      "name_target": "交付·5",
+      "name_native": "Dead Code Cut",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 8,
+        "block": 1
+      },
+      "effect_summary_zh": "造成 8 点伤害 获得 1 点格挡",
+      "effect_summary_en": "Deal 8 damage Gain 1 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_114",
+      "campaign": "japanese",
+      "name_target": "交付·1",
+      "name_native": "Lint Strike",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 14,
+        "block": 3
+      },
+      "effect_summary_zh": "造成 14 点伤害 获得 3 点格挡",
+      "effect_summary_en": "Deal 14 damage Gain 3 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_115",
+      "campaign": "japanese",
+      "name_target": "交付·2",
+      "name_native": "Ticket Slash",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 8,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 8 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 8 damage Gain 5 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_116",
+      "campaign": "japanese",
+      "name_target": "交付·3",
+      "name_native": "Hotfix Hammer",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 14,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 14 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 14 damage Gain 5 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_117",
+      "campaign": "japanese",
+      "name_target": "交付·4",
+      "name_native": "Blame Redirect",
+      "type": "vocabulary",
+      "rarity": "rare",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 10,
+        "block": 7
+      },
+      "effect_summary_zh": "造成 10 点伤害 获得 7 点格挡",
+      "effect_summary_en": "Deal 10 damage Gain 7 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_120",
+      "campaign": "japanese",
+      "name_target": "交付·1",
+      "name_native": "Lint Strike",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 10,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 10 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 10 damage Gain 5 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_121",
+      "campaign": "japanese",
+      "name_target": "交付·2",
+      "name_native": "Ticket Slash",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 11,
+        "block": 4
+      },
+      "effect_summary_zh": "造成 11 点伤害 获得 4 点格挡",
+      "effect_summary_en": "Deal 11 damage Gain 4 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_122",
+      "campaign": "japanese",
+      "name_target": "交付·3",
+      "name_native": "Hotfix Hammer",
+      "type": "vocabulary",
+      "rarity": "uncommon",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 6,
+        "block": 1
+      },
+      "effect_summary_zh": "造成 6 点伤害 获得 1 点格挡",
+      "effect_summary_en": "Deal 6 damage Gain 1 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "jp_vocabulary_gen_123",
+      "campaign": "japanese",
+      "name_target": "交付·4",
+      "name_native": "Blame Redirect",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "damage": 8,
+        "block": 3
+      },
+      "effect_summary_zh": "造成 8 点伤害 获得 3 点格挡",
+      "effect_summary_en": "Deal 8 damage Gain 3 Block",
+      "flavor_target": "先交付再争论。",
+      "flavor_native": "Ship the slice. Worry about naming in v2.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "generated"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "starter_code_strike",
+      "campaign": "japanese",
+      "name_target": "敲代码",
+      "name_native": "Code Strike",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6
+      },
+      "effect_summary_zh": "造成 6 点伤害",
+      "effect_summary_en": "Deal 6 damage",
+      "flavor_target": "先把能跑的写出来。",
+      "flavor_native": "Ship something runnable first.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "starter_code_strike_plus",
+      "question_tags": [
+        "prog_v2",
+        "starter"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "starter_code_strike_plus",
+      "campaign": "japanese",
+      "name_target": "敲代码+",
+      "name_native": "Code Strike+",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9
+      },
+      "effect_summary_zh": "造成 9 点伤害",
+      "effect_summary_en": "Deal 9 damage",
+      "flavor_target": "先把能跑的写出来。",
+      "flavor_native": "Ship something runnable first.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "prog_v2",
+        "starter"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "starter_defensive_logic",
+      "campaign": "japanese",
+      "name_target": "写防御逻辑",
+      "name_native": "Defensive Logic",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5
+      },
+      "effect_summary_zh": "获得 5 点格挡",
+      "effect_summary_en": "Gain 5 Block",
+      "flavor_target": "至少别让系统当场倒下。",
+      "flavor_native": "Don't let production fall over.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": true,
+      "upgraded_id": "starter_defensive_logic_plus",
+      "question_tags": [
+        "prog_v2",
+        "starter"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "starter_defensive_logic_plus",
+      "campaign": "japanese",
+      "name_target": "写防御逻辑+",
+      "name_native": "Defensive Logic+",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 8
+      },
+      "effect_summary_zh": "获得 8 点格挡",
+      "effect_summary_en": "Gain 8 Block",
+      "flavor_target": "至少别让系统当场倒下。",
+      "flavor_native": "Don't let production fall over.",
+      "illustration": "/images/skill_placeholder.png",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "prog_v2",
+        "starter"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_gram_particle_shield",
+      "campaign": "korean",
+      "name_target": "Token 护壳",
+      "name_native": "Design Token Barrier",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "block": 10
+      },
+      "effect_summary_zh": "获得 10 点格挡",
+      "effect_summary_en": "Gain 10 Block",
+      "flavor_target": "语义色字面意义上救命。",
+      "flavor_native": "Semantic colors, literal safety.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_gram_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_gram_ward",
+      "campaign": "korean",
+      "name_target": "栅格护盾",
+      "name_native": "Grid System",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "获得 5 点格挡",
+      "effect_summary_en": "Gain 5 Block",
+      "flavor_target": "留白即防御。",
+      "flavor_native": "Margins are armor.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_gram_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_job_ui_handoff_spec",
+      "campaign": "korean",
+      "name_target": "标注交付",
+      "name_native": "Handoff Note",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 5 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 5 damage Gain 5 Block",
+      "flavor_target": "红批注救发布周。",
+      "flavor_native": "The redlines that save launch week.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_read_basic",
+        "job_ui"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_job_ui_snap_lines",
+      "campaign": "korean",
+      "name_target": "吸附辅助线",
+      "name_native": "Snap to Pixel",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 6,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "获得 6 点格挡",
+      "effect_summary_en": "Gain 6 Block",
+      "flavor_target": "4 像素，人生信仰。",
+      "flavor_native": "4px is a lifestyle.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_gram_basic",
+        "job_ui"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_read_spirit_scroll",
+      "campaign": "korean",
+      "name_target": "用户旅程卷轴",
+      "name_native": "User Flow Scroll",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 5 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 5 damage Gain 5 Block",
+      "flavor_target": "读完动线再出屏。",
+      "flavor_native": "Read the journey, ship the screen.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_read_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_status_alignment_police",
+      "campaign": "korean",
+      "name_target": "对齐警察",
+      "name_native": "Alignment Police",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "player_strength": 2,
+        "block": 5
+      },
+      "effect_summary_zh": "获得 5 点格挡 获得 2 点力量（本场战斗中攻击牌每段伤害 +2）",
+      "effect_summary_en": "Gain 5 Block Gain 2 Strength (+2 damage per hit on attacks this combat)",
+      "flavor_target": "偏两像素，士气问题——收紧栅格，下手更重。",
+      "flavor_native": "Two pixels off is a morale issue — tighten the grid and hit harder.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_gram_basic",
+        "job_ui",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_status_hex_poison",
+      "campaign": "korean",
+      "name_target": "动效曲线刺拳",
+      "name_native": "Motion Curve Jab",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "hits": 2
+      },
+      "effect_summary_zh": "造成 5 点伤害（2 段）",
+      "effect_summary_en": "Deal 5 damage (×2 hits)",
+      "flavor_target": "缓入缓出，同一节拍上打两下。",
+      "flavor_native": "Ease-in, ease-out — two beats on the same beat grid.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_vocab_basic",
+        "job_ui",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_vocab_strike",
+      "campaign": "korean",
+      "name_target": "像素斩",
+      "name_native": "Pixel Strike",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "造成 6 点伤害，首打 +2",
+      "effect_summary_en": "Deal 6 damage, +2 if first try",
+      "flavor_target": "画布上干净利落的一击。",
+      "flavor_native": "One crisp hit on the canvas.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_vocab_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_vocab_swift_strike",
+      "campaign": "korean",
+      "name_target": "自动布局刺拳",
+      "name_native": "Auto-layout Jab",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 5
+      },
+      "effect_summary_zh": "造成 5 点伤害",
+      "effect_summary_en": "Deal 5 damage",
+      "flavor_target": "对齐辅助线，信仰辅助线。",
+      "flavor_native": "Figma snaps it into place.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_vocab_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "kr_vocab_wild_slash",
+      "campaign": "korean",
+      "name_target": "笔刷暴走",
+      "name_native": "Brush Wildcard",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9
+      },
+      "effect_summary_zh": "造成 9 点伤害",
+      "effect_summary_en": "Deal 9 damage",
+      "flavor_target": "情绪板也有自己的想法。",
+      "flavor_native": "When the mood board fights back.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "kr_vocab_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_gram_particle_shield",
+      "campaign": "spanish",
+      "name_target": "风险登记盾",
+      "name_native": "Risk Register",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "block": 10
+      },
+      "effect_summary_zh": "获得 10 点格挡",
+      "effect_summary_en": "Gain 10 Block",
+      "flavor_target": "写下来就不会惊吓你。（画外音：还是会。）",
+      "flavor_native": "If it is written down, it cannot surprise you. (Narrator: it still can.)",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_gram_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_gram_ward",
+      "campaign": "spanish",
+      "name_target": "RACI 护符",
+      "name_native": "RACI Ward",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "block": 5,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "获得 5 点格挡",
+      "effect_summary_en": "Gain 5 Block",
+      "flavor_target": "总要有一个人负责。最好别只有你。",
+      "flavor_native": "Someone must be Accountable. Hopefully not you alone.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_gram_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_job_pm_priority_axis",
+      "campaign": "spanish",
+      "name_target": "优先级立轴",
+      "name_native": "Priority Axis",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "discard_draw": 2
+      },
+      "effect_summary_zh": "造成 5 点伤害 弃 2 张，抽 3 张。",
+      "effect_summary_en": "Deal 5 damage Discard 2, draw 3.",
+      "flavor_target": "这张是 P0——弃两张换摸牌，养下一张胶片。",
+      "flavor_native": "This card is P0 — cut two cards from hand to fund the next slide.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_vocab_basic",
+        "job_pm"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_job_pm_scope_creep_armor",
+      "campaign": "spanish",
+      "name_target": "需求膨胀墙",
+      "name_native": "Scope Wall",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 2,
+      "effect": {
+        "block": 8,
+        "discard_draw": 2
+      },
+      "effect_summary_zh": "获得 8 点格挡 弃 2 张，抽 3 张。",
+      "effect_summary_en": "Gain 8 Block Discard 2, draw 3.",
+      "flavor_target": "「不」是一句话——从手牌里削范围，墙留着。",
+      "flavor_native": "No is a complete sentence — shed scope from hand, keep the wall.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_gram_basic",
+        "job_pm"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_read_spirit_scroll",
+      "campaign": "spanish",
+      "name_target": "需求羊皮纸",
+      "name_native": "PRD Parchment",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 5,
+        "block": 5
+      },
+      "effect_summary_zh": "造成 5 点伤害 获得 5 点格挡",
+      "effect_summary_en": "Deal 5 damage Gain 5 Block",
+      "flavor_target": "真相一直在文档里。大概。也许。v3_最终版。",
+      "flavor_native": "The truth was in the doc all along. Probably. Maybe. v3_final_FINAL.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_read_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_status_exec_ping",
+      "campaign": "spanish",
+      "name_target": "高管已读",
+      "name_native": "Executive Ping",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "discard_draw": 2
+      },
+      "effect_summary_zh": "弃 2 张，抽 3 张。",
+      "effect_summary_en": "Discard 2, draw 3.",
+      "flavor_target": "老板视线落在线程上——你把手牌洗一轮剩下的。",
+      "flavor_native": "Leadership eyes on the thread — you reshuffle what survives.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_vocab_basic",
+        "job_pm",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_status_meeting_miasma",
+      "campaign": "spanish",
+      "name_target": "会议瘴气",
+      "name_native": "Meeting Miasma",
+      "type": "reading",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "discard_draw": 3
+      },
+      "effect_summary_zh": "弃 3 张，抽 4 张。",
+      "effect_summary_en": "Discard 3, draw 4.",
+      "flavor_target": "日历邀请——弃掉噪音，再摸三张。",
+      "flavor_native": "Calendar invites — discard the noise, pull three replacements.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_read_basic",
+        "job_pm",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_status_scope_fence",
+      "campaign": "spanish",
+      "name_target": "范围围栏",
+      "name_native": "Scope Fence",
+      "type": "grammar",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "discard_draw": 2
+      },
+      "effect_summary_zh": "弃 2 张，抽 3 张。",
+      "effect_summary_en": "Discard 2, draw 3.",
+      "flavor_target": "二期需求撞上围栏——弃掉草稿，摸出手牌。",
+      "flavor_native": "Phase-two requests hit the fence — toss drafts, draw clarity.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_gram_basic",
+        "job_pm",
+        "status"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_vocab_strike",
+      "campaign": "spanish",
+      "name_target": "范围斩",
+      "name_native": "Scope Chop",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 6,
+        "bonus_correct_first_try": 2
+      },
+      "effect_summary_zh": "造成 6 点伤害，首打 +2",
+      "effect_summary_en": "Deal 6 damage, +2 if first try",
+      "flavor_target": "砍需求，不砍队友。",
+      "flavor_native": "Cut the ticket, not the teammate.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_vocab_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_vocab_swift_strike",
+      "campaign": "spanish",
+      "name_target": "站会冷枪",
+      "name_native": "Standup Snipe",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 0,
+      "effect": {
+        "damage": 5
+      },
+      "effect_summary_zh": "造成 5 点伤害",
+      "effect_summary_en": "Deal 5 damage",
+      "flavor_target": "十五分钟，无限伤害。",
+      "flavor_native": "Fifteen minutes, infinite damage.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_vocab_basic"
+      ],
+      "keywords": []
+    },
+    {
+      "id": "es_vocab_wild_slash",
+      "campaign": "spanish",
+      "name_target": "优先级重击",
+      "name_native": "Priority Pile Driver",
+      "type": "vocabulary",
+      "rarity": "common",
+      "energy_cost": 1,
+      "effect": {
+        "damage": 9
+      },
+      "effect_summary_zh": "造成 9 点伤害",
+      "effect_summary_en": "Deal 9 damage",
+      "flavor_target": "在士气恢复之前全是 P0。",
+      "flavor_native": "Everything is P0 until morale improves.",
+      "illustration": "",
+      "upgradeable": false,
+      "upgraded_id": null,
+      "question_tags": [
+        "es_vocab_basic"
+      ],
+      "keywords": []
+    }
+  ]
+}

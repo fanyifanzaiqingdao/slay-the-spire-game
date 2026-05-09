@@ -15,17 +15,22 @@ import {
 import { shuffle, drawCards } from './deck.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const CARDS_PATH = join(__dirname, '../../src/data/japanese/cards.json')
+const DATA_ROOT = join(__dirname, '../../src/data')
 
 let CARD_MAP = {}
-try {
-  const raw = JSON.parse(readFileSync(CARDS_PATH, 'utf8'))
-  for (const c of raw) CARD_MAP[c.id] = c
-} catch (e) {
-  console.warn('[pvp] Could not load cards.json:', e.message)
+for (const camp of ['japanese', 'korean', 'spanish']) {
+  try {
+    const p = join(DATA_ROOT, camp, 'cards.json')
+    const raw = JSON.parse(readFileSync(p, 'utf8'))
+    const list = Array.isArray(raw) ? raw : raw?.default
+    if (!Array.isArray(list)) continue
+    for (const c of list) CARD_MAP[c.id] = c
+  } catch (e) {
+    console.warn(`[pvp] Could not load ${camp}/cards.json:`, e.message)
+  }
 }
 
-/** Starter deck — mirrors getStarterIdsForCharacter(japanese, 'hana') */
+/** Starter deck — mirrors getStarterIdsForCharacter(japanese, 'kenji') */
 const DEFAULT_DECK_IDS = [
   'jp_vocab_strike',
   'jp_vocab_strike',
@@ -37,6 +42,20 @@ const DEFAULT_DECK_IDS = [
   'jp_job_dev_stack_push',
   'jp_job_dev_rubber_duck',
 ]
+
+const PVP_DECK_MIN = 5
+const PVP_DECK_MAX = 50
+
+/**
+ * @param {unknown} raw
+ * @returns {string[]}
+ */
+export function normalizePvpDeckIds(raw) {
+  const list = Array.isArray(raw) ? raw : []
+  const known = list.filter((id) => typeof id === 'string' && CARD_MAP[id])
+  if (known.length < PVP_DECK_MIN) return [...DEFAULT_DECK_IDS]
+  return known.slice(0, PVP_DECK_MAX)
+}
 
 function emptyPlayer() {
   return {
@@ -203,18 +222,21 @@ function resolveEffect(effect, actor, target, actorIdx, log, ctx) {
   }
 }
 
-export function createInitialGame(deckIds = DEFAULT_DECK_IDS) {
+export function createInitialGame(deckIdsP0 = DEFAULT_DECK_IDS, deckIdsP1 = DEFAULT_DECK_IDS) {
+  const d0 = normalizePvpDeckIds(deckIdsP0)
+  const d1 = normalizePvpDeckIds(deckIdsP1)
   const players = [emptyPlayer(), emptyPlayer()]
+  players[0].deck = shuffle([...d0])
+  players[1].deck = shuffle([...d1])
   for (let i = 0; i < 2; i++) {
-    players[i].deck = shuffle([...deckIds])
     players[i].energy = PVP_MAX_ENERGY
   }
   // Only player 0 draws their opening hand; player 1 draws at the start of their first turn (after P0 ends).
   const p0 = players[0]
-  const d0 = drawCards(p0.deck, [], PVP_HAND_SIZE)
-  p0.deck = d0.deck
-  p0.discard = d0.discard
-  p0.hand = d0.drawn
+  const draw0 = drawCards(p0.deck, [], PVP_HAND_SIZE)
+  p0.deck = draw0.deck
+  p0.discard = draw0.discard
+  p0.hand = draw0.drawn
   return {
     phase: 'playing',
     turn: 0,

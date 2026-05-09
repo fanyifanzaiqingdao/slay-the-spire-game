@@ -3,6 +3,7 @@
 // Pure functions that read and write to the store via actions — never mutate directly.
 
 import { WEAK_OUTGOING_MULT } from '../constants/enemyStatus.js'
+import { SCOPE_CREEP_ATTACK_REDUCTION } from '../constants/relicCombat.js'
 
 /** Call after enemy strike SFX — only when that strike dealt HP loss (not fully blocked). */
 function maybeApplyReflectDamage(store, playSFX, hpLostThisStrike, reflectSlotIndex = 0) {
@@ -40,6 +41,10 @@ function applyStrikeDamage(rawDamage, store) {
     store.clearEnemyFury()
   }
 
+  if (Array.isArray(store.relics) && store.relics.includes('scope_creep_lapel')) {
+    damage = Math.max(0, damage - SCOPE_CREEP_ATTACK_REDUCTION)
+  }
+
   // Apply player block
   const currentBlock = store.block
   const blocked = Math.min(currentBlock, damage)
@@ -48,6 +53,7 @@ function applyStrikeDamage(rawDamage, store) {
   if (remaining > 0) {
     const newHp = store.hp - remaining
     store.setHp(newHp)
+    store.registerPlayerHpLossThisFight?.(remaining)
   }
 
   return { blocked, remaining, damage }
@@ -187,12 +193,17 @@ export async function resolveEnemyAction(action, enemy, store, playSFX, attacker
       const dmg1 = Math.floor(enemy.base_attack * 0.6)
       const dmg2 = Math.floor(enemy.base_attack * 0.6)
       let totalRemaining = 0
-      for (const dmg of [dmg1, dmg2]) {
+      for (const raw of [dmg1, dmg2]) {
+        let dmg = raw
+        if (Array.isArray(store.relics) && store.relics.includes('scope_creep_lapel')) {
+          dmg = Math.max(0, dmg - SCOPE_CREEP_ATTACK_REDUCTION)
+        }
         const b = Math.min(store.block, dmg)
         const r = dmg - b
         if (b > 0) store.spendBlock(b)
         if (r > 0) {
           store.setHp(Math.max(0, store.hp - r))
+          store.registerPlayerHpLossThisFight?.(r)
           totalRemaining += r
         }
         playSFX?.('enemy_strike')
@@ -216,6 +227,14 @@ export async function resolveEnemyAction(action, enemy, store, playSFX, attacker
       store.addPlayerDebuff({ type: 'confusion', duration: 1 })
       playSFX?.('debuff_apply')
       return { icon: '😡', message: 'Taunt! Bind + Confusion', type: 'debuff' }
+    }
+
+    /** Act1: Echo Invoice curse — only from elite/boss intents, never card rewards */
+    case 'add_echo_invoice': {
+      const cardId = enemy.echo_invoice_card_id || 'dev_act1_curse_echo_invoice'
+      store.addCardToDeck(cardId)
+      playSFX?.('debuff_apply')
+      return { icon: '🧾', message: 'Echo Invoice slips into your deck…', type: 'debuff' }
     }
 
     default: {

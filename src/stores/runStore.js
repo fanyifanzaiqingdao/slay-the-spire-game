@@ -5,10 +5,16 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { STORAGE_KEYS } from '../utils/localStorage.js'
+import { CARDS } from '../constants/campaigns.js'
 import { MAX_EQUIPPED_RELICS } from '../data/relics.js'
-import { PINGBACK_PINS_RELIC_ID, PINGBACK_PINS_DAMAGE_PER_STACK } from '../constants/relicCombat.js'
+import {
+  PINGBACK_PINS_RELIC_ID,
+  PINGBACK_PINS_DAMAGE_PER_STACK,
+  PR_TEMPLATE_FIRST_TYPE_BLOCK,
+} from '../constants/relicCombat.js'
 import { slotsFromEnemyDefs, legacyFromSlots, resetSlotsForNewFight } from '../utils/combatEnemies.js'
 import { VULNERABLE_DAMAGE_MULT } from '../constants/enemyStatus.js'
+import { isOverloadMechanicsActive, isOverloadLethal } from '../utils/overloadMechanics.js'
 
 const useRunStore = create(
   persist(
@@ -38,6 +44,10 @@ const useRunStore = create(
       gold: 0,
       energy: 3,
       maxEnergy: 3,
+      /** Programmer route: persistent stress — lethal when overloadGlobal > maxHp */
+      overloadGlobal: 0,
+      /** Programmer route: energy denied at next player draw (borrowed from next turn) */
+      energyDebtNextTurn: 0,
 
       // Navigation
       floor: 1,
@@ -95,10 +105,14 @@ const useRunStore = create(
       enemyFocusType: null,   // v2: card type enemy is focused against (focus move)
       intentIndex: 0,
       turnNumber: 0,
-      chainActive: false,
-      chainType: null,
+      /** Last resolved card this turn was an attack (for consecutive attack bonus). */
+      lastPlayWasAttack: false,
+      /** Number of consecutive attack cards already resolved this turn (excludes current card until finalized). */
+      consecutiveAttackPlays: 0,
       /** Resets each player draw; first card of the turn gets "first try" bonuses. */
       playsThisPlayerTurn: 0,
+      /** Player explicitly clicked an enemy this turn — required before directed single-target attacks. */
+      enemyAttackTargetConfirmed: false,
       /** Flat damage added to the next card that deals effect.damage; then cleared. */
       pendingNextDamageBonus: 0,
       blindCardId: null,
@@ -107,12 +121,17 @@ const useRunStore = create(
       reflectDamagePer: 0,
       /** Fight-scoped — flat bonus per hit on attack cards (UI 「力量」). */
       playerStrength: 0,
+      /** Power: poison stacks applied to ALL enemies at each player turn start (after opening hand). */
+      playerPoisonAuraPerTurn: 0,
 
-      // Card type tracking for self_buff_focus
+      // Card type tracking for self_buff_focus + relics (ink stone, PR template)
       cardTypesPlayedThisFight: {},
-
-      // Run session graveyard (merged to persistent graveyard on run end)
-      sessionMistakes: [],
+      /** Per player turn — reset in beginPlayerCardPhase */
+      cardTypesPlayedThisTurn: {},
+      /** Damage taken from enemy hits this fight (HP loss only) — scribes_seal */
+      playerHpLossThisFight: 0,
+      /** Extra draw on first hand of next combat after flawless fight */
+      bonusDrawFirstHandNextFight: 0,
 
       // Combat accuracy tracking
       sessionCorrect: 0,
@@ -161,6 +180,44 @@ const useRunStore = create(
       gainBonusEnergy: (amount) => set(s => ({ energy: s.energy + amount })),
       queueBonusEnergyNextTurn: (amount) => set(s => ({ bonusEnergyNextTurn: (s.bonusEnergyNextTurn || 0) + amount })),
 
+      addEnergyDebtNextTurn: (amount) => set(s => {
+        const add = Math.max(0, Math.floor(Number(amount) || 0))
+        if (!add) return {}
+        return { energyDebtNextTurn: (s.energyDebtNextTurn || 0) + add }
+      }),
+
+      applyOverloadGlobalDelta: (delta) => set(s => {
+        if (!isOverloadMechanicsActive(s)) return {}
+        const d = Math.floor(Number(delta) || 0)
+        const next = Math.max(0, (s.overloadGlobal || 0) + d)
+        const lethal = isOverloadLethal(next, s.maxHp)
+        return {
+          overloadGlobal: next,
+          hp: lethal ? 0 : s.hp,
+        }
+      }),
+
+      clearOverloadGlobal: () => set(s => {
+        if (!isOverloadMechanicsActive(s)) return {}
+        return { overloadGlobal: 0 }
+      }),
+
+      raiseMaxHpFromFitness: (hpGain, overloadGain) => set(s => {
+        if (!isOverloadMechanicsActive(s)) return {}
+        const hg = Math.max(0, Math.floor(Number(hpGain) || 0))
+        const og = Math.max(0, Math.floor(Number(overloadGain) || 0))
+        if (!hg && !og) return {}
+        const newMax = s.maxHp + hg
+        const newOverload = Math.max(0, (s.overloadGlobal || 0) + og)
+        const nextHp = Math.min(newMax, s.hp + hg)
+        const lethal = isOverloadLethal(newOverload, newMax)
+        return {
+          maxHp: newMax,
+          overloadGlobal: newOverload,
+          hp: lethal ? 0 : nextHp,
+        }
+      }),
+
       // Gold
       addGold: (amount) => set(s => ({ gold: s.gold + amount })),
       spendGold: (amount) => set(s => ({ gold: Math.max(0, s.gold - amount) })),
@@ -206,21 +263,52 @@ const useRunStore = create(
       })),
       clearEnemyBuffs: () => set({ activeEnemyBuffs: [] }),
 
-      // v2: Card type tracking for focus move
-      trackCardTypePlayed: (cardType) => set(s => ({
-        cardTypesPlayedThisFight: {
-          ...s.cardTypesPlayedThisFight,
-          [cardType]: (s.cardTypesPlayedThisFight[cardType] || 0) + 1,
+      // v2: Card type tracking for focus move + relics (ink stone, PR template sticker)
+      trackCardTypePlayed: (cardType) => {
+        const s = get()
+        const prevFight = s.cardTypesPlayedThisFight[cardType] || 0
+        if (
+          prevFight === 0 &&
+          Array.isArray(s.relics) &&
+          s.relics.includes('pr_template_sticker')
+        ) {
+          get().addBlock(PR_TEMPLATE_FIRST_TYPE_BLOCK)
         }
+        set((st) => {
+          const pf = st.cardTypesPlayedThisFight[cardType] || 0
+          return {
+            cardTypesPlayedThisFight: {
+              ...st.cardTypesPlayedThisFight,
+              [cardType]: pf + 1,
+            },
+            cardTypesPlayedThisTurn: {
+              ...(st.cardTypesPlayedThisTurn || {}),
+              [cardType]: ((st.cardTypesPlayedThisTurn || {})[cardType] || 0) + 1,
+            },
+          }
+        })
+      },
+
+      registerPlayerHpLossThisFight: (amount) => set((s) => ({
+        playerHpLossThisFight: (s.playerHpLossThisFight || 0) + Math.max(0, Math.floor(Number(amount) || 0)),
       })),
 
-      // Chain + per-turn play index (for first-try damage, chain resets each draw)
-      activateChain: (type) => set({ chainActive: true, chainType: type }),
-      breakChain: () => set({ chainActive: false, chainType: null }),
+      // Attack chain + per-turn play index (first-try damage; resets each draw)
+      recordAttackChainAfterPlay: (wasAttack) => set((s) => {
+        if (wasAttack) {
+          return {
+            lastPlayWasAttack: true,
+            consecutiveAttackPlays: (s.consecutiveAttackPlays || 0) + 1,
+          }
+        }
+        return { lastPlayWasAttack: false, consecutiveAttackPlays: 0 }
+      }),
       beginPlayerCardPhase: () => set({
         playsThisPlayerTurn: 0,
-        chainActive: false,
-        chainType: null,
+        lastPlayWasAttack: false,
+        consecutiveAttackPlays: 0,
+        enemyAttackTargetConfirmed: false,
+        cardTypesPlayedThisTurn: {},
       }),
       incrementPlaysThisPlayerTurn: () => set(s => ({
         playsThisPlayerTurn: (s.playsThisPlayerTurn || 0) + 1,
@@ -697,15 +785,6 @@ const useRunStore = create(
         }
       }),
 
-      // Mistakes & journal
-      logMistake: (questionId, label, reading) => set(s => ({
-        sessionMistakes: [...s.sessionMistakes, {
-          questionId, label, reading, timestamp: Date.now(), floor: s.floor
-        }],
-        sessionTotal: s.sessionTotal + 1,
-        fightTotal: s.fightTotal + 1,
-        fightCorrectStreak: 0,
-      })),
       logCorrect: () => set(s => ({
         sessionCorrect: s.sessionCorrect + 1,
         fightCorrect: s.fightCorrect + 1,
@@ -767,6 +846,14 @@ const useRunStore = create(
         return { [key]: arr }
       }),
 
+      /** Rest site (upgrade) / smith: swap one deck slot to another card id (e.g. base → plus). */
+      replaceDeckCardAtIndex: (index, newCardId) => set(s => {
+        if (index < 0 || index >= s.deck.length) return {}
+        const d = [...s.deck]
+        d[index] = newCardId
+        return { deck: d }
+      }),
+
       /** Park one deck copy by index (non-combat + sprint_icebox only). Preserves duplicates. */
       parkDeckSlotAtIndex: (deckIndex) => set(s => {
         if (s.inCombat || !s.relics.includes('sprint_icebox')) return {}
@@ -820,9 +907,10 @@ const useRunStore = create(
           retainedCards: [],         // v3: clear retained cards at fight start
           retainGrowthStacks: {},    // v3: clear growth stacks at fight start
           activeEnemyBuffs: [],
-          chainActive: false,
-          chainType: null,
+          lastPlayWasAttack: false,
+          consecutiveAttackPlays: 0,
           playsThisPlayerTurn: 0,
+          enemyAttackTargetConfirmed: false,
           pendingNextDamageBonus: 0,
           cardTypesPlayedThisFight: {},
           wornDictionaryUsedThisFight: false,
@@ -839,7 +927,9 @@ const useRunStore = create(
           lastCardTypePlayed: null,
           reflectStacks: rel.includes(PINGBACK_PINS_RELIC_ID) ? 1 : 0,
           reflectDamagePer: rel.includes(PINGBACK_PINS_RELIC_ID) ? PINGBACK_PINS_DAMAGE_PER_STACK : 0,
-          playerStrength: 0,
+          playerStrength: rel.includes('corner_office_keycard') ? 2 : 0,
+          playerPoisonAuraPerTurn: 0,
+          playerHpLossThisFight: 0,
           pendingDiscardPick: null,
           pendingHandExhaustEnergyPick: false,
         }
@@ -856,9 +946,10 @@ const useRunStore = create(
         retainGrowthStacks: {},    // v3: clear on fight end
         activeEnemyBuffs: [],
         activePlayerDebuffs: [],
-        chainActive: false,
-        chainType: null,
+        lastPlayWasAttack: false,
+        consecutiveAttackPlays: 0,
         pendingNextDamageBonus: 0,
+        energyDebtNextTurn: 0,
         cardTypesPlayedThisFight: {},
         // CRITICAL: Merge all combat cards back into the master deck
         deck: [...s.deck, ...s.discardPile, ...s.hand],
@@ -869,6 +960,7 @@ const useRunStore = create(
         reflectStacks: 0,
         reflectDamagePer: 0,
         playerStrength: 0,
+        playerPoisonAuraPerTurn: 0,
         pendingDiscardPick: null,
         pendingHandExhaustEnergyPick: false,
       })),
@@ -902,6 +994,8 @@ const useRunStore = create(
           floor: 1,
           energy: startMaxEnergy,
           maxEnergy: startMaxEnergy,
+          overloadGlobal: 0,
+          energyDebtNextTurn: 0,
           deck: startingDeck || [],
           hand: [],
           discardPile: [],
@@ -912,17 +1006,19 @@ const useRunStore = create(
           lockedCards: [],
           activePlayerDebuffs: [],
           activeEnemyBuffs: [],
-          chainActive: false,
-          chainType: null,
+          lastPlayWasAttack: false,
+          consecutiveAttackPlays: 0,
           pendingNextDamageBonus: 0,
           inCombat: false,
           currentEnemy: null,
-          sessionMistakes: [],
           sessionCorrect: 0,
           sessionTotal: 0,
           fightCorrect: 0,
           fightTotal: 0,
           cardTypesPlayedThisFight: {},
+          cardTypesPlayedThisTurn: {},
+          playerHpLossThisFight: 0,
+          bonusDrawFirstHandNextFight: 0,
           journalWords: [],
           journalGrammar: [],
           mapNodes: [],
@@ -942,6 +1038,7 @@ const useRunStore = create(
           pendingHandExhaustEnergyPick: false,
           combatEnemySlots: [],
           activeEnemySlotIndex: 0,
+          enemyAttackTargetConfirmed: false,
         })
       },
 
@@ -973,13 +1070,22 @@ const useRunStore = create(
     {
       name: STORAGE_KEYS.ACTIVE_RUN,
       storage: createJSONStorage(() => localStorage),
-      version: 1,
-      migrate: (persisted) => {
-        if (persisted && typeof persisted === 'object' && persisted.state) {
-          delete persisted.state.activeModifier
-          delete persisted.state.lastStandUsed
+      version: 2,
+      migrate: (persistedState) => {
+        if (!persistedState || typeof persistedState !== 'object') return persistedState
+        const next = { ...persistedState }
+        delete next.activeModifier
+        delete next.lastStandUsed
+        const ch = next.character
+        if (
+          next.campaign === 'japanese'
+          && ch
+          && (ch.id === 'hana' || ch.id === 'yuki')
+        ) {
+          const kenji = CARDS.japanese.characters.find((c) => c.id === 'kenji')
+          if (kenji) next.character = { ...ch, ...kenji }
         }
-        return persisted
+        return next
       },
     }
   )

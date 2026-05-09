@@ -77,7 +77,7 @@ function BannerButton({ children, color = 'red', onClick, side = 'left' }) {
 
 // Square character icon tile (like STS)
 const CAREER_CHAR_EMOJI = {
-  hana: '👩‍💻', kenji: '🖥️', yuki: '🧯', ren: '🧪',
+  kenji: '🖥️', ren: '🧪',
   minjun: '🎨', jiwoo: '✨',
   mateo: '📋', elena: '📈',
 }
@@ -173,8 +173,7 @@ export function CharacterSelect() {
 
     // Choose rare card based on character
     const rareCard = campaignId === 'japanese'
-      ? (selectedChar.id === 'hana' || selectedChar.id === 'ren' ? 'jp_read_newcomers_luck'
-        : selectedChar.id === 'yuki' ? 'jp_read_returnees_insight' : 'jp_read_travelers_wisdom')
+      ? (selectedChar.id === 'ren' ? 'jp_read_newcomers_luck' : 'jp_read_travelers_wisdom')
       : campaignId === 'korean' ? 'kr_read_spirit_scroll'
         : 'es_read_spirit_scroll'
 
@@ -311,7 +310,7 @@ export function CharacterSelect() {
               className="absolute right-0 top-0 bottom-0 z-10"
               style={{ width: '55%', paddingBottom: '6rem' }}
             >
-              {['kenji', 'hana', 'yuki', 'minjun', 'jiwoo', 'mateo', 'elena'].includes(selectedChar.id) ? (
+              {['kenji', 'ren', 'minjun', 'jiwoo', 'mateo', 'elena'].includes(selectedChar.id) ? (
                 <div className="relative w-full h-full">
                   <img
                     src={`/images/characters/${campaignId}/${selectedChar.id}.png`}

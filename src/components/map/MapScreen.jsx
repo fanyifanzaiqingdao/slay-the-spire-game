@@ -79,20 +79,21 @@ function MapNodeSTS({ node, x, y, isUnlocked, isVisited, isCurrent, onClick, onH
           justifyContent: 'center',
           fontSize: meta.size,
           fontWeight: 900,
-          color: isVisited ? 'transparent' : '#111',
+          // Keep a real text color so emoji/node icons stay visible when visited (transparent made types disappear).
+          color: isVisited ? '#2a2a2a' : '#111',
           textShadow: isVisited 
             ? '0 0 2px rgba(0,0,0,0.5)'
             : isCurrent 
               ? '0 0 10px #fff, 0 0 20px #F5C842'
               : '0 2px 4px rgba(0,0,0,0.4)',
-          opacity: isVisited ? 0.3 : isUnlocked ? 1 : 0.4,
+          opacity: isVisited ? 0.72 : isUnlocked ? 1 : 0.4,
           fontFamily: "'Cinzel', serif",
           position: 'relative'
         }}
       >
         <span style={{ 
-          filter: isVisited ? 'grayscale(100%) opacity(50%)' : 'grayscale(100%) drop-shadow(0 2px 2px rgba(0,0,0,0.5))',
-          opacity: isVisited ? 0.5 : 1
+          filter: isVisited ? 'grayscale(85%)' : 'grayscale(100%) drop-shadow(0 2px 2px rgba(0,0,0,0.5))',
+          opacity: isVisited ? 0.88 : 1
         }}>
           {meta.icon}
         </span>
@@ -124,6 +125,7 @@ export function MapScreen() {
   const scrollContainerRef = useRef(null)
   const mapNodes = Array.isArray(store.mapNodes) ? store.mapNodes : EMPTY_LIST
   const mapPaths = Array.isArray(store.mapPaths) ? store.mapPaths : EMPTY_LIST
+  const currentNodeId = store.currentNodeId
 
   // Repair: older saves / edge cases left `relics` empty while character still has starterRelic
   useEffect(() => {
@@ -280,10 +282,14 @@ export function MapScreen() {
       const p1 = nodeCoords[fromId]
       const p2 = nodeCoords[toId]
       if (p1 && p2) {
-        // Line is dark solid if route is active/available
         const fromNode = mapNodes.find(n => n.id === fromId)
-        const isPathActive = fromNode?.visited || fromNode?.type === NODE_TYPES.START
-        
+        const toNode = mapNodes.find(n => n.id === toId)
+        // Thick line only for edges actually taken: both ends must lie on the route.
+        // (Old logic lit every outgoing edge from a visited node, causing false forks when the graph splits.)
+        const fromReady = fromNode?.visited || fromNode?.type === NODE_TYPES.START
+        const toOnRoute = toNode?.visited === true || toId === currentNodeId
+        const isPathActive = fromReady && toOnRoute
+
         pLines.push({
           id: `${fromId}-${toId}`,
           x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
@@ -293,7 +299,7 @@ export function MapScreen() {
     })
 
     return { positionedNodes: posNodes, pathLines: pLines, maxRow: maxR }
-  }, [mapNodes, mapPaths])
+  }, [mapNodes, mapPaths, currentNodeId])
 
   const mapHeightTotal = maxRow * ROW_HEIGHT + START_Y_PADDING * 2
 

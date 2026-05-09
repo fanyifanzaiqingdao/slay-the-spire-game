@@ -1,6 +1,17 @@
 // constants/cardTypes.js
-// Card type enums and associated visual/mechanical metadata
-// Internal keys unchanged; labels are career-themed (Ship / Process / Insight).
+// Card type enums and associated visual/mechanical metadata.
+// Internal keys (vocabulary / grammar / reading) unchanged; player-facing labels use combat.cardLane.* in i18n.
+
+/**
+ * @param {string} type
+ * @param {(key: string, opts?: object) => string} t - i18next t()
+ */
+export function formatCardLaneLabel(type, t) {
+  if (!type) return ''
+  if (typeof t !== 'function') return CARD_TYPE_META[type]?.label ?? type
+  const fallback = CARD_TYPE_META[type]?.label ?? type
+  return t(`combat.cardLane.${type}`, { defaultValue: fallback })
+}
 
 export const CARD_TYPES = {
   VOCABULARY: 'vocabulary',
@@ -11,7 +22,7 @@ export const CARD_TYPES = {
 
 export const CARD_TYPE_META = {
   [CARD_TYPES.VOCABULARY]: {
-    label: 'Ship',
+    label: 'Offense',
     icon: '⚔️',
     colorClass: 'text-red-400',
     bgClass: 'bg-red-950/40',
@@ -22,7 +33,7 @@ export const CARD_TYPE_META = {
     primes: 'grammar',
   },
   [CARD_TYPES.GRAMMAR]: {
-    label: 'Process',
+    label: 'Defense',
     icon: '🛡️',
     colorClass: 'text-blue-400',
     bgClass: 'bg-blue-950/40',
@@ -33,7 +44,7 @@ export const CARD_TYPE_META = {
     primes: 'reading',
   },
   [CARD_TYPES.READING]: {
-    label: 'Insight',
+    label: 'Utility',
     icon: '📖',
     colorClass: 'text-emerald-400',
     bgClass: 'bg-emerald-950/40',
@@ -44,7 +55,7 @@ export const CARD_TYPE_META = {
     primes: null,
   },
   [CARD_TYPES.CURSE]: {
-    label: 'Blocker',
+    label: 'Hazard',
     icon: '💀',
     colorClass: 'text-purple-400',
     bgClass: 'bg-purple-950/40',

@@ -9,9 +9,6 @@ const useSettingsStore = create(
       // Timer
       timerSpeed: 'normal', // 'relaxed' (30s) | 'normal' (20s) | 'fast' (12s) | 'off'
 
-      // Learning
-      spacedRepetition: true, // Graveyard haunting / spaced rep weighting
-
       // Audio
       sfxVolume: 0.7,
       musicVolume: 0.4,
@@ -32,7 +29,6 @@ const useSettingsStore = create(
 
       // Actions
       setTimerSpeed: (speed) => set({ timerSpeed: speed }),
-      setSpacedRepetition: (val) => set({ spacedRepetition: val }),
       setSfxVolume: (vol) => set({ sfxVolume: Math.max(0, Math.min(1, vol)) }),
       setMusicVolume: (vol) => set({ musicVolume: Math.max(0, Math.min(1, vol)) }),
       setCardAnimSpeed: (speed) => set({ cardAnimSpeed: speed }),

@@ -52,7 +52,7 @@ export function LootScreen({ loot, onClaim, onSkip, onOpenDraft }) {
                     } else {
                       onClaim(item.id)
                     }
-                  }} 
+                  }}  
                 />
               ))}
             </AnimatePresence>

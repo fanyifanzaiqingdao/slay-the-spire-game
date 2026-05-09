@@ -1,24 +1,20 @@
 // components/combat/ChainIndicator.jsx
 import { motion, AnimatePresence } from 'framer-motion'
-import { CARD_TYPES, CARD_TYPE_META } from '../../constants/cardTypes.js'
+import { ATTACK_CHAIN_FLAT_PER } from '../../constants/combatChain.js'
 
 /**
- * Shows "CHAIN ACTIVE" banner when a primer card has been played
- * @param {boolean} chainActive
- * @param {string|null} chainType - what type was primed
+ * Shows combo banner when the previous card played this turn was an attack (next attack gets bonus).
+ * @param {boolean} lastPlayWasAttack
+ * @param {number} consecutiveAttackPlays - attacks already resolved this turn (before playing next)
  */
-export function ChainIndicator({ chainActive, chainType }) {
-  const nextType = chainType === CARD_TYPES.VOCABULARY
-    ? CARD_TYPES.GRAMMAR
-    : chainType === CARD_TYPES.GRAMMAR
-      ? CARD_TYPES.READING
-      : null
-
-  const nextMeta = nextType ? CARD_TYPE_META[nextType] : null
+export function ChainIndicator({ lastPlayWasAttack, consecutiveAttackPlays }) {
+  const nextBonus = lastPlayWasAttack
+    ? ATTACK_CHAIN_FLAT_PER * ((consecutiveAttackPlays || 0) + 1)
+    : null
 
   return (
     <AnimatePresence>
-      {chainActive && chainType && (
+      {lastPlayWasAttack && nextBonus != null && (
         <motion.div
           initial={{ opacity: 0, y: -10, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -31,12 +27,10 @@ export function ChainIndicator({ chainActive, chainType }) {
             transition={{ duration: 1, repeat: Infinity }}
             className="w-2 h-2 rounded-full bg-yellow-400"
           />
-          <span className="text-xs font-bold text-yellow-300 tracking-widest">CHAIN ACTIVE</span>
-          {nextMeta && (
-            <span className={`text-xs ${nextMeta.colorClass}`}>
-              → next {nextMeta.label} {nextMeta.icon}
-            </span>
-          )}
+          <span className="text-xs font-bold text-yellow-300 tracking-widest">COMBO</span>
+          <span className="text-xs text-amber-200/90">
+            next attack +{nextBonus}
+          </span>
         </motion.div>
       )}
     </AnimatePresence>

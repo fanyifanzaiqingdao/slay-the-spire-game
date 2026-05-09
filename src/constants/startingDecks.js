@@ -5,12 +5,12 @@
 
 /** Japan campaign — everyone shares this 7-card neutral core before job cards */
 export const STARTER_BASE_JAPANESE = [
-  'jp_vocab_strike',
-  'jp_vocab_strike',
-  'jp_vocab_wild_slash',
+  'starter_code_strike',
+  'starter_code_strike',
+  'common_printf_debug',
   'jp_vocab_swift_strike',
-  'jp_gram_ward',
-  'jp_gram_ward',
+  'starter_defensive_logic',
+  'starter_defensive_logic',
   'jp_gram_particle_shield',
 ]
 
@@ -36,10 +36,8 @@ export const STARTER_BASE_SPANISH = [
 
 /** Two signature cards appended per character (9 total + 1 rare from CharacterSelect) */
 export const STARTER_JOB_BY_CHARACTER_ID = {
-  // 程序员 — 毒 + 易伤（栈推进击 / 小黄鸭格挡）
-  hana: ['jp_job_dev_stack_push', 'jp_job_dev_rubber_duck'],
+  // 程序员 — 栈推进击 / 小黄鸭格挡
   kenji: ['jp_job_dev_stack_push', 'jp_job_dev_rubber_duck'],
-  yuki: ['jp_job_dev_stack_push', 'jp_job_dev_rubber_duck'],
   // 测试 — 虚弱 + 消耗
   ren: ['jp_job_qa_flaky_run', 'jp_job_qa_triage_barrier'],
   // UI — 连击条带 / 手读混合（力量见 kr_ui 系列扩展牌）
@@ -81,8 +79,12 @@ export const LEGACY_FALLBACK_STARTERS = {
  * @param {string[]=} fallbackStrip - optional legacy strip (e.g. old saved campaigns.js)
  */
 export function getStarterIdsForCharacter(campaignId, characterId, fallbackStrip) {
+  let cid = characterId
+  if (campaignId === 'japanese' && (characterId === 'hana' || characterId === 'yuki')) {
+    cid = 'kenji'
+  }
   const base = BASE_BY_CAMPAIGN[campaignId]
-  const job = STARTER_JOB_BY_CHARACTER_ID[characterId]
+  const job = STARTER_JOB_BY_CHARACTER_ID[cid]
   if (base?.length && job?.length === 2) {
     return [...base, ...job]
   }

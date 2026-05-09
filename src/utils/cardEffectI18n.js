@@ -1,5 +1,8 @@
-/** Card effect lines for UI (hand, draft) — uses i18n `draft.*` + `combat.cardRoles.*`. */
-export function formatCardEffectLines(card, growthStacks, t) {
+/**
+ * Human-readable effect clauses as separate strings (shop/draft can render one line each).
+ * @returns {string[]}
+ */
+export function getCardEffectParts(card, growthStacks, t) {
   const e = card?.effect || {}
   const parts = []
 
@@ -13,6 +16,17 @@ export function formatCardEffectLines(card, growthStacks, t) {
     } else {
       parts.push(t('draft.effectDealDamage', { value: e.damage, bonus }))
     }
+    if (e.bonus_damage_per_overload_global != null) {
+      const cap = e.overload_scaling_cap
+      const capNote =
+        cap != null && cap !== '' && Number.isFinite(Number(cap))
+          ? t('draft.overloadCapNote', { cap })
+          : ''
+      parts.push(t('draft.effectBonusDamagePerOverload', {
+        per: e.bonus_damage_per_overload_global,
+        capNote,
+      }))
+    }
   }
 
   if (e.damage_all != null) {
@@ -21,14 +35,38 @@ export function formatCardEffectLines(card, growthStacks, t) {
     if (ft) bonus += t('draft.effectDamageFirstTry', { n: ft })
     if (e.hits > 1) bonus += t('draft.effectDamageMultiHit', { count: e.hits })
     parts.push(t('draft.effectDealDamageAll', { value: e.damage_all, bonus }))
+    if (e.bonus_damage_per_overload_global != null) {
+      const cap = e.overload_scaling_cap
+      const capNote =
+        cap != null && cap !== '' && Number.isFinite(Number(cap))
+          ? t('draft.overloadCapNote', { cap })
+          : ''
+      parts.push(t('draft.effectBonusDamagePerOverload', {
+        per: e.bonus_damage_per_overload_global,
+        capNote,
+      }))
+    }
   }
 
-  if (e.block) {
-    const grownBlock = e.block + (growthStacks || 0) * 4
+  if (e.block != null || e.bonus_block_per_overload_global != null) {
+    const grownBlock = (e.block ?? 0) + (growthStacks || 0) * 4
     const growthNote = (growthStacks || 0) > 0
       ? t('draft.effectGainBlockGrowth', { turns: growthStacks })
       : ''
-    parts.push(t('draft.effectGainBlockLine', { value: grownBlock, growth: growthNote }))
+    if ((e.block ?? 0) > 0 || (growthStacks || 0) > 0) {
+      parts.push(t('draft.effectGainBlockLine', { value: grownBlock, growth: growthNote }))
+    }
+    if (e.bonus_block_per_overload_global != null) {
+      const cap = e.overload_block_cap ?? e.overload_scaling_cap
+      const capNote =
+        cap != null && cap !== '' && Number.isFinite(Number(cap))
+          ? t('draft.overloadCapNote', { cap })
+          : ''
+      parts.push(t('draft.effectBonusBlockPerOverload', {
+        per: e.bonus_block_per_overload_global,
+        capNote,
+      }))
+    }
   }
 
   if (e.heal) parts.push(t('draft.effectHeal', { value: e.heal }))
@@ -86,7 +124,29 @@ export function formatCardEffectLines(card, growthStacks, t) {
     parts.push(t('draft.effectPlayerStrength', { n: e.player_strength }))
   }
 
-  return parts.length ? parts.join(' ') : t('draft.effectSpecial')
+  if (e.energy_overdraft) {
+    parts.push(t('draft.effectEnergyOverdraft', { n: e.energy_overdraft }))
+  }
+  if (e.overload_global_add != null) {
+    parts.push(t('draft.effectOverloadAdd', { n: e.overload_global_add }))
+  }
+  if (e.overload_global_remove != null) {
+    parts.push(t('draft.effectOverloadRemove', { n: e.overload_global_remove }))
+  }
+  if (e.overload_global_clear) {
+    parts.push(t('draft.effectOverloadClear'))
+  }
+
+  if (e.register_poison_all_each_turn != null) {
+    parts.push(t('draft.effectPoisonAuraEachTurn', { n: e.register_poison_all_each_turn }))
+  }
+
+  return parts.length ? parts : [t('draft.effectSpecial')]
+}
+
+/** Card effect lines for UI (hand, draft) — uses i18n `draft.*` + `combat.cardRoles.*`. */
+export function formatCardEffectLines(card, growthStacks, t) {
+  return getCardEffectParts(card, growthStacks, t).join(' ')
 }
 
 /** Card role banner (ATTACK / SKILL / …) */

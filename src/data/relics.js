@@ -38,8 +38,8 @@ export const RELICS = {
     tier: RELIC_TIER.STARTER,
     icon: '🧭',
     color: '#34d399',
-    description: 'Every 3rd clean play in a row during a fight grants +1 Energy next turn.',
-    flavor: 'Points toward the next milestone.',
+    description: 'Whenever you play your 3rd card in a turn, gain +1 Energy at the start of your next turn.',
+    flavor: 'Every third update points to the next milestone.',
   },
   pager_rattle: {
     id: 'pager_rattle',
@@ -94,8 +94,8 @@ export const RELICS = {
     tier: RELIC_TIER.COMMON,
     icon: '🔗',
     color: '#60a5fa',
-    description: 'Chain combos can continue even when switching card types.',
-    flavor: 'Handoffs are part of the combo.',
+    description: 'Each turn, the second card you play gives you 6 Block (does not depend on card type).',
+    flavor: 'Close the loop — then brace for the next handoff.',
   },
   pingback_pins: {
     id: 'pingback_pins',
@@ -160,6 +160,33 @@ export const RELICS = {
     description: 'At the start of each turn, gain 3 Block.',
     flavor: 'Padding for when the pager goes off before standup ends.',
   },
+  scope_creep_lapel: {
+    id: 'scope_creep_lapel',
+    name: 'Scope Creep Lapel',
+    tier: RELIC_TIER.COMMON,
+    icon: '📎',
+    color: '#94a3b8',
+    description: 'Enemy strikes deal 1 less damage (before Block).',
+    flavor: 'Every slide adds a bullet; every bullet schedules another review.',
+  },
+  pr_template_sticker: {
+    id: 'pr_template_sticker',
+    name: 'PR Template Sticker',
+    tier: RELIC_TIER.COMMON,
+    icon: '🏷️',
+    color: '#a78bfa',
+    description: 'The first time you play an Offense, Defense, and Utility card each combat, gain 3 Block.',
+    flavor: 'Three lanes, three checkboxes — ship it once per fight.',
+  },
+  water_cooler_charm: {
+    id: 'water_cooler_charm',
+    name: 'Water Cooler Charm',
+    tier: RELIC_TIER.COMMON,
+    icon: '🥤',
+    color: '#6ee7b7',
+    description: 'Heal 1 HP when you win a combat.',
+    flavor: 'You debriefed by the cooler — gossip counts as recovery.',
+  },
 
   // ── UNCOMMON ────────────────────────────────────────────────────────
   ink_stone: {
@@ -207,6 +234,15 @@ export const RELICS = {
     description: 'If you win within 5 player turns, gain an extra card reward (same draft rules as the first pick).',
     flavor: 'Merged before standup — scope for one more ticket.',
   },
+  standup_applause: {
+    id: 'standup_applause',
+    name: 'Standup Applause',
+    tier: RELIC_TIER.UNCOMMON,
+    icon: '👏',
+    color: '#fbbf24',
+    description: 'Whenever you play your 4th card in a turn, draw 1 card.',
+    flavor: 'Fourth update gets a round of Slack reactions — and one more card.',
+  },
 
   // ── RARE ────────────────────────────────────────────────────────────
   pantheon_sigil: {
@@ -226,6 +262,15 @@ export const RELICS = {
     color: '#c084fc',
     description: 'After winning a fight without taking damage, draw 2 extra cards next fight\'s first turn.',
     flavor: 'Clean postmortems deserve rewards.',
+  },
+  corner_office_keycard: {
+    id: 'corner_office_keycard',
+    name: 'Corner Office Keycard',
+    tier: RELIC_TIER.RARE,
+    icon: '🗝️',
+    color: '#eab308',
+    description: 'Start each combat with +2 Strength.',
+    flavor: 'Title opens the door; numbers walk through.',
   },
 
   // ── NEW SLOT-SYSTEM RELICS ───────────────────────────────────────────
@@ -268,6 +313,18 @@ export const RELICS = {
     pair: 'scholars_left_hand',
   },
 
+  /** Programmer route only — see overloadMechanicsOnly */
+  radiator_fin: {
+    id: 'radiator_fin',
+    name: 'Radiator Fin',
+    tier: RELIC_TIER.COMMON,
+    icon: '🧊',
+    color: '#38bdf8',
+    description: 'After each combat, reduce Global Overload by 2.',
+    flavor: 'Attach to any sprint — bleed heat before it reaches prod.',
+    overloadMechanicsOnly: true,
+  },
+
   // ── PANTHEON ────────────────────────────────────────────────────────
   ancient_lexicon: {
     id: 'ancient_lexicon',
@@ -292,10 +349,52 @@ export const RELICS = {
 /** Common / uncommon / rare relic not already in equipped or vault (for elite loot & merchant). */
 export function pickRandomRelicForLoot(runState) {
   const owned = new Set([...(runState.relics || []), ...(runState.vaultRelics || [])])
+  const programmer = runState?.campaign === 'japanese' && runState?.character?.id === 'kenji'
   const candidates = Object.keys(RELICS).filter((id) => {
     if (owned.has(id)) return false
-    const t = RELICS[id]?.tier
+    const def = RELICS[id]
+    if (def?.overloadMechanicsOnly && !programmer) return false
+    const t = def?.tier
     return t === RELIC_TIER.COMMON || t === RELIC_TIER.UNCOMMON || t === RELIC_TIER.RARE
+  })
+  if (!candidates.length) return null
+  return candidates[Math.floor(Math.random() * candidates.length)]
+}
+
+/** Up to `count` distinct shop relic offers (common/uncommon/rare), excluding owned/vault and already-picked-for-this-shop ids. */
+export function pickMerchantRelicOffers(runState, count = 4) {
+  const owned = new Set([...(runState.relics || []), ...(runState.vaultRelics || [])])
+  const exclude = new Set()
+  const out = []
+  for (let i = 0; i < count; i++) {
+    const programmer = runState?.campaign === 'japanese' && runState?.character?.id === 'kenji'
+    const candidates = Object.keys(RELICS).filter((id) => {
+      if (owned.has(id) || exclude.has(id)) return false
+      const def = RELICS[id]
+      if (def?.overloadMechanicsOnly && !programmer) return false
+      const tier = def?.tier
+      return tier === RELIC_TIER.COMMON || tier === RELIC_TIER.UNCOMMON || tier === RELIC_TIER.RARE
+    })
+    if (!candidates.length) {
+      out.push(null)
+      continue
+    }
+    const id = candidates[Math.floor(Math.random() * candidates.length)]
+    exclude.add(id)
+    out.push(id)
+  }
+  return out
+}
+
+/** Random rare-tier relic not already owned (for high-risk event trades). Falls back to general loot if none left. */
+export function pickRandomRareRelicForLoot(runState) {
+  const owned = new Set([...(runState.relics || []), ...(runState.vaultRelics || [])])
+  const programmer = runState?.campaign === 'japanese' && runState?.character?.id === 'kenji'
+  const candidates = Object.keys(RELICS).filter((id) => {
+    if (owned.has(id)) return false
+    const def = RELICS[id]
+    if (def?.overloadMechanicsOnly && !programmer) return false
+    return def?.tier === RELIC_TIER.RARE
   })
   if (!candidates.length) return null
   return candidates[Math.floor(Math.random() * candidates.length)]

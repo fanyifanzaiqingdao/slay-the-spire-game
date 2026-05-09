@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useRunStore from '../../stores/runStore.js'
 import useProgressStore from '../../stores/progressStore.js'
 import usePantheonStore from '../../stores/pantheonStore.js'
-import { useGraveyard } from '../../hooks/useGraveyard.js'
 import { ScreenTransition } from '../shared/ScreenTransition.jsx'
 
 function generatePattern(correct, total, journalWords, journalGrammar) {
@@ -17,7 +16,7 @@ function generatePattern(correct, total, journalWords, journalGrammar) {
   if (acc >= 0.8 && shipHeavy) return 'Ship-heavy cadence — next run weave more Process blockers.'
   if (acc >= 0.8 && processHeavy) return 'Process fortress — defense is dialed. Add more Ship finishers.'
   if (acc >= 0.8) return 'Balanced delivery. Ready to raise the difficulty bar.'
-  if (acc >= 0.6) return 'Solid instincts with room to tighten — skim the Graveyard before your next sprint.'
+  if (acc >= 0.6) return 'Solid instincts with room to tighten — push one more floor next run.'
   return 'Still calibrating — normal for a new lane. Keep shipping small slices.'
 }
 
@@ -26,26 +25,13 @@ export function PostRunSummary() {
   const store = useRunStore()
   const progressStore = useProgressStore()
   const pantheon = usePantheonStore()
-  const graveyard = useGraveyard()
-  const [phase, setPhase] = useState(0) // 0=learned, 1=struggled, 2=pattern
+  const [phase, setPhase] = useState(0) // 0=journal, 1=pattern, 2=buttons
   const [earnedXp, setEarnedXp] = useState(0)
 
   const isWin = store.enemyHp <= 0 && store.floor >= 2
   const accuracy = store.sessionTotal > 0 ? store.sessionCorrect / store.sessionTotal : 1
 
-  const topMissed = store.sessionMistakes
-    .reduce((acc, m) => {
-      const existing = acc.find(a => a.questionId === m.questionId)
-      if (existing) existing.count++
-      else acc.push({ ...m, count: 1 })
-      return acc
-    }, [])
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 3)
-
   useEffect(() => {
-    // Merge session mistakes to graveyard
-    graveyard.mergeSessionToGraveyard()
     // Record run end in progress store
     progressStore.recordRunEnd(
       store.campaign || 'japanese',
@@ -65,7 +51,7 @@ export function PostRunSummary() {
     setEarnedXp(xpAfter - xpBefore)
     // Advance through phases
     const timer = setTimeout(() => setPhase(1), 1200)
-    const timer2 = setTimeout(() => setPhase(2), 2400)
+    const timer2 = setTimeout(() => setPhase(2), 2600)
     return () => { clearTimeout(timer); clearTimeout(timer2) }
   }, [])
 
@@ -132,37 +118,9 @@ export function PostRunSummary() {
             )}
           </AnimatePresence>
 
-          {/* SECTION 2: Where You Struggled */}
+          {/* SECTION 2: Pattern */}
           <AnimatePresence>
             {phase >= 1 && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="bg-gray-900/60 border border-gray-700 rounded-2xl p-5"
-              >
-                <h2 className="text-sm font-bold text-red-300 uppercase tracking-wider mb-3">
-                  🎯 Where You Struggled
-                </h2>
-                {topMissed.length === 0 ? (
-                  <p className="text-sm text-gray-500">Perfect run — no mistakes recorded!</p>
-                ) : (
-                  <div className="flex flex-col gap-2">
-                    {topMissed.map((m, i) => (
-                      <div key={i} className="text-sm">
-                        <span className="text-white font-medium">{m.label}</span>
-                        {m.reading && <span className="text-gray-500 ml-1 text-xs">({m.reading})</span>}
-                        <span className="text-gray-500 ml-1 text-xs">— missed {m.count}×</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* SECTION 3: Pattern */}
-          <AnimatePresence>
-            {phase >= 2 && (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

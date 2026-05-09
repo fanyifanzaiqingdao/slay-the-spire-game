@@ -5,7 +5,6 @@
 //   ACTIVE_RUN  — current run: deck, relics, vault, gold, map, combat flags, icebox, etc.
 //   SETTINGS    — options / UI language / audio
 //   PROGRESS    — per-campaign character clears & mastery
-//   GRAVEYARD   — mistake / spaced-rep entries (legacy feature data)
 //   JOURNAL     — reserved key name (no persist store wired to it yet)
 // Pantheon meta uses key `ascendant_pantheon_v1` in pantheonStore.js (same storage: localStorage).
 //
@@ -13,10 +12,11 @@
 
 export const STORAGE_KEYS = {
   ACTIVE_RUN: 'lq_active_run',
-  GRAVEYARD: 'lq_graveyard',
   PROGRESS: 'lq_progress',
   SETTINGS: 'lq_settings',
   JOURNAL: 'lq_journal',
+  /** Boss victory snapshot — full card id list used as optional PvP deck */
+  PVP_COLLECTION_DECK: 'lq_pvp_collection_deck_v1',
 }
 
 let _degraded = false

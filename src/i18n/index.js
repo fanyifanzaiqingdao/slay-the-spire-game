@@ -13,7 +13,6 @@ const resources = {
       menu: {
         play: 'Play',
         pantheon: 'The Pantheon',
-        graveyard: 'Mistake Graveyard',
         settings: 'Settings',
         about: 'About',
         player: 'Player',
@@ -26,7 +25,9 @@ const resources = {
       },
       pvp: {
         title: 'Head-to-head (prototype)',
-        hint: 'Run npm run server:pvp in another terminal, then create/join a room. Uses Japanese starter deck only. The player who creates the room takes the first turn.',
+        hint: 'Run npm run server:pvp in another terminal, then create/join a room. Your deck from beating a boss is sent automatically when present; otherwise the default starter deck is used. Room creator goes first.',
+        collectionDeckSaved: 'PvP deck saved ({{count}} cards) — use it in Head-to-head.',
+        lobbyDeckReady: 'Registered collection deck for this match ({{count}} cards).',
         createRoom: 'Create room',
         roomCode: 'Room code',
         joinPlaceholder: 'CODE',
@@ -79,6 +80,8 @@ const resources = {
         relicsCount: 'Relics ({{count}})',
         potionsHint: 'Potion slots (empty flasks). Not relics.',
         relicsHint: 'Equipped relics — each run starts with one; pick up more in combat or shops.',
+        overloadHint: 'Global Overload (programmer-route cards). If overload exceeds max HP, you lose the run.',
+        overloadShort: 'OVL {{current}}/{{max}}',
       },
       overlays: {
         options: 'Options',
@@ -106,6 +109,25 @@ const resources = {
         legend: 'Legend',
         selectRoom: 'Select a Starting Room',
       },
+      restSite: {
+        title: 'Rest Site',
+        subtitle: 'A moment of calm on the mountain path.',
+        healTitle: 'Rest & Heal',
+        healDesc: 'Restore {{amount}} HP (25% of max)',
+        currentHp: 'Current HP: {{hp}} / {{maxHp}}',
+        alreadyMax: ' (already at max)',
+        upgradeTitle: 'Upgrade a Card',
+        upgradeDesc: 'Choose one card in your deck to upgrade (free).',
+        upgradeHint: 'Each copy in your deck is listed separately.',
+        upgradeNoTargets: 'No upgradeable cards in your deck right now.',
+        pickCardToUpgrade: 'Choose a card to upgrade',
+        upgradeOverlayHint: 'Pick one copy. It changes for the rest of this run.',
+        continueToMap: 'Continue to map',
+        fitnessTitle: 'Work out',
+        fitnessDesc: '+{{hp}} max HP · +{{overload}} Global Overload',
+        fitnessWarn: 'Overload stacks across battles — watch the limit.',
+        footer: '「少し休め。山はまだ続く。」— Rest a while. The mountain goes on.',
+      },
       combat: {
         playerTurn: 'Player Turn',
         enemyTurn: 'Enemy Turn',
@@ -130,6 +152,19 @@ const resources = {
         keywords: {
           ingenious: 'Ingenious',
         },
+        cardLane: {
+          vocabulary: 'Offense',
+          grammar: 'Defense',
+          reading: 'Utility',
+          curse: 'Hazard',
+        },
+        journal: {
+          title: 'Run log',
+          tabPrimary: 'Highlights ({{count}})',
+          tabSecondary: 'Notes ({{count}})',
+          primaryEmpty: 'Nothing logged yet — keep clearing encounters.',
+          secondaryEmpty: 'No notes yet — your run is clean.',
+        },
       },
       event: {
         noData: 'No event data found.',
@@ -141,7 +176,8 @@ const resources = {
         title: 'Workplace Supply Post',
         goldLabel: 'Gold',
         forSale: 'For Sale',
-        relicSection: 'Relic',
+        relicSection: 'Relics',
+        relicSlotEmpty: 'No relic offered (pool empty)',
         energyLine: 'Cost: {{n}} energy',
         rarityCommon: 'Common',
         rarityUncommon: 'Uncommon',
@@ -180,14 +216,14 @@ const resources = {
         effectDealDamage: 'Deal {{value}} damage{{bonus}}',
         effectDealDamageAll: 'Deal {{value}} damage to ALL enemies{{bonus}}',
         effectDealDamageRandom: 'Deal {{value}} damage to a RANDOM enemy{{bonus}}',
-        effectEnemyVulnerable: 'Vulnerable {{n}} turns (takes +50% damage) — one target',
+        effectEnemyVulnerable: 'Vulnerable {{n}} turns — one target',
         effectEnemyVulnerableAll: 'ALL enemies: Vulnerable {{n}} turns',
-        effectEnemyWeak: 'Weak {{n}} turns (deals less damage) — one target',
+        effectEnemyWeak: 'Weak {{n}} turns — one target',
         effectEnemyWeakAll: 'ALL enemies: Weak {{n}} turns',
-        effectEnemyPoison: 'Poison +{{n}} (HP each turn, then −1 stack) — one target',
+        effectEnemyPoison: 'Poison +{{n}} stacks — one target',
         effectEnemyPoisonAll: 'ALL enemies: Poison +{{n}}',
-        effectPlayerStrength: 'Gain {{n}} Strength (+{{n}} damage per hit on attacks this combat)',
-        effectDamageFirstTry: ', +{{n}} if first try',
+        effectPlayerStrength: 'Gain {{n}} Strength',
+        effectDamageFirstTry: ', +{{n}} first card this turn',
         effectDamageMultiHit: ' (×{{count}} hits)',
         effectGainBlock: 'Gain {{value}} Block',
         effectGainBlockLine: 'Gain {{value}} Block{{growth}}',
@@ -209,7 +245,98 @@ const resources = {
         effectExhaustHandGainEnergy: 'Exhaust 1 card from your hand. Gain Energy equal to its cost.',
         effectExhaustEnergy: 'Exhaust: +{{energy}} Energy.',
         effectRetain: 'Retain: +4 Block each turn held.',
+        effectPoisonAuraEachTurn: 'Each player turn start: ALL enemies gain {{n}} Poison (this combat). Stacks when played multiple times.',
+        effectEnergyOverdraft: 'Energy Overdraft {{n}} — pay less Energy now; next turn starts with {{n}} less.',
+        effectOverloadAdd: 'Gain {{n}} Global Overload.',
+        effectOverloadRemove: 'Remove {{n}} Global Overload.',
+        effectOverloadClear: 'Clear Global Overload.',
+        overloadCapNote: ' (max bonus +{{cap}})',
+        effectBonusDamagePerOverload: '+{{per}} damage per Global Overload{{capNote}}.',
+        effectBonusBlockPerOverload: '+{{per}} Block per Global Overload{{capNote}}.',
         effectSpecial: 'Special effect.',
+      },
+      cardGlossary: {
+        sectionTitle: 'Mechanics on this card',
+        poison: {
+          name: 'Poison',
+          desc: 'At the start of each enemy turn, they lose HP equal to stacks, then stacks decrease by 1.',
+        },
+        vulnerable: {
+          name: 'Vulnerable',
+          desc: 'Target takes 50% more damage from attacks until turns expire.',
+        },
+        weak: {
+          name: 'Weak',
+          desc: 'Target deals less damage with attacks until turns expire.',
+        },
+        first_try: {
+          name: 'First card this turn',
+          desc: 'The first card you play each player turn counts as “first try” for bonuses on that card.',
+        },
+        chain: {
+          name: 'Chain',
+          desc: 'Extra flat damage added when this card follows another attack in the same turn.',
+        },
+        reflect: {
+          name: 'Reflect',
+          desc: 'When you lose HP from an enemy hit, deal damage back based on stacks × damage per stack.',
+        },
+        stun: {
+          name: 'Stun',
+          desc: 'Skips or delays the enemy\'s intended actions for that duration.',
+        },
+        retain: {
+          name: 'Retain',
+          desc: 'Card stays in your hand next turn; block from this card grows each turn it stays.',
+        },
+        strength: {
+          name: 'Strength',
+          desc: 'Adds flat damage to each hit from your attack cards for the rest of this combat.',
+        },
+        overload: {
+          name: 'Overload',
+          desc: 'Programmer-route cards: Global Overload persists between fights. If it exceeds your max HP, you lose. Turn Overdraft borrows Energy from your next turn.',
+        },
+        next_hit: {
+          name: 'Next hit bonus',
+          desc: 'Buff stored until your next attack card this combat deals damage.',
+        },
+        bonus_if_block: {
+          name: 'Bonus while blocking',
+          desc: 'Extra damage only applies if you currently have Block.',
+        },
+        discard_draw: {
+          name: 'Discard → draw',
+          desc: 'Discard cards from hand, then draw— net draw is shown on the card.',
+        },
+        draw_then_discard: {
+          name: 'Draw then discard',
+          desc: 'Draw first, then discard the listed number from hand.',
+        },
+        pick_discard: {
+          name: 'From discard',
+          desc: 'Choose a card from your discard pile to return to hand (rules on card).',
+        },
+        exhaust_hand_energy: {
+          name: 'Exhaust for energy',
+          desc: 'Remove one hand card from the game and gain Energy equal to its cost.',
+        },
+        exhaust_gain_energy: {
+          name: 'Exhaust self',
+          desc: 'This card goes to exhaust (removed from combat) and grants Energy.',
+        },
+        multi_hit: {
+          name: 'Multi-hit',
+          desc: 'Attack hits multiple times; each hit can trigger strength and on-hit effects separately.',
+        },
+        random_target: {
+          name: 'Random target',
+          desc: 'Damage is applied to a random living enemy.',
+        },
+        duplicate_discard: {
+          name: 'Duplicate on discard',
+          desc: 'When this card is discarded (not exhausted), a copy is added to discard.',
+        },
       },
       relic: {
         tier: {
@@ -233,7 +360,6 @@ const resources = {
       menu: {
         play: '开始游戏',
         pantheon: '万神殿',
-        graveyard: '错误墓园',
         settings: '设置',
         about: '关于',
         player: '玩家',
@@ -246,7 +372,9 @@ const resources = {
       },
       pvp: {
         title: '联机对战（原型）',
-        hint: '另开终端运行 npm run server:pvp，再创建/加入房间。当前使用日文新手卡组。创建房间的一方为先手。',
+        hint: '另开终端运行 npm run server:pvp，再创建/加入房间。若已通过 Boss 战保存成型卡组，会自动在对战中登记；否则使用默认新手卡组。创建房间的一方为先手。',
+        collectionDeckSaved: '已保存为对战卡组（{{count}} 张）——可在联机对战中使用。',
+        lobbyDeckReady: '本局已登记收藏卡组（{{count}} 张）。',
         createRoom: '创建房间',
         roomCode: '房间号',
         joinPlaceholder: '房间号',
@@ -299,6 +427,8 @@ const resources = {
         relicsCount: '遗物（{{count}}）',
         potionsHint: '药水栏（空瓶占位）。不是遗物。',
         relicsHint: '已装备遗物；每局开局 1 件，战斗/商店可再获得。',
+        overloadHint: '全局过载（程序员路线卡牌）。若过载高于生命上限，本局判定死亡。',
+        overloadShort: '过载 {{current}}/{{max}}',
       },
       overlays: {
         options: '选项',
@@ -326,6 +456,25 @@ const resources = {
         legend: '图例',
         selectRoom: '请选择起始房间',
       },
+      restSite: {
+        title: '篝火营地',
+        subtitle: '山路上片刻安宁。',
+        healTitle: '休息回血',
+        healDesc: '恢复 {{amount}} 点生命（上限的 25%）',
+        currentHp: '当前生命：{{hp}} / {{maxHp}}',
+        alreadyMax: '（已满）',
+        upgradeTitle: '升级一张牌',
+        upgradeDesc: '从牌库中免费升级一张卡牌。',
+        upgradeHint: '牌库中的每一张复制都会单独列出。',
+        upgradeNoTargets: '当前牌库中没有可升级的牌。',
+        pickCardToUpgrade: '选择要升级的牌',
+        upgradeOverlayHint: '点选一张；升级在本局持续生效。',
+        continueToMap: '返回地图',
+        fitnessTitle: '健身',
+        fitnessDesc: '生命上限 +{{hp}} · 全局过载 +{{overload}}',
+        fitnessWarn: '过载跨战斗保留——请勿超过生命上限。',
+        footer: '「少し休め。山はまだ続く。」——歇口气吧，山还很长。',
+      },
       combat: {
         playerTurn: '玩家回合',
         enemyTurn: '敌方回合',
@@ -350,6 +499,19 @@ const resources = {
         keywords: {
           ingenious: '奇巧',
         },
+        cardLane: {
+          vocabulary: '进攻',
+          grammar: '防御',
+          reading: '功能',
+          curse: '妨害',
+        },
+        journal: {
+          title: '本局记录',
+          tabPrimary: '要点 ({{count}})',
+          tabSecondary: '备忘 ({{count}})',
+          primaryEmpty: '暂无记录——继续战斗会出现条目。',
+          secondaryEmpty: '暂无备忘。',
+        },
       },
       event: {
         noData: '未找到事件数据。',
@@ -362,6 +524,7 @@ const resources = {
         goldLabel: '金币',
         forSale: '出售',
         relicSection: '遗物',
+        relicSlotEmpty: '暂无遗物（池已空）',
         energyLine: '消耗：{{n}} 点能量',
         rarityCommon: '普通',
         rarityUncommon: '罕见',
@@ -400,13 +563,13 @@ const resources = {
         effectDealDamage: '造成 {{value}} 点伤害{{bonus}}',
         effectDealDamageAll: '对所有敌人造成 {{value}} 点伤害{{bonus}}',
         effectDealDamageRandom: '对随机一名敌人造成 {{value}} 点伤害{{bonus}}',
-        effectEnemyVulnerable: '易伤 {{n}} 回合（受到的伤害 +50%）— 单体',
+        effectEnemyVulnerable: '易伤 {{n}} 回合 — 单体',
         effectEnemyVulnerableAll: '全体易伤 {{n}} 回合',
-        effectEnemyWeak: '虚弱 {{n}} 回合（造成的攻击伤害降低）— 单体',
+        effectEnemyWeak: '虚弱 {{n}} 回合 — 单体',
         effectEnemyWeakAll: '全体虚弱 {{n}} 回合',
-        effectEnemyPoison: '中毒 +{{n}}（每回合开始时受伤，再 −1 层）— 单体',
+        effectEnemyPoison: '中毒 +{{n}} 层 — 单体',
         effectEnemyPoisonAll: '全体中毒 +{{n}} 层',
-        effectPlayerStrength: '获得 {{n}} 点力量（本场战斗中攻击牌每段伤害 +{{n}}）',
+        effectPlayerStrength: '获得 {{n}} 点力量',
         effectDamageFirstTry: '，首打 +{{n}}',
         effectDamageMultiHit: '（{{count}} 段）',
         effectGainBlock: '获得 {{value}} 点格挡',
@@ -429,7 +592,102 @@ const resources = {
         effectExhaustHandGainEnergy: '消耗 1 张手牌。获得等同于该牌消耗能量的能量。',
         effectExhaustEnergy: '消耗：获得 {{energy}} 点能量。',
         effectRetain: '保留：每多保留一回合，格挡 +4。',
+        effectPoisonAuraEachTurn: '本场战斗中，每个我方回合开始时：全体敌人获得 {{n}} 层中毒（多次打出叠加以回合叠加）。',
+        effectEnergyOverdraft: '能量透支 {{n}} — 本回合少支付 {{n}} 能量；下回合起始能量减少 {{n}}。',
+        effectOverloadAdd: '获得 {{n}} 点全局过载。',
+        effectOverloadRemove: '移除 {{n}} 点全局过载。',
+        effectOverloadClear: '清除全局过载。',
+        overloadCapNote: '（加成上限 +{{cap}}）',
+        effectBonusDamagePerOverload: '每点全局过载伤害 +{{per}}{{capNote}}。',
+        effectBonusBlockPerOverload: '每点全局过载格挡 +{{per}}{{capNote}}。',
         effectSpecial: '特殊效果。',
+      },
+      cardGlossary: {
+        sectionTitle: '本牌词条说明',
+        poison: {
+          name: '中毒',
+          desc: '敌人每回合开始时按层数失去生命，随后层数 −1。',
+        },
+        vulnerable: {
+          name: '易伤',
+          desc: '目标在本持续时间内受到的攻击伤害 +50%。',
+        },
+        weak: {
+          name: '虚弱',
+          desc: '目标在本持续时间内造成的攻击伤害降低。',
+        },
+        first_try: {
+          name: '首打',
+          desc: '每个我方出牌阶段，打出的第一张牌视为「首打」，可触发牌面上的首打加成。',
+        },
+        chain: {
+          name: '连携',
+          desc: '在本回合已打出过攻击牌的前提下，本牌可附带额外的固定伤害（连携加成）。',
+        },
+        reflect: {
+          name: '反伤',
+          desc: '受到敌方攻击造成生命损失时，按「层数 × 每层伤害」对敌方反弹伤害。',
+        },
+        stun: {
+          name: '眩晕',
+          desc: '打断或推迟敌方意图若干行动。',
+        },
+        retain: {
+          name: '保留',
+          desc: '本牌下回合仍留在手牌；若为带格挡的保留牌，每多留一回合格挡额外成长。',
+        },
+        strength: {
+          name: '力量',
+          desc: '本场战斗中，你的攻击牌每次造成伤害时额外加上力量值（多段攻击每段都加）。',
+        },
+        overload: {
+          name: '过载',
+          desc: '程序员路线卡牌：全局过载在战斗之间保留；若高于生命上限则本局失败。回合透支会预支下回合能量。',
+        },
+        next_hit: {
+          name: '下张伤害加成',
+          desc: '本场战斗中直到你打出下一张造成伤害的牌为止，该次伤害获得加成。',
+        },
+        bonus_if_block: {
+          name: '有格挡加成',
+          desc: '仅当你当前拥有格挡时，才追加牌面上的额外伤害。',
+        },
+        discard_draw: {
+          name: '弃抽',
+          desc: '先弃置若干张手牌，再抽牌；净抽牌数以卡面为准。',
+        },
+        draw_then_discard: {
+          name: '抽后弃牌',
+          desc: '先抽牌，再从手牌中弃置指定张数。',
+        },
+        pick_discard: {
+          name: '从弃牌回收',
+          desc: '从弃牌堆选择一张牌收回手牌（是否消耗以卡面为准）。',
+        },
+        exhaust_hand_energy: {
+          name: '耗手回能',
+          desc: '消耗一张手牌（移出本场战斗），获得等同于该牌能量消耗的能量。',
+        },
+        exhaust_gain_energy: {
+          name: '消耗回能',
+          desc: '本牌打出后进入消耗堆，并获得能量。',
+        },
+        multi_hit: {
+          name: '多段攻击',
+          desc: '攻击分为多次命中；力量与部分触发效果按段结算。',
+        },
+        random_target: {
+          name: '随机目标',
+          desc: '伤害打在随机一名存活敌人身上。',
+        },
+        duplicate_discard: {
+          name: '弃牌复制',
+          desc: '本牌进入弃牌堆（非消耗）时，额外复制一张加入弃牌堆。',
+        },
+        poison_aura: {
+          name: '周期中毒',
+          desc: '打出后生效：本场战斗中，除本场首次摸牌外，每个我方回合开始时为全体存活敌人叠加中毒；重复打出会使每次叠加的层数累加。',
+        },
       },
       relic: {
         tier: {

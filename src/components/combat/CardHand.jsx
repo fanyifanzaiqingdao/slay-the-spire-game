@@ -6,15 +6,12 @@
 
 import React, { useState, useCallback } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { CARD_TYPES } from '../../constants/cardTypes.js'
 import CardComponent from './CardComponent.jsx'
+import { isAttackEffectCard } from '../../utils/combat.js'
+import { getEffectiveEnergyCost } from '../../utils/relicCombatHelpers.js'
 
-function isCardPrimedForChain(card, chainActive, chainType, hasChainBracelet) {
-  if (!chainActive || !chainType || !card) return false
-  if (chainType === CARD_TYPES.VOCABULARY && card.type === CARD_TYPES.GRAMMAR) return true
-  if (chainType === CARD_TYPES.GRAMMAR && card.type === CARD_TYPES.READING) return true
-  if (hasChainBracelet && chainType === CARD_TYPES.GRAMMAR && card.type === CARD_TYPES.VOCABULARY) return true
-  return false
+function isCardPrimedForChain(card, lastPlayWasAttack) {
+  return Boolean(lastPlayWasAttack && card && isAttackEffectCard(card))
 }
 
 /**
@@ -26,13 +23,12 @@ function isCardPrimedForChain(card, chainActive, chainType, hasChainBracelet) {
  * @param {string[]} retainedCards  - v3: card IDs retained across turns
  * @param {Object} retainGrowthStacks - v3: map of cardId → number of growth stacks
  * @param {string|null} selectedCardId
- * @param {boolean} chainActive
- * @param {string|null} chainType   - type of chain active
- * @param {boolean} hasChainBracelet - relic: grammar → vocab completes chain
+ * @param {boolean} lastPlayWasAttack - previous card this turn was an attack (consecutive-attack bonus primed)
  * @param {boolean} disabled        - during enemy turn animation
  * @param {function} onCardSelect(cardId, indexInHand)
  * @param {React.RefObject<HTMLElement|null>} enemyDropZoneRef - drag card here to play
  * @param {function(boolean)=} onDragHoverEnemy - highlight enemy drop zone while dragging
+ * @param {function(number, number)=} onDragReleaseOnEnemy - (clientX, clientY) when drag ends on enemy zone (PvE target lock)
  */
 const CardHand = React.memo(function CardHand({
   handIds = [],
@@ -43,13 +39,15 @@ const CardHand = React.memo(function CardHand({
   retainedCards = [],
   retainGrowthStacks = {},
   selectedCardId = null,
-  chainActive = false,
-  chainType = null,
-  hasChainBracelet = false,
+  lastPlayWasAttack = false,
   disabled = false,
   onCardSelect,
   enemyDropZoneRef = null,
   onDragHoverEnemy,
+  onDragReleaseOnEnemy,
+  /** @type {string[]} */ relics = [],
+  /** Programmer route: energy_overdraft reduces displayed/play cost */
+  programmerOverloadActive = false,
 }) {
   // Track which card is currently shaking (locked or silenced click)
   const [shakingCardId, setShakingCardId] = useState(null)
@@ -91,18 +89,20 @@ const CardHand = React.memo(function CardHand({
     <div className={`flex items-end justify-center px-4 pb-2 ${cards.length <= 2 ? 'gap-6' : 'gap-1'}`}>
       <AnimatePresence mode="popLayout">
         {cards.map((card, i) => {
-          const canAfford = currentEnergy >= card.energy_cost
+          const effCost = getEffectiveEnergyCost(card, relics, programmerOverloadActive)
+          const canAfford = currentEnergy >= effCost
           const isLocked = lockedCards.includes(card.id)
           const isSilenced = silencedTypes.includes(card.type)
           const isRetained = retainedCards.includes(card.id)
           const growthStacks = retainGrowthStacks[card.id] || 0
-          const isPrimed = isCardPrimedForChain(card, chainActive, chainType, hasChainBracelet)
+          const isPrimed = isCardPrimedForChain(card, lastPlayWasAttack)
 
           return (
             <CardComponent
               // Deck can contain duplicate card IDs; key must be unique per slot.
               key={`${card.id}-${i}`}
               card={card}
+              energyDisplay={effCost}
               isPlayable={canAfford && !disabled}
               isLocked={isLocked}
               isSilenced={isSilenced}
@@ -114,6 +114,7 @@ const CardHand = React.memo(function CardHand({
               onSelect={(cid, idx) => handleCardClick(cid, idx)}
               enemyDropZoneRef={enemyDropZoneRef}
               onDragHoverEnemy={onDragHoverEnemy}
+              onDragReleaseOnEnemy={onDragReleaseOnEnemy}
               indexInHand={i}
               totalInHand={cards.length}
             />

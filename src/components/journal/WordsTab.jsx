@@ -1,9 +1,12 @@
-// Ship log — vocabulary-style entries unlocked during the run
+import { useTranslation } from 'react-i18next'
+
+/** Primary journal tab — highlights gathered during the run */
 export function WordsTab({ words = [] }) {
+  const { t } = useTranslation()
   if (!words.length) {
     return (
       <div className="px-5 py-8 text-center text-sm text-gray-500">
-        Nothing in the ship log yet — keep clearing encounters.
+        {t('combat.journal.primaryEmpty')}
       </div>
     )
   }

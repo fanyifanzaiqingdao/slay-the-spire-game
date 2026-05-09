@@ -1,10 +1,12 @@
 // components/journal/JournalOverlay.jsx
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WordsTab } from './WordsTab.jsx'
 import { GrammarTab } from './GrammarTab.jsx'
 
 export function JournalOverlay({ words = [], grammar = [], onClose }) {
+  const { t } = useTranslation()
   const [tab, setTab] = useState('words')
 
   return (
@@ -25,23 +27,23 @@ export function JournalOverlay({ words = [], grammar = [], onClose }) {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-800">
-          <h2 className="text-base font-bold text-amber-200">Run log</h2>
+          <h2 className="text-base font-bold text-amber-200">{t('combat.journal.title')}</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-white text-2xl leading-none">×</button>
         </div>
 
         {/* Tabs */}
         <div className="flex border-b border-gray-800">
           {[
-            { id: 'words', label: `Ship log (${words.length})` },
-            { id: 'grammar', label: `Process debt (${grammar.length})` },
-          ].map(t => (
+            { id: 'words', label: t('combat.journal.tabPrimary', { count: words.length }) },
+            { id: 'grammar', label: t('combat.journal.tabSecondary', { count: grammar.length }) },
+          ].map((tb) => (
             <button
-              key={t.id}
-              onClick={() => setTab(t.id)}
+              key={tb.id}
+              onClick={() => setTab(tb.id)}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors
-                ${tab === t.id ? 'text-amber-300 border-b-2 border-amber-400' : 'text-gray-500 hover:text-gray-300'}`}
+                ${tab === tb.id ? 'text-amber-300 border-b-2 border-amber-400' : 'text-gray-500 hover:text-gray-300'}`}
             >
-              {t.label}
+              {tb.label}
             </button>
           ))}
         </div>

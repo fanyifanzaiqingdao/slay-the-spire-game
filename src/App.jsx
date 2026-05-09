@@ -12,7 +12,6 @@ const RestRoom = lazy(() => import('./components/rooms/RestRoom.jsx').then(m => 
 const MerchantRoom = lazy(() => import('./components/rooms/MerchantRoom.jsx').then(m => ({ default: m.MerchantRoom })))
 const EventRoom = lazy(() => import('./components/rooms/EventRoom.jsx').then(m => ({ default: m.EventRoom })))
 const PostRunSummary = lazy(() => import('./components/menus/PostRunSummary.jsx').then(m => ({ default: m.PostRunSummary })))
-const GraveyardScreen = lazy(() => import('./components/menus/GraveyardScreen.jsx').then(m => ({ default: m.GraveyardScreen })))
 const PantheonScreen = lazy(() => import('./components/menus/PantheonScreen.jsx').then(m => ({ default: m.PantheonScreen })))
 const PvpScreen = lazy(() => import('./components/pvp/PvpScreen.jsx').then(m => ({ default: m.PvpScreen })))
 
@@ -41,7 +40,6 @@ export default function App() {
             <Route path="/merchant" element={<MerchantRoom />} />
             <Route path="/event" element={<EventRoom />} />
             <Route path="/summary" element={<PostRunSummary />} />
-            <Route path="/graveyard" element={<GraveyardScreen />} />
             <Route path="/pantheon" element={<PantheonScreen />} />
             <Route path="/pvp" element={<PvpScreen />} />
             {/* Fallback */}

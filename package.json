@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server:pvp": "node server/pvp-server.mjs"
+    "server:pvp": "node server/pvp-server.mjs",
+    "export:cards": "node scripts/export-cards-catalog.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",

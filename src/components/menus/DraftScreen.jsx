@@ -6,6 +6,7 @@ import { CARD_TYPE_META, CARD_RARITY_META } from '../../constants/cardTypes.js'
 import { HoverTranslate } from '../shared/HoverTranslate.jsx'
 import { useAudio } from '../../hooks/useAudio.js'
 import { formatCardEffectLines } from '../../utils/cardEffectI18n.js'
+import { CardMechanicHoverPanel } from '../shared/CardMechanicHoverPanel.jsx'
 
 /**
  * @param {Object[]} cards - sampled draft card data objects
@@ -61,7 +62,7 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
                   whileHover={{ y: -15, scale: 1.05 }}
                   onClick={() => { playSFX('correct'); onPick(card); }}
                   className={`
-                    w-56 p-5 rounded-2xl border-2 cursor-pointer transition-all hover:ring-2 hover:ring-yellow-400/50 hover:shadow-xl hover:shadow-yellow-500/20
+                    relative group w-56 p-5 rounded-2xl border-2 cursor-pointer transition-all hover:ring-2 hover:ring-yellow-400/50 hover:shadow-xl hover:shadow-yellow-500/20
                     ${typeMeta.bgClass}
                     ${rarityMeta.borderClass}/60
                   `}
@@ -90,6 +91,8 @@ export default function DraftScreen({ cards = [], cardMap = {}, onPick, onSkip, 
                   <div className="text-xs text-gray-300 leading-tight">
                     {getEffectDesc(card, t)}
                   </div>
+
+                  <CardMechanicHoverPanel card={card} position="bottom" />
 
                   {/* Flavor */}
                   <div className="mt-3 text-[10px] text-gray-600 italic border-t border-gray-700/50 pt-2">

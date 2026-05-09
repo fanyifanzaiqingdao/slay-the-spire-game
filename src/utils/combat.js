@@ -1,51 +1,25 @@
 // utils/combat.js
-// All combat resolution logic — damage, block, chain, buffs, enemy turns
+// All combat resolution logic — damage, block, attack chain, buffs, enemy turns
 
-import { CARD_TYPES } from '../constants/cardTypes.js'
+import { ATTACK_CHAIN_FLAT_PER } from '../constants/combatChain.js'
+
+/** True if this card's effect deals attack damage (single-target, AoE, or scripted damage types). */
+export function isAttackEffectCard(card) {
+  const efx = card?.effect || {}
+  return Boolean(efx.damage) || Boolean(efx.damage_all) || Boolean(efx.discard_damage) || Boolean(efx.exhaust_damage)
+    || efx.type === 'damage' || efx.type === 'damage_all' || efx.type === 'discard_damage' || efx.type === 'exhaust_damage'
+}
 
 /**
- * Resolve chain state when a card is played.
- * Returns a bonus multiplier and updates chain state.
- * @param {string} playedCardType - CARD_TYPES value
- * @param {{ chainActive: boolean, chainType: string|null }} chainState
- * @param {Object} store - runStore instance (for activateChain / breakChain)
- * @param {boolean} hasChainBracelet - relic that adds reverse chain direction
- * @returns {{ bonusMultiplier: number }}
+ * Flat damage added when the previous card played this turn was also an attack.
+ * Bonus = ATTACK_CHAIN_FLAT_PER × (consecutive attack index including this card).
+ * Chain state is updated elsewhere via recordAttackChainAfterPlay.
  */
-export function resolveChain(playedCardType, chainState, store, hasChainBracelet = false) {
-  const { chainActive, chainType } = chainState
-
-  if (!chainActive) {
-    // First card — check if it primes a chain
-    if (playedCardType === CARD_TYPES.VOCABULARY) {
-      store.activateChain(CARD_TYPES.VOCABULARY) // primes grammar
-    }
-    if (playedCardType === CARD_TYPES.GRAMMAR) {
-      store.activateChain(CARD_TYPES.GRAMMAR) // primes reading (and vocab if relic)
-    }
-    return { bonusMultiplier: 1 }
-  }
-
-  // Chain is active — check if this card benefits from it
-  if (chainType === CARD_TYPES.VOCABULARY && playedCardType === CARD_TYPES.GRAMMAR) {
-    store.breakChain()
-    return { bonusMultiplier: 1.5 } // Grammar card gets 50% bonus (deals bonus damage equal to 50% of block value)
-  }
-
-  if (chainType === CARD_TYPES.GRAMMAR && playedCardType === CARD_TYPES.READING) {
-    store.breakChain()
-    return { bonusMultiplier: 2 } // Reading card effect is doubled
-  }
-
-  // Chain Bracelet relic: grammar can also prime vocabulary (reverse chain)
-  if (hasChainBracelet && chainType === CARD_TYPES.GRAMMAR && playedCardType === CARD_TYPES.VOCABULARY) {
-    store.breakChain()
-    return { bonusMultiplier: 1.5 }
-  }
-
-  // Wrong card type — chain breaks, no bonus
-  store.breakChain()
-  return { bonusMultiplier: 1 }
+export function computeAttackChainFlatBonus(card, state) {
+  if (!isAttackEffectCard(card)) return 0
+  if (!state?.lastPlayWasAttack) return 0
+  const streakNext = (state.consecutiveAttackPlays || 0) + 1
+  return ATTACK_CHAIN_FLAT_PER * streakNext
 }
 
 /**
@@ -157,8 +131,8 @@ export function getResetCombatState() {
   return {
     inCombat: true,
     enemyBuffs: [],
-    chainActive: false,
-    chainType: null,
+    lastPlayWasAttack: false,
+    consecutiveAttackPlays: 0,
     turnNumber: 0,
     intentIndex: 0,
   }

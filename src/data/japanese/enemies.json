@@ -1386,6 +1386,9 @@
         "self_buff_harden"
       ],
       [
+        "add_echo_invoice"
+      ],
+      [
         "strike"
       ],
       [
@@ -1439,6 +1442,9 @@
     "intent_pattern": [
       [
         "self_buff_power_up"
+      ],
+      [
+        "add_echo_invoice"
       ],
       [
         "strike",
@@ -1496,6 +1502,10 @@
       [
         "strike",
         "self_buff_power_up"
+      ],
+      [
+        "add_echo_invoice",
+        "strike"
       ],
       [
         "debuff_drain",

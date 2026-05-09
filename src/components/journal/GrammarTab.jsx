@@ -1,9 +1,12 @@
-// Process debt — grammar / rule reminders logged during the run
+import { useTranslation } from 'react-i18next'
+
+/** Secondary journal tab — short notes logged during the run */
 export function GrammarTab({ grammar = [] }) {
+  const { t } = useTranslation()
   if (!grammar.length) {
     return (
       <div className="px-5 py-8 text-center text-sm text-gray-500">
-        No process debt recorded — your pipelines are clean.
+        {t('combat.journal.secondaryEmpty')}
       </div>
     )
   }

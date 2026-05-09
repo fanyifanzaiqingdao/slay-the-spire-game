@@ -1,22 +1,5 @@
 [
   {
-    "id": "travelers_compass",
-    "name": "Traveler's Compass",
-    "name_target": "旅人の羅針盤",
-    "description": "After 3 correct answers in a row, gain 1 bonus Energy next turn.",
-    "flavor": "The needle always points toward understanding.",
-    "trigger": "on_correct_streak_3",
-    "effect": {
-      "type": "bonus_energy",
-      "amount": 1,
-      "timing": "next_turn_start"
-    },
-    "source": "starter_traveler",
-    "campaign": "japanese",
-    "icon": "🧭",
-    "uses_per_fight": -1
-  },
-  {
     "id": "newcomers_phrasebook",
     "name": "Newcomer's Phrasebook",
     "name_target": "初心者の会話帳",
@@ -87,12 +70,12 @@
     "id": "chain_bracelet",
     "name": "Chain Bracelet",
     "name_target": "連鎖の腕輪",
-    "description": "Chain combos can now extend — Grammar can also prime Vocabulary cards (reverse chain).",
-    "flavor": "Links that bind and connect.",
-    "trigger": "passive_chain_modifier",
+    "description": "Each turn, the second card you play gives you 6 Block (does not depend on card type).",
+    "flavor": "Close the loop — then brace for the next handoff.",
+    "trigger": "on_second_play",
     "effect": {
-      "type": "reverse_chain_direction",
-      "additional_chain": "grammar_primes_vocabulary"
+      "type": "gain_block",
+      "amount": 6
     },
     "source": "elite_reward",
     "campaign": "all",
@@ -129,6 +112,23 @@
     "source": "merchant",
     "campaign": "all",
     "icon": "🪙",
+    "uses_per_fight": -1
+  },
+  {
+    "id": "travelers_compass",
+    "name": "Standup Compass",
+    "name_target": "站会の羅針盤",
+    "description": "Play your 3rd card in a turn to gain +1 Energy at the start of your next turn.",
+    "flavor": "The third checkpoint aligns the sprint.",
+    "trigger": "on_third_card_played_turn",
+    "effect": {
+      "type": "bonus_energy",
+      "amount": 1,
+      "timing": "next_turn_start"
+    },
+    "source": "starter",
+    "campaign": "japanese",
+    "icon": "🧭",
     "uses_per_fight": -1
   }
 ]

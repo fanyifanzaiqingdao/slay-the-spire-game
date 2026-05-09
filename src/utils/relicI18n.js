@@ -20,8 +20,8 @@ export const RELIC_STRINGS_ZH = {
   },
   travelers_compass: {
     name: '站会罗盘',
-    description: '本场战斗中连续 3 次无误出牌后，下回合获得 +1 能量。',
-    flavor: '指针永远指向下一个里程碑。',
+    description: '本回合打出第 3 张牌时，下回合开始时额外获得 1 点能量。',
+    flavor: '第三个进度点对齐下一个里程碑。',
   },
   pager_rattle: {
     name: '寻呼振动器',
@@ -50,8 +50,8 @@ export const RELIC_STRINGS_ZH = {
   },
   chain_bracelet: {
     name: '工作流手链',
-    description: '切换卡牌类型时，连锁仍可继续。',
-    flavor: '交接也是 combo 的一部分。',
+    description: '每回合你打出的第 2 张牌结算时获得 6 点格挡（与卡牌类型无关）。',
+    flavor: '闭环之后再接下一棒。',
   },
   pingback_pins: {
     name: '回执钉',
@@ -88,6 +88,21 @@ export const RELIC_STRINGS_ZH = {
     description: '每回合开始时获得 3 点格挡。',
     flavor: '站会还没结束，寻呼就响了——先垫一层。',
   },
+  scope_creep_lapel: {
+    name: '范围蔓延领针',
+    description: '敌方的普通打击伤害减少 1 点（在格挡之前结算）。',
+    flavor: '每页多一条要点，每条要点多一场会。',
+  },
+  pr_template_sticker: {
+    name: 'PR 模板贴',
+    description: '每场战斗中，第一次打出进攻、防守与功能牌时，各获得 3 点格挡。',
+    flavor: '三栏三勾，一场战斗贴一次版本。',
+  },
+  water_cooler_charm: {
+    name: '饮水机护符',
+    description: '每场战斗胜利时恢复 1 点生命。',
+    flavor: '在茶水间对完线，算小型康复。',
+  },
   ink_stone: {
     name: '小黄鸭石',
     description: '同一回合内打出 3 张同类型牌后，抽 1 张牌。',
@@ -113,6 +128,11 @@ export const RELIC_STRINGS_ZH = {
     description: '若在 5 个玩家回合内获胜，额外获得一次选牌奖励（与首张奖励相同规则）。',
     flavor: '站会前就合并——还能再塞一张票。',
   },
+  standup_applause: {
+    name: '站会掌声',
+    description: '本回合打出第 4 张牌时，抽 1 张牌。',
+    flavor: '第四个进度在频道里收获一排 emoji——再摸一张牌。',
+  },
   pantheon_sigil: {
     name: '高管背书印记',
     description: '开局获得一次免费祝福（无需配套诅咒）。',
@@ -122,6 +142,11 @@ export const RELIC_STRINGS_ZH = {
     name: '零事故印章',
     description: '无伤赢得战斗后，下一场战斗首回合多抽 2 张牌。',
     flavor: '干净的复盘值得奖励。',
+  },
+  corner_office_keycard: {
+    name: '独立办公室门卡',
+    description: '每场战斗开始时拥有 +2 力量。',
+    flavor: '头衔刷卡进门，数字替你推门。',
   },
   resonance_stone: {
     name: '跨职能宝石',

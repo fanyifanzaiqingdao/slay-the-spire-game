@@ -3,19 +3,19 @@
     "id": "kr_event_1",
     "campaign": "korean",
     "floor_tier": 1,
-    "title": "A Corporate Memo",
-    "title_target": "기업 메모",
-    "setup_text": "You find a glowing memo pad.",
-    "setup_text_target": "빛나는 메모 패드를 발견했다.",
-    "npc_dialogue": "결재 바랍니다.",
-    "npc_dialogue_translation": "Please approve.",
+    "title": "The Approval Inbox",
+    "title_target": "결재함 앞에서",
+    "setup_text": "Your inbox badge hits double digits. A routing slip glows on the glass wall — \"Decision required by EOD.\"",
+    "setup_text_target": "배지 숫자가 두 자리를 넘긴다. 유리벽에 라우팅 전표가 붙어 있다 — \"오늘 안 결재.\"",
+    "npc_dialogue": "서명만 하면 끝납니다.",
+    "npc_dialogue_translation": "Just signoff and we're clear.",
     "options": [
       {
-        "text": "Approve",
-        "translation": "결재",
+        "text": "Approve with comments",
+        "translation": "코멘트 달고 승인",
         "outcome": "reward",
-        "outcome_text": "You approved the memo. You feel slightly healthier.",
-        "outcome_text_target": "결재를 마치자 어깨의 긴장이 풀리며 몸이 조금 가벼워졌다.",
+        "outcome_text": "You leave crisp notes for the next reviewer. The knot in your shoulders loosens — process can feel like care sometimes.",
+        "outcome_text_target": "다음 검토자를 위해 짧은 코멘트를 남긴다. 어깨 매듭이 조금 풀린다 — 때로는 프로세스가 배려처럼 느껴진다.",
         "reward": {
           "type": "heal",
           "amount": 10,
@@ -24,11 +24,11 @@
         }
       },
       {
-        "text": "Ignore",
-        "translation": "무시",
+        "text": "Snooze until Monday",
+        "translation": "월요일까지 미루기",
         "outcome": "neutral",
-        "outcome_text": "You ignored the memo. Nothing happened.",
-        "outcome_text_target": "메모를 무시했다. 아무 일도 일어나지 않았다."
+        "outcome_text": "You drag the thread into next week. Nothing breaks today — nothing moves either.",
+        "outcome_text_target": "스레드를 다음 주로 미룬다. 오늘 깨지는 건 없고, 나아가는 것도 없다."
       }
     ]
   },
@@ -36,19 +36,19 @@
     "id": "kr_event_token_outage",
     "campaign": "korean",
     "floor_tier": 1,
-    "title": "The 429 Break Room",
-    "title_target": "429 휴게실",
-    "setup_text": "Neon flickers. A developer-shaped silhouette hugs a vending machine: \"My autocomplete is thinking in geological time.\"",
-    "setup_text_target": "네온이 깜빡인다. 자판기에 기대 선 실루엣이 중얼거린다. \"자동완성이 지질학적 시간대로 생각 중이야.\"",
-    "npc_dialogue": "토큰이 바닥났어. 지금은 손으로 타이핑하는 수밖에…",
-    "npc_dialogue_translation": "I'm out of tokens. All I can do now is type by hand…",
+    "title": "The Procurement Freeze",
+    "title_target": "조달 한도 멈춤",
+    "setup_text": "The vending corner flickers. Ops leans on the machine with an empty cart — \"Purchase tokens for this bucket are gone until finance opens the window.\"",
+    "setup_text_target": "자판기 구석 형광등이 깜빡인다. 운영 담당이 빈 카트에 기대어 있다 — \"이 버킷 조달 토큰은 재무 창이 열리기 전까지 끝났어.\"",
+    "npc_dialogue": "오늘 발주 칸은 다 썼어요… 남은 건 종이와 상급자 도장뿐이에요.",
+    "npc_dialogue_translation": "Today's PO slots are spent… what's left is paperwork and exec stamps.",
     "options": [
       {
-        "text": "Buy them a coffee run",
-        "translation": "커피 한 잔 사주기",
+        "text": "Buy the team coffee",
+        "translation": "팀 커피 한 라운드",
         "outcome": "reward",
-        "outcome_text": "Caffeine won't refill the API wallet, but morale ticks up. They slide you a sticker: 'Ship anyway.'",
-        "outcome_text_target": "카페인이 API 지갑을 채우진 못하지만 사기는 오른다. 스티커를 건넨다: '그냥 배포해.'",
+        "outcome_text": "Caffeine doesn't refill the procurement wallet — but people exhale. Someone slides you a sticky: \"Ship anyway.\"",
+        "outcome_text_target": "카페인이 조달 한도를 채우진 못하지만 숨은 돌아온다. 누군가 스티커를 건넨다: \"그래도 배포해.\"",
         "reward": {
           "type": "heal",
           "amount": 12,
@@ -57,11 +57,11 @@
         }
       },
       {
-        "text": "Suggest \"use a smaller model\"",
-        "translation": "\"작은 모델 써\"라고 조언",
+        "text": "Propose a smaller scope",
+        "translation": "범위 줄여 재상신",
         "outcome": "neutral",
-        "outcome_text": "They nod slowly. 'Smaller model, smaller dreams.' You find spare change in the suggestion box.",
-        "outcome_text_target": "천천히 고개를 끄덕인다. \"작은 모델, 작은 꿈.\" 제안함에서 동전 몇 닢이 나온다.",
+        "outcome_text": "They nod. \"Smaller box, smaller drama.\" You find loose petty cash in the suggestion tin.",
+        "outcome_text_target": "고개를 끄덕인다. \"상자를 줄이면 드라마도 줄어든다.\" 제안함에서 동전 몇 닢이 나온다.",
         "reward": {
           "type": "gold",
           "amount": 10,
@@ -70,11 +70,11 @@
         }
       },
       {
-        "text": "Paste a wall of code into chat",
-        "translation": "채팅에 코드 벽돌 붙여넣기",
+        "text": "Paste the entire policy PDF into chat",
+        "translation": "정책 PDF 통째로 채팅에 붙이기",
         "outcome": "penalty",
-        "outcome_text": "The machine beeps once — like a sigh. You feel the weight of everyone's wasted context window.",
-        "outcome_text_target": "자판기가 한 번 삑 소리를 낸다, 한숨 같다. 낭비된 컨텍스트 창의 무게가 어깨에 내려앉는다.",
+        "outcome_text": "The machine bleeps once — like feedback on a mic. Everyone's calendar loses an hour they won't get back.",
+        "outcome_text_target": "자판기가 삑 소리를 낸다 — 마이크 하울링 같다. 모두의 캘린더에서 한 시간이 증발한다.",
         "reward": {
           "type": "hp_loss",
           "amount": 7,

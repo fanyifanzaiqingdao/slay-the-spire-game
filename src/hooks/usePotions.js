@@ -5,6 +5,7 @@
 import { useCallback } from 'react'
 import useRunStore from '../stores/runStore.js'
 import { POTIONS } from '../data/potions.js'
+import { isOverloadMechanicsActive } from '../utils/overloadMechanics.js'
 import { drawCards } from '../utils/deck.js'
 
 export function usePotions({ isQuestionOpen = false, playSFX } = {}) {
@@ -60,9 +61,11 @@ export function usePotions({ isQuestionOpen = false, playSFX } = {}) {
         break
 
       case 'activate_chain': {
-        // Activate chain immediately — next card gets bonus regardless of type
-        const lastType = s.lastCardTypePlayed || 'vocabulary'
-        s.activateChain(lastType)
+        // Prime attack chain — next attack gets consecutive bonus as if previous card was an attack
+        useRunStore.setState({
+          lastPlayWasAttack: true,
+          consecutiveAttackPlays: 0,
+        })
         s.setPotionEffect('echoTonicActive', false) // just chain, not echo
         playSFX?.('chain_activate')
         break
@@ -107,8 +110,7 @@ export function usePotions({ isQuestionOpen = false, playSFX } = {}) {
         playSFX?.('correct')
         break
 
-      case 'graveyard_dust': {
-        // Draw 1 card
+      case 'draw_card': {
         const fresh = useRunStore.getState()
         if (fresh.deck.length > 0 || fresh.discardPile.length > 0) {
           const { drawn, deck: newDeck, discard: newDiscard } = drawCards(
@@ -120,7 +122,14 @@ export function usePotions({ isQuestionOpen = false, playSFX } = {}) {
             discardPile: newDiscard,
           })
         }
-        // Graveyard advancement is handled by the graveyard store separately
+        playSFX?.('correct')
+        break
+      }
+
+      case 'reduce_overload_global': {
+        if (!isOverloadMechanicsActive(s)) return false
+        const n = Math.max(0, Math.floor(Number(effect.value) || 0))
+        if (n) s.applyOverloadGlobalDelta(-n)
         playSFX?.('correct')
         break
       }

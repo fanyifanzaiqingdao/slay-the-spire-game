@@ -1,5 +1,5 @@
 /**
- * Rebalance src/data/japanese/cards.json using sts2_database rough benchmarks:
+ * Rebalance programmer-route card data (`src/data/japanese/cards.json`, campaign id `japanese`) using sts2_database rough benchmarks:
  * - Strike ~6 @1, Defend ~5 @1, Bash ~8+vuln @2, Pommel ~9+draw @1, Uppercut ~13+debuffs @2
  * Our cards also use bonus_correct_first_try — tone down stacking power creep.
  *

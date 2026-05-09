@@ -3,19 +3,24 @@
     "id": "jp_event_shrine_maiden",
     "campaign": "japanese",
     "floor_tier": 1,
-    "title": "The Shrine Maiden's Riddle",
-    "title_target": "巫女の謎",
-    "setup_text": "A shrine maiden blocks your path. She speaks:",
-    "setup_text_target": "道を塞ぐ巫女が、静かに問いかける。",
-    "npc_dialogue": "「あなたは何を求めているのですか？」",
-    "npc_dialogue_translation": "What are you seeking?",
+    "title": "The Checkpoint Interview",
+    "title_target": "評価面談の関所",
+    "title_zh": "绩效考核面谈关口",
+    "setup_text": "HR blocks your calendar slot. The corridor smells like toner and tension. They fold their hands and wait.",
+    "setup_text_target": "人事把你卡在日历档口。走廊里是墨粉和紧绷的气味。对方合掌不语，只看着你。",
+    "setup_zh": "人事把你卡在日历档口。走廊里是墨粉和紧绷的气味。对方合掌不语，只看着你。",
+    "npc_dialogue": "「この四半期、あなたは何を一番に伸ばしたいですか？」",
+    "npc_dialogue_translation": "What do you want to grow most this quarter?",
+    "npc_dialogue_zh": "「这个季度，你最想把什么做起来？」",
     "options": [
       {
-        "text": "「知識を求めています。」",
-        "translation": "I seek knowledge.",
+        "text": "「スキルとキャリアの伸びしろです。」",
+        "translation": "I'd prioritize skill depth and career runway.",
+        "text_zh": "「技能和职业天花板这块。」",
         "outcome": "reward",
-        "outcome_text": "The maiden smiles and steps aside, placing a glowing scroll in your hands.",
-        "outcome_text_target": "巫女は微笑み、道を開ける。あなたの手には淡く光る巻物が残された。",
+        "outcome_text": "They stamp APPROVED with unusual warmth and slip you a vendor voucher labeled \"training budget.\" Your deck receives an unexpected polish.",
+        "outcome_text_target": "对方少见地和颜悦色盖下「同意」，塞给你一张写着培训预算的供应商券。你的牌组莫名被打磨得更顺手。",
+        "outcome_text_zh": "对方少见地和颜悦色盖下「同意」，塞给你一张写着培训预算的供应商券。你的牌组莫名被打磨得更顺手。",
         "reward": {
           "type": "card_upgrade",
           "amount": 1,
@@ -24,16 +29,30 @@
         }
       },
       {
-        "text": "「力を求めています。」",
-        "translation": "I seek power.",
+        "text": "「報酬と裁量の話がしたいです。」",
+        "translation": "I want to talk compensation and scope.",
+        "text_zh": "「想谈薪酬和权限。」",
         "outcome": "neutral",
-        "outcome_text": "The maiden nods solemnly. 'Power alone will not carry you to the summit.'",
-        "outcome_text_target": "巫女郑重地点头：“仅靠力量，无法抵达山巅。”",
+        "outcome_text": "They nod slowly. \"Everyone wants leverage,\" they say, and route you a modest spot bonus envelope.",
+        "outcome_text_target": "对方缓缓点头：「人人都想要筹码。」随手给你转了一笔还算体面的即时奖金。",
         "reward": {
           "type": "gold",
           "amount": 10,
           "description": "You receive 10 gold.",
           "description_target": "获得 10 金币。"
+        }
+      },
+      {
+        "text": "「スコープを一枚削って整理したいです。」",
+        "translation": "I want to cut one piece of scope and tidy up.",
+        "text_zh": "「想砍掉一项范围，把手头捋干净。」",
+        "outcome": "reward",
+        "outcome_text": "HR stamps \"scope reduction\" and slides you a red pen — trimming backlog is still work, but it's yours to choose.",
+        "outcome_text_target": "人事盖上「缩减范围」章，推过来一支红笔——删减 backlog 仍是工作，但至少由你点名。",
+        "reward": {
+          "type": "remove_card",
+          "description": "Remove one card from your deck (draw pile, hand, discard, exhaust, or icebox).",
+          "description_target": "从牌组或当前牌堆相关区域永久移除一张牌（自选）。"
         }
       }
     ]
@@ -42,19 +61,22 @@
     "id": "jp_event_wandering_monk",
     "campaign": "japanese",
     "floor_tier": 1,
-    "title": "The Wandering Monk",
-    "title_target": "旅の僧侶",
-    "setup_text": "An old monk sits by the road, studying a worn scroll. He looks up and asks:",
-    "setup_text_target": "路边坐着一位老僧，正翻看破旧卷轴。他抬头问你：",
-    "npc_dialogue": "「この言葉の意味がわかりますか？」",
-    "npc_dialogue_translation": "Do you understand the meaning of these words?",
+    "title": "The Mentor by the Espresso Machine",
+    "title_target": "エスプレッソ機の先輩",
+    "title_zh": "咖啡机旁的导师",
+    "setup_text": "A senior colleague stirs the third espresso of the day. Steam rises; politics thin out into fog.",
+    "setup_text_target": "资深同事在搅今天的第三杯浓缩。蒸汽升起，办公室政治淡得像雾。",
+    "npc_dialogue": "「この四半期の優先順位、腑に落ちてますか？」",
+    "npc_dialogue_translation": "Does this quarter's priority stack actually make sense to you?",
+    "npc_dialogue_zh": "「这季度的优先级排序，你真捋顺了吗？」",
     "options": [
       {
-        "text": "「はい、わかります。」",
-        "translation": "Yes, I understand.",
+        "text": "「はい、筋が通っています。」",
+        "translation": "Yes — the priorities line up.",
+        "text_zh": "「是的，说得通。」",
         "outcome": "reward",
-        "outcome_text": "The monk beams. 'A rare traveler!' He shares his provisions.",
-        "outcome_text_target": "僧人露出笑容：“少见的旅人！”他分给你一些补给。",
+        "outcome_text": "They grin. \"Rare — someone who read the memo.\" They share their stash of decent snacks from the last off-site.",
+        "outcome_text_target": "对方笑了：「少见，真有人读完纪要。」把上次团建剩的好零食分你一半。",
         "reward": {
           "type": "heal",
           "amount": 15,
@@ -63,11 +85,12 @@
         }
       },
       {
-        "text": "「いいえ、わかりません。」",
-        "translation": "No, I don't understand.",
+        "text": "「いいえ、まだ腑に落ちません。」",
+        "translation": "No — I'm still not aligned.",
+        "text_zh": "「不，我还没想通。」",
         "outcome": "penalty",
-        "outcome_text": "The monk chuckles. 'Honesty is its own wisdom. But the mountain does not forgive ignorance.' A cold wind saps your strength.",
-        "outcome_text_target": "僧人轻笑：“诚实也是智慧，但山不会宽恕无知。”寒风掠过，你感到虚弱。",
+        "outcome_text": "They sigh. \"Honesty costs calories,\" they warn. The espresso finishes bitter; your shoulders sink with it.",
+        "outcome_text_target": "对方叹气：「诚实也耗体力。」浓缩喝到尾韵发苦，你的肩膀也跟着塌了一截。",
         "reward": {
           "type": "hp_loss",
           "amount": 8,
@@ -81,19 +104,22 @@
     "id": "jp_event_spirit_fork",
     "campaign": "japanese",
     "floor_tier": 2,
-    "title": "The Spirit Fork",
-    "title_target": "霊の辻",
-    "setup_text": "The path splits. A small fox spirit sits at the crossroads, cleaning its paws. It looks up:",
-    "setup_text_target": "道路在前方分岔。路口坐着一只小狐灵，正舔着爪子，抬头看向你：",
-    "npc_dialogue": "「右か左か、どちらに行きますか？右は「危険」、左は「安全」と書いてあります。」",
-    "npc_dialogue_translation": "Right or left — which will you go? The right sign reads 'Danger', the left reads 'Safety'.",
+    "title": "The Roadmap Fork",
+    "title_target": "ロードマップの分岐",
+    "title_zh": "路线图分歧点",
+    "setup_text": "The roadmap splits on the whiteboard. Product taps the marker cap — ink or blood, hard to tell.",
+    "setup_text_target": "白板上的路线图在此分叉。产品握着笔帽敲了敲——墨水和血丝分不清。",
+    "npc_dialogue": "「先行リリースでインパクトを取るか、安定ラインで負債を減らすか。」",
+    "npc_dialogue_translation": "Ship for impact first, or pay down debt on the safe lane?",
+    "npc_dialogue_zh": "「先冲一把曝光还债，还是走稳妥线削技术债？」",
     "options": [
       {
-        "text": "「右に行きます。（危険）」",
-        "translation": "I'll go right. (Danger)",
+        "text": "「インパクト優先でいきます。」",
+        "translation": "We chase impact first.",
+        "text_zh": "「优先冲影响力。」",
         "outcome": "reward",
-        "outcome_text": "The dangerous path is littered with abandoned relics. You pocket a glowing item.",
-        "outcome_text_target": "危险小路上散落着被遗弃的遗物。你捡起了一件发光的宝物。",
+        "outcome_text": "The risky lane ships noisy wins — and someone \"accidentally\" leaves a shiny perk on your desk.",
+        "outcome_text_target": "高风险路线换来喧哗的胜利——不知谁「顺手」在你桌上留了件亮眼的好处。",
         "reward": {
           "type": "relic_random",
           "amount": 1,
@@ -102,11 +128,12 @@
         }
       },
       {
-        "text": "「左に行きます。（安全）」",
-        "translation": "I'll go left. (Safety)",
+        "text": "「安定運用を優先します。」",
+        "translation": "We stabilize ops first.",
+        "text_zh": "「先稳住交付。」",
         "outcome": "minor_reward",
-        "outcome_text": "The safe path is peaceful. You arrive rested.",
-        "outcome_text_target": "安全的小路宁静安稳。你以更好的状态继续前进。",
+        "outcome_text": "Numbers flatten; pager noise drops. You sleep enough to feel human again.",
+        "outcome_text_target": "曲线拉平，告警安静了些。你终于睡到像个人的时长。",
         "reward": {
           "type": "heal",
           "amount": 10,
@@ -120,19 +147,23 @@
     "id": "jp_event_rate_limited_sage",
     "campaign": "japanese",
     "floor_tier": 1,
-    "title": "The Rate-Limited Sage",
-    "title_target": "限速的先知",
-    "setup_text": "A hunched scribe sits beside a stone lantern, staring at blank slips. They whisper about \"spirit-tokens\" running dry and every thought arriving one word per second.",
-    "setup_text_target": "一名驼背书吏坐在石灯笼旁，对着空白木简发呆。他小声抱怨「灵牌」用尽，念头像被节流，一个字一个字往外蹦。",
-    "npc_dialogue": "「今日の配分は尽きた…残りは手で書くしかない。」",
-    "npc_dialogue_translation": "Today's allotment is gone… from here I can only write by hand.",
+    "background_image": "/images/ui/event_procurement_quota_bg.png",
+    "title": "The Purchase Order Gatekeeper",
+    "title_target": "発注の番人",
+    "title_zh": "采购单的守门人",
+    "setup_text": "Finance sits under harsh LEDs with an empty tray of PO stamps. Every approval queue looks longer than the fiscal year.",
+    "setup_text_target": "财务坐在刺眼的灯下，审批章的印泥见了底。每一条队列都比财年更长。",
+    "npc_dialogue": "「今日の発注枠は終わりました…ここからは紙と上司サインだけです。」",
+    "npc_dialogue_translation": "Today's PO quota is closed… from here it's paper and exec signatures only.",
+    "npc_dialogue_zh": "「今天的采购额度用完了……接下来只能走纸质和老板签字。」",
     "options": [
       {
-        "text": "「分かる。休憩しよう。」",
-        "translation": "I get it. Let's take a break.",
+        "text": "「わかる。いったんホワイトボードで整理しよう。」",
+        "translation": "Got it — let's park this and whiteboard it.",
+        "text_zh": "「理解，我们先白板捋一遍。」",
         "outcome": "reward",
-        "outcome_text": "You share rations and bad jokes about compile times. The sage breathes easier — empathy restores more than caffeine.",
-        "outcome_text_target": "你分了干粮，又吐槽了两句编译速度。书吏长舒一口气：共情比咖啡因更回血。",
+        "outcome_text": "You split snacks and blame the vendor SLA instead of each other. Blood pressure drops company-wide — yours included.",
+        "outcome_text_target": "你们分了零食，把锅甩给供应商 SLA 而不是彼此。全公司的血压都下来一点——包括你的。",
         "reward": {
           "type": "heal",
           "amount": 12,
@@ -141,29 +172,32 @@
         }
       },
       {
-        "text": "「金を出す。早く続けて。」",
-        "translation": "I'll pay. Hurry up and keep going.",
+        "text": "「緊急経費で回す。続けよう。」",
+        "translation": "I'll route it as urgent spend — keep moving.",
+        "text_zh": "「走紧急预算，抓紧往下推。」",
         "outcome": "neutral",
-        "outcome_text": "You toss coins. The scribe blinks. 'Gold doesn't refill the well — but thanks for the tip.' They scribble a lucky charm on your sleeve.",
-        "outcome_text_target": "你扔下金币。书吏眨眼：「钱填不满井，但谢了。」他在你袖上画了道潦草的幸运符。",
+        "outcome_text": "Cash unlocks nothing in policy land — but they scribble a sticky-note shortcut on your badge sleeve.",
+        "outcome_text_target": "现金撬不动流程条款——但对方在你工牌套上贴了张抄近道的便利贴。",
         "reward": {
           "type": "gold",
-          "amount": 8,
-          "description": "You receive 8 gold (found tucked in the charm).",
-          "description_target": "从符咒夹层里摸到 8 枚金币。"
+          "amount": 20,
+          "description": "You receive 20 gold from the expedited routing slip.",
+          "description_target": "紧急流程的便利贴夹层里摸到 20 枚金币。"
         }
       },
       {
-        "text": "「俺はまだ余裕がある。」",
-        "translation": "I'm still doing fine.",
+        "text": "「俺のチームはまだ余裕がある。」",
+        "translation": "My team still has bandwidth.",
+        "text_zh": "「我们组还有余力。」",
         "outcome": "penalty",
-        "outcome_text": "The sage's eye twitches. A curse of envy settles on you — suddenly every step feels like waiting on a spinner.",
-        "outcome_text_target": "书吏眼角抽搐。妒火化作轻咒：你每走一步都像在等加载转圈。",
+        "outcome_text": "Their smile tightens — then they \"find\" a rare signing bonus that somehow clears procurement. The envy costs blood; the relic costs paperwork.",
+        "outcome_text_target": "对方笑容一僵，却从抽屉里摸出一份能通过审批的「稀有签字福利」塞给你。嫉妒让你付出代价，遗物替你付手续费。",
         "reward": {
           "type": "hp_loss",
           "amount": 6,
-          "description": "Lose 6 HP.",
-          "description_target": "失去 6 点生命值。"
+          "relic_random_rare": true,
+          "description": "Lose 6 HP. Gain a random rare relic.",
+          "description_target": "失去 6 点生命值，并获得 1 件随机稀有遗物。"
         }
       }
     ]

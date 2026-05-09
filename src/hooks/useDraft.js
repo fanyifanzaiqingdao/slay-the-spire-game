@@ -44,10 +44,18 @@ export function useDraft() {
   const openDraft = useCallback(async (fightAccuracy, guaranteedRarity = null) => {
     const pool = calculateDraftPool(fightAccuracy, store.masteryLevel)
     const allCards = filterCardsForAct1Draft(await loadCards(store.campaign), store)
+    const job = store.character?.job
+    const jobOk = (c) => !c.job || c.job === job
 
     // Boss rewards bypass normal pool logic
     if (guaranteedRarity) {
-      const eligible = allCards.filter(c => c.campaign === store.campaign && c.rarity === guaranteedRarity)
+      const eligible = allCards.filter(c =>
+        jobOk(c) &&
+        c.campaign === store.campaign &&
+        c.rarity === guaranteedRarity &&
+        c.type !== 'curse' &&
+        c.rarity !== 'curse'
+      )
       const sampled = shuffle(eligible).slice(0, 3) // Give 3 choices of that rarity
       setDraftCards(sampled)
       setIsDrafting(true)
@@ -55,7 +63,10 @@ export function useDraft() {
     }
 
     const eligible = allCards.filter(c =>
+      jobOk(c) &&
       c.campaign === store.campaign &&
+      c.type !== 'curse' &&
+      c.rarity !== 'curse' &&
       (pool.allowRare || (c.rarity !== 'rare' && c.rarity !== 'story_rare')) &&
       c.rarity !== 'story_rare' // story rares only from boss rewards
     )
@@ -63,7 +74,7 @@ export function useDraft() {
     const sampled = shuffle(eligible).slice(0, pool.count)
     setDraftCards(sampled)
     setIsDrafting(true)
-  }, [store.campaign, store.masteryLevel, store.floor])
+  }, [store.campaign, store.masteryLevel, store.floor, store.character?.job])
 
   const pickCard = useCallback((card) => {
     if (!card) {

@@ -8,6 +8,7 @@ import { CARD_TYPE_META, CARD_RARITY_META, CARD_TYPES } from '../../constants/ca
 import { CARD_KEYWORD_IDS } from '../../constants/cardKeywords.js'
 import { HoverTranslate } from '../shared/HoverTranslate.jsx'
 import { formatCardEffectLines, formatCardRoleLabel } from '../../utils/cardEffectI18n.js'
+import { CardMechanicHoverPanel } from '../shared/CardMechanicHoverPanel.jsx'
 
 /**
  * @param {Object} card - card data object from cards.json
@@ -20,6 +21,7 @@ import { formatCardEffectLines, formatCardRoleLabel } from '../../utils/cardEffe
  * @param {function} onSelect  - (cardId, indexInHand?) when card is clicked or dropped on enemy
  * @param {React.RefObject<HTMLElement|null>} enemyDropZoneRef - drop target for drag-to-play
  * @param {function(boolean)=} onDragHoverEnemy - while dragging, whether pointer is over enemy zone
+ * @param {function(number, number)=} onDragReleaseOnEnemy - (clientX, clientY) before play when drop lands in enemy zone — set attack target (PvE)
  * @param {number} indexInHand - position in hand (0-4) for fan angle
  * @param {number} totalInHand - total cards in hand
  */
@@ -35,6 +37,8 @@ function pointInExpandedRect(x, y, rect, pad = 16) {
 
 const CardComponent = React.memo(function CardComponent({
   card,
+  /** Optional override for relic-adjusted cost display */
+  energyDisplay,
   isPlayable = true,
   isLocked = false,
   isSilenced = false,
@@ -46,6 +50,7 @@ const CardComponent = React.memo(function CardComponent({
   onSelect,
   enemyDropZoneRef = null,
   onDragHoverEnemy,
+  onDragReleaseOnEnemy,
   indexInHand = 0,
   totalInHand = 5,
 }) {
@@ -106,7 +111,7 @@ const CardComponent = React.memo(function CardComponent({
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
     >
       <motion.div
-        className="relative inline-block touch-none"
+        className="relative inline-block touch-none group"
         drag={dragToPlay}
         dragSnapToOrigin
         dragElastic={0.12}
@@ -129,6 +134,7 @@ const CardComponent = React.memo(function CardComponent({
           setIsDragging(false)
           const el = enemyDropZoneRef?.current
           if (el && pointInExpandedRect(info.point.x, info.point.y, el.getBoundingClientRect())) {
+            onDragReleaseOnEnemy?.(info.point.x, info.point.y)
             onSelect?.(card.id, indexInHand)
           }
         }}
@@ -225,7 +231,7 @@ const CardComponent = React.memo(function CardComponent({
             zIndex: 10
           }}
         >
-          {card.energy_cost}
+          {energyDisplay ?? card.energy_cost}
         </div>
 
         {/* ── Rarity Gem (Top Right) ── */}
@@ -257,6 +263,8 @@ const CardComponent = React.memo(function CardComponent({
           <div className="absolute inset-0 bg-black/50 rounded-lg pointer-events-none z-20" />
         )}
       </div>
+
+      <CardMechanicHoverPanel card={card} position="top" />
       </motion.div>
     </motion.div>
   )
@@ -268,6 +276,7 @@ function inferCardRole(card) {
   if (e.damage || e.damage_all || e.hits || e.discard_damage || e.exhaust_damage) return 'ATTACK'
   if (e.block || e.heal || e.draw || e.discard_draw || e.exhaust_self_gain_energy || e.draw_then_discard_hand || e.pick_from_discard_to_hand || e.exhaust_one_hand_gain_its_energy) return 'SKILL'
   if (e.player_strength) return 'SKILL'
+  if (e.register_poison_all_each_turn != null) return 'POWER'
   if (e.enemy_vulnerable != null || e.enemy_weak != null || e.enemy_poison != null
     || e.enemy_vulnerable_all != null || e.enemy_weak_all != null || e.enemy_poison_all != null) return 'SKILL'
   return 'POWER'

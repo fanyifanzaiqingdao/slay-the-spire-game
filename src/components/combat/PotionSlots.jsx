@@ -66,7 +66,7 @@ function PotionBottle({ potionId, index, onUse, isLocked, campaign }) {
     }, 200)
   }
 
-  // Campaign bottle shape: Japanese = ceramic, Korean = circuit vial, Spanish = clay
+  // Campaign bottle shape: programmer-route (campaign id japanese) = ceramic, Korean = circuit vial, Spanish = clay
   const bottleShape = campaign === 'korean' ? '🧪' : campaign === 'spanish' ? '🏺' : '⚱️'
 
   return (

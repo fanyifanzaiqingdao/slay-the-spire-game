@@ -1,13 +1,21 @@
 # 卡牌清单（当前版本）
 
+> **推荐（自动随数据更新）**  
+> - 人类可读总表 + 字段说明：**[cards-reference.md](./cards-reference.md)**  
+> - 机器可读完整 JSON（含 `effect` 原对象 + 中英效果摘要 + 风味等）：**[cards-catalog-export.json](./cards-catalog-export.json)**  
+> - 重新生成：在项目根目录执行 `npm run export:cards`（或 `node scripts/export-cards-catalog.mjs`）。
+
+---
+
+> 以下为早期手写备忘，**统计可能已过期**；以 `cards-catalog-export.json` 为准。  
 > 数据来源：`src/data/*/cards.json`  
-> 统计时间：当前仓库状态（含已存在的 generated 卡）
+> 统计时间：历史快照
 
 ## 总览
 
 - 总卡牌数：`65`
 - 按战役：
-  - `japanese`：`53`
+  - `japanese`（**程序员路线卡牌**）：`53`
   - `korean`：`6`
   - `spanish`：`6`
 
@@ -34,7 +42,7 @@
   - `chain_bonus`：3
   - `conditional_bonus`：1
 
-### Japanese（53张）结构化统计
+### 程序员路线卡牌（53张）结构化统计
 
 - 类型：`vocabulary 22` / `grammar 15` / `reading 16`
 - 费用：`0费 12` / `1费 21` / `2费 20`
@@ -57,7 +65,7 @@
 - 费用：`0费 1` / `1费 4` / `2费 1`
 - 功能（可重叠）：`damage 4` / `block 3`
 
-## Japanese（53张）
+## 程序员路线卡牌（53张）
 
 ### 结构统计
 

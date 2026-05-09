@@ -3,19 +3,19 @@
     "id": "es_event_1",
     "campaign": "spanish",
     "floor_tier": 1,
-    "title": "A Strange Merchant",
-    "title_target": "Un Mercader Extraño",
-    "setup_text": "You meet a strange merchant on the road.",
-    "setup_text_target": "Te cruzas con un mercader extraño en el camino.",
-    "npc_dialogue": "¿Quieres comprar?",
-    "npc_dialogue_translation": "Do you want to buy?",
+    "title": "The Internal Marketplace",
+    "title_target": "El mercado interno",
+    "setup_text": "A swap shelf appears near the copier — surplus monitors, branded mugs, mysterious cables. Finance taped a note: \"Honor system; log everything.\"",
+    "setup_text_target": "Aparece un estante de trueque junto a la copiadora — monitores sobrantes, tazas con logo, cables misteriosos. Finanzas pegó una nota: \"Confianza; registra todo.\"",
+    "npc_dialogue": "¿Te llevas algo o dejas algo?",
+    "npc_dialogue_translation": "Taking something or leaving something?",
     "options": [
       {
-        "text": "Comprar",
-        "translation": "Buy",
+        "text": "Grab a labeled ergonomic cushion",
+        "translation": "Llevarse un cojín ergonómico etiquetado",
         "outcome": "reward",
-        "outcome_text": "You bought a potion.",
-        "outcome_text_target": "Compraste una poción y recuperaste energías.",
+        "outcome_text": "Your lumbar sends thank-you notes. Small comforts compound.",
+        "outcome_text_target": "Tu zona lumbar manda agradecimientos. Los pequeños alivios se acumulan.",
         "reward": {
           "type": "heal",
           "amount": 10,
@@ -24,11 +24,11 @@
         }
       },
       {
-        "text": "Ignorar",
-        "translation": "Ignore",
+        "text": "Walk past — you travel light",
+        "translation": "Seguir de largo: vas ligero",
         "outcome": "neutral",
-        "outcome_text": "You ignored the merchant.",
-        "outcome_text_target": "Ignoraste al mercader y seguiste tu camino."
+        "outcome_text": "You keep your badge pocket empty and your conscience quiet.",
+        "outcome_text_target": "Sigues con el bolsillo del gafete vacío y la conciencia tranquila."
       }
     ]
   },
@@ -36,19 +36,19 @@
     "id": "es_event_sin_tokens",
     "campaign": "spanish",
     "floor_tier": 1,
-    "title": "The Empty Ledger",
-    "title_target": "El libro mayor vacío",
-    "setup_text": "A clerk taps an abacus that shows only the word WAITING. \"No tokens left,\" they sigh. \"Now I code like it's 1998 — one keystroke, one prayer.\"",
-    "setup_text_target": "Un escribano golpea un ábaco que solo muestra ESPERANDO. \"Sin tokens\", suspira. \"Ahora programo como en 1998: una tecla, una oración.\"",
-    "npc_dialogue": "La velocidad cayó… no es pereza, es cuota.",
-    "npc_dialogue_translation": "My pace dropped… it's not laziness, it's quota.",
+    "title": "The Closed Purchase Window",
+    "title_target": "La ventana de compras cerrada",
+    "setup_text": "Treasury locked the spreadsheet row — \"No more approvals for this cost center until Monday.\" The analyst taps an empty stamp tray.",
+    "setup_text_target": "Tesorería bloqueó la fila del Excel — \"No más aprobaciones para este centro de coste hasta el lunes.\" La analista golpea una bandeja de sellos vacía.",
+    "npc_dialogue": "El ritmo cayó… no es flojera, es cupo.",
+    "npc_dialogue_translation": "My pace dropped… it's not laziness — it's quota.",
     "options": [
       {
-        "text": "Share your snack stash",
-        "translation": "Compartir tus snacks",
+        "text": "Share snacks from your drawer",
+        "translation": "Compartir snacks del cajón",
         "outcome": "reward",
-        "outcome_text": "Sugar doesn't mint new tokens, but shared suffering builds buffs. You both feel lighter.",
-        "outcome_text_target": "El azúcar no acuña tokens nuevos, pero el sufrimiento compartido da buffs. Ambos os sentís más ligeros.",
+        "outcome_text": "Sugar won't reopen the budget — but shared dread bonds teams. You both breathe easier.",
+        "outcome_text_target": "El azúcar no reabre el presupuesto — pero el miedo compartido une equipos. Ambos respiráis mejor.",
         "reward": {
           "type": "heal",
           "amount": 12,
@@ -57,11 +57,11 @@
         }
       },
       {
-        "text": "Offer to split the bill for credits",
-        "translation": "Proponer pagar a medias los créditos",
+        "text": "Offer to split an expedited fee",
+        "translation": "Ofrecer pagar a medias un gasto urgente",
         "outcome": "neutral",
-        "outcome_text": "They decline politely — corporate policy — but slip you a coin 'for when your own well runs dry.'",
-        "outcome_text_target": "Declinan con cortesía — política corporativa — pero te cuelan una moneda \"por si tu pozo también se seca\".",
+        "outcome_text": "They decline — policy — but palm you a coin \"for when your own envelope runs dry.\"",
+        "outcome_text_target": "Declinan — política — pero te cuelan una moneda \"por si tu sobre también se seca\".",
         "reward": {
           "type": "gold",
           "amount": 10,
@@ -70,11 +70,11 @@
         }
       },
       {
-        "text": "Brag about your unlimited team plan",
-        "translation": "Presumir de tu plan ilimitado del equipo",
+        "text": "Brag about your team's unlimited travel budget",
+        "translation": "Presumir del presupuesto de viaje \"ilimitado\" de tu equipo",
         "outcome": "penalty",
-        "outcome_text": "The air chills. 'Unlimited for you,' the clerk mutters, 'latency for the rest of us.'",
-        "outcome_text_target": "El aire se enfría. \"Ilimitado para ti\", murmura el escribano, \"latencia para el resto\".",
+        "outcome_text": "The air chills. \"Unlimited for you,\" they mutter, \"headaches for the rest of the floor.\"",
+        "outcome_text_target": "El aire se enfría. \"Ilimitado para ti\", murmuran, \"migraña para el resto de la planta.\"",
         "reward": {
           "type": "hp_loss",
           "amount": 6,

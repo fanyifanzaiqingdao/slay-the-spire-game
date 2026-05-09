@@ -10,9 +10,7 @@ const useProgressStore = create(
       // { [campaign]: { [characterId]: { cleared: bool, masteryLevel: number, bestAccuracy: number } } }
       campaigns: {
         japanese: {
-          hana: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
           kenji: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
-          yuki: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
           ren: { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 },
         },
         korean: {
@@ -78,6 +76,34 @@ const useProgressStore = create(
     {
       name: STORAGE_KEYS.PROGRESS,
       storage: createJSONStorage(() => localStorage),
+      version: 2,
+      migrate: (persistedState, _fromVersion) => {
+        try {
+          const jp = persistedState?.campaigns?.japanese
+          if (!jp) return persistedState
+          const mergeRow = (a, b) => ({
+            cleared: Boolean(a?.cleared || b?.cleared),
+            masteryLevel: Math.max(a?.masteryLevel || 0, b?.masteryLevel || 0),
+            bestAccuracy: Math.max(a?.bestAccuracy || 0, b?.bestAccuracy || 0),
+            totalRuns: (a?.totalRuns || 0) + (b?.totalRuns || 0),
+          })
+          let k = jp.kenji || { cleared: false, masteryLevel: 0, bestAccuracy: 0, totalRuns: 0 }
+          if (jp.hana) k = mergeRow(k, jp.hana)
+          if (jp.yuki) k = mergeRow(k, jp.yuki)
+          const nextJp = { ...jp, kenji: k }
+          delete nextJp.hana
+          delete nextJp.yuki
+          return {
+            ...persistedState,
+            campaigns: {
+              ...persistedState.campaigns,
+              japanese: nextJp,
+            },
+          }
+        } catch {
+          return persistedState
+        }
+      },
     }
   )
 )

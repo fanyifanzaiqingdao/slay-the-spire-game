@@ -37,13 +37,13 @@ function MapNodeReadOnly({ node, x, y, isCurrent, isVisited }) {
           justifyContent: 'center',
           fontSize: meta.size,
           fontWeight: 900,
-          color: isVisited ? 'transparent' : '#111',
+          color: isVisited && !isCurrent ? '#2a2a2a' : '#111',
           textShadow: isVisited 
             ? '0 0 2px rgba(0,0,0,0.5)'
             : isCurrent 
               ? '0 0 15px rgba(255,0,0,0.8), 0 0 5px rgba(255,255,255,0.8)' 
               : '0 0 4px rgba(255,255,255,0.6)',
-          opacity: isVisited ? 0.4 : isCurrent ? 1 : 0.8,
+          opacity: isVisited && !isCurrent ? 0.72 : isCurrent ? 1 : 0.8,
         }}
       >
         {isCurrent ? (
@@ -62,6 +62,7 @@ function MapNodeReadOnly({ node, x, y, isCurrent, isVisited }) {
 export function MapOverlay({ onClose }) {
   const { t } = useTranslation()
   const store = useRunStore()
+  const currentNodeId = store.currentNodeId
 
   const MAP_WIDTH = 500
   const ROW_HEIGHT = 90
@@ -105,7 +106,10 @@ export function MapOverlay({ onClose }) {
       const p2 = nodeCoords[toId]
       if (p1 && p2) {
         const fromNode = store.mapNodes.find(n => n.id === fromId)
-        const isPathActive = fromNode?.visited || fromNode?.type === NODE_TYPES.START
+        const toNode = store.mapNodes.find(n => n.id === toId)
+        const fromReady = fromNode?.visited || fromNode?.type === NODE_TYPES.START
+        const toOnRoute = toNode?.visited === true || toId === currentNodeId
+        const isPathActive = fromReady && toOnRoute
         pLines.push({
           id: `${fromId}-${toId}`,
           x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
@@ -115,7 +119,7 @@ export function MapOverlay({ onClose }) {
     })
 
     return { positionedNodes: posNodes, pathLines: pLines, maxRow: maxR }
-  }, [store.mapNodes, store.mapPaths])
+  }, [store.mapNodes, store.mapPaths, currentNodeId])
 
   const mapHeightTotal = maxRow * ROW_HEIGHT + START_Y_PADDING * 2
 

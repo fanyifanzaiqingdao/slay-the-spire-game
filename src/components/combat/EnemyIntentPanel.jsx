@@ -4,18 +4,16 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { MOVE_ICONS, MOVE_COLORS, MOVE_CATEGORY } from '../../constants/enemyMoves.js'
-import { CARD_TYPE_META } from '../../constants/cardTypes.js'
-
-function cardTypeLabel(type) {
-  return CARD_TYPE_META[type]?.label || type || 'Ship'
-}
+import { formatCardLaneLabel } from '../../constants/cardTypes.js'
 
 /**
  * @param {Object} enemy       - current enemy data (needs intent_pattern, base_attack, silence_type)
  * @param {number} intentIndex - current index in the enemy's intent_pattern array
  */
 export function EnemyIntentPanel({ enemy, intentIndex }) {
+  const { t } = useTranslation()
   if (!enemy?.intent_pattern) return null
 
   const pattern = enemy.intent_pattern
@@ -43,7 +41,7 @@ export function EnemyIntentPanel({ enemy, intentIndex }) {
         >
           {currentActions.map((action, i) => (
             <React.Fragment key={`${action}-${i}`}>
-              <IntentAction action={action} enemy={enemy} />
+              <IntentAction action={action} enemy={enemy} t={t} />
               {i < currentActions.length - 1 && (
                 <span className="text-gray-600 text-xs">→</span>
               )}
@@ -67,13 +65,13 @@ export function EnemyIntentPanel({ enemy, intentIndex }) {
   )
 }
 
-function IntentAction({ action, enemy }) {
+function IntentAction({ action, enemy, t }) {
   const [showTooltip, setShowTooltip] = useState(false)
   const icon = MOVE_ICONS[action] || '❓'
   const colorClass = MOVE_COLORS[action] || 'text-gray-300'
-  const label = getIntentLabel(action, enemy)
+  const label = getIntentLabel(action, enemy, t)
   const category = MOVE_CATEGORY[action] || 'special'
-  const tooltipText = getIntentTooltip(action, enemy)
+  const tooltipText = getIntentTooltip(action, enemy, t)
 
   const bgClass = {
     damage:   'bg-red-950/50   border-red-800/50',
@@ -122,18 +120,19 @@ function IntentAction({ action, enemy }) {
   )
 }
 
-function getIntentLabel(action, enemy) {
+function getIntentLabel(action, enemy, t) {
   switch (action) {
     case 'strike':              return `${enemy.base_attack} dmg`
     case 'strike_heavy':        return `${Math.floor(enemy.base_attack * 1.8)} dmg`
     case 'strike_swift':        return `${Math.floor(enemy.base_attack * 0.6)}×2 dmg`
-    case 'debuff_silence':      return `Silence ${cardTypeLabel(enemy.silence_type)}`
+    case 'debuff_silence':      return `Silence ${formatCardLaneLabel(enemy.silence_type, t)}`
     case 'debuff_drain':        return '−1 Energy'
     case 'debuff_fog':          return 'Fog'
     case 'debuff_bind':         return '−1 Draw'
     case 'debuff_confusion':    return 'Shuffle opts'
     case 'debuff_curse':        return 'Curse!'
     case 'debuff_taunt':        return 'Taunt!'
+    case 'add_echo_invoice':    return 'Echo Ticket'
     case 'self_buff_armor_up':  return 'Armor +8'
     case 'self_buff_harden':    return 'Armor +15'
     case 'self_buff_recover':   return 'Recover +15'
@@ -144,7 +143,7 @@ function getIntentLabel(action, enemy) {
   }
 }
 
-function getIntentTooltip(action, enemy) {
+function getIntentTooltip(action, enemy, t) {
   switch (action) {
     case 'strike':
       return `Deals ${enemy.base_attack} damage. Your Block absorbs it first. At Fury 3, this doubles.`
@@ -153,7 +152,7 @@ function getIntentTooltip(action, enemy) {
     case 'strike_swift':
       return `Two rapid hits of ${Math.floor(enemy.base_attack * 0.6)} each. Split damage can pierce small blocks.`
     case 'debuff_silence':
-      return `Silences your ${cardTypeLabel(enemy.silence_type)} cards for 2 turns. Silenced cards cannot be played.`
+      return `Silences your ${formatCardLaneLabel(enemy.silence_type, t)} cards for 2 turns. Silenced cards cannot be played.`
     case 'debuff_drain':
       return `Drains your energy. Next turn you start with 1 fewer Energy (min 0). Lasts 2 turns.`
     case 'debuff_fog':
@@ -166,6 +165,8 @@ function getIntentTooltip(action, enemy) {
       return `Applies both Silence AND Drain simultaneously. A brutal two-in-one debuff!`
     case 'debuff_taunt':
       return `Taunts you. Applies Bind (−1 Draw) and Confusion in a single action.`
+    case 'add_echo_invoice':
+      return `Adds an Echo Invoice to your draw pile. 0 energy; clogs your deck — discard duplicates itself when discarded.`
     case 'self_buff_armor_up':
       return `Gains 8 Armor. Armor reduces incoming damage. Chain combos bypass Armor entirely.`
     case 'self_buff_harden':

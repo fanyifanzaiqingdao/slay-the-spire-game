@@ -49,6 +49,18 @@ export const POTIONS = {
     description: 'Next question shows only 2 options (1 wrong + correct).',
     flavor: 'The fog lifts, briefly.',
   },
+  /** Programmer route — reduces persistent overload (run-wide) */
+  coolant_swig: {
+    id: 'coolant_swig',
+    name: 'Coolant Swig',
+    tier: POTION_TIER.COMMON,
+    icon: '🧊',
+    color: '#38bdf8',
+    glowColor: 'rgba(56,189,248,0.45)',
+    effect: { type: 'reduce_overload_global', value: 5 },
+    description: 'Reduce Global Overload by 5 (Programmer route).',
+    flavor: 'Thermal paste for the soul.',
+  },
 
   // ── UNCOMMON ────────────────────────────────────────────────────────
   chain_elixir: {
@@ -154,14 +166,14 @@ export const POTIONS = {
   },
   graveyard_dust: {
     id: 'graveyard_dust',
-    name: 'Graveyard Dust',
+    name: 'Archive Dust',
     tier: POTION_TIER.RARE,
-    icon: '💀',
+    icon: '📇',
     color: '#6b7280',
     glowColor: 'rgba(107,114,128,0.6)',
-    effect: { type: 'graveyard_dust' },
-    description: "Mark your 3 most-failed Graveyard words toward mastery. Also draws 1 card.",
-    flavor: 'You remembered. That counts.',
+    effect: { type: 'draw_card' },
+    description: 'Draw 1 card.',
+    flavor: 'Old notes, still useful.',
   },
 }
 
@@ -172,7 +184,7 @@ export function getPotionData(id) {
 }
 
 // Weighted random pool by tier — floors 1-2 favor common, 3-4 uncommon, 5+ rare possible
-export function getRandomPotionDrop(floor = 1) {
+export function getRandomPotionDrop(floor = 1, opts = {}) {
   const weights = {
     common:   floor <= 2 ? 70 : floor <= 4 ? 50 : 35,
     uncommon: floor <= 2 ? 25 : floor <= 4 ? 35 : 40,
@@ -183,7 +195,10 @@ export function getRandomPotionDrop(floor = 1) {
              : roll < weights.common + weights.uncommon ? 'uncommon'
              : 'rare'
 
-  const pool = POTION_IDS.filter(id => POTIONS[id].tier === tier)
+  let pool = POTION_IDS.filter(id => POTIONS[id].tier === tier)
+  if (opts.overloadMechanics && tier === 'common' && !pool.includes('coolant_swig')) {
+    pool = [...pool, 'coolant_swig']
+  }
   return pool[Math.floor(Math.random() * pool.length)]
 }
 

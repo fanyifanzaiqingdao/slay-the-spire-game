@@ -16,7 +16,7 @@ import { VaultScreen } from '../menus/VaultScreen.jsx'
 import { MapOverlay } from '../map/MapOverlay.jsx'
 import { RELICS } from '../../data/relics.js'
 import { relicLocalizedName, relicLocalizedDescription } from '../../utils/relicI18n.js'
-import { CARD_TYPE_META, CARD_RARITY_META } from '../../constants/cardTypes.js'
+import { CARD_TYPE_META, CARD_RARITY_META, formatCardLaneLabel } from '../../constants/cardTypes.js'
 import { HoverTranslate } from './HoverTranslate.jsx'
 import { DevDebugOverlay } from '../dev/DevDebugOverlay.jsx'
 
@@ -31,6 +31,8 @@ const selectPotions = s => s.potions
 const selectRelics = s => s.relics
 const selectVaultRelics = s => s.vaultRelics
 const selectCampaign = s => s.campaign
+const selectOverloadGlobal = s => s.overloadGlobal ?? 0
+const selectCharacterId = s => s.character?.id
 const selectInCombat = s => s.inCombat
 const selectDeck = s => s.deck
 const selectHand = s => s.hand
@@ -51,6 +53,8 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
   const relics = useRunStore(selectRelics)
   const vaultRelics = useRunStore(selectVaultRelics)
   const campaign = useRunStore(selectCampaign)
+  const overloadGlobal = useRunStore(selectOverloadGlobal)
+  const characterId = useRunStore(selectCharacterId)
   const inCombat = useRunStore(selectInCombat)
   const deck = useRunStore(selectDeck)
   const hand = useRunStore(selectHand)
@@ -105,6 +109,19 @@ export function TopBar({ hideMapButton = false, potionsLocked = false }) {
             <span className="text-red-400">❤️</span>
             <span className="font-bold text-red-100">{hp}/{maxHp}</span>
           </div>
+          {campaign === 'japanese' && characterId === 'kenji' && (
+            <div
+              className="flex items-center gap-1 shrink-0"
+              title={t('topbar.overloadHint')}
+            >
+              <span className="text-orange-400">⚠</span>
+              <span
+                className={`font-bold font-mono text-xs ${overloadGlobal > maxHp ? 'text-red-500' : 'text-orange-200'}`}
+              >
+                {t('topbar.overloadShort', { current: overloadGlobal, max: maxHp })}
+              </span>
+            </div>
+          )}
           <div className="flex items-center gap-1 shrink-0">
             <span className="text-yellow-400">🪙</span>
             <span className="font-bold text-yellow-100">{gold}</span>
@@ -366,7 +383,7 @@ export function DeckOverlay({
         </div>
         <div className="text-[10px] text-gray-400 leading-tight">{card.name_native}</div>
         <div className="text-[10px] text-gray-300 mt-1">⚡ {card.energy_cost}</div>
-        <div className="mt-auto text-[9px] text-gray-500 uppercase">{card.type}</div>
+        <div className="mt-auto text-[9px] text-gray-500 uppercase">{formatCardLaneLabel(card.type, t)}</div>
       </>
     ) : (
       <div className="h-full flex items-center justify-center text-xs font-bold text-gray-300 break-words">
@@ -460,7 +477,7 @@ export function DeckOverlay({
                   </div>
                   <div className="text-[10px] text-gray-400 leading-tight">{card.name_native}</div>
                   <div className="text-[10px] text-gray-300 mt-1">⚡ {card.energy_cost}</div>
-                  <div className="mt-auto text-[9px] text-gray-500 uppercase">{card.type}</div>
+                  <div className="mt-auto text-[9px] text-gray-500 uppercase">{formatCardLaneLabel(card.type, t)}</div>
                 </>
               ) : (
                 <div className="h-full flex items-center justify-center text-xs font-bold text-gray-300 break-words">
@@ -508,6 +525,7 @@ export function HandExhaustEnergyPickOverlay({
   title = 'Exhaust a card',
   pickSubtitle,
 }) {
+  const { t } = useTranslation()
   if (!handIds.length) return null
   return (
     <motion.div
@@ -550,7 +568,7 @@ export function HandExhaustEnergyPickOverlay({
                       </HoverTranslate>
                     </div>
                     <div className="text-[10px] text-amber-300/90 font-bold">+{gain} {t('draft.energy')}</div>
-                    <div className="mt-auto text-[9px] text-gray-500 uppercase">{card.type}</div>
+                    <div className="mt-auto text-[9px] text-gray-500 uppercase">{formatCardLaneLabel(card.type, t)}</div>
                   </>
                 ) : (
                   <div className="h-full flex items-center justify-center text-xs text-gray-300 break-words">

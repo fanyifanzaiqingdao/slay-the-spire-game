@@ -38,7 +38,7 @@ function Ember({ delay }) {
   )
 }
 
-const MENU_ITEMS = ['play', 'pvp', 'pantheon', 'graveyard', 'settings', 'about']
+const MENU_ITEMS = ['play', 'pvp', 'pantheon', 'settings', 'about']
 
 export function MainMenu() {
   const { t } = useTranslation()
@@ -79,7 +79,6 @@ export function MainMenu() {
     playSFX('button_click')
     if (id === 'play') setView('campaign')
     if (id === 'pvp') navigate('/pvp')
-    if (id === 'graveyard') navigate('/graveyard')
     if (id === 'pantheon') navigate('/pantheon')
     if (id === 'settings') setSettingsOpen(true)
     if (id === 'about') {} // placeholder

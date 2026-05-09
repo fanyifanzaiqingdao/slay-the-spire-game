@@ -9,16 +9,24 @@ import { drawCards } from '../utils/deck.js'
 import {
   calculateDamage,
   calculateBlock,
-  resolveChain,
+  computeAttackChainFlatBonus,
+  isAttackEffectCard,
 } from '../utils/combat.js'
 import {
   getEffectiveDrawCount,
   getEffectiveMaxEnergy,
   isCardTypeSilenced,
 } from '../utils/enemyTurn.js'
-import { INCIDENT_BUFFER_BLOCK } from '../constants/relicCombat.js'
+import { INCIDENT_BUFFER_BLOCK, WORKFLOW_BRACELET_BLOCK_ON_SECOND_PLAY } from '../constants/relicCombat.js'
+import {
+  getEffectiveEnergyCost,
+  getAncientLexiconShipBonus,
+  getProcessOwnerRightDamageBonus,
+} from '../utils/relicCombatHelpers.js'
+import { isOverloadMechanicsActive, isOverloadLethal, overloadScalingFlat } from '../utils/overloadMechanics.js'
 import { CARD_KEYWORD_IDS } from '../constants/cardKeywords.js'
 import {
+  aliveEnemySlotIndices,
   pickRandomAliveEnemySlotIndex,
   resolveSingleTargetDamageSlotIndex,
 } from '../utils/combatEnemies.js'
@@ -61,6 +69,74 @@ function collectCardIdsForMerge(s) {
 
 /** Guard nested “discard as play” (奇巧) triggers. */
 let ingeniousCallDepth = 0
+
+/** Standup Compass: 3rd card played this turn → +1 Energy next player turn start. */
+function maybeTravelersCompassBonus() {
+  const st = useRunStore.getState()
+  if (!Array.isArray(st.relics) || !st.relics.includes('travelers_compass')) return
+  if (st.playsThisPlayerTurn !== 3) return
+  useRunStore.getState().queueBonusEnergyNextTurn(1)
+}
+
+/** Workflow Bracelet: 2nd card played this turn → +Block (independent of vocabulary/grammar/reading). */
+function maybeWorkflowBraceletSecondPlay() {
+  const st = useRunStore.getState()
+  if (!Array.isArray(st.relics) || !st.relics.includes('chain_bracelet')) return
+  if (st.playsThisPlayerTurn !== 2) return
+  st.addBlock(WORKFLOW_BRACELET_BLOCK_ON_SECOND_PLAY)
+}
+
+/** Rubber-Duck Stone: same turn, 3rd card of this type → draw 1 */
+function maybeInkStoneDraw(playedCardType) {
+  const st = useRunStore.getState()
+  if (!Array.isArray(st.relics) || !st.relics.includes('ink_stone')) return
+  const n = (st.cardTypesPlayedThisTurn || {})[playedCardType] ?? 0
+  if (n !== 3) return
+  const st2 = useRunStore.getState()
+  const { drawn, deck: newDeck, discard: newDiscard } = drawCards(st2.deck, st2.discardPile, 1)
+  useRunStore.setState({
+    hand: [...st2.hand, ...drawn],
+    deck: newDeck,
+    discardPile: newDiscard,
+  })
+}
+
+/** Standup Applause: 4th card played this turn → draw 1 */
+function maybeStandupApplauseDraw() {
+  const st = useRunStore.getState()
+  if (!Array.isArray(st.relics) || !st.relics.includes('standup_applause')) return
+  if (st.playsThisPlayerTurn !== 4) return
+  const st2 = useRunStore.getState()
+  const { drawn, deck: newDeck, discard: newDiscard } = drawCards(st2.deck, st2.discardPile, 1)
+  useRunStore.setState({
+    hand: [...st2.hand, ...drawn],
+    deck: newDeck,
+    discardPile: newDiscard,
+  })
+}
+
+function maybeMemoryPalaceHeal(isFirstTry) {
+  if (!isFirstTry) return
+  const st = useRunStore.getState()
+  if (!Array.isArray(st.relics) || !st.relics.includes('memory_palace')) return
+  st.healHp(1)
+}
+
+/** Single-target directed damage (not AoE, not random-target rolls). */
+function cardNeedsDirectedEnemySelection(card) {
+  const e = card?.effect
+  if (!e || e.damage == null || e.damage_all != null) return false
+  if (e.damage_target === 'random') return false
+  return true
+}
+
+function canResolveDirectedAttackTarget(s) {
+  const alive = aliveEnemySlotIndices(s)
+  if (alive.length === 0) return false
+  if (!s.enemyAttackTargetConfirmed) return false
+  const idx = s.activeEnemySlotIndex ?? 0
+  return alive.includes(idx)
+}
 
 function expandDiscardWithCurseDupes(discardPile, ids, cardMap) {
   const out = [...discardPile]
@@ -141,6 +217,12 @@ export function useCombat() {
       s.tickEnemyPoisonAtPlayerTurnStart()
     }
 
+    // Power cards: recurring poison on all enemies each player turn (not first draw of fight)
+    const stAura = useRunStore.getState()
+    if (stAura.turnNumber >= 1 && (stAura.playerPoisonAuraPerTurn || 0) > 0) {
+      useRunStore.getState().addEnemyPoisonAll(stAura.playerPoisonAuraPerTurn)
+    }
+
     // v2: unlock all locked cards first
     s.unlockAllCards()
     s.beginPlayerCardPhase()
@@ -170,7 +252,8 @@ export function useCombat() {
     const effectiveEnergy = getEffectiveMaxEnergy(s)
 
     const gridSnapBonus = s.turnNumber === 0 && s.relics.includes('grid_snap_ruler') ? 1 : 0
-    const effectiveDrawCount = drawCount + gridSnapBonus
+    const sealDrawBonus = s.turnNumber === 0 ? (s.bonusDrawFirstHandNextFight || 0) : 0
+    const effectiveDrawCount = drawCount + gridSnapBonus + sealDrawBonus
 
     // v3: Retained cards stay in the hand — only draw enough to fill up to drawCount
     const slotsToFill = Math.max(0, effectiveDrawCount - retained.length)
@@ -187,9 +270,9 @@ export function useCombat() {
       ingeniousCallDepth++
       try {
         const st = useRunStore.getState()
-        const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
-        const { bonusMultiplier } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
-        applyCardEffect(c, bonusMultiplier, false, st, { fromDiscardIngenious: true })
+        const flat = computeAttackChainFlatBonus(c, st)
+        applyCardEffect(c, 1, false, st, { fromDiscardIngenious: true, attackChainFlatBonus: flat })
+        useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(c))
       } finally {
         ingeniousCallDepth--
       }
@@ -203,17 +286,30 @@ export function useCombat() {
     s.setDeck(newDeck)
     s.setDiscard(newDiscard)
 
-    // Reset energy respecting Drain debuff (+ Syntax Stapler: +1 on first player turn of fight)
-    let startEnergy = effectiveEnergy
+    if (sealDrawBonus > 0) {
+      useRunStore.setState({ bonusDrawFirstHandNextFight: 0 })
+    }
+
+    // Reset energy respecting Drain debuff (+ Syntax Stapler, queued relic bonuses) — programmer debt deducted here
+    const debt = s.energyDebtNextTurn || 0
+    let startEnergy = effectiveEnergy + (s.bonusEnergyNextTurn || 0) - debt
     if (s.turnNumber === 0 && s.relics.includes('syntax_stapler')) {
       startEnergy += 1
     }
-    useRunStore.setState({ energy: startEnergy })
+    startEnergy = Math.max(0, startEnergy)
+    useRunStore.setState({ energy: startEnergy, bonusEnergyNextTurn: 0, energyDebtNextTurn: 0 })
 
     s.incrementTurn()
 
     drawn.forEach((_, i) => setTimeout(() => playSFX('card_draw_vocab'), i * 80))
   }, [playSFX, cardMap])
+
+  function applyProgrammerOverdraftAfterPlay(card) {
+    const st = useRunStore.getState()
+    if (!isOverloadMechanicsActive(st)) return
+    const od = Math.floor(Number(card.effect?.energy_overdraft) || 0)
+    if (od > 0) st.addEnergyDebtNextTurn(od)
+  }
 
   // ============================================================
   // SELECT CARD
@@ -225,15 +321,21 @@ export function useCombat() {
     const card = cardMap[cardId]
     if (!card) return
 
-    if (s.energy < card.energy_cost) return
+    const progOverload = isOverloadMechanicsActive(s)
+    const cost = getEffectiveEnergyCost(card, s.relics, progOverload)
+    if (s.energy < cost) return
     if (s.lockedCards.includes(cardId)) return
     if (isCardTypeSilenced(card.type, s)) return
 
+    if (cardNeedsDirectedEnemySelection(card) && !canResolveDirectedAttackTarget(s)) {
+      playSFX('wrong')
+      return
+    }
+
     const isFirstTry = s.playsThisPlayerTurn === 0
-    const hasChainBracelet = Array.isArray(s.relics) && s.relics.includes('chain_bracelet')
-    const chainState = { chainActive: s.chainActive, chainType: s.chainType }
-    const { bonusMultiplier } = resolveChain(card.type, chainState, s, hasChainBracelet)
-    if (bonusMultiplier > 1) playSFX('chain_activate')
+    const attackChainFlatBonus = computeAttackChainFlatBonus(card, s)
+    const bonusMultiplier = 1
+    if (attackChainFlatBonus > 0) playSFX('chain_activate')
 
     // Exhaust one hand card → gain Energy equal to its cost (pick after skill leaves hand).
     if (card.effect?.exhaust_one_hand_gain_its_energy) {
@@ -245,10 +347,12 @@ export function useCombat() {
       setActiveCardId(cardId)
       playSFX('card_play')
       s.trackCardTypePlayed(card.type)
+      maybeInkStoneDraw(card.type)
       setAnimState('player_telegraph_buff')
       await new Promise(r => setTimeout(r, 350))
 
-      s.spendEnergy(card.energy_cost)
+      s.spendEnergy(cost)
+      applyProgrammerOverdraftAfterPlay(card)
       s.removeFromHand(card.id)
       s.clearRetainGrowth(card.id)
       const stAfterPlay = useRunStore.getState()
@@ -259,6 +363,11 @@ export function useCombat() {
       })
       s.setLastCardTypePlayed(card.type)
       s.incrementPlaysThisPlayerTurn()
+      maybeTravelersCompassBonus()
+      maybeWorkflowBraceletSecondPlay()
+      maybeStandupApplauseDraw()
+      maybeMemoryPalaceHeal(isFirstTry)
+      useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(card))
 
       const prepEx = card.effect?.next_hit_damage_bonus
       if (prepEx != null && Number(prepEx) > 0) {
@@ -281,18 +390,22 @@ export function useCombat() {
       setActiveCardId(cardId)
       playSFX('card_play')
       s.trackCardTypePlayed(card.type)
+      maybeInkStoneDraw(card.type)
       setAnimState('player_telegraph_buff')
       await new Promise(r => setTimeout(r, 350))
 
-      applyCardEffect(card, bonusMultiplier, isFirstTry, s)
+      applyCardEffect(card, bonusMultiplier, isFirstTry, s, { attackChainFlatBonus })
 
       const afterPick = useRunStore.getState()
       if (afterPick.potionEffects?.echoTonicActive) {
         afterPick.setPotionEffect('echoTonicActive', false)
-        applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState())
+        applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState(), { attackChainFlatBonus })
       }
 
-      s.spendEnergy(card.energy_cost)
+      useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(card))
+
+      s.spendEnergy(cost)
+      applyProgrammerOverdraftAfterPlay(card)
       s.removeFromHand(card.id)
       s.clearRetainGrowth(card.id)
       useRunStore.setState({
@@ -303,6 +416,10 @@ export function useCombat() {
       })
       s.setLastCardTypePlayed(card.type)
       s.incrementPlaysThisPlayerTurn()
+      maybeTravelersCompassBonus()
+      maybeWorkflowBraceletSecondPlay()
+      maybeStandupApplauseDraw()
+      maybeMemoryPalaceHeal(isFirstTry)
 
       const prepNextPick = card.effect?.next_hit_damage_bonus
       if (prepNextPick != null && Number(prepNextPick) > 0) {
@@ -321,21 +438,24 @@ export function useCombat() {
 
     // Track category usage for enemy focus / modifier interactions.
     s.trackCardTypePlayed(card.type)
+    maybeInkStoneDraw(card.type)
 
-    const efx = card.effect || {}
-    const isAttack = Boolean(efx.damage) || Boolean(efx.damage_all) || efx.type === 'damage' || efx.type === 'damage_all' || efx.type === 'discard_damage' || efx.type === 'exhaust_damage'
+    const isAttack = isAttackEffectCard(card)
     setAnimState(isAttack ? 'player_telegraph_damage' : 'player_telegraph_buff')
     await new Promise(r => setTimeout(r, 350))
 
-    applyCardEffect(card, bonusMultiplier, isFirstTry, s)
+    applyCardEffect(card, bonusMultiplier, isFirstTry, s, { attackChainFlatBonus })
 
     const afterS = useRunStore.getState()
     if (afterS.potionEffects?.echoTonicActive) {
       afterS.setPotionEffect('echoTonicActive', false)
-      applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState())
+      applyCardEffect(card, bonusMultiplier, isFirstTry, useRunStore.getState(), { attackChainFlatBonus })
     }
 
-    s.spendEnergy(card.energy_cost)
+    useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(card))
+
+    s.spendEnergy(cost)
+    applyProgrammerOverdraftAfterPlay(card)
     s.removeFromHand(card.id)
     s.clearRetainGrowth(card.id)
     if (card.effect?.exhaust_self_gain_energy) {
@@ -350,6 +470,10 @@ export function useCombat() {
     }
     s.setLastCardTypePlayed(card.type)
     s.incrementPlaysThisPlayerTurn()
+    maybeTravelersCompassBonus()
+    maybeWorkflowBraceletSecondPlay()
+    maybeStandupApplauseDraw()
+    maybeMemoryPalaceHeal(isFirstTry)
 
     const prepNext = card.effect?.next_hit_damage_bonus
     if (prepNext != null && Number(prepNext) > 0) {
@@ -367,7 +491,7 @@ export function useCombat() {
   // opts.fromDiscardIngenious — 奇巧: resolve as if played, but do not move the card
   // ============================================================
   function applyCardEffect(card, chainMultiplier, isFirstTry, s, opts = {}) {
-    const { fromDiscardIngenious = false } = opts
+    const { fromDiscardIngenious = false, attackChainFlatBonus = 0 } = opts
     const { effect } = card
     if (!effect) return
 
@@ -386,22 +510,32 @@ export function useCombat() {
         base: effect.damage,
         bonusCorrectFirstTry: effect.bonus_correct_first_try || effect.bonus_correct_no_hint || 0,
         chainMultiplier,
-        cardType: card.type,
         isFirstTry,
         hits: effect.hits || 1,
       })
 
-      const bypassesChainArmor = chainMultiplier > 1
+      const bypassesChainArmor = chainMultiplier > 1 || attackChainFlatBonus > 0
 
       const coreDmg = bypassesChainArmor
         ? baseDmg
         : (effect.bonus_if_block_active && s.block > 0 ? baseDmg + effect.bonus_if_block_active : baseDmg)
 
-      let finalDmg = coreDmg + prepCarry
+      let finalDmg = coreDmg + prepCarry + attackChainFlatBonus
       const strPts = useRunStore.getState().playerStrength || 0
       finalDmg += strPts * (effect.hits || 1)
+      const rel = useRunStore.getState().relics || []
+      finalDmg += getAncientLexiconShipBonus(card, rel)
+      finalDmg += getProcessOwnerRightDamageBonus(card, rel)
 
       const stDmg = useRunStore.getState()
+      if (isOverloadMechanicsActive(stDmg) && effect.bonus_damage_per_overload_global != null) {
+        finalDmg += overloadScalingFlat(
+          stDmg.overloadGlobal,
+          effect.bonus_damage_per_overload_global,
+          effect.overload_scaling_cap,
+        )
+      }
+
       const randomTgt = effect.damage_target === 'random'
       const slotIdx = randomTgt
         ? pickRandomAliveEnemySlotIndex(stDmg)
@@ -423,31 +557,51 @@ export function useCombat() {
         base: effect.damage_all,
         bonusCorrectFirstTry: effect.bonus_correct_first_try || effect.bonus_correct_no_hint || 0,
         chainMultiplier,
-        cardType: card.type,
         isFirstTry,
         hits: effect.hits || 1,
       })
 
-      const bypassesChainArmor = chainMultiplier > 1
+      const bypassesChainArmor = chainMultiplier > 1 || attackChainFlatBonus > 0
 
       const coreDmg = bypassesChainArmor
         ? baseDmg
         : (effect.bonus_if_block_active && s.block > 0 ? baseDmg + effect.bonus_if_block_active : baseDmg)
 
-      let finalDmg = coreDmg + prepCarry
+      let finalDmg = coreDmg + prepCarry + attackChainFlatBonus
       const strPtsAo = useRunStore.getState().playerStrength || 0
       finalDmg += strPtsAo * (effect.hits || 1)
+      const relAo = useRunStore.getState().relics || []
+      finalDmg += getAncientLexiconShipBonus(card, relAo)
+      finalDmg += getProcessOwnerRightDamageBonus(card, relAo)
+
+      const stAo = useRunStore.getState()
+      if (isOverloadMechanicsActive(stAo) && effect.bonus_damage_per_overload_global != null) {
+        finalDmg += overloadScalingFlat(
+          stAo.overloadGlobal,
+          effect.bonus_damage_per_overload_global,
+          effect.overload_scaling_cap,
+        )
+      }
 
       s.damageAllEnemies(finalDmg)
       showDamageNumber(finalDmg, 'damage')
       playSFX('attack_enemy')
     }
 
-    if (effect.block) {
+    if (effect.block != null || effect.bonus_block_per_overload_global != null) {
       // v3: retain growth — each retained turn adds +4 bonus block
       const stacks = s.retainGrowthStacks?.[card.id] || 0
       const growthBonus = stacks * 4
-      const blockGained = calculateBlock({ base: effect.block + growthBonus, chainMultiplier })
+      let baseBlock = (effect.block ?? 0) + growthBonus
+      const stBl = useRunStore.getState()
+      if (isOverloadMechanicsActive(stBl) && effect.bonus_block_per_overload_global != null) {
+        baseBlock += overloadScalingFlat(
+          stBl.overloadGlobal,
+          effect.bonus_block_per_overload_global,
+          effect.overload_block_cap ?? effect.overload_scaling_cap,
+        )
+      }
+      const blockGained = calculateBlock({ base: baseBlock, chainMultiplier })
       s.addBlock(blockGained)
       playSFX('block_gain')
     }
@@ -466,7 +620,7 @@ export function useCombat() {
       s.setDiscard(newDiscard)
     }
 
-    if (effect.chain_bonus && chainMultiplier > 1) {
+    if (effect.chain_bonus && attackChainFlatBonus > 0) {
       const st2 = useRunStore.getState()
       const slotIdx = effect.damage_target === 'random'
         ? pickRandomAliveEnemySlotIndex(st2)
@@ -485,6 +639,16 @@ export function useCombat() {
     if (effect.player_strength) {
       s.addPlayerStrength(effect.player_strength)
       playSFX('block_gain')
+    }
+
+    if (effect.register_poison_all_each_turn != null) {
+      const addAura = Math.max(0, Math.floor(Number(effect.register_poison_all_each_turn) || 0))
+      if (addAura > 0) {
+        useRunStore.setState((st) => ({
+          playerPoisonAuraPerTurn: (st.playerPoisonAuraPerTurn || 0) + addAura,
+        }))
+        playSFX('debuff_apply')
+      }
     }
 
     // ── Enemy statuses (易伤 vulnerable / 虚弱 weak / 毒 poison) ──
@@ -534,9 +698,9 @@ export function useCombat() {
         ingeniousCallDepth++
         try {
           const st = useRunStore.getState()
-          const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
-          const { bonusMultiplier: bm } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
-          applyCardEffect(c, bm, false, st, { fromDiscardIngenious: true })
+          const flat = computeAttackChainFlatBonus(c, st)
+          applyCardEffect(c, 1, false, st, { fromDiscardIngenious: true, attackChainFlatBonus: flat })
+          useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(c))
         } finally {
           ingeniousCallDepth--
         }
@@ -567,13 +731,29 @@ export function useCombat() {
         ingeniousCallDepth++
         try {
           const st = useRunStore.getState()
-          const hasChainBracelet = Array.isArray(st.relics) && st.relics.includes('chain_bracelet')
-          const { bonusMultiplier: bm } = resolveChain(c.type, { chainActive: st.chainActive, chainType: st.chainType }, st, hasChainBracelet)
-          applyCardEffect(c, bm, false, st, { fromDiscardIngenious: true })
+          const flat = computeAttackChainFlatBonus(c, st)
+          applyCardEffect(c, 1, false, st, { fromDiscardIngenious: true, attackChainFlatBonus: flat })
+          useRunStore.getState().recordAttackChainAfterPlay(isAttackEffectCard(c))
         } finally {
           ingeniousCallDepth--
         }
       })
+    }
+
+    // Programmer overload (global)
+    const stOv = useRunStore.getState()
+    if (isOverloadMechanicsActive(stOv)) {
+      if (effect.overload_global_add != null) {
+        const n = Math.max(0, Math.floor(Number(effect.overload_global_add)))
+        if (n) stOv.applyOverloadGlobalDelta(n)
+      }
+      if (effect.overload_global_remove != null) {
+        const n = Math.max(0, Math.floor(Number(effect.overload_global_remove)))
+        if (n) stOv.applyOverloadGlobalDelta(-n)
+      }
+      if (effect.overload_global_clear) {
+        stOv.clearOverloadGlobal()
+      }
     }
 
     // v3: Exhaust for energy — movement handled in selectCard; here only bonus energy + SFX
@@ -643,6 +823,7 @@ export function useCombat() {
       : store.enemyHp <= 0
   )
   const isPlayerDefeated = store.hp <= 0
+    || (isOverloadMechanicsActive(store) && isOverloadLethal(store.overloadGlobal, store.maxHp))
 
   return {
     // Data
